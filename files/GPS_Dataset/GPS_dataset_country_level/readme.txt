@@ -1,0 +1,1 @@
+The dataset country.dta was created with Stata 14. Users of earlier versions are recommended to work with country_v11.dta, which is compatible with Stata 11 and newer.
