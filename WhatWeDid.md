@@ -31,7 +31,7 @@ We plot the logarithm of the average GDP per capita versus the preference differ
 
 Results
 
-#### Principal Component Analysis#### 
+#### Principal Component Analysis
 
 To summarise the average gender difference among these preferences, we performed -- as the authors -- a principal component analysis on the gender preference differences from the linear model and use the first component the summary index of average gender differences in preferences. And then we plotted it against the logarithmic average of the GDP per capita for each country.
 
@@ -39,6 +39,8 @@ We performed a linear regression on the data points, extracting the correlation 
 
 ### 1.3 Discussion On This First Step
 
-We assume that the article continues using the gender coefficient because this is the coefficient with the major weight. 
+The main question is: Do they choose the gender coefficient because it is the biggest weight over the others (but how do they choose the others?), or because they really wanted to focus on the gender differences (but again, why to use the other variables?)?
+In the article, they assume gender to be the major variable, but they use age and other variables as control variables.
 The PCA is meant to uncorrelate those variables which are correlated, using the rotation of a multi-dimensional plane to extract the vectors where it exists the most variance of each variable. 
-In our case, the variables are the preferences, and we want to extract the information about their principal component to use it as a measure for the average difference in the gender preferences. Therefore, after performing the PCA on our data
+In our case, the variables are the preferences, and we want to extract the information about their principal component to use it as a measure for the average difference in the gender preferences. Therefore, after performing the PCA on our data.
+One wants to highlight which basis maximise the differences.
