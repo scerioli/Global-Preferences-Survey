@@ -7,6 +7,6 @@ build
 .DS_Store
 *~
 .Rhistory
-GPS_dataset_individual_level
-GPS_dataset_country_level
+GPS_dataset_individual_level/
+GPS_dataset_country_level/
 *.dta
