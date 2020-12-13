@@ -14,7 +14,7 @@ In doing this, we realized that a part of the data to realize the article is mis
 
 We created a linear model using the formula:
 
-preference ~ gender + age + age_2 + subj_math_skills
+$preference ~ gender + age + age_2 + subj_math_skills$
 
 This resulted in 6 different models (one for each preference measure), having an intercept and 4 weights, each of the weight being related to the variable in the formula above. 
 
