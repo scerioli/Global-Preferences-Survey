@@ -1,0 +1,11 @@
+syntax: glob
+
+*.out
+out
+build
+*.swp
+.DS_Store
+*~
+.Rhistory
+GPS_dataset_individual_level
+GPS_dataset_country_level
