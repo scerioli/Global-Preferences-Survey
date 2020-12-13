@@ -59,12 +59,12 @@ data <- data %>% merge(indicators, by.x = "country", by.y = "Country Name") %>%
 # Create a complete dataset (no NAs)
 dataComplete <- data[complete.cases(data)]
 
+
 # ========================= #
 #### 2. CREATE THE MODEL ####
 # ========================= #
 
-## 2.1 Model on country level of the preferences
-# -------------------------------------------- #
+## ------------ 2.1 Model on country level of the preferences ---------------- #
 
 dataComplete[, age_2 := age^2]
 # dataComplete[gender == 2, gender := 0]
@@ -92,8 +92,7 @@ models <- list(model_p = model_patience, model_r = model_risktaking,
                model_a = model_altruism, model_t = model_trust)
 
 
-## 2.2 Model globally the dependency of the preferences from gender only
-# --------------------------------------------------------------------- #
+## -- 2.2 Model globally the dependency of the preferences from gender only -- #
 
 namesModel <- names(dataToFit)[2:7]
 dataCoeff  <- data.table(country = character(),
@@ -120,7 +119,6 @@ labels <- dataCoeff %>%
   do(ExtractModelSummary(., var1 = "genderCoef", var2 = "preference")) %>% 
   setDT(.)
 
-
 # Plot the results
 ggplot(dataCoeff, aes(x = log(avgGDPpc), y = genderCoef)) +
   geom_point(shape = 21, fill = "white", size = 3) +
@@ -133,35 +131,42 @@ ggplot(dataCoeff, aes(x = log(avgGDPpc), y = genderCoef)) +
 
 ## 2.3 Principal component analysis to put together the preferences
 # ---------------------------------------------------------------- #
+
 dt_pca <- data.table()
 
 for (C in unique(dataCoeff$country)) {
+  # Create a transposed data table on country level
   dt_tmp <- as.data.table(t(dataCoeff[country == C, .(genderCoef)]))
-  setnames(dt_tmp, c("V1", "V2", "V3", "V4", "V5", "V6"), 
-           c("trust", "altruism", "negrecip", "posrecip", "risktaking", "patience"))
+  # Set new names to identify the preferences
+  setnames(dt_tmp, old = names(dt_tmp), new = unique(dataCoeff$preference))
+  # Add the country information
   dt_tmp[, country := C]
+  
   dt_pca <- rbind(dt_pca, dt_tmp)
 }
-
+# Create a data table with the correct slope as in the article (aestethics only)
 dt_pca_pos <- dt_pca[, .(country, 
-                         Trust = trust, 
-                         Altruism = altruism, 
+                         Trust                  = trust, 
+                         Altruism               = altruism, 
                          `Positive Reciprocity` = posrecip, 
                          `Negative Reciprocity` = negrecip * - 1, 
-                         `Risk Taking` = risktaking * - 1, 
-                         Patience = patience * - 1)]
+                         `Risk Taking`          = risktaking * - 1, 
+                         Patience               = patience * - 1)]
 
+# Perform the principal component analysis
 pca <- prcomp(dt_pca_pos[, 2:7], scale. = F)
 
+# Add data for plotting
 summaryIndex <- data.table(avgGenderDiff = pca$x[, 1],
                            country = unique(dataCoeff$country),
                            isocode = unique(dataCoeff$isocode),
                            avgGDPpc = unique(dataCoeff$avgGDPpc))
 
-
+# Create annotation for the correlation and p-value
 labels_idx <- summaryIndex %>% do(ExtractModelSummary(., var1 = "avgGenderDiff"))
 setDT(labels_idx)
 
+# Plot the results
 ggplot(data = summaryIndex, aes(x = log(avgGDPpc), y = avgGenderDiffNorm)) +
   geom_point(shape = 21, fill = "white", size = 3) +
   geom_smooth(method = "lm", color = "red") +
