@@ -1,6 +1,7 @@
 LoadRequiredLibraries <- function() {
   
   # Libraries
+  library(rlang);
   library(data.table); 
   library(rpart); 
   library(bit64); 
@@ -17,6 +18,7 @@ LoadRequiredLibraries <- function() {
   library(readr); 
   library(stringr); 
   library(moments); 
+  library(haven);
   library(FitAR); 
   library(HDInterval); 
   library(BEST)
