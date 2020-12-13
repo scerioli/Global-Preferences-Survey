@@ -117,7 +117,8 @@ dataCoeff[data, `:=` (isocode = i.isocode,
 
 # Create the annotation for the summary of the model
 labels <- dataCoeff %>%
-  do(ExtractModelSummary(., var1 = "genderCoef", var2 = "preference")) %>% setDT(.)
+  do(ExtractModelSummary(., var1 = "genderCoef", var2 = "preference")) %>% 
+  setDT(.)
 
 
 # Plot the results
@@ -126,7 +127,6 @@ ggplot(dataCoeff, aes(x = log(avgGDPpc), y = genderCoef)) +
   geom_smooth(method = "lm", color = "red") +
   geom_text(aes(label = isocode), color = "gray20", size = 3, check_overlap = F, hjust = -0.5) +
   facet_wrap(vars(preference), ncol = 3) +
-  # I don't understand why now they are on top of each other
   geom_text(x = 7, y = 0.42, data = labels, aes(label = correlation), hjust = 0) +
   geom_text(x = 7, y = 0.38, data = labels, aes(label = pvalue), hjust = 0) 
 
