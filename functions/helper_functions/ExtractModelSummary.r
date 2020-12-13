@@ -4,7 +4,8 @@ ExtractModelSummary <- function(dat, var1, var2 = NULL) {
         mod <- dlply(dat, var2, function(dt) 
             lm(log(avgGDPpc) ~ eval(as.name(var1)), data = dt))
         dt <- data.table(formula = character(), correlation = character(), 
-                         r2 = double(), pvalue = character())
+                         r2 = double(), pvalue = character(), 
+                         preference = character())
         for (i in 1:length(mod)) {
             names(mod[[i]]$coefficients)[2] <- var1
             formula <- sprintf("italic(y) == %.2f % +.2f * italic(x)",
@@ -17,7 +18,8 @@ ExtractModelSummary <- function(dat, var1, var2 = NULL) {
             pvalue <- ifelse(p_value < 0.0001, "p < 0.0001", sprintf("p = %.4f", p_value))
             
             dt_tmp <- data.table(formula = formula, correlation = correlation, r2 = r2, 
-                             pvalue = pvalue, stringsAsFactors = FALSE)
+                             pvalue = pvalue, preference = names(mod)[i], 
+                             stringsAsFactors = FALSE)
             dt <- rbind(dt, dt_tmp)
         }
         
