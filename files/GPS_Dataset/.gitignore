@@ -9,3 +9,4 @@ build
 .Rhistory
 GPS_dataset_individual_level
 GPS_dataset_country_level
+*.dta
