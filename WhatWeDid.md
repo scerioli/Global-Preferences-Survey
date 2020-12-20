@@ -8,6 +8,9 @@ To do: GDP
 #### Gender Equality Index
 The Gender Equality Index is composed by 4 main datasets.
 - Time Since Women's Suffrage: I am cleaning the data keeping as a date the first complete date (vote + stand for election, with no other restrictions commented), regardless of whether the country was a colony or not (so Kazakhstan is kept to have the first date, because nothing changed from Soviet Union to independence). South Africa is not cleaned because its history shows the racism part very entangled with the women's rights. I kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, I decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date.
+- UN Gender Inequality Index: I kept only the first table, that seemed to be more general
+- WEF Gloabl Gender Gap: I modified some of the country names directly
+- Ratio Labor Male Female: I took the years between 2004 and 2013 and calculated the mean
 
 
 ### 1.2 Create the Models

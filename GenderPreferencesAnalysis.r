@@ -19,89 +19,18 @@ SourceFunctions(path = "functions/helper_functions/", trace = TRUE)
 # Load libraries
 LoadRequiredLibraries()
 
-# Select the directory
-path_GPS_dir   <- "files/GPS_Dataset/GPS_dataset_individual_level/"
-path_Index_dir <- "files/Data_Extract_From_World_Development_Indicators/"
-path_GEI_dir   <- "files/Gender_Equality_Index_Data/"
-
-# Load the data
-data          <- read_dta(paste0(path_GPS_dir, "individual_new.dta")) 
-indicators    <- read_csv(file = paste0(path_Index_dir, "Data.csv"), na = "..")
-timeWomenSuff <- fread(file = paste0(path_GEI_dir, "Womens_suffrage_date_mod.csv"), 
-                       na.strings = "-") %>% setDT(.)
-WEF           <- fread(paste0(path_GEI_dir, "WEF_Global_Gender_Gap_Index.txt"),
-                       sep = "\t")
-ratioLabor    <- fread(file = paste0(path_GEI_dir, "RatioLaborMF.csv"), skip = 4)
-UNindex       <- fread(file = paste0(path_GEI_dir, "UN_Gender_Inequality_Index_mod.csv"),
-                       na = "..")
+# Load the Data
+data_all <- LoadData()
 
 
 # ========================= #
 #### 1. PREPARE THE DATA ####
 # ========================= #
 
-## ----------------------------- 1.1 GDP data ------------------------------- ##
-# Select specific columns of indicators
-indicators <- indicators %>% select(c(names(indicators)[1], 
-                                      names(indicators)[5:14]))
+data_all <- PrepareData(data_all)
 
-# New names for the columns indicating the GDP
-newColsNames <- sapply(strsplit(split = "\\ \\[YR", x = names(indicators)[-1]), 
-                       `[`, 1)
-setnames(indicators, old = names(indicators)[-1], new = newColsNames)
-
-# Set the data to data table
-setDT(data)
-setDT(indicators)
-
-# Only the first 217 names are actual country names
-indicators <- indicators[1:217]
-# Clean the names of the countries
-indicators <- CleanCountryNames(data, indicators)
-
-# Calculate the average GDP p/c
-avgGDP <- rowMeans(indicators[, -1])
-indicators[, avgGDPpc := avgGDP]
-
-# Merge information of the indicators into the dataset
-data <- data %>% merge(indicators, by.x = "country", by.y = "Country Name") %>%
-  select(country, isocode, region, language, patience, risktaking, posrecip, 
-         negrecip, altruism, trust, subj_math_skills, gender, age, avgGDPpc)
-# ---------------------------------------------------------------------------- #
-
-## ---------------- 1.2 Time since women's complete suffrage ---------------- ##
-# Merge time since women's suffrage into the main dataset
-setnames(timeWomenSuff, old = "Country", new = "country")
-# ---------------------------------------------------------------------------- #
-
-## ----------------------- 1.3 WEF Gender Gap Index ------------------------- ##
-setnames(WEF, old = "Economy", new = "country")
-# ---------------------------------------------------------------------------- #
-
-## ------------------------- 1.4 Ratio Labor M/F ---------------------------- ##
-# Select specific columns of indicators
-ratioLabor <- ratioLabor %>% select(c(names(ratioLabor)[1:2],
-                                      names(ratioLabor)[48:57]))
-setnames(ratioLabor, old = names(ratioLabor), new = as.character(ratioLabor[1]))
-ratioLabor <- ratioLabor[-1]
-
-# Clean the names
-ratioLabor <- CleanCountryNames(data, ratioLabor)
-setnames(ratioLabor, old = "Country Name", new = "country")
-
-# Calculate average
-avgRatioLabor <- rowMeans(ratioLabor[, c(-1,-2)])
-ratioLabor[, avgRatioLabor := avgRatioLabor]
-ratioLabor <- ratioLabor[, c(1, 13)]
-# ---------------------------------------------------------------------------- #
-
-## ------------------ 1.5 UN Gender Inequality Index ------------------------ ##
-setnames(UNindex, old = "Country", new = "country")
-# ---------------------------------------------------------------------------- #
-
-
-# Create a complete dataset (no NAs)
-dataComplete <- data[complete.cases(data)]
+# Complete dataset
+dataComplete <- data_all$data[complete.cases(data_all$data)]
 
 
 # ========================= #
@@ -153,7 +82,7 @@ for (i in 1:length(models)) {
   dataCoeff <- rbind(dt_tmp, dataCoeff)
 }
 # Add data for plotting
-dataCoeff[data, `:=` (isocode = i.isocode,
+dataCoeff[data_all$data, `:=` (isocode = i.isocode,
                       logAvgGDPpc = log(i.avgGDPpc)), 
           on = "country"]
 
@@ -202,36 +131,39 @@ pca <- prcomp(dt_pca_pos[, 2:7], scale. = F)
 summaryIndex <- data.table(avgGenderDiff = pca$x[, 1],
                            country = unique(dataCoeff$country),
                            isocode = unique(dataCoeff$isocode),
-                           logAvgGDPpc = unique(dataCoeff$logAvgGDPpc)
-)
+                           logAvgGDPpc = unique(dataCoeff$logAvgGDPpc))
+
+summaryIndex <- merge(summaryIndex, data_all$world_area, by = "country") 
 
 summaryIndex[, avgGenderDiffNorm := (avgGenderDiff - min(avgGenderDiff)) /
                (max(avgGenderDiff) - min(avgGenderDiff))]
 
 # Create annotation for the correlation and p-value
-labels_idx <- summaryIndex %>% do(ExtractModelSummary(., var1 = "logAvgGDPpc", var2 = "avgGenderDiff"))
-setDT(labels_idx)
+labels_idx <- summaryIndex %>% 
+  do(ExtractModelSummary(., var1 = "logAvgGDPpc", var2 = "avgGenderDiff")) %>%
+  setDT(.)
 
 # Plot the results
 ggplot(data = summaryIndex, aes(x = logAvgGDPpc, y = avgGenderDiffNorm)) +
-  geom_point(shape = 21, fill = "white", size = 3) +
+  geom_point(shape = 21, size = 3, aes(fill = region)) +
   geom_smooth(method = "lm", color = "red") +
   geom_text(aes(label = isocode), color = "gray20", size = 3, check_overlap = F, hjust = -0.5) +
   geom_text(x = 7, y = 1, data = labels_idx, aes(label = correlation), hjust = 0) +
   geom_text(x = 7, y = .95, data = labels_idx, aes(label = pvalue), hjust = 0) +
   xlab("Log GDP p/c") + ylab("Average Gender Difference (Index)") +
-  theme_bw()
+  theme_bw() +
+  scale_fill_brewer(palette = "Set1")
 
 
 ## --------- 2.4 Principal component analysis on the Gender Index ------------ #
 summaryGenderIndex <- data.table(country = unique(dataCoeff$country),
                                  isocode = unique(dataCoeff$isocode))
 
-summaryGenderIndex <- merge(summaryGenderIndex, timeWomenSuff, by = "country") 
-summaryGenderIndex <- merge(summaryGenderIndex, WEF, by = "country")
-summaryGenderIndex <- merge(summaryGenderIndex, ratioLabor, by = "country")
+summaryGenderIndex <- merge(summaryGenderIndex, data_all$timeWomenSuff, by = "country") 
+summaryGenderIndex <- merge(summaryGenderIndex, data_all$WEF, by = "country")
+summaryGenderIndex <- merge(summaryGenderIndex, data_all$ratioLabor, by = "country")
 summaryGenderIndex <- summaryGenderIndex[, -4]
-summaryGenderIndex <- merge(summaryGenderIndex, UNindex, by = "country")
+summaryGenderIndex <- merge(summaryGenderIndex, data_all$UNindex, by = "country")
 
 # Create a complete dataset (no NAs)
 genderIndexComplete <- summaryGenderIndex[complete.cases(summaryGenderIndex)]
@@ -247,22 +179,31 @@ genderIndexComplete[summaryIndex, `:=` (avgGenderDiff = i.avgGenderDiff,
                                         avgGenderDiffNorm = i.avgGenderDiffNorm),
                     on = "country"]
 
+genderIndexComplete[summaryIndex, region := region, on = "country"] 
+
 # Create annotation for the correlation and p-value
 labels_gender_idx <- genderIndexComplete %>% 
-  do(ExtractModelSummary(., var1 = "GenderIndex", var2 = "avgGenderDiff"))
-setDT(labels_gender_idx)
+  do(ExtractModelSummary(., var1 = "GenderIndex", var2 = "avgGenderDiff")) %>%
+  setDT(.)
 
 # Plot the results
 ggplot(data = genderIndexComplete, aes(x = GenderIndex, y = avgGenderDiffNorm)) +
-  geom_point(shape = 21, fill = "white", size = 3) +
+  geom_point(shape = 21, size = 3, aes(fill = region)) +
   geom_smooth(method = "lm", color = "red") +
   geom_text(aes(label = isocode), color = "gray20", size = 3, check_overlap = F, hjust = -0.5) +
   geom_text(x = -2.5, y = 1, data = labels_gender_idx, aes(label = correlation), hjust = 0) +
   geom_text(x = -2.5, y = .95, data = labels_gender_idx, aes(label = pvalue), hjust = 0) +
   xlab("Gender Equality (Index)") + ylab("Average Gender Difference (Index)") +
-  theme_bw()
+  theme_bw() +
+  scale_fill_brewer(palette = "Set1")
 
 #------------------------------------------------------------------------------#
+
+## -------------------- 3.0 Write csv data summaries ------------------------ ##
+fwrite(summaryIndex, file = "files/outcome/summaryDifferencesGDP.csv")
+fwrite(genderIndexComplete, file = "files/outcome/summaryDifferencesGenderEqualityIndex.csv")
+#------------------------------------------------------------------------------#
+
 
 
 
