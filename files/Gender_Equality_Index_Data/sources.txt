@@ -1,0 +1,17 @@
+Definition of country-level variables (including sources) 
+
+Time since women’s suffrage. Taken from the Inter-Parliamentary Union Website (http://www.ipu.org/wmn-e/suffrage.htm#Note1). 
+
+For countries where data were missing data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf). 
+
+WEF Global Gender Gap Index. Taken from the World Economic Forum Global Gender Gap Report 2015 (http://reports.weforum.org/global-gender-gap-report-2015/rankings/). 
+
+UN Gender Inequality Index. Taken from the Human Development Report 2015 (http://hdr.undp.org/en/composite/GII). 
+
+Values inverted to create an index of equality. Ratio of female and male labor force participation. Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS).
+
+
+
+There are some updated sources:
+
+https://geo.1sept.ru/article.php?ID=200800503
