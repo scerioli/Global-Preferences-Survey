@@ -1,14 +1,18 @@
 CreateDtFromModels <- function(model) {
+  # A model is passed to this function and a data table is extracted, taking the
+  # coefficients of the models and creating the columns of the data table from
+  # it, for each country.
   
-  dt <- data.table()
+  # Extract the coefficient names
+  colNames <- names(coef(model[[1]]))
+  dt       <- data.table()
   
-  for(i in 1:length(model)) {        
-    tmp <- data.table(country   = names(model)[i],
-                      intercept = coef(model[[i]])[[1]],
-                      genderCoef = coef(model[[i]])[[2]],
-                      ageCoef  = coef(model[[i]])[[3]],
-                      age2Coef = coef(model[[i]])[[4]],
-                      smsCoef  = coef(model[[i]])[[5]])
+  # For each country
+  for(country in 1:length(model)) { 
+    tmp <- data.table(country  = names(model)[country])
+    for (coefficient in 1:length(colNames)) {
+      tmp[, (colNames[[coefficient]]) := coef(model[[country]])[[coefficient]]]
+    }
     dt <- rbind(dt, tmp)
   }
   

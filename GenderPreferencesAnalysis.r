@@ -33,9 +33,9 @@ data_all <- PrepareData(data_all)
 dataComplete <- data_all$data[complete.cases(data_all$data)]
 
 
-# ========================= #
-#### 2. CREATE THE MODEL ####
-# ========================= #
+# ========================== #
+#### 2. CREATE THE MODELS ####
+# ========================== #
 
 ## ------------- 2.1 Model on country level of the preferences --------------- #
 dataComplete[, age_2 := age^2]
@@ -45,68 +45,56 @@ colsVar <- c("country", names(dataComplete)[5:13], "age_2")
 # Select the data to fit
 dataToFit <- dataComplete %>% select(all_of(colsVar))
 
-# Create the models of each variable for each country
-model_patience <- dlply(dataToFit, "country", function(dt) 
-  lm(patience ~ gender + age + age_2 + subj_math_skills, dt))
-model_risktaking <- dlply(dataToFit, "country", function(dt) 
-  lm(risktaking ~ gender + age + age_2 + subj_math_skills, dt))
-model_posrecip <- dlply(dataToFit, "country", function(dt) 
-  lm(posrecip ~ gender + age + age_2 + subj_math_skills, dt))
-model_negrecip <- dlply(dataToFit, "country", function(dt) 
-  lm(negrecip ~ gender + age + age_2 + subj_math_skills, dt))
-model_altruism <- dlply(dataToFit, "country", function(dt) 
-  lm(altruism ~ gender + age + age_2 + subj_math_skills, dt))
-model_trust <- dlply(dataToFit, "country", function(dt) 
-  lm(trust ~ gender + age + age_2 + subj_math_skills, dt))
+# Create a model for each preference
+preferences <- names(dataToFit)[2:7]
 
-models <- list(model_p = model_patience, model_r = model_risktaking, 
-               model_pr = model_posrecip, model_nr = model_negrecip, 
-               model_a = model_altruism, model_t = model_trust)
+models <- lapply(preferences, function(x) {
+  form <- paste0(x, " ~ gender + age + age_2 + subj_math_skills")
+  model <- EstimateModel(dat = dataToFit, formula = form, var = "country")
+})
+
+names(models) <- preferences
 ## --------------------------------------------------------------------------- #
 
-## -- 2.2 Model globally the dependency of the preferences from gender only -- #
-namesModel <- names(dataToFit)[2:7]
-dataCoeff  <- data.table(country = character(),
-                         intercept = double(),
-                         genderCoef = double(),
-                         ageCoef = double(),
-                         age2Coef = double(),
-                         smsCoef = double(),
-                         preference = character())
+## ------------- 2.2 Summarise the preferences for each country -------------- #
+dataCoeff <- SummaryCoeffPerPreferencePerCountry(models)
 
-# Loop over the model and extract the coefficients associated to each preference
-# and each country
-for (i in 1:length(models)) {
-  dt_tmp <- CreateDtFromModels(models[[i]])
-  dt_tmp[, preference := namesModel[i]]
-  dataCoeff <- rbind(dt_tmp, dataCoeff)
-}
 # Add data for plotting
-dataCoeff[data_all$data, `:=` (isocode = i.isocode,
-                      logAvgGDPpc = log(i.avgGDPpc)), 
+dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
+                               logAvgGDPpc = log(i.avgGDPpc)), 
           on = "country"]
+## --------------------------------------------------------------------------- #
 
+## --------------------------------- PLOT ------------------------------------ #
 # Create the annotation for the summary of the model
 labels <- dataCoeff %>%
-  do(ExtractModelSummary(., var1 = "logAvgGDPpc", var2 = "genderCoef", var3 = "preference")) %>% 
+  do(ExtractModelSummary(., var1 = "logAvgGDPpc", 
+                            var2 = "gender", 
+                            var3 = "preference")) %>% 
   setDT(.)
 
 # Plot the results vs GDP
-ggplot(dataCoeff, aes(x = logAvgGDPpc, y = genderCoef)) +
+ggplot(dataCoeff, aes(x = logAvgGDPpc, y = gender)) +
   geom_point(shape = 21, fill = "white", size = 3) +
   geom_smooth(method = "lm", color = "red") +
-  geom_text(aes(label = isocode), color = "gray20", size = 3, check_overlap = F, hjust = -0.5) +
+  geom_text(aes(label = isocode), color = "gray20", size = 3, 
+            check_overlap = F, hjust = -0.5) +
   facet_wrap(vars(preference), ncol = 3) +
   geom_text(x = 7, y = 0.42, data = labels, aes(label = correlation), hjust = 0) +
   geom_text(x = 7, y = 0.38, data = labels, aes(label = pvalue), hjust = 0) 
 ## --------------------------------------------------------------------------- #
 
-## ---------- 2.3 Principal component analysis on the preferences ------------ #
+
+# ===================================== #
+#### 3. PRINCIPAL COMPONENT ANALYSIS ####
+# ===================================== #
+
+## ----------------------- 3.1 PCA on the preferences ------------------------ #
 dt_pca <- data.table()
 
 for (C in unique(dataCoeff$country)) {
   # Create a transposed data table on country level
-  dt_tmp <- as.data.table(t(dataCoeff[country == C, .(genderCoef)]))
+  dt_tmp <- as.data.table(t(dataCoeff[country == C, .(gender)]))
   # Set new names to identify the preferences
   setnames(dt_tmp, old = names(dt_tmp), new = unique(dataCoeff$preference))
   # Add the country information
@@ -124,7 +112,7 @@ dt_pca_pos <- dt_pca[, .(country,
                          Patience               = patience * - 1)]
 
 # Perform the principal component analysis
-pca <- prcomp(dt_pca_pos[, 2:7], scale. = F)
+pca <- prcomp(dt_pca_pos[, -1], scale. = F)
 ## --------------------------------------------------------------------------- #
 
 # Add data for plotting
@@ -147,7 +135,8 @@ labels_idx <- summaryIndex %>%
 ggplot(data = summaryIndex, aes(x = logAvgGDPpc, y = avgGenderDiffNorm)) +
   geom_point(shape = 21, size = 3, aes(fill = region)) +
   geom_smooth(method = "lm", color = "red") +
-  geom_text(aes(label = isocode), color = "gray20", size = 3, check_overlap = F, hjust = -0.5) +
+  geom_text(aes(label = isocode), color = "gray20", size = 3, 
+            check_overlap = F, hjust = -0.5) +
   geom_text(x = 7, y = 1, data = labels_idx, aes(label = correlation), hjust = 0) +
   geom_text(x = 7, y = .95, data = labels_idx, aes(label = pvalue), hjust = 0) +
   xlab("Log GDP p/c") + ylab("Average Gender Difference (Index)") +
@@ -190,9 +179,12 @@ labels_gender_idx <- genderIndexComplete %>%
 ggplot(data = genderIndexComplete, aes(x = GenderIndex, y = avgGenderDiffNorm)) +
   geom_point(shape = 21, size = 3, aes(fill = region)) +
   geom_smooth(method = "lm", color = "red") +
-  geom_text(aes(label = isocode), color = "gray20", size = 3, check_overlap = F, hjust = -0.5) +
-  geom_text(x = -2.5, y = 1, data = labels_gender_idx, aes(label = correlation), hjust = 0) +
-  geom_text(x = -2.5, y = .95, data = labels_gender_idx, aes(label = pvalue), hjust = 0) +
+  geom_text(aes(label = isocode), color = "gray20", size = 3, 
+            check_overlap = F, hjust = -0.5) +
+  geom_text(x = -2.5, y = 1, data = labels_gender_idx, aes(label = correlation), 
+            hjust = 0) +
+  geom_text(x = -2.5, y = .95, data = labels_gender_idx, aes(label = pvalue), 
+            hjust = 0) +
   xlab("Gender Equality (Index)") + ylab("Average Gender Difference (Index)") +
   theme_bw() +
   scale_fill_brewer(palette = "Set1")
@@ -200,8 +192,10 @@ ggplot(data = genderIndexComplete, aes(x = GenderIndex, y = avgGenderDiffNorm)) 
 #------------------------------------------------------------------------------#
 
 ## -------------------- 3.0 Write csv data summaries ------------------------ ##
-fwrite(summaryIndex, file = "files/outcome/summaryDifferencesGDP.csv")
-fwrite(genderIndexComplete, file = "files/outcome/summaryDifferencesGenderEqualityIndex.csv")
+fwrite(summaryIndex, 
+       file = "files/outcome/summaryDifferencesGDP.csv")
+fwrite(genderIndexComplete, 
+       file = "files/outcome/summaryDifferencesGenderEqualityIndex.csv")
 #------------------------------------------------------------------------------#
 
 
