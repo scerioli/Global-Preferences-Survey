@@ -19,7 +19,7 @@ SourceFunctions(path = "functions/helper_functions/", trace = TRUE)
 # Load libraries
 LoadRequiredLibraries()
 
-# Load the Data
+# Load the data
 data_all <- LoadData()
 
 
@@ -68,8 +68,7 @@ dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
 ## --------------------------------- PLOT ------------------------------------ #
 # Create the annotation for the summary of the model
 labels <- dataCoeff %>%
-  do(ExtractModelSummary(., var1 = "logAvgGDPpc", 
-                            var2 = "gender", 
+  do(ExtractModelSummary(., var1 = "logAvgGDPpc", var2 = "gender", 
                             var3 = "preference")) %>% 
   setDT(.)
 
@@ -115,6 +114,7 @@ dt_pca_pos <- dt_pca[, .(country,
 pca <- prcomp(dt_pca_pos[, -1], scale. = F)
 ## --------------------------------------------------------------------------- #
 
+## --------------------------------- PLOT ------------------------------------ #
 # Add data for plotting
 summaryIndex <- data.table(avgGenderDiff = pca$x[, 1],
                            country = unique(dataCoeff$country),
@@ -142,9 +142,9 @@ ggplot(data = summaryIndex, aes(x = logAvgGDPpc, y = avgGenderDiffNorm)) +
   xlab("Log GDP p/c") + ylab("Average Gender Difference (Index)") +
   theme_bw() +
   scale_fill_brewer(palette = "Set1")
+## --------------------------------------------------------------------------- #
 
-
-## --------- 2.4 Principal component analysis on the Gender Index ------------ #
+## --------------------- 3.2 PCA on the Gender Index ------------------------- #
 summaryGenderIndex <- data.table(country = unique(dataCoeff$country),
                                  isocode = unique(dataCoeff$isocode))
 
@@ -162,6 +162,7 @@ genderIndexComplete[, Value := as.numeric(Value)]
 pca_gender <- prcomp(genderIndexComplete[, c(3:6)], scale. = T)
 ## --------------------------------------------------------------------------- #
 
+## --------------------------------- PLOT ------------------------------------ #
 # Add data for plotting
 genderIndexComplete[, GenderIndex := pca_gender$x[, 1]]
 genderIndexComplete[summaryIndex, `:=` (avgGenderDiff = i.avgGenderDiff,
@@ -188,10 +189,14 @@ ggplot(data = genderIndexComplete, aes(x = GenderIndex, y = avgGenderDiffNorm)) 
   xlab("Gender Equality (Index)") + ylab("Average Gender Difference (Index)") +
   theme_bw() +
   scale_fill_brewer(palette = "Set1")
-
 #------------------------------------------------------------------------------#
 
-## -------------------- 3.0 Write csv data summaries ------------------------ ##
+
+# ================================= #
+#### 4. WRITE THE DATA SUMMARIES ####
+# ================================= #
+
+## ---------------------- Write csv data summaries -------------------------- ##
 fwrite(summaryIndex, 
        file = "files/outcome/summaryDifferencesGDP.csv")
 fwrite(genderIndexComplete, 
