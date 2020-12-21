@@ -5,9 +5,10 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
     # 
     # ARGS
     # - dat   [data table] is the data we are giving to the model
-    # - var1  [character]  is the column name of the variable we want to put
-    #                      in the model in correlation to log(avgGDPpc)
-    # - var2  [character]  is the column name of the variable that we want to
+    # - var1  [character]  the independent variable
+    # - var2  [character]  is the column name of the variable we want to put
+    #                      in the model in correlation to var1
+    # - var3  [character]  is the column name of the variable that we want to
     #                      group by. Default is NULL and means that only one
     #                      model is produced
     # RETURN
