@@ -21,5 +21,7 @@ LoadRequiredLibraries <- function() {
   library(haven);
   library(FitAR); 
   library(HDInterval); 
-  library(BEST)
+  library(BEST);
+  library(plotly);
+  library(tidytext);
 }

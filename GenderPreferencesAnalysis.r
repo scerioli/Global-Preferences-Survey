@@ -39,7 +39,7 @@ dataComplete <- data_all$data[complete.cases(data_all$data)]
 
 ## ------------- 2.1 Model on country level of the preferences --------------- #
 dataComplete[, age_2 := age^2]
-# dataComplete[gender == 2, gender := 0]
+dataComplete[gender == 2, gender := 0]
 colsVar <- c("country", names(dataComplete)[5:13], "age_2")
 
 # Select the data to fit
@@ -81,6 +81,23 @@ ggplot(dataCoeff, aes(x = logAvgGDPpc, y = gender)) +
   facet_wrap(vars(preference), ncol = 3) +
   geom_text(x = 7, y = 0.42, data = labels, aes(label = correlation), hjust = 0) +
   geom_text(x = 7, y = 0.38, data = labels, aes(label = pvalue), hjust = 0) 
+
+
+# Plot coefficient by country by preference
+dataCoeff %>% 
+  merge(data_all$world_area, by = "country") %>%
+  group_by(preference) %>%
+  mutate(preference = as.factor(preference), 
+         country = reorder_within(country, subj_math_skills, preference)) %>%
+  ggplot(aes(x = country, y = subj_math_skills, fill = region)) +
+  geom_point(shape = 21, size = 3) +
+  xlab("Country") + ylab("Coefficient on math skills") +
+  theme_bw() +
+  geom_hline(yintercept = 0) +
+  scale_fill_brewer(palette = "Set1")  +
+  facet_wrap(~ preference, ncol = 2, scales = "free") +
+  scale_x_reordered() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 ## --------------------------------------------------------------------------- #
 
 
