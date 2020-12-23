@@ -26,7 +26,7 @@ preference ~ gender + age + age_2 + subj_math_skills
 
 This resulted in 6 different models (one for each preference measure), having an intercept and 4 weights, each of the weight being related to the variable in the formula above. 
 
-The weigth for dummy variable "gender" is used as measure of the coutry level gender difference. 
+The weigth for dummy variable "gender" is used as measure of the coutry level gender difference. Note that, changing the dummy variable of the male from "0" to "2" doesn't change anything in the results.
 
 Therefore, in total we have 6 weigths that represent the preference difference related to the gender for 76 countries.
 
@@ -54,4 +54,8 @@ How to make use of other information of the data, as for instance the age group,
 
 Another important source of information can be the historical/cultural background of groups of countries: Those that are sharing a long history not only of colonization but of exchanges, and a similar economic system and religion, might have an impact in this model if we try out some cross-validation excluding those countries that share this background. As a matter of fact, if excluding some block of countries changes completely the correlation, it might well mean that we are not seeing an important parameter that is able to have a deeper influence than the gender itself.
 
+
+### TO BE DISCUSSED MORE
+
+I tried to use the formula preference ~ gender * age (which means that the preference is a function of gender, age, and their interaction), and the results are that the average gender difference is less correlated to logGDP (0.38, with p-value = 0.0007), and also less correllated to the Gender Equality Index (which is also changed, btw) as 0.27 and a p-value of 0.023.
 
