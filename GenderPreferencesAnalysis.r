@@ -1,9 +1,4 @@
-################################################################################
 #####################  ANALYSIS OF GLOBAL PREFERENCES  #########################
-################################################################################
-# Reference article: https://science.sciencemag.org/content/362/6412/eaas9899
-# DOI: 10.1126/science.aas9899
-
 
 # =============================== #
 #### 0. LOAD DATA AND SET PATH ####
@@ -14,7 +9,7 @@ setwd("/Users/sara/Desktop/Projects/Global_Preferences_Survey/")
 
 # Source helper functions
 source("functions/SourceFunctions.r")
-SourceFunctions(path = "functions/helper_functions/", trace = TRUE)
+SourceFunctions(path = "functions/helper_functions/")
 
 # Load libraries
 LoadRequiredLibraries()
@@ -29,7 +24,7 @@ data_all <- LoadData()
 
 data_all <- PrepareData(data_all)
 
-# Complete dataset
+# Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
 
 
@@ -66,22 +61,8 @@ dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
 ## --------------------------------------------------------------------------- #
 
 ## --------------------------------- PLOT ------------------------------------ #
-# Create the annotation for the summary of the model
-labels <- dataCoeff %>%
-  do(ExtractModelSummary(., var1 = "logAvgGDPpc", var2 = "gender", 
-                            var3 = "preference")) %>% 
-  setDT(.)
-
-# Plot the results vs GDP
-ggplot(dataCoeff, aes(x = logAvgGDPpc, y = gender)) +
-  geom_point(shape = 21, fill = "white", size = 3) +
-  geom_smooth(method = "lm", color = "red") +
-  geom_text(aes(label = isocode), color = "gray20", size = 3, 
-            check_overlap = F, hjust = -0.5) +
-  facet_wrap(vars(preference), ncol = 3) +
-  geom_text(x = 7, y = 0.42, data = labels, aes(label = correlation), hjust = 0) +
-  geom_text(x = 7, y = 0.38, data = labels, aes(label = pvalue), hjust = 0) 
-
+PlotSummary(data = dataCoeff, 
+            var1 = "logAvgGDPpc", var2 = "gender", var3 = "preference")
 
 # Plot coefficient by country by preference
 dataCoeff %>% 
@@ -106,126 +87,90 @@ dataCoeff %>%
 # ===================================== #
 
 ## ----------------------- 3.1 PCA on the preferences ------------------------ #
-dt_pca <- data.table()
-
-for (C in unique(dataCoeff$country)) {
-  # Create a transposed data table on country level
-  dt_tmp <- as.data.table(t(dataCoeff[country == C, .(gender)]))
-  # Set new names to identify the preferences
-  setnames(dt_tmp, old = names(dt_tmp), new = unique(dataCoeff$preference))
-  # Add the country information
-  dt_tmp[, country := C]
-  
-  dt_pca <- rbind(dt_pca, dt_tmp)
-}
-# Create a data table with the correct slope as in the article (aestethics only)
-dt_pca_pos <- dt_pca[, .(country, 
-                         Trust                  = trust, 
-                         Altruism               = altruism, 
-                         `Positive Reciprocity` = posrecip, 
-                         `Negative Reciprocity` = negrecip * - 1, 
-                         `Risk Taking`          = risktaking * - 1, 
-                         Patience               = patience * - 1)]
-
-# Perform the principal component analysis
-pca <- prcomp(dt_pca_pos[, -1], scale. = F)
+pca <- PreferencesPCA(dataCoeff)
 ## --------------------------------------------------------------------------- #
 
-## --------------------------------- PLOT ------------------------------------ #
-# Add data for plotting
+## ------------------------- 3.2 Prepare summary data ------------------------ #
 summaryIndex <- data.table(avgGenderDiff = pca$x[, 1],
                            country = unique(dataCoeff$country),
                            isocode = unique(dataCoeff$isocode),
                            logAvgGDPpc = unique(dataCoeff$logAvgGDPpc))
 
 summaryIndex <- merge(summaryIndex, data_all$world_area, by = "country") 
-
 summaryIndex[, avgGenderDiffNorm := (avgGenderDiff - min(avgGenderDiff)) /
                (max(avgGenderDiff) - min(avgGenderDiff))]
-
-# Create annotation for the correlation and p-value
-labels_idx <- summaryIndex %>% 
-  do(ExtractModelSummary(., var1 = "logAvgGDPpc", var2 = "avgGenderDiff")) %>%
-  setDT(.)
-
-# Plot the results
-ggplot(data = summaryIndex, aes(x = logAvgGDPpc, y = avgGenderDiffNorm)) +
-  geom_point(shape = 21, size = 3, aes(fill = region)) +
-  geom_smooth(method = "lm", color = "red") +
-  geom_text(aes(label = isocode), color = "gray20", size = 3, 
-            check_overlap = F, hjust = -0.5) +
-  geom_text(x = 7, y = 1, data = labels_idx, aes(label = correlation), hjust = 0) +
-  geom_text(x = 7, y = .95, data = labels_idx, aes(label = pvalue), hjust = 0) +
-  xlab("Log GDP p/c") + ylab("Average Gender Difference (Index)") +
-  theme_bw() +
-  scale_fill_brewer(palette = "Set1")
-## --------------------------------------------------------------------------- #
-
-## --------------------- 3.2 PCA on the Gender Index ------------------------- #
-summaryGenderIndex <- data.table(country = unique(dataCoeff$country),
-                                 isocode = unique(dataCoeff$isocode))
-
-summaryGenderIndex <- merge(summaryGenderIndex, data_all$timeWomenSuff, by = "country") 
-summaryGenderIndex <- merge(summaryGenderIndex, data_all$WEF, by = "country")
-summaryGenderIndex <- merge(summaryGenderIndex, data_all$ratioLabor, by = "country")
-summaryGenderIndex <- summaryGenderIndex[, -4]
-summaryGenderIndex <- merge(summaryGenderIndex, data_all$UNindex, by = "country")
-
-# Create a complete dataset (no NAs)
-genderIndexComplete <- summaryGenderIndex[complete.cases(summaryGenderIndex)]
-genderIndexComplete[, Value := as.numeric(Value)]
-
-# Perform the principal component analysis
-pca_gender <- prcomp(genderIndexComplete[, c(3:6)], scale. = T)
 ## --------------------------------------------------------------------------- #
 
 ## --------------------------------- PLOT ------------------------------------ #
-# Add data for plotting
-genderIndexComplete[, GenderIndex := pca_gender$x[, 1]]
-genderIndexComplete[summaryIndex, `:=` (avgGenderDiff = i.avgGenderDiff,
-                                        avgGenderDiffNorm = i.avgGenderDiffNorm),
-                    on = "country"]
+PlotSummary(data = summaryIndex, 
+            var1 = "logAvgGDPpc", var2 = "avgGenderDiffNorm", fill = "region")
+## --------------------------------------------------------------------------- #
 
-genderIndexComplete[summaryIndex, region := region, on = "country"] 
+## --------------------- 3.3 PCA on the Gender Index ------------------------- #
+# NOTE: After adding this, the previous plot changes, not understood why yet
+genderIndex <- GenderIndex(data_all)
 
-# Create annotation for the correlation and p-value
-labels_gender_idx <- genderIndexComplete %>% 
-  do(ExtractModelSummary(., var1 = "GenderIndex", var2 = "avgGenderDiff")) %>%
-  setDT(.)
+summaryIndex[genderIndex, GenderIndex := i.GenderIndex, on = "country"]
+summaryIndex <- summaryIndex[complete.cases(summaryIndex)]
+## --------------------------------------------------------------------------- #
 
-# Plot the results
-ggplot(data = genderIndexComplete, aes(x = GenderIndex, y = avgGenderDiffNorm)) +
-  geom_point(shape = 21, size = 3, aes(fill = region)) +
-  geom_smooth(method = "lm", color = "red") +
-  geom_text(aes(label = isocode), color = "gray20", size = 3, 
-            check_overlap = F, hjust = -0.5) +
-  geom_text(x = -2.5, y = 1, data = labels_gender_idx, aes(label = correlation), 
-            hjust = 0) +
-  geom_text(x = -2.5, y = .95, data = labels_gender_idx, aes(label = pvalue), 
-            hjust = 0) +
-  xlab("Gender Equality (Index)") + ylab("Average Gender Difference (Index)") +
-  theme_bw() +
-  scale_fill_brewer(palette = "Set1")
+## --------------------------------- PLOT ------------------------------------ #
+PlotSummary(data = summaryIndex, 
+            var1 = "GenderIndex", var2 = "avgGenderDiff", fill = "region")
 #------------------------------------------------------------------------------#
 
 
-# ================================= #
-#### 4. WRITE THE DATA SUMMARIES ####
-# ================================= #
+# ============================= #
+#### 4. CORRELATION WITH AGE ####
+# ============================= #
+
+## ------------------------- 4.1 Prepare the data ---------------------------- #
+dt_age <- fread("files/World_Ages/average_ages.csv")
+
+outOfList <- setdiff(summaryIndex$country, dt_age$country)
+dt_age[country %like% "Bosnia and Herzegovina", country := outOfList[1]]
+dt_age[country %like% "Czech", country := outOfList[2]]
+
+summaryIndex <- merge(summaryIndex, dt_age, by = "country") 
+
+data_all$data[, averageAge := mean(age, na.rm = T), by = "country"]
+summaryIndex[data_all$data, averageAgeGPS := i.averageAge, on = "country"]
+#------------------------------------------------------------------------------#
+
+## --------------------------------- PLOT ------------------------------------ #
+PlotSummary(data = summaryIndex,
+            var1 = "logAvgGDPpc", var2 = "avgGenderDiff", fill = "region")
+
+PlotSummary(data = summaryIndex,
+            var1 = "averageAge", var2 = "avgGenderDiff", fill = "region")
+
+PlotSummary(data = summaryIndex,
+            var1 = "averageAgeGPS", var2 = "avgGenderDiff", fill = "region")
+#------------------------------------------------------------------------------#
+
+
+# ============================== #
+#### WRITE THE DATA SUMMARIES ####
+# ============================== #
 
 ## ---------------------- Write csv data summaries -------------------------- ##
 fwrite(summaryIndex, 
        file = "files/outcome/summaryDifferencesGDP.csv")
-fwrite(genderIndexComplete, 
+fwrite(genderIndex, 
        file = "files/outcome/summaryDifferencesGenderEqualityIndex.csv")
 #------------------------------------------------------------------------------#
 
 
+# Ideas for the next step:
+# - Create PCA for the different age indicators (average age, median age, life expectancy...)
+# - Divide the ages in 3 generations and plot the average gender differences vs
+#   the logGDP
 
 
 # Create a division between age
 # TODO: Create a division between generations rather than by age
 # https://en.wikipedia.org/wiki/Generation
+
 data_age <- data %>% group_by(gender) %>% 
   summarise(young = quantile(age, 0.25, na.rm = TRUE),
             middle_age = quantile(age, 0.50, na.rm = TRUE),
@@ -236,37 +181,4 @@ data[is.na(age_quant) & age <= quantile(age, 0.50, na.rm = TRUE), age_quant := "
 data[is.na(age_quant), age_quant := "old"]
 
 
-
-ggplot(data[!is.na(risktaking)], aes(fill = factor(gender))) +
-  geom_histogram(aes(x = risktaking), bins = 30, position = "identity", alpha = 0.5)
-
-ggplot(data[!is.na(age) & country == "Russia"], aes(fill = factor(gender))) +
-  geom_histogram(aes(x = risktaking), position = "identity", alpha = 0.7)
-
-ggplot(data[!is.na(risktaking) & country == "Russia"], aes(fill = factor(age_quant))) +
-  geom_histogram(aes(x = risktaking), position = "identity", alpha = 0.7)
-
-ggplot(data[!is.na(negrecip) & country == "Pakistan"], aes(fill = factor(gender))) +
-  geom_histogram(aes(x = negrecip), position = "identity", alpha = 0.7) #+
-facet_grid(vars(age_quant)) 
-
-
-
-# TODO: Next steps...
-# Dependency on age
-data_aggregated <- data[, .(meanPatience = mean(patience, na.rm = T),
-                            meanRisktaking = mean(risktaking, na.rm = T),
-                            meanPosrecip = mean(posrecip, na.rm = T),
-                            meanNegrecip = mean(negrecip, na.rm = T),
-                            meanAltruism = mean(altruism, na.rm = T),
-                            meanTrust = mean(trust, na.rm = T),
-                            meanMathSkills = mean(subj_math_skills, na.rm = T),
-                            meanAge = mean(age, na.rm = T), 
-                            avgGDPpc = unique(avgGDPpc)), 
-                        by = c("country", "isocode")]
-
-ggplot(data_aggregated, aes(x = log(avgGDPpc), y = meanAge)) +
-  geom_point(shape = 21, fill = "white", size = 3) +
-  geom_text(aes(label = isocode), color = "gray20", size = 3,
-            check_overlap = F, hjust = -0.5)
 
