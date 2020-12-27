@@ -1,16 +1,22 @@
 # Global Preferences Survey
 
 ## 1. Reproduce the results of the article
+*Reference article:* https://science.sciencemag.org/content/362/6412/eaas9899
+
+*DOI:* 10.1126/science.aas9899
+
 
 ### 1.1 Data Collection
-To do: GDP
+
+#### GDP per capita
 
 #### Gender Equality Index
 The Gender Equality Index is composed by 4 main datasets.
-- Time Since Women's Suffrage: We cleaned the data keeping as a date the first complete date (vote + stand for election, with no other restrictions commented), regardless of whether the country was a colony or not (so Kazakhstan is kept to have the first date, because nothing changed from Soviet Union to independence). South Africa is not cleaned because its history shows the racism part very entangled with the women's rights. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date.
-- UN Gender Inequality Index: We kept only the first table, that seemed to be more general
-- WEF Gloabl Gender Gap: We modified some of the country names directly on the csv file
-- Ratio Labor Male Female: We took the years between 2004 and 2013 and calculated the mean
+- *Time since women’s suffrage:* Taken from the Inter-Parliamentary Union Website (http://www.ipu.org/wmn-e/suffrage.htm#Note1).
+We cleaned the data keeping as a date the first complete date (vote + stand for election, with no other restrictions commented), regardless of whether the country was a colony or not (so Kazakhstan is kept to have the first date, because nothing changed from Soviet Union to independence). South Africa is not easy to clean because its history shows the racism part very entangled with the women's rights. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USa data doesn't take into account that also up to 1964 black women couldn't vote (in general, Blacks couldn't vote up to that year). Still needed to check for other countries with such a racialized history.
+- *UN Gender Inequality Index:* Taken from the Human Development Report 2015 (http://hdr.undp.org/en/composite/GII). We kept only the first table, that seemed to be more general
+- *WEF Gloabl Gender Gap: WEF Global Gender Gap Index:* Taken from the World Economic Forum Global Gender Gap Report 2015 (http://reports.weforum.org/global-gender-gap-report-2015/rankings/). For countries where data were missing data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf). We modified some of the country names directly on the csv file
+- *Ratio of female and male labor force participation:* Values inverted to create an index of equality. Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). We took the years between 2004 and 2013 and calculated the mean
 
 
 ### 1.2 Create the Models
@@ -48,7 +54,7 @@ One wants to highlight which basis maximise the differences.
 
 ### 1.4 Discussion On This First Step and Future Analysis
 
-In the article, they see that the gender is the major variable among the ones used in the linear regression, but they use age and other variables as control variables. Why? And how do the other variables influence the regression?
+In the article, they see that the gender is the major variable among the ones used in the linear regression, but they use age and other variables as control variables. Why? And how do the other variables influence the regression? (To understand deeply why they used exactly this formula plus control variables with no meaning, check the article "Global Evidence on Economic Preferences", https://doi.org/10.1093/qje/qjy013)
 
 How to make use of other information of the data, as for instance the age group, in a meaningful way? We think that the age plays a role in gender differences, meaning that the gender differences are higher in the older age group, and also that those countries with higher GDP tend to have more people from elder age. Some effect coming from some countries where deep social changes are happening among generations (think about Russia and all the ex-Soviet countries, living a crisis of huge dimensions just 30 years ago) might be hidden if we don't take this layer into account in the analysis. If such a link exists, as a first look at the data seemed to suggest, one can check the relationship between GDP and average age of countries. Similarly to the Gender Equality Index, this link would give us a hint toward the model proposed above.
 
@@ -59,3 +65,11 @@ Another important source of information can be the historical/cultural backgroun
 
 I tried to use the formula preference ~ gender * age (which means that the preference is a function of gender, age, and their interaction), and the results are that the average gender difference is less correlated to logGDP (0.38, with p-value = 0.0007), and also less correllated to the Gender Equality Index (which is also changed, btw) as 0.27 and a p-value of 0.023.
 
+
+## 2. Additional Information
+
+### 2.1 Data Collection
+
+#### World Ages
+- The excel files and the csv coming from it: United Nations, Department of Economic and Social Affairs, Population Division (2019). World Population Prospects 2019, Online Edition. Rev. 1.
+- The csv file *average_ages.csv*: https://www.worlddata.info/average-age.php (using the function WebScrapingAverageAgePerCountry)
