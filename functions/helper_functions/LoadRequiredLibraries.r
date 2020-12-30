@@ -24,5 +24,6 @@ LoadRequiredLibraries <- function() {
   library(BEST);
   library(plotly);
   library(tidytext);
-  library(rvest)
+  library(rvest);
+  library(rethinking)
 }
