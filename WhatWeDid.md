@@ -51,6 +51,12 @@ We performed a PCA also on the four values obtained for the gender equality, to 
 The PCA is meant to uncorrelate those variables which are correlated, using the rotation of a multi-dimensional plane to extract the vectors where it exists the most variance of each variable. In our case, the variables are the preferences, and we want to extract the information about their principal component to use it as a measure for the average difference in the gender preferences. Therefore, after performing the PCA on our data.
 One wants to highlight which basis maximise the differences.
 
+### 1.4 Residualization of the variables
+
+We followed the approach of Prof. McElreath in his lectures "Statistical Rethinking" (see https://github.com/rmcelreath/stat_rethinking_2020) and used a multivariate model to explore the connection between the logGDP and the Gender Equality Index. Using this approach, the residualization on the logGDp of the Gender Equality Index is telling us that the information brought by this variable on the average gender differences is not really adding much with respect to what the logGDP is telling us. 
+
+The approach of the authors of the paper is slightly different, bringing them to a different result (that is, the Gender Equality Index has a value per se). What they do is to residualize the average gender differences on the same variable used for the residualization of the independent variable. 
+
 
 ### 1.4 Discussion On This First Step and Future Analysis
 

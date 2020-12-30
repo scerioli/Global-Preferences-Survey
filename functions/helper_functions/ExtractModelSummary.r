@@ -23,8 +23,8 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
         dt <- data.table(formula     = character(), 
                          correlation = character(), 
                          r2          = double(), 
-                         pvalue      = character(), 
-                         preference  = character())
+                         pvalue      = character())
+        dt[, ((var3)) := character()]
         # For each model, save a data table containing the statistical values
         # of interest
         for (i in 1:length(mod)) {
@@ -48,8 +48,8 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
                                  correlation = correlation, 
                                  r2          = r2, 
                                  pvalue      = pvalue, 
-                                 preference  = names(mod)[i], 
                                  stringsAsFactors = FALSE)
+            dt_tmp[, ((var3)) :=  names(mod)[i],]
             dt <- rbind(dt, dt_tmp)
         }
         
