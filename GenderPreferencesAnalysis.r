@@ -34,7 +34,7 @@ dataComplete <- data_all$data[complete.cases(data_all$data)]
 
 ## ------------- 2.1 Model on country level of the preferences --------------- #
 dataComplete[, age_2 := age^2]
-dataComplete[gender == 2, gender := 0]
+dataComplete[, gender := as.factor(gender)]
 colsVar <- c("country", names(dataComplete)[5:13], "age_2")
 
 # Select the data to fit
@@ -58,13 +58,38 @@ dataCoeff <- SummaryCoeffPerPreferencePerCountry(models)
 dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
                                logAvgGDPpc = log(i.avgGDPpc)), 
           on = "country"]
+setnames(dataCoeff, old = "gender1", new = "gender")
 ## --------------------------------------------------------------------------- #
 
 ## --------------------------------- PLOT ------------------------------------ #
-PlotSummary(data = dataCoeff, 
-            var1 = "logAvgGDPpc", var2 = "gender", var3 = "preference",
-            labs = c("Log GDP p/c", 
-                     "Gender Coefficient"))
+relevantCoefficients  <- data.table()
+
+# Loop over the model and extract the coefficients associated to each 
+# preference and each country
+for (i in 1:length(models)) {
+  dt_tmp <- ExtractMostRelevantCoefficient(models[[i]])
+  dt_tmp[, preference := names(models)[[i]]]
+  relevantCoefficients <- rbind(dt_tmp, relevantCoefficients)
+}
+
+# Note that NA here represents those countries where no coefficient was
+# significantly different from 0
+ggplot(relevantCoefficients) +
+  geom_histogram(aes(x = name, fill = name), stat = "count") +
+  facet_wrap(~ preference)
+
+relevantCoefficients %>%
+  group_by(preference) %>%
+  mutate(preference = as.factor(preference), 
+         country = reorder_within(country, mainCoef, preference)) %>%
+  ggplot() +
+  geom_hline(yintercept = 0) +
+  geom_point(aes(x = country, y = mainCoef, color = name)) +
+  scale_color_brewer(palette = "Set1")  +
+  facet_wrap(~ preference, scales = "free") +
+  scale_x_reordered() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+
 
 # Plot coefficient by country by preference
 dataCoeff %>% 
@@ -81,6 +106,12 @@ dataCoeff %>%
   facet_wrap(~ preference, ncol = 2, scales = "free") +
   scale_x_reordered() +
   theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
+
+# Plot the gender coefficient only over preference for all the countries
+PlotSummary(data = dataCoeff, 
+            var1 = "logAvgGDPpc", var2 = "gender", var3 = "preference",
+            labs = c("Log GDP p/c", 
+                     "Gender Coefficient"))
 ## --------------------------------------------------------------------------- #
 
 
@@ -111,11 +142,10 @@ PlotSummary(data = summaryIndex,
 ## --------------------------------------------------------------------------- #
 
 ## --------------------- 3.3 PCA on the Gender Index ------------------------- #
-# NOTE: After adding this, the previous plot changes, not understood why yet
 genderIndex <- GenderIndex(data_all)
 
-summaryGenderIndex <- summaryIndex[genderIndex, GenderIndex := i.GenderIndex, on = "country"]
-summaryGenderIndex <- summaryGenderIndex[complete.cases(summaryGenderIndex)]
+summaryIndex[genderIndex, GenderIndex := i.GenderIndex, on = "country"]
+summaryGenderIndex <- summaryIndex[complete.cases(summaryIndex)]
 ## --------------------------------------------------------------------------- #
 
 ## --------------------------------- PLOT ------------------------------------ #
@@ -177,6 +207,16 @@ PlotSummary(data = summaryGenderIndex, var1 = "residualsGEIx", var2 = "residuals
 #------------------------------------------------------------------------------#
 
 ## ---------------- Multivariate model for GDP and GEI ----------------------- #
+# Need to specify that I want to use map from rethinking and not from purr
+map <- rethinking::map
+# standardize predictor
+summaryGenderIndex$logAvgGDPpcNorm <- (summaryGenderIndex$logAvgGDPpc - mean(summaryGenderIndex$logAvgGDPpc))/
+  sd(summaryGenderIndex$logAvgGDPpc)
+
+# standardize predictor
+summaryGenderIndex$GenderIndexNorm <- (summaryGenderIndex$GenderIndex - mean(summaryGenderIndex$GenderIndex))/
+  sd(summaryGenderIndex$GenderIndex)
+
 # Fit the model
 modelMulti <- map(alist(avgGenderDiffNorm ~ dnorm(mu , sigma),
                         mu <- a + bGDP * logAvgGDPpcNorm + bGEI * GenderIndexNorm,
@@ -189,9 +229,9 @@ modelMulti <- map(alist(avgGenderDiffNorm ~ dnorm(mu , sigma),
 # Plot the results of the model
 plot(precis(modelMulti))
 # Comment:
-# Since the coefficient of GEI is closer to 0 than the coefficient of GDP, and 
-# their sd have barely overlapping values, this may tell us that there is small
-# additional values in knowing the GEI once we know the GDP
+# Since the coefficient of GEI is closer to 0 than the coefficient of GDP, 
+# this may tell us that there is small additional values in knowing the GEI 
+# once we know the GDP
 # TODO: Can we use this with the PCA on data about age on a country?
 
 # Predictor residual plots
@@ -262,19 +302,6 @@ PlotSummary(data = summaryGenderIndex,
             var1 = "averageAgeGPS", var2 = "avgGenderDiff", fill = "region")
 #------------------------------------------------------------------------------#
 
-
-# ========================== #
-#### WRITE DATA SUMMARIES ####
-# ========================== #
-
-## ---------------------- Write csv data summaries -------------------------- ##
-fwrite(summaryIndex, 
-       file = "files/outcome/summaryDifferencesGDP.csv")
-fwrite(genderIndex, 
-       file = "files/outcome/summaryDifferencesGenderEqualityIndex.csv")
-#------------------------------------------------------------------------------#
-
-
 # Ideas for the next step:
 # - Create PCA for the different age indicators (average age, median age, life expectancy...)
 # - Divide the ages in 3 generations and plot the average gender differences vs
@@ -284,6 +311,8 @@ fwrite(genderIndex,
 #   Baby Boomers: 1946 - 1964 (66 - 48 years)
 #   Silent Generation: 1928 - 1945 (84 - 67 years)
 #   Greatest Generation: 1901 - 1927 (111 - 85 years)
+#   
+#   Divide instad using the division from the quadratic model they use?
 
 dataGeneration <- dataComplete[age <= 31, generation := "millennials"]
 dataGeneration[is.na(generation) & age <= 47, generation := "genX"]
@@ -297,90 +326,56 @@ dataGen <- dataGeneration %>% select(all_of(colsVarGen))
 generations <- unique(dataGen$generation)
 
 
-modelsGen <- lapply(generations, function(x) {
-  modelsTmp <- lapply(preferences, function(y) {
-    form <- paste0(y, " ~ gender + subj_math_skills")
-    model <- EstimateModel(dat = dataGen[generation == x], formula = form, var = "country")
-  })
-})
-names(modelsGen) <- generations
-
-names(modelsGen$millennials) <- preferences
-names(modelsGen$genX) <- preferences
-names(modelsGen$babyBoomers) <- preferences
-names(modelsGen$older) <- preferences
-## --------------------------------------------------------------------------- #
-
-## ------------- 2.2 Summarise the preferences for each country -------------- #
-dt_tmp <- lapply(modelsGen, function(mod) {
-    SummaryCoeffPerPreferencePerCountry(mod)
+modelsGen <- lapply(preferences, function(x) {
+  form <- paste0(x, " ~ gender + generation + subj_math_skills")
+  model <- EstimateModel(dat = dataGen, formula = form, var = "country")
 })
 
+names(modelsGen) <- preferences
 
-dataCoeffGen <- data.table()
-i <- 1
-for (generation in generations) {
-  dataCoeffGen_tmp <- cbind(dt_tmp[[i]], generation)
-  dataCoeffGen <- rbind(dataCoeffGen_tmp, dataCoeffGen)
-  i <- i + 1
+relevantCoefficientsGen  <- data.table()
+
+# Loop over the model and extract the coefficients associated to each 
+# preference and each country
+for (i in 1:length(modelsGen)) {
+  dt_tmp <- ExtractMostRelevantCoefficient(modelsGen[[i]])
+  dt_tmp[, preference := names(modelsGen)[[i]]]
+  relevantCoefficientsGen <- rbind(dt_tmp, relevantCoefficientsGen)
 }
 
-# Add data for plotting
-dataCoeffGen[data_all$data, `:=` (isocode     = i.isocode,
-                                  logAvgGDPpc = log(i.avgGDPpc)), 
-             on = "country"]
-## --------------------------------------------------------------------------- #
+# Note that NA here represents those countries where no coefficient was
+# significantly different from 0
+ggplot(relevantCoefficientsGen) +
+  geom_histogram(aes(x = name, fill = name), stat = "count") +
+  facet_wrap(~ preference) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 
-pcaMillennials <- PreferencesPCA(dataCoeffGen[generation == "millennials"])
-pcaGenX <- PreferencesPCA(dataCoeffGen[generation == "genX"])
-pcaBabyBoomers <- PreferencesPCA(dataCoeffGen[generation == "babyBoomers"])
-pcaOlder <- PreferencesPCA(dataCoeffGen[generation == "older"])
-## --------------------------------------------------------------------------- #
-
-## ------------------------- 3.2 Prepare summary data ------------------------ #
-summaryIndexGen <- dataCoeffGen[, .(country = unique(country), 
-                                    isocode = unique(isocode), 
-                                    logAvgGDPpc = unique(logAvgGDPpc))]
-columnsToKeep <- c("country", "isocode", "logAvgGDPpc")
-
-
-summaryIndexMill <- data.table(generation = "millennials", 
-                               avgGenderDiff = pcaGenX$x[, 1])
-summaryIndexGenX <- data.table(generation = "genX", 
-                               avgGenderDiff = pcaGenX$x[, 1])
-summaryIndexBB <- data.table(generation = "babyBoomers", 
-                             avgGenderDiff = pcaBabyBoomers$x[, 1])
-summaryIndexOlder <- data.table(generation = "older", 
-                                avgGenderDiff = pcaOlder$x[, 1])
-
-
-summaryIndexMill <- cbind(summaryIndexMill, 
-                           summaryIndexGen)
-summaryIndexGenX <- cbind(summaryIndexGenX,
-                           summaryIndexGen)
-summaryIndexBB <- cbind(summaryIndexBB,
-                        summaryIndexGen)
-summaryIndexOlder <- cbind(summaryIndexOlder,
-                          summaryIndexGen)
-
-summaryIndexProva <- rbind(summaryIndexMill, summaryIndexGenX, summaryIndexBB, summaryIndexOlder)
-
-
-summaryIndexProva <- merge(summaryIndexProva, data_all$world_area, by = "country") 
-summaryIndexProva[, avgGenderDiffNorm := (avgGenderDiff - min(avgGenderDiff)) /
-                   (max(avgGenderDiff) - min(avgGenderDiff)), by = "generation"]
-## --------------------------------------------------------------------------- #
-
-## --------------------------------- PLOT ------------------------------------ #
-PlotSummary(data = summaryIndexProva, 
-            var1 = "logAvgGDPpc", var2 = "avgGenderDiffNorm", var3 = "generation", fill = "region")
+relevantCoefficientsGen %>%
+  group_by(preference) %>%
+  mutate(preference = as.factor(preference), 
+         country = reorder_within(country, mainCoef, preference)) %>%
+  ggplot() +
+  geom_hline(yintercept = 0) +
+  geom_point(aes(x = country, y = mainCoef, color = name)) +
+  scale_color_brewer(palette = "Set1")  +
+  facet_wrap(~ preference, scales = "free") +
+  scale_x_reordered() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1)) 
 
 ## --------------------------------------------------------------------------- #
 
 
-# Create a division between age
-# TODO: Create a division between generations rather than by age
-# https://en.wikipedia.org/wiki/Generation
+# ========================== #
+#### WRITE DATA SUMMARIES ####
+# ========================== #
+
+## ---------------------- Write csv data summaries -------------------------- ##
+fwrite(summaryIndex, 
+       file = "files/outcome/summaryDifferencesGDP.csv")
+fwrite(genderIndex, 
+       file = "files/outcome/summaryDifferencesGenderEqualityIndex.csv")
+#------------------------------------------------------------------------------#
+
 
 data_age <- data %>% group_by(gender) %>% 
   summarise(young = quantile(age, 0.25, na.rm = TRUE),

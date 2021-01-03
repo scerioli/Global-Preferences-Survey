@@ -79,3 +79,24 @@ I tried to use the formula preference ~ gender * age (which means that the prefe
 #### World Ages
 - The excel files and the csv coming from it: United Nations, Department of Economic and Social Affairs, Population Division (2019). World Population Prospects 2019, Online Edition. Rev. 1.
 - The csv file *average_ages.csv*: https://www.worlddata.info/average-age.php (using the function WebScrapingAverageAgePerCountry)
+
+### 2.2 Analysis on age as categorical variable
+We splitted the age in 4 groups: 
+
+- Millennials: 1981 - 1996 (31 - 15 years in 2012)
+
+- Generation X: 1965 - 1980 (47 - 32 years)
+
+- Baby Boomers: 1946 - 1964 (66 - 48 years)
+
+- Older: < 1945 (>= 67 years)
+
+and we performed a linear regression using the generation instead of the age in our model. The result is that in many cases the generation was the main coefficient from the regression. 
+
+#### IDEAS:
+
+- How to use this information? How to show that gender differences depends on the age, if so?
+
+- Set the "older" as reference variable and use the age difference as the coefficient from millennials (if it is the main relevant one, one should check). Plot the difference as a function of the GDP of the country, plot the gender as a function of the PCA of the age of the country, and try to relate the fact that countries with higher age have also higher gender differences (does it even make sense?)
+
+- What other models can be used? What do we want to demonstrate?
