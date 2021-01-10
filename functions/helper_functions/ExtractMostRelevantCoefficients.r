@@ -19,11 +19,11 @@ ExtractMostRelevantCoefficient <- function(singleModel) {
 
       tmp <- data.table(name = row.names(mainCoeff), 
                         mainCoef = mainCoeff[[1]],
-                        country = names(model)[[country]])
+                        country = names(singleModel)[[country]])
     } else {
       tmp <- data.table(name = "NA",
                         mainCoef = NA,
-                        country = names(model)[[country]])
+                        country = names(singleModel)[[country]])
     }
     
     dt <- rbind(dt, tmp)

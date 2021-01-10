@@ -25,5 +25,9 @@ LoadRequiredLibraries <- function() {
   library(plotly);
   library(tidytext);
   library(rvest);
-  library(rethinking)
+  # install.packages(c("devtools","mvtnorm","loo","coda"), dependencies = TRUE)
+  library(usethis);
+  library(devtools);
+  # install_github("rmcelreath/rethinking")
+  library(rethinking);
 }
