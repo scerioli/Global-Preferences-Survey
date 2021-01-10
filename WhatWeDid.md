@@ -69,7 +69,7 @@ Another important source of information can be the historical/cultural backgroun
 
 ### TO BE DISCUSSED MORE
 
-I tried to use the formula preference ~ gender * age (which means that the preference is a function of gender, age, and their interaction), and the results are that the average gender difference is less correlated to logGDP (0.38, with p-value = 0.0007), and also less correllated to the Gender Equality Index (which is also changed, btw) as 0.27 and a p-value of 0.023.
+I tried to use the formula preference ~ gender * age (which means that the preference is a function of gender, age, and their interaction), and the results are that the average gender difference is less correlated to logGDP (0.38, with p-value = 0.0007), and also less correlated to the Gender Equality Index (which is also changed, btw) as 0.27 and a p-value of 0.023.
 
 
 ## 2. Additional Information
@@ -81,7 +81,7 @@ I tried to use the formula preference ~ gender * age (which means that the prefe
 - The csv file *average_ages.csv*: https://www.worlddata.info/average-age.php (using the function WebScrapingAverageAgePerCountry)
 
 ### 2.2 Analysis on age as categorical variable
-We splitted the age in 4 groups: 
+We split the age in 4 groups: 
 
 - Millennials: 1981 - 1996 (31 - 15 years in 2012)
 
