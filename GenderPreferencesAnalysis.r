@@ -127,3 +127,14 @@ PlotSummary(data = summaryIndex, var1 = "residualsDatex", var2 = "residualsGDPy"
                      "Average Gender Differences (residualized using Log GDP p/c)"),
             display = TRUE)
 
+
+# ========================== #
+#### WRITE DATA SUMMARIES ####
+# ========================== #
+
+## ---------------------- Write csv data summaries -------------------------- ##
+fwrite(dataSummary,
+       file = "files/outcome/data_for_histograms.csv")
+fwrite(summaryIndex,
+       file = "files/outcome/data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
+#------------------------------------------------------------------------------#

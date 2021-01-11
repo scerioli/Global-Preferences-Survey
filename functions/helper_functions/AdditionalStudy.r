@@ -219,18 +219,6 @@ AdditionalStudy <- function(models, dataCoeff) {
   ## --------------------------------------------------------------------------- #
 
 
-  # ========================== #
-  #### WRITE DATA SUMMARIES ####
-  # ========================== #
-
-  ## ---------------------- Write csv data summaries -------------------------- ##
-  fwrite(summaryIndex,
-         file = "files/outcome/summaryDifferencesGDP.csv")
-  fwrite(genderIndex,
-         file = "files/outcome/summaryDifferencesGenderEqualityIndex.csv")
-  #------------------------------------------------------------------------------#
-
-
 
   data_age <- data %>% group_by(gender) %>%
     summarise(young = quantile(age, 0.25, na.rm = TRUE),
