@@ -1,26 +1,26 @@
 LoadRequiredLibraries <- function() {
-  
+
   # Libraries
   library(rlang);
-  library(data.table); 
-  library(rpart); 
-  library(bit64); 
+  library(data.table);
+  library(rpart);
+  library(bit64);
   library(httr);
-  library(fasttime); 
+  library(fasttime);
   library(stringi);
-  library(tidyverse); 
-  library(tibble); 
-  library(caret); 
-  library(scales); 
+  library(tidyverse);
+  library(tibble);
+  library(caret);
+  library(scales);
   library(plyr);
-  library(dplyr); 
-  library(magrittr); 
-  library(readr); 
-  library(stringr); 
-  library(moments); 
+  library(dplyr);
+  library(magrittr);
+  library(readr);
+  library(stringr);
+  library(moments);
   library(haven);
-  library(FitAR); 
-  library(HDInterval); 
+  library(FitAR);
+  library(HDInterval);
   library(BEST);
   library(plotly);
   library(tidytext);
@@ -30,4 +30,5 @@ LoadRequiredLibraries <- function() {
   library(devtools);
   # install_github("rmcelreath/rethinking")
   library(rethinking);
+  library(missMDA)
 }
