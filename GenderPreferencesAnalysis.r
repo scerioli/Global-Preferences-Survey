@@ -8,7 +8,8 @@
 setwd("/Users/sara/Desktop/Projects/Global_Preferences_Survey/")
 
 # Source helper functions
-source("functions/SourceFunctions.r")
+source("functions/helper_functions/SourceFunctions.r")
+SourceFunctions(path = "functions/")
 SourceFunctions(path = "functions/helper_functions/")
 
 # Load libraries
@@ -32,15 +33,15 @@ dataComplete <- data_all$data[complete.cases(data_all$data)]
 #### 2. CREATE THE MODELS ####
 # ========================== #
 
-## ------------- 2.1 Model on country level of the preferences --------------- #
+# Model on country level of the preferences
 models <- CreateModelsForPreferencesCountryLevel(dataComplete)
 
-## ------------- 2.2 Summarize the preferences for each country -------------- #
+# Summarize the preferences for each country
 dataCoeff <- SummaryCoeffPerPreferencePerCountry(models)
 
 # Adjust data for plotting
 dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
-                               logAvgGDPpc = log10(i.avgGDPpc)),
+                               logAvgGDPpc = log(i.avgGDPpc)),
           on = "country"]
 setnames(dataCoeff, old = "gender1", new = "gender")
 
@@ -49,13 +50,25 @@ setnames(dataCoeff, old = "gender1", new = "gender")
 #### 3. PRINCIPAL COMPONENT ANALYSIS ####
 # ===================================== #
 
-## ----------------------- 3.1 PCA on the preferences ------------------------ #
+# PCA on the preferences
 summaryIndex <- AvgGenderDiffPreferencesPCA(dataCoeff)
 
-## ----------------------- 3.2 Prepare summary index ------------------------- #
+# Prepare summary index
 summaryIndex <- CreateCompleteSummaryIndex(summaryIndex, data_all)
 
-# ---------------------- 3.3 Prepare summary histograms ---------------------- #
+
+# ================================ #
+#### 4. VARIABLES CONDITIONING  ####
+# ================================ #
+
+summaryIndex <- AddResiduals(summaryIndex)
+
+
+# ================== #
+#### 5. PLOTTING  ####
+# ================== #
+
+# Prepare summary histograms
 dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
 
 ## ----------------------------- Fig. 1 A ------------------------------------ #
@@ -79,8 +92,10 @@ plotHistA <-
         axis.ticks.x = element_blank(),
         panel.spacing.y = unit(1.5, "lines"),
         strip.text.x = element_text(size = 12)) +
-  annotate(geom = "text", x = 1.3, y = -0.05, color = 'black', label = "Poorer Countries") +
-  annotate(geom = "text", x = 3.7, y = -0.05, color = 'black', label = "Richer Countries") +
+  annotate(geom = "text", x = 1.3, y = -0.05, color = 'black',
+           label = "Poorer Countries") +
+  annotate(geom = "text", x = 3.7, y = -0.05, color = 'black',
+           label = "Richer Countries") +
   coord_cartesian(ylim = c(-0.02, 0.3), clip = "off")
 
 ## ----------------------------- Fig. 1 B ------------------------------------ #
@@ -107,63 +122,70 @@ plotHistC <-
         panel.spacing.y = unit(2, "lines"),
         plot.margin = unit(c(1, 1, 1, 1), "lines"),
         strip.text.x = element_text(size = 12)) +
-  annotate(geom = "text", x = 1.3, y = -0.035, color = 'black', size = 3, label = "Less Gender\nEqual Countries") +
-  annotate(geom = "text", x = 3.7, y = -0.035, color = 'black', size = 3, label = "More Gender\nEqual Countries") +
+  annotate(geom = "text", x = 1.3, y = -0.035, color = 'black', size = 3,
+           label = "Less Gender\nEqual Countries") +
+  annotate(geom = "text", x = 3.7, y = -0.035, color = 'black', size = 3,
+           label = "More Gender\nEqual Countries") +
   coord_cartesian(ylim = c(-0.001, 0.25), clip = "off")
 
 ## ----------------------------- Fig. 1 D ------------------------------------ #
 PlotSummary(data = summaryIndex,
             var1 = "GenderIndex", var2 = "avgGenderDiffNorm", # fill = "region",
             labs = c("Gender Equality Index",
-                     "Average Gender Differences (Index)"), # display = TRUE,
+                     "Average Gender Differences (Index)"),  display = TRUE,
             )
 
-
-# ================================ #
-#### 4. VARIABLES CONDITIONING  ####
-# ================================ #
-
-summaryIndex <- AddResiduals(summaryIndex)
-
 ## ------------------------------ Fig. 2 A ----------------------------------- #
-PlotSummary(data = summaryIndex, var1 = "residualsGEIx", var2 = "residualsGEIy",
+PlotSummary(data = summaryIndex,
+            var1 = "residualslogAvgGDPpcNorm",
+            var2 = "residualsavgGenderDiffNorm_GEI",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Average Gender Differences (residualized using Gender Equality Index)"),
             display = TRUE)
 
 ## ------------------------------ Fig. 2 B ----------------------------------- #
-PlotSummary(data = summaryIndex, var1 = "residualsGDPx", var2 = "residualsGDPy",
+PlotSummary(data = summaryIndex,
+            var1 = "residualsGenderIndexNorm",
+            var2 = "residualsavgGenderDiffNorm_GDP",
             labs = c("Gender Equality Index (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)"),
             display = TRUE)
 
 ## ------------------------------ Fig. 2 C ----------------------------------- #
-PlotSummary(data = summaryIndex, var1 = "residualsWEFx", var2 = "residualsGDPy",
+PlotSummary(data = summaryIndex,
+            var1 = "residualsScoreWEFNorm",
+            var2 = "residualsavgGenderDiffNorm_GDP",
             labs = c("WEF Global Gender Gap Index (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)"),
             display = TRUE)
 
 ## ------------------------------ Fig. 2 D ----------------------------------- #
-PlotSummary(data = summaryIndex, var1 = "residualsUNx", var2 = "residualsGDPy",
+PlotSummary(data = summaryIndex,
+            var1 = "residualsValueUNNorm",
+            var2 = "residualsavgGenderDiffNorm_GDP",
             labs = c("UN Gender Equality Index (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)"),
             display = TRUE)
 
 ## ------------------------------ Fig. 2 E ----------------------------------- #
-PlotSummary(data = summaryIndex, var1 = "residualsRatiox", var2 = "residualsGDPy",
+PlotSummary(data = summaryIndex,
+            var1 = "residualsavgRatioLaborNorm",
+            var2 = "residualsavgGenderDiffNorm_GDP",
             labs = c("Ratio Female to Male (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)"),
             display = TRUE)
 
 ## ------------------------------ Fig. 2 F ----------------------------------- #
-PlotSummary(data = summaryIndex, var1 = "residualsDatex", var2 = "residualsGDPy",
+PlotSummary(data = summaryIndex,
+            var1 = "residualsDateNorm",
+            var2 = "residualsavgGenderDiffNorm_GDP",
             labs = c("Time since Women's Suffrage (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)"),
             display = TRUE)
 
 
 # =============================== #
-#### 5. SUPPLEMENTARY MATERIAL ####
+#### 6. SUPPLEMENTARY MATERIAL ####
 # =============================== #
 
 # -------------------------------- Fig. S2 ----------------------------------- #
@@ -175,7 +197,7 @@ PlotSummary(data = dataCoeff, var1 = "logAvgGDPpc", var2 = "gender", var3 = "pre
 
 
 # ================================ #
-#### 6. MODEL EVALUATION  ####
+#### 7. MODEL EVALUATION  ####
 # ================================ #
 
 # Add the data from the article
@@ -195,7 +217,7 @@ PlotSummary(data = fakeDT, var1 = "avgDiffArticle", var2 = "avgDiffOurs",
             )
 # Compare with the Bayesian Supersedes the t-Test method
 # Plots can be reproduced using the plotAll function
-comparison <- BESTmcmc(dt_article$`Average Gender Difference (Index)`,
+comparison <- BESTmcmc(dt_article$AverageGenderDifference,
                        summaryIndex$avgGenderDiffNorm)
 
 
