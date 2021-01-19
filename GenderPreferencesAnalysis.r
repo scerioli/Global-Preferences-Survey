@@ -188,12 +188,62 @@ PlotSummary(data = summaryIndex,
 #### 6. SUPPLEMENTARY MATERIAL ####
 # =============================== #
 
+colsToKeep <- c("GenderIndexNorm", "ScoreWEFNorm", "ValueUNNorm", "DateNorm",
+                "avgRatioLaborNorm", "residualslogAvgGDPpcNorm",
+                "residualsavgGenderDiffNorm_GEI", "country")
+dataCoeff_summary <- merge(dataCoeff, summaryIndex[, ..colsToKeep],
+                           by = "country")
+dataCoeff_summary[preference == "risktaking", gender := -1 * gender]
+dataCoeff_summary[preference == "negrecip", gender := -1 * gender]
+dataCoeff_summary[preference == "patience", gender := -1 * gender]
+
 # -------------------------------- Fig. S2 ----------------------------------- #
-PlotSummary(data = dataCoeff, var1 = "logAvgGDPpc", var2 = "gender", var3 = "preference",
+PlotSummary(data = dataCoeff_summary,
+            var1 = "logAvgGDPpc", var2 = "gender", var3 = "preference",
             labs = c("Log GDP p/c",
                      "Average Gender Differences (Index)"),
             display = TRUE
             )
+
+# -------------------------------- Fig. S3 ----------------------------------- #
+PlotSummary(data = dataCoeff_summary,
+            var1 = "GenderIndexNorm", var2 = "gender", var3 = "preference",
+            labs = c("Gender Equality Index",
+                     "Average Gender Differences (Index)"),
+            display = TRUE
+)
+
+## ------------------------------- Fig. S4 ----------------------------------- #
+PlotSummary(data = summaryIndex, var1 = "ScoreWEFNorm", var2 = "avgGenderDiffNorm",
+            labs = c("WEF Global Gender Gap Index",
+                     "Average Gender Differences (Index)"),
+            display = TRUE)
+
+PlotSummary(data = summaryIndex, var1 = "ValueUNNorm", var2 = "avgGenderDiffNorm",
+            labs = c("UN Gender Equality Index",
+                     "Average Gender Differences (Index)"),
+            display = TRUE)
+
+PlotSummary(data = summaryIndex, var1 = "avgRatioLaborNorm", var2 = "avgGenderDiffNorm",
+            labs = c("Ratio Female to Male",
+                     "Average Gender Differences (Index)"),
+            display = TRUE)
+
+PlotSummary(data = summaryIndex, var1 = "DateNorm", var2 = "avgGenderDiffNorm",
+            labs = c("Time since Women's Suffrage",
+                     "Average Gender Differences (Index)"),
+            display = TRUE)
+
+## ------------------------------- Fig. S5 ----------------------------------- #
+# I still need to create the correct residuals for it
+PlotSummary(data = dataCoeff_summary,
+            var1 = "residualslogAvgGDPpcNorm",
+            var2 = "residualsavgGenderDiffNorm_GEI",
+            var3 = "preference",
+            labs = c("Log GDP p/c (residualized using Gender Equality Index)",
+                     "Gender Differences (residualized using Gender Equality Index)"),
+            display = TRUE)
+
 
 
 # ================================ #
