@@ -32,12 +32,12 @@ CreateCompleteSummaryIndex <- function(dt_summary, dt_data) {
   dt_summary[, GenderIndex := pca$x[, 1]]
 
   # Standardize the predictors
-  dt_summary$logAvgGDPpcNorm   <- Normalize(dt_summary$logAvgGDPpc)
-  dt_summary$GenderIndexNorm   <- Normalize(dt_summary$GenderIndex)
-  dt_summary$ScoreWEFNorm      <- Normalize(dt_summary$ScoreWEF)
-  dt_summary$ValueUNNorm       <- Normalize(dt_summary$ValueUN)
-  dt_summary$DateNorm          <- Normalize(dt_summary$Date)
-  dt_summary$avgRatioLaborNorm <- Normalize(dt_summary$avgRatioLabor)
+  dt_summary$logAvgGDPpcNorm   <- scale(dt_summary$logAvgGDPpc, center = T, scale = T)
+  dt_summary$GenderIndexNorm   <- scale(dt_summary$GenderIndex, center = T, scale = T)
+  dt_summary$ScoreWEFNorm      <- scale(dt_summary$ScoreWEF, center = T, scale = T)
+  dt_summary$ValueUNNorm       <- scale(dt_summary$ValueUN, center = T, scale = T)
+  dt_summary$DateNorm          <- scale(dt_summary$Date, center = T, scale = T)
+  dt_summary$avgRatioLaborNorm <- scale(dt_summary$avgRatioLabor, center = T, scale = T)
 
   return(dt_summary)
 }

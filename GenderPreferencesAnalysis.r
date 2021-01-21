@@ -130,7 +130,8 @@ plotHistC <-
 
 ## ----------------------------- Fig. 1 D ------------------------------------ #
 PlotSummary(data = summaryIndex,
-            var1 = "GenderIndex", var2 = "avgGenderDiffNorm", # fill = "region",
+            var1 = "GenderIndex", 
+            var2 = "avgGenderDiffNorm", # fill = "region",
             labs = c("Gender Equality Index",
                      "Average Gender Differences (Index)"),  display = TRUE,
             )
@@ -193,9 +194,13 @@ colsToKeep <- c("GenderIndexNorm", "ScoreWEFNorm", "ValueUNNorm", "DateNorm",
                 "residualsavgGenderDiffNorm_GEI", "country")
 dataCoeff_summary <- merge(dataCoeff, summaryIndex[, ..colsToKeep],
                            by = "country")
+
 dataCoeff_summary[preference == "risktaking", gender := -1 * gender]
 dataCoeff_summary[preference == "negrecip", gender := -1 * gender]
 dataCoeff_summary[preference == "patience", gender := -1 * gender]
+
+dataCoeff_summary <- AddResidualsSinglePreference(dataCoeff_summary)
+
 
 # -------------------------------- Fig. S2 ----------------------------------- #
 PlotSummary(data = dataCoeff_summary,
@@ -236,14 +241,70 @@ PlotSummary(data = summaryIndex, var1 = "DateNorm", var2 = "avgGenderDiffNorm",
 
 ## ------------------------------- Fig. S5 ----------------------------------- #
 # I still need to create the correct residuals for it
-PlotSummary(data = dataCoeff_summary,
+PlotSummary(data = dataCoeff_summary[preference == "trust"],
             var1 = "residualslogAvgGDPpcNorm",
-            var2 = "residualsavgGenderDiffNorm_GEI",
-            var3 = "preference",
+            var2 = "residualsgender_trust",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)"),
             display = TRUE)
 
+PlotSummary(data = dataCoeff_summary[preference == "altruism"],
+            var1 = "residualslogAvgGDPpcNorm",
+            var2 = "residualsgender_altruism",
+            labs = c("Log GDP p/c (residualized using Gender Equality Index)",
+                     "Gender Differences (residualized using Gender Equality Index)"),
+            display = TRUE)
+
+PlotSummary(data = dataCoeff_summary[preference == "posrecip"],
+            var1 = "residualslogAvgGDPpcNorm",
+            var2 = "residualsgender_posrecip",
+            labs = c("Log GDP p/c (residualized using Gender Equality Index)",
+                     "Gender Differences (residualized using Gender Equality Index)"),
+            display = TRUE)
+
+PlotSummary(data = dataCoeff_summary[preference == "negrecip"],
+            var1 = "residualslogAvgGDPpcNorm",
+            var2 = "residualsgender_negrecip",
+            labs = c("Log GDP p/c (residualized using Gender Equality Index)",
+                     "Gender Differences (residualized using Gender Equality Index)"),
+            display = TRUE)
+
+PlotSummary(data = dataCoeff_summary[preference == "risktaking"],
+            var1 = "residualslogAvgGDPpcNorm",
+            var2 = "residualsgender_risktaking",
+            labs = c("Log GDP p/c (residualized using Gender Equality Index)",
+                     "Gender Differences (residualized using Gender Equality Index)"),
+            display = TRUE)
+
+PlotSummary(data = dataCoeff_summary[preference == "patience"],
+            var1 = "residualslogAvgGDPpcNorm",
+            var2 = "residualsgender_patience",
+            labs = c("Log GDP p/c (residualized using Gender Equality Index)",
+                     "Gender Differences (residualized using Gender Equality Index)"),
+            display = TRUE)
+
+
+## Alternative model
+modelsAlternative <- CreateAlternativeModels(dataComplete)
+dataCoeffAlternative <- SummaryCoeffPerPreferencePerCountry(modelsAlternative)
+
+# Adjust data for plotting
+dataCoeffAlternative[data_all$data, `:=` (isocode     = i.isocode,
+                                          logAvgGDPpc = log(i.avgGDPpc)),
+                     on = "country"]
+dataCoeffAlternative[preference == "risktaking", gender := -1 * gender]
+dataCoeffAlternative[preference == "negrecip", gender := -1 * gender]
+dataCoeffAlternative[preference == "patience", gender := -1 * gender]
+
+setnames(dataCoeffAlternative, old = "gender1", new = "gender")
+
+# ------------------------------- Fig. S9 ------------------------------------ #
+PlotSummary(data = dataCoeffAlternative,
+            var1 = "logAvgGDPpc", var2 = "gender", var3 = "preference",
+            labs = c("Log GDP p/c",
+                     "Average Gender Differences (Index)"),
+            display = TRUE
+)
 
 
 # ================================ #
