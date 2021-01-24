@@ -17,12 +17,13 @@ The repository consists in several different sub-directories:
   steps of the analysis as we indicate
 - functions
   - SourceFunctions.r allows to source all the helper functions
-  - helper_functions: In this directory, all the helper functions used in the main code can be found. Nothing needs to be done, in the main code they are sourced 
+  - functions: In this directory, all the functions created for the analysis and their helper functions used in the main code can be found. Nothing needs to be done, in the main code they are sourced 
   thanks to the SourceFunctions.r
-- plots: Some relevant plots are saved here as a reference for the authors during the analysis
-- GenderAnalysis.r is the main code of this analysis
+- plots: Some relevant plots are saved here as a reference for the authors during the analysis. The plots starting with "main" indicate those plots found in the main article, while the "supplementary" indicate the plots found in the supplementary online material.
+- GenderAnalysis.r is the main code of this analysis, and it produces the outcome files.
+- CreatePlotsArticle.r uses the outcome files to create the pot of the analysis (both in the main article and in the supplementary online material).
 - WhatWeDid.md, as already mentioned, helps (hopefully) the readers to get through the main code and the concept of the analysis. For a more in-depth look at the
-analysis and the methods, the authors refer to the main papers (mentioned above).
+analysis and the methods, the authors refer to the main papers (mentioned above) and to the Confluence page.
 
 ## Additional Information
 
