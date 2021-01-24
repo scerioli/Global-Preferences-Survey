@@ -47,7 +47,22 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   }
 
   if (!is.null(var3)) {
-    plot <- plot + facet_wrap(vars(eval(as.name(var3))), ncol = 2)
+    
+    preferences_names <- c(
+      `altruism` = "Altruism (+)", 
+      `trust` = "Trust (+)", 
+      `posrecip` = "Pos. Recip. (+)",
+      `negrecip` = "Neg. Recip. (-)", 
+      `risktaking` = "Risk Taking (-)", 
+      `patience` = "Patience (-)"
+    )
+    
+    plot <- plot + 
+      facet_wrap(~ eval(as.name(var3)), ncol = 2, labeller = as_labeller(preferences_names)) +
+      theme(legend.title = element_blank(),
+            strip.background = element_rect(colour = "white", fill = "white"),
+            legend.position = "none",
+            strip.text.x = element_text(size = 12))
   }
 
   if (regression) {
@@ -57,12 +72,12 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       setDT(.)
 
     xpos <- data[, min(eval(as.name(var1)))]
-    ypos <- 0.9 * data[, max(eval(as.name(var2)))]
+    ypos <- 0.95 * data[, max(eval(as.name(var2)))]
 
     plot <- plot +
       geom_smooth(method = "lm", color = "red") +
       geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = correlation), hjust = 0) +
-      geom_text(x = xpos, y = ypos - 0.1 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
+      geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
   }
 
   if (!is.null(labs)) {
