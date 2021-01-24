@@ -1,9 +1,9 @@
 LoadData <- function() {
   
   # Select the directory
-  path_GPS_dir   <- "files/GPS_Dataset/GPS_dataset_individual_level/"
-  path_Index_dir <- "files/Data_Extract_From_World_Development_Indicators/"
-  path_GEI_dir   <- "files/Gender_Equality_Index_Data/"
+  path_GPS_dir   <- "files/income/GPS_Dataset/GPS_dataset_individual_level/"
+  path_Index_dir <- "files/income/Data_Extract_From_World_Development_Indicators/"
+  path_GEI_dir   <- "files/income/Gender_Equality_Index_Data/"
   
   # Load the data
   data          <- read_dta(paste0(path_GPS_dir, "individual_new.dta")) %>%

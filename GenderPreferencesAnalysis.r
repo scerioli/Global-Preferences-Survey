@@ -56,6 +56,9 @@ summaryIndex <- AvgGenderDiffPreferencesPCA(dataCoeff)
 # Prepare summary index
 summaryIndex <- CreateCompleteSummaryIndex(summaryIndex, data_all)
 
+# Prepare summary histograms
+dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
+
 
 # ================================ #
 #### 4. VARIABLES CONDITIONING  ####
@@ -64,16 +67,8 @@ summaryIndex <- CreateCompleteSummaryIndex(summaryIndex, data_all)
 summaryIndex <- AddResiduals(summaryIndex)
 
 
-# ================== #
-#### 5. PLOTTING  ####
-# ================== #
-
-# Prepare summary histograms
-dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
-
-
 # =============================== #
-#### 6. SUPPLEMENTARY MATERIAL ####
+#### 5. SUPPLEMENTARY MATERIAL ####
 # =============================== #
 colsToKeep_coeff <- c("gender", "preference", "country", "isocode", "logAvgGDPpc")
 
@@ -108,11 +103,11 @@ dataCoeffAlternative[preference == "patience", gender := -1 * gender]
 
 
 # ================================ #
-#### 7. MODEL EVALUATION  ####
+#### 6. MODEL EVALUATION  ####
 # ================================ #
 
 # Add the data from the article
-dt_article <- fread("files/Data_Extract_From_World_Development_Indicators/dataFromArticle2.csv")
+dt_article <- fread("files/income/Data_Extract_From_World_Development_Indicators/dataFromArticle2.csv")
 
 # Create a data table for a quick comparison
 dt_compare <- dt_article[summaryIndex, .(avgDiffArticle = AverageGenderDifference,
@@ -133,9 +128,9 @@ comparison <- BESTmcmc(dt_article$AverageGenderDifference,
                        summaryIndex$avgGenderDiffNorm)
 
 
-# ========================== #
-#### WRITE DATA SUMMARIES ####
-# ========================== #
+# ============================= #
+#### 7. WRITE DATA SUMMARIES ####
+# ============================= #
 
 ## ---------------------- Write csv data summaries -------------------------- ##
 fwrite(dataSummary,
