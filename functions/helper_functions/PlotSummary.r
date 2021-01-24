@@ -66,7 +66,12 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   }
 
   if (!is.null(labs)) {
-    plot <- plot + labs(x = labs[[1]], y = labs[[2]])
+    if (length(labs) == 3) {
+      plot <- plot + labs(x = labs[[1]], y = labs[[2]], title = labs[[3]])
+    } else {
+      plot <- plot + labs(x = labs[[1]], y = labs[[2]])
+    }
+    
   }
 
   if (display) {
