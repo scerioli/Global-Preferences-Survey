@@ -1,5 +1,6 @@
 PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
-                        regression = TRUE, labs = NULL, display = FALSE) {
+                        regression = TRUE, labs = NULL, display = FALSE,
+                        save = NULL) {
   # This function is plotting in a standardized way the meaningful variables.
   # The function takes as input a data table, 2 columns of it that should be the
   # x-axis and the y-axis, a 3rd column that can be NULL, and a column that
@@ -24,6 +25,8 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   #                      x- and the y-axis
   # - display [logical]  if it is set to FALSE, it doesn't return the plot.
   #                      Default is FALSE
+  # - save [logical]     if it is not NULL, it saves the current plot with
+  #                      the name indicated in parenthesis. Default is NUL
 
   # RETURN
   # - plot [ggplot object] is the plot we produced
@@ -47,7 +50,7 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   }
 
   if (!is.null(var3)) {
-    
+    # Rename the preferences
     preferences_names <- c(
       `altruism` = "Altruism (+)", 
       `trust` = "Trust (+)", 
@@ -91,6 +94,10 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
 
   if (display) {
     return(plot)
+  }
+  
+  if (!is.null(save)) {
+    ggsave(filename = eval(as.character(save)), plot = plot)
   }
 
 }

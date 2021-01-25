@@ -15,7 +15,7 @@ LoadData <- function() {
   WEF           <- fread(paste0(path_GEI_dir, "WEF_Global_Gender_Gap_Index.txt"),
                          sep = "\t")
   ratioLabor    <- fread(file = paste0(path_GEI_dir, "RatioLaborMF.csv"), skip = 4)
-  UNindex       <- fread(file = paste0(path_GEI_dir, "UN_Gender_Inequality_Index_mod.csv"),
+  UNindex       <- fread(file = paste0(path_GEI_dir, "Gender_Inequality_Index_UN_2015.csv"),
                          na = "..")
   
   return(list(data = data,
