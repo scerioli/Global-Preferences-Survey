@@ -7,14 +7,16 @@ LoadData <- function() {
   # Load the data
   data          <- read_dta(paste0(path_GPS_dir, "individual_new.dta")) %>%
                     setDT(.)
-  world_area    <- fread(file = paste0(path_GPS_dir, "world_area.txt"), 
+  world_area    <- fread(file = paste0(path_dir, "world_area.txt"), 
                          sep = ",")
-  indicators    <- fread(file = paste0(path_dir, "Data.csv"), na = "..")
-  timeWomenSuff <- fread(file = paste0(path_dir, "Womens_suffrage_date_mod.csv"), 
+  indicators    <- fread(file = paste0(path_dir, "world_bank_GDP_2010USdollars.csv"),
+                         na = "..")
+  timeWomenSuff <- fread(file = paste0(path_dir, "womens_suffrage_date_mod.csv"), 
                          na.strings = "-") %>% setDT(.)
   WEF           <- fread(paste0(path_dir, "WEF_Global_Gender_Gap_Index.txt"),
                          sep = "\t")
-  ratioLabor    <- fread(file = paste0(path_dir, "RatioLaborMF.csv"), skip = 4)
+  ratioLabor    <- fread(file = paste0(path_dir, "ratio_labor_MF.csv"), 
+                         skip = 4)
   UNindex       <- fread(file = paste0(path_dir, "Gender_Inequality_Index_UN_2015.csv"),
                          na = "..")
   
