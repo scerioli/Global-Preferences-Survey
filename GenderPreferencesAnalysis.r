@@ -107,7 +107,7 @@ dataCoeffAlternative[preference == "patience", gender := -1 * gender]
 # ================================ #
 
 # Add the data from the article
-dt_article <- fread("files/income/Data_Extract_From_World_Development_Indicators/dataFromArticle2.csv")
+dt_article <- fread("files/income/dataFromArticle.csv")
 
 # Create a data table for a quick comparison
 dt_compare <- dt_article[summaryIndex, .(avgDiffArticle = AverageGenderDifference,
