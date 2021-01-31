@@ -1,4 +1,4 @@
-preference,GDPquant,GEIquant,meanGender,meanGenderGEI
+preference,GDPquant,GEIquant,meanGenderGDP,meanGenderGEI
 trust,1,1,-0.0145239293006004,0.0113970099853516
 trust,2,1,0.0425167486071489,0.0113970099853516
 trust,3,3,0.0702878906913665,0.0680286567009206

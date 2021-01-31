@@ -25,15 +25,15 @@ SummaryHistograms <- function(dt, summ) {
 
   # Assign mean of the bin for GDP and GEI
   for (i in 1:length(data$GEIquant)) {
-    data[GDPquant == i, meanGender := mean(gender, na.rm = T), by = "preference"]
+    data[GDPquant == i, meanGenderGDP := mean(gender, na.rm = T), by = "preference"]
     data[GEIquant == i, meanGenderGEI := mean(gender, na.rm = T), by = "preference"]
   }
 
   data <- unique(data[, c(-1, -2, -4, -5)])
 
-  data[preference == "negrecip", meanGender := -1 * meanGender]
-  data[preference == "risktaking", meanGender := -1 * meanGender]
-  data[preference == "patience", meanGender := -1 * meanGender]
+  data[preference == "negrecip", meanGenderGDP := -1 * meanGenderGDP]
+  data[preference == "risktaking", meanGenderGDP := -1 * meanGenderGDP]
+  data[preference == "patience", meanGenderGDP := -1 * meanGenderGDP]
 
   data[preference == "negrecip", meanGenderGEI := -1 * meanGenderGEI]
   data[preference == "risktaking", meanGenderGEI := -1 * meanGenderGEI]

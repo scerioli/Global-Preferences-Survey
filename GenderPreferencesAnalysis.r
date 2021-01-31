@@ -139,6 +139,6 @@ fwrite(summaryIndex,
        file = "files/outcome/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
 fwrite(dataCoeff_summary,
        file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
-fwrite(dataCoeffAlternative,
+fwrite(dataCoeffAlternative[, -2],
        file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
 #------------------------------------------------------------------------------#
