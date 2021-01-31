@@ -24,6 +24,7 @@ data_all <- LoadData()
 # ========================= #
 
 data_all <- PrepareData(data_all)
+data_all$data <- Standardize(data = data_all$data, level = "country")
 
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]

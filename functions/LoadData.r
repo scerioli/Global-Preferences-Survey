@@ -11,7 +11,7 @@ LoadData <- function() {
                          sep = ",")
   indicators    <- fread(file = paste0(path_dir, "world_bank_GDP_2010USdollars.csv"),
                          na = "..")
-  timeWomenSuff <- fread(file = paste0(path_dir, "womens_suffrage_date_mod.csv"), 
+  timeWomenSuff <- fread(file = paste0(path_dir, "womens_suffrage_date.csv"), 
                          na.strings = "-") %>% setDT(.)
   WEF           <- fread(paste0(path_dir, "WEF_Global_Gender_Gap_Index.txt"),
                          sep = "\t")
