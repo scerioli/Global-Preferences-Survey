@@ -32,7 +32,7 @@ names(labels_preferences) <- c("altruism", "trust", "posrecip",
 
 plotHistA <-
   ggplot(data = unique(dataSummary[, c(-3, -5)])) +
-  geom_col(aes(x = GDPquant, y = meanGender, fill = preference), width = 0.5) +
+  geom_col(aes(x = GDPquant, y = meanGenderGDP, fill = preference), width = 0.5) +
   facet_wrap(~ preference, labeller = labeller(preference = labels_preferences)) +
   xlab("") + ylab("Average Gender Differences (in Standard Deviations)") +
   scale_fill_brewer(palette = "Dark2") +
@@ -57,8 +57,9 @@ PlotSummary(data = summaryIndex,
             var1 = "logAvgGDPpc", var2 = "avgGenderDiffNorm",# fill = "region",
             labs = c("Log GDP p/c",
                      "Average Gender Differences (Index)"),  
-          #  display = TRUE,
-            save = "plots/main_Fig1B.png")
+            display = TRUE,
+            #  save = "plots/main_Fig1B.png"
+)
 
 ## ----------------------------- Fig. 1 C ------------------------------------ #
 plotHistC <-
@@ -90,8 +91,9 @@ PlotSummary(data = summaryIndex,
             var2 = "avgGenderDiffNorm", # fill = "region",
             labs = c("Gender Equality Index",
                      "Average Gender Differences (Index)"),  
-          #  display = TRUE,
-            save = "plots/main_Fig1D.png")
+            display = TRUE,
+          #  save = "plots/main_Fig1D.png"
+           )
 
 
 ## ------------------------------ Fig. 2 A ----------------------------------- #
@@ -101,8 +103,9 @@ PlotSummary(data = summaryIndex,
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Average Gender Differences (residualized using Gender Equality Index)",
                      "Economic Development"),
-          #  display = TRUE,
-            save = "plots/main_Fig2A.png")
+            display = TRUE,
+          #  save = "plots/main_Fig2A.png"
+            )
 
 ## ------------------------------ Fig. 2 B ----------------------------------- #
 PlotSummary(data = summaryIndex,
@@ -111,7 +114,7 @@ PlotSummary(data = summaryIndex,
             labs = c("Gender Equality Index (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)",
                      "Gender Equality"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/main_Fig2B.png")
 
 ## ------------------------------ Fig. 2 C ----------------------------------- #
@@ -121,7 +124,7 @@ PlotSummary(data = summaryIndex,
             labs = c("WEF Global Gender Gap Index (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)",
                      "WEF Global Gender Gap Index"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/main_Fig2C.png")
 
 ## ------------------------------ Fig. 2 D ----------------------------------- #
@@ -131,7 +134,7 @@ PlotSummary(data = summaryIndex,
             labs = c("UN Gender Equality Index (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)",
                      "UN Gender Equality Index"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/main_Fig2D.png")
 
 ## ------------------------------ Fig. 2 E ----------------------------------- #
@@ -141,7 +144,7 @@ PlotSummary(data = summaryIndex,
             labs = c("Ratio Female to Male (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)",
                      "Ratio Female to Male LFP"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/main_Fig2E.png")
 
 ## ------------------------------ Fig. 2 F ----------------------------------- #
@@ -151,7 +154,7 @@ PlotSummary(data = summaryIndex,
             labs = c("Time since Women's Suffrage (residualized using Log GDP p/c)",
                      "Average Gender Differences (residualized using Log GDP p/c)",
                      "Time since Women's Suffrage"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/main_Fig2F.png")
 
 
@@ -165,7 +168,7 @@ PlotSummary(data = dataCoeff_summary,
             var1 = "logAvgGDPpc", var2 = "gender", var3 = "preference",
             labs = c("Log GDP p/c",
                      "Gender Differences (in standard deviations)"),
-           # display = TRUE,
+            # display = TRUE,
             save = "plots/supplementary_FigS2.png")
 
 # -------------------------------- Fig. S3 ----------------------------------- #
@@ -181,28 +184,28 @@ PlotSummary(data = summaryIndex, var1 = "ScoreWEFNorm", var2 = "avgGenderDiffNor
             labs = c("WEF Global Gender Gap Index",
                      "Average Gender Differences (Index)",
                      "WEF Global Gender Gap Index"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/supplementary_FigS4A.png")
 
 PlotSummary(data = summaryIndex, var1 = "ValueUNNorm", var2 = "avgGenderDiffNorm",
             labs = c("UN Gender Equality Index",
                      "Average Gender Differences (Index)",
                      "UN Gender Equality Index"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/supplementary_FigS4B.png")
 
 PlotSummary(data = summaryIndex, var1 = "avgRatioLaborNorm", var2 = "avgGenderDiffNorm",
             labs = c("Ratio Female to Male",
                      "Average Gender Differences (Index)",
                      "Ratio Female to Male LFP"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/supplementary_FigS4C.png")
 
 PlotSummary(data = summaryIndex, var1 = "DateNorm", var2 = "avgGenderDiffNorm",
             labs = c("Time since Women's Suffrage",
                      "Average Gender Differences (Index)",
                      "Time since Women's Suffrage"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/supplementary_FigS4D.png")
 
 ## ------------------------------- Fig. S5 ----------------------------------- #
@@ -273,6 +276,6 @@ PlotSummary(data = dataCoeffAlternative,
             labs = c("Log GDP p/c",
                      "Gender Differences (in standard deviations)",
                      "Alternative Model without Control Variables"),
-          #  display = TRUE,
+            #  display = TRUE,
             save = "plots/supplementary_FigS9.png")
 
