@@ -3,7 +3,7 @@
 ## Description
 
 In this repository, we have tried to reproduce the analysis of the article "Relationship of gender differences in preferences to economic development and 
-gender equality" (doi: 10.1126/science.aas9899). To guide the reader, it is suggested to have a look at the "WhatWeDid.md", which describes step by step what 
+gender equality" (doi: 10.1126/science.aas9899). To guide the reader, it is suggested to have a look at the page on Confluence https://formozoli.atlassian.net/wiki/spaces/GPS/pages/6717758/Reproduce+the+results+of+the+article, which describes step by step what 
 has been done, from the data collection (their sources and the way we cleaned them) to the logic behind the analysis.
 
 
