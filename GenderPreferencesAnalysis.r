@@ -24,7 +24,10 @@ data_all <- LoadData()
 # ========================= #
 
 data_all <- PrepareData(data_all)
-data_all$data <- Standardize(data = data_all$data, level = "country")
+
+data_all$data <- Standardize(data    = data_all$data, 
+                             columns = c(5:10), 
+                             level   = "country")
 
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
@@ -55,7 +58,17 @@ setnames(dataCoeff, old = "gender1", new = "gender")
 summaryIndex <- AvgGenderDiffPreferencesPCA(dataCoeff)
 
 # Prepare summary index
-summaryIndex <- CreateCompleteSummaryIndex(summaryIndex, data_all)
+summaryIndex <- CreateSummaryIndex(summaryIndex, data_all)
+
+# Perform the principal component analysis imputing missing values
+summaryIndex$GenderIndex <- GenderIndexPCA(summaryIndex[, c(5:8)])
+
+# Standardize the predictors (mean 0 and std dev 1)
+summaryIndex <- Standardize(data    = summaryIndex, 
+                            columns = c(4:8, 13),
+                            newName = TRUE)
+# Set the Gender Index on a scale between 0 and 1
+summaryIndex[, GenderIndexRescaled := Rescale(GenderIndex)]
 
 # Prepare summary histograms
 dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
@@ -65,42 +78,66 @@ dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
 #### 4. VARIABLES CONDITIONING  ####
 # ================================ #
 
+# Add residuals to the summary index
 summaryIndex <- AddResiduals(summaryIndex)
+
+# Invert trend for two variables
+summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
+                     DateStd    = -1 * DateStd)]
 
 
 # =============================== #
 #### 5. SUPPLEMENTARY MATERIAL ####
 # =============================== #
+
 colsToKeep_coeff <- c("gender", "preference", "country", "isocode", "logAvgGDPpc")
 
-colsToKeep_summary <- c("GenderIndex", "GenderIndexNorm", "ScoreWEFNorm", "ValueUNNorm", 
-                        "DateNorm", "avgRatioLaborNorm", "residualslogAvgGDPpcNorm",
-                        "residualsavgGenderDiffNorm_GEI", "country")
+colsToKeep_summary <- c("GenderIndex", "GenderIndexStd", "ScoreWEFStd", 
+                        "ValueUNStd", "DateStd", "avgRatioLaborStd", 
+                        "residualslogAvgGDPpc", "residualsavgGenderDiff_GEI", 
+                        "country")
 dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
                            summaryIndex[, ..colsToKeep_summary],
                            by = "country")
 
-dataCoeff_summary[preference == "risktaking", gender := -1 * gender]
-dataCoeff_summary[preference == "negrecip", gender := -1 * gender]
-dataCoeff_summary[preference == "patience", gender := -1 * gender]
+# Invert the trend of those preferences with opposite direction of the difference
+dataCoeff_summary <- InvertPreference(dataCoeff_summary)
 
 dataCoeff_summary <- AddResidualsSinglePreference(dataCoeff_summary)
 
 # -------------- #
 
 ## Alternative model
+
 modelsAlternative <- CreateAlternativeModels(dataComplete)
 dataCoeffAlternative <- SummaryCoeffPerPreferencePerCountry(modelsAlternative)
-
 # Adjust data for plotting
 dataCoeffAlternative[data_all$data, `:=` (isocode     = i.isocode,
                                           logAvgGDPpc = log(i.avgGDPpc)),
                      on = "country"]
 setnames(dataCoeffAlternative, old = "gender1", new = "gender")
-dataCoeffAlternative[preference == "risktaking", gender := -1 * gender]
-dataCoeffAlternative[preference == "negrecip", gender := -1 * gender]
-dataCoeffAlternative[preference == "patience", gender := -1 * gender]
+# Invert the trend of those preferences with opposite direction of the difference
+dataCoeffAlternative <- InvertPreference(dataCoeffAlternative)
 
+# -------------- #
+
+## Gender differences standardize at global level
+
+dataStdGlobal <- Standardize(data = data_all$data, 
+                             columns = c(5:10))
+# Use only the complete dataset
+dataCompleteGlobal <- dataStdGlobal[complete.cases(dataStdGlobal)]
+# Model on country level of the preferences
+modelsGlobal <- CreateModelsForPreferencesCountryLevel(dataCompleteGlobal)
+# Summarize the preferences for each country
+dataCoeffGlobal <- SummaryCoeffPerPreferencePerCountry(modelsGlobal)
+# Adjust data for plotting
+dataCoeffGlobal[data_all$data, `:=` (isocode     = i.isocode,
+                                     logAvgGDPpc = log(i.avgGDPpc)),
+                on = "country"]
+setnames(dataCoeffGlobal, old = "gender1", new = "gender")
+# Invert the trend of those preferences with opposite direction of the difference
+dataCoeffGlobal <- InvertPreference(dataCoeffGlobal)
 
 
 # ================================ #
@@ -120,8 +157,8 @@ dt_compare <- dt_compare[complete.cases(dt_compare)]
 PlotSummary(data = dt_compare, var1 = "avgDiffArticle", var2 = "avgDiffOurs",
             labs = c("Average Gender Differences from the Article",
                      "Average Gender Differences from our Model"),
-            display = TRUE
-)
+           # display = TRUE
+            )
 
 # Compare with the Bayesian Supersedes the t-Test method
 # Plots can be reproduced using the plotAll function
@@ -140,6 +177,8 @@ fwrite(summaryIndex,
        file = "files/outcome/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
 fwrite(dataCoeff_summary,
        file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
+fwrite(dataCoeffGlobal[, c(1, 3, 7, 8, 9)],
+       file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
 fwrite(dataCoeffAlternative[, -2],
        file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
 #------------------------------------------------------------------------------#
