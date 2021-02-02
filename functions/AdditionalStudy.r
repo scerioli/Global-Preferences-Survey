@@ -58,7 +58,7 @@ AdditionalStudy <- function(models, dataCoeff) {
 
 
   # Just to have a nice plot for residuals :)
-  ggplot(summaryIndex, aes(x = logAvgGDPpc, y = avgGenderDiffNorm)) +
+  ggplot(summaryIndex, aes(x = logAvgGDPpc, y = avgGenderDiffRescaled)) +
     geom_smooth(method = "lm", se = FALSE, color = "lightgrey") +
     geom_segment(aes(xend = logAvgGDPpc, yend = predictedGDPy), alpha = .2) +
     geom_point(aes(color = abs(residualsGDPy))) + # Color mapped to abs(residuals)
@@ -75,7 +75,7 @@ AdditionalStudy <- function(models, dataCoeff) {
   map <- rethinking::map
 
   # Fit the model
-  modelMulti <- map(alist(avgGenderDiffNorm ~ dnorm(mu , sigma),
+  modelMulti <- map(alist(avgGenderDiffRescaled ~ dnorm(mu , sigma),
                           mu <- a + bGDP * logAvgGDPpcNorm + bGEI * GenderIndexNorm,
                           a ~ dnorm(10 , 10),
                           bGDP ~ dnorm(0 , 1),
@@ -115,10 +115,10 @@ AdditionalStudy <- function(models, dataCoeff) {
                              residualGEI = m_residGEI)]
 
   # Plot
-  PlotSummary(data = summaryGenderIndex, var1 = "residualGEI", var2 = "avgGenderDiffNorm",
+  PlotSummary(data = summaryGenderIndex, var1 = "residualGEI", var2 = "avgGenderDiffRescaled",
               labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                        "Average Gender Differences"))
-  PlotSummary(data = summaryGenderIndex, var1 = "residualGDP", var2 = "avgGenderDiffNorm",
+  PlotSummary(data = summaryGenderIndex, var1 = "residualGDP", var2 = "avgGenderDiffRescaled",
               labs = c("Gender Equality Index (residualized using Log GDP p/c)",
                        "Average Gender Differences"))
 
