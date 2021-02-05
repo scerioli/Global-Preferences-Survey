@@ -1,8 +1,6 @@
----
-title: "Reproduce the results of the article"
-output: html_notebook
----
-# Introduction
+# Reproduce the results of the article
+
+## Introduction
 
 This study aims to reproduce the results showed in the article Relationship of gender differences in preferences to economic development and gender equality [1] (DOI: 10.1126/science.aas9899) and part of the supplementary material [2].
 
@@ -21,9 +19,9 @@ We present here how we prepared the data in terms of collection, cleaning and st
 
 [3] https://doi.org/10.1093/qje/qjy013
 
-# Preparation of the data
+## Preparation of the data
 
-## Data Collection, Clean, and Standardization
+### Data Collection, Clean, and Standardization
 
 The data used by the authors is not fully available because of two reasons:
 
@@ -182,9 +180,9 @@ The files are:
   - preference is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA
 
 
-# Research Article
+## Research Article
 
-## Creation of the Models
+### Creation of the Models
 
 #### Linear Model on Each Country for Each Preference
 
@@ -208,7 +206,7 @@ We then performed a linear regression on the data points, extracting the correla
 
 We performed a PCA also on the four datasets used for Gender Equality, to extract a more general Gender Equality Index based on them. We then used this Gender-Equality Index for plotting the same average gender differences as a function of this index, performing a linear regression to calculate the p-value and the correlation value (see Fig. 1D). Note that here also the Gender Equality Index is transformed to be on a scale between 0 and 1.
 
-## Variable Conditioning
+### Variable Conditioning
 
 For the plots in Fig. 2, a conditional analysis was performed. To do this, we did the following: To plot the variables x and y residualised using the variable z:
 
@@ -220,7 +218,7 @@ For the plots in Fig. 2, a conditional analysis was performed. To do this, we di
 
 This has been done for the economic development, for the Gender Equality Index, and for each of the four indicators building the Gender Equality Index. The variable used on the y-axis is, therefore, the first Principal Component of the PCA made on the gender differences on the six preferences.
 
-## Additional about the plots
+### Additional about the plots
 
 - Average Gender Difference (Index) is the variable extracted from the first component of the PCA performed on the gender coefficients of the six preferences, for each country.
 
@@ -231,19 +229,19 @@ This has been done for the economic development, for the Gender Equality Index, 
 - The preferences marked with a (–), that are patience, negative reciprocity, and risk-taking, show an inverted trend with respect to the others. To plot them, we inverted manually their values (for instance, in the histograms we multiply the mean value of the resulting quantile by a -1 factor for the above-mentioned preferences).
 
 
-# Supplementary Online Material
+## Supplementary Online Material
 
-## Variable Conditioning
+### Variable Conditioning
 
 For the plots in Fig. S5 and S6, we were following the same approach described above in the Main Article section regarding the Variable Conditioning.
 
 Regarding the x-axis, we have already taken the same variables used already in Fig. S2A (for plot S5) and S2B (for plot S6), while for the y-axis we have taken the gender coefficient for each country selecting for the specific preference, made a linear regression on the same z variable used to residualize the x-axis, and then taken the residuals.
 
-## Preferences Standardized at Global Level
+### Preferences Standardized at Global Level
 
 To build Fig. S8, what we have done is simply to standardize the preferences on a global level instead of at the country level. Then, the creation of the models has been done in the same way as in the main article. The plot shows the gender coefficient extracted from the model versus the log GDP per capita, for all the six preferences.
 
-## Alternative Model
+### Alternative Model
 
 To build the alternative model without control variables, we started again from the complete dataset and created a linear model for each country using simply:
 
