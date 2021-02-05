@@ -3,7 +3,7 @@
 ## Description
 
 In this repository, we have tried to reproduce the analysis of the article "Relationship of gender differences in preferences to economic development and 
-gender equality" (doi: 10.1126/science.aas9899). To guide the reader, it is suggested to have a look at the page on Confluence https://formozoli.atlassian.net/wiki/spaces/GPS/pages/6717758/Reproduce+the+results+of+the+article, which describes step by step what 
+gender equality" (doi: 10.1126/science.aas9899). To guide the reader, it is suggested to have a look at the file ReproduceArticle.md, which describes step by step what 
 has been done, from the data collection (their sources and the way we cleaned them) to the logic behind the analysis.
 
 
@@ -22,8 +22,7 @@ The repository consists in several different sub-directories:
 - plots: Some relevant plots are saved here as a reference for the authors during the analysis. The plots starting with "main" indicate those plots found in the main article, while the "supplementary" indicate the plots found in the supplementary online material.
 - GenderAnalysis.r is the main code of this analysis, and it produces the outcome files.
 - CreatePlotsArticle.r uses the outcome files to create the plot of the analysis (both in the main article and in the supplementary online material).
-- WhatWeDid.md, as already mentioned, helps (hopefully) the readers to get through the main code and the concept of the analysis. For a more in-depth look at the
-analysis and the methods, the authors refer to the main papers (mentioned above) and to the Confluence page.
+- ReproduceArticle.md, as already mentioned, helps (hopefully) the readers to get through the main code and the concept of the analysis. For a more in-depth look at the analysis and the methods, the authors refer to the main papers (mentioned above) and to this file.
 
 ## Additional Information
 
