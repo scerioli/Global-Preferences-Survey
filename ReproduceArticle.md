@@ -34,7 +34,7 @@ The procedure for cleaning is described for each dataset, in the corresponding s
 
 #### Global Preferences Survey
 
-To download the GPS dataset, go on the website of the Global Preferences Survey in the section "downloads". There, choose the "Dataset"" form and after filling this, they will let download the dataset directly. 
+To download the GPS dataset, go on the website of the Global Preferences Survey in the section "downloads". There, choose the "Dataset" form and after filling this, they will let download the dataset directly. 
 
 *Hint: The organisation can be also "private".*
 
