@@ -17,14 +17,14 @@ The repository consists in several different sub-directories:
 - [functions](https://github.com/scerioli/Global_Preferences_Survey/tree/master/functions)
   - It contains all the functions that are very specific for the analysis
   - [helper_functions](https://github.com/scerioli/Global_Preferences_Survey/tree/master/functions/helper_functions): In this directory, all the helper functions created for the analysis used in the main code and to create the plots can be found. Nothing needs to be done, in the main code they are sourced thanks to the SourceFunctions.r
-- [plots](https://github.com/scerioli/Global_Preferences_Survey/tree/master/plots): Some relevant plots are saved here as a reference for the authors during the analysis. The plots starting with "main" indicate those plots found in the main article, while the "supplementary" indicate the plots found in the supplementary online material. Two extra plots for the comparison between our analysis and the article's results are there.
+- [plots](https://github.com/scerioli/Global_Preferences_Survey/tree/master/plots): The relevant plots are saved here. The plots starting with "main" indicate those plots found in the main article, while the "supplementary" indicate the plots found in the supplementary online material. Two extra plots for the comparison between our analysis and the article's results are there.
 - [GenderPreferencesAnalysis.r](https://github.com/scerioli/Global_Preferences_Survey/blob/master/GenderPreferencesAnalysis.r) is the main code of this analysis, and it produces the outcome files.
 - [CreatePlotsArticle.r](https://github.com/scerioli/Global_Preferences_Survey/blob/master/CreatePlotsArticle.r) uses the outcome files to create the plot of the analysis (both in the main article and in the supplementary online material).
 - [ReproduceArticle.md](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ReproduceArticle.md), as already mentioned, helps (hopefully) the readers to get through the main code and the concept of the analysis. For a more in-depth look at the analysis and the methods, the authors refer to the main paper (mentioned above) and to this file.
 
 ## Additional Information
 
-We found particularly helping, during the analysis, reading the paper "Global Evidence on Economic Preferences" (https://doi.org/10.1093/qje/qjy013) 
+We found particularly helping, during the analysis, reading the paper [Global Evidence on Economic Preferences](https://doi.org/10.1093/qje/qjy013) 
 to understand better some choices made by the authors of the analysed-paper and to have a more complete view on the work and the sources of the Global Preferences Survey.
 
 Moreover, the following two papers have to be cited in all publications that make use of or refer in any kind to the files provided:
