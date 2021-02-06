@@ -1,7 +1,7 @@
 EstimateModel <- function(dat, formula, var = NULL) {
-  # This function has the purpose to extract the important parameters from the
-  # model(s). If var is given, it means that there is the need to make the
-  # model run on the same variable grouped by different rows.
+  # This function extracts the important parameters from the model(s). 
+  # If var is given, it means that there is the need to make the model run on 
+  # the same variable grouped by different rows.
   #
   # ARGS
   # - dat      [data table] is the data we are giving to the model

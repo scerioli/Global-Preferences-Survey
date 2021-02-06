@@ -2,7 +2,7 @@ Standardize <- function(data, columns, level = NULL, newName = FALSE) {
   # This function takes the six economic preferences and standardizes them at
   # the level specified (for instance, country level or global level).
   # 
-  # ARGS:
+  # ARGS
   #   - data [data.table]  input data containing the six economic preferences
   #   - columns [integer]  the vector of integers indicating the index of the 
   #                        columns of data to standardize
@@ -11,6 +11,10 @@ Standardize <- function(data, columns, level = NULL, newName = FALSE) {
   #   - newName [logical]  is the argument for specifying if the variable to
   #                        standardize must have a new name or be assigned to 
   #                        the same column
+  # 
+  # RETURN
+  # - data  [data.table]   the data table as an input with the standardized 
+  #                        variables or the new columns
   
   columns <- names(data[, ..columns])
   
