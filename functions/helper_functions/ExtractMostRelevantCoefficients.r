@@ -1,4 +1,14 @@
 ExtractMostRelevantCoefficient <- function(singleModel) {
+  # This function extracts for each country the most relevant coefficient in 
+  # terms of absolute value, and save it into a data table.
+  # 
+  # ARGS
+  # - singleModel [model]  the model from which one wants to extract the 
+  #                        coefficients
+  # 
+  # RETURN
+  # - dt  [data table]  a data table with the name of the coefficient, its value,
+  #                     and the associated country
   
   dt <- data.table()
   

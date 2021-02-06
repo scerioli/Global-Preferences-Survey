@@ -44,7 +44,10 @@ AddResiduals <- function(dt) {
            dt_WEF, dt_UN, dt_ratioLabor, dt_Date)
   # Loop over the data table list to merge into a single data table
   for (data_table in dts) {
-    dt <- SelectAndMerge(dt, data_table)
+    # Select the interesting columns to keep
+    data_table <- data_table %>% select(c(starts_with("residuals"), "country"))
+    # Merge the two data tables
+    dt <- merge(dt, data_table, by = "country")
   }
 
   return(dt)

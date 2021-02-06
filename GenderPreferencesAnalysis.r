@@ -25,6 +25,7 @@ data_all <- LoadData()
 
 data_all <- PrepareData(data_all)
 
+# Standardize preferences at country level
 data_all$data <- Standardize(data    = data_all$data, 
                              columns = c(5:10), 
                              level   = "country")
@@ -111,11 +112,13 @@ dataCoeff_summary <- AddResidualsSinglePreference(dataCoeff_summary)
 
 modelsAlternative <- CreateAlternativeModels(dataComplete)
 dataCoeffAlternative <- SummaryCoeffPerPreferencePerCountry(modelsAlternative)
+
 # Adjust data for plotting
 dataCoeffAlternative[data_all$data, `:=` (isocode     = i.isocode,
                                           logAvgGDPpc = log(i.avgGDPpc)),
                      on = "country"]
 setnames(dataCoeffAlternative, old = "gender1", new = "gender")
+
 # Invert the trend of those preferences with opposite direction of the difference
 dataCoeffAlternative <- InvertPreference(dataCoeffAlternative)
 
@@ -125,17 +128,22 @@ dataCoeffAlternative <- InvertPreference(dataCoeffAlternative)
 
 dataStdGlobal <- Standardize(data = data_all$data, 
                              columns = c(5:10))
+
 # Use only the complete dataset
 dataCompleteGlobal <- dataStdGlobal[complete.cases(dataStdGlobal)]
+
 # Model on country level of the preferences
 modelsGlobal <- CreateModelsForPreferencesCountryLevel(dataCompleteGlobal)
+
 # Summarize the preferences for each country
 dataCoeffGlobal <- SummaryCoeffPerPreferencePerCountry(modelsGlobal)
+
 # Adjust data for plotting
 dataCoeffGlobal[data_all$data, `:=` (isocode     = i.isocode,
                                      logAvgGDPpc = log(i.avgGDPpc)),
                 on = "country"]
 setnames(dataCoeffGlobal, old = "gender1", new = "gender")
+
 # Invert the trend of those preferences with opposite direction of the difference
 dataCoeffGlobal <- InvertPreference(dataCoeffGlobal)
 
@@ -149,7 +157,7 @@ dt_article <- fread("files/income/data_extracted_from_article.csv")
 
 # Create a data table for a quick comparison
 dt_compare <- dt_article[summaryIndex, .(avgDiffArticle = AverageGenderDifference,
-                                         avgDiffOurs = i.avgGenderDiffNorm,
+                                         avgDiffOurs = i.avgGenderDiffRescaled,
                                          isocode = i.isocode), on = "isocode"]
 dt_compare <- dt_compare[complete.cases(dt_compare)]
 
