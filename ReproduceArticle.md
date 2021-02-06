@@ -3,24 +3,23 @@
 
 ## Introduction
 
-This study aims to reproduce the results showed in the article [Relationship of gender differences in preferences to economic development and gender equality](https://science.sciencemag.org/content/362/6412/eaas9899.full) (DOI: 10.1126/science.aas9899) and part of the [supplementary material](https://science.sciencemag.org/content/sci/suppl/2018/10/17/362.6412.eaas9899.DC1/aas9899_Falk_SM.pdf).
+This study reproduces the results of the article [Relationship of gender differences in preferences to economic development and gender equality](https://science.sciencemag.org/content/362/6412/eaas9899.full) (DOI: 10.1126/science.aas9899) and partially its [supplementary material](https://science.sciencemag.org/content/sci/suppl/2018/10/17/362.6412.eaas9899.DC1/aas9899_Falk_SM.pdf).
 
-Moreover, the following two papers have to be cited in all publications that make use of or refer in any kind to the files provided:
+The following two relevant papers have to be also cited in all publications that make use of or refer in any kind to GPS dataset:
 
 - Falk, A., Becker, A., Dohmen, T., Enke, B., Huffman, D., & Sunde, U. (2018). [Global evidence on economic preferences.](https://doi.org/10.1093/qje/qjy013) *Quarterly Journal of Economics*, 133 (4), 1645–1692.
 
 - Falk, A., Becker, A., Dohmen, T. J., Huffman, D., & Sunde, U. (2016). The preference survey module: A validated instrument for measuring risk, time, and social preferences. IZA Discussion Paper No. 9674.
 
-We present here how we prepared the data in terms of collection, cleaning and standardization of the variables (what is usually called “data engineering”), the output files allowing the reader to reproduce the plots we produced in this analysis, and the methods used to analyse the data. For more details, especially on the background study and the meaning of the variables, we refer to the main paper.
-
+Below we describe how we collected, clean and standardized the the data, as well the the whole analysis pipeline. The output files allow the reader to reproduce the figures directly, bypassing the pipeline. For more details, especially on the background study and the meaning of the variables, refer to the main paper.
 
 ## Preparation of the data
 
-### Data Collection, Clean, and Standardization
+### Data Collection, Cleaning, and Standardization
 
 The data used by the authors is not fully available because of two reasons:
 
-1. **Data paywall:** Some part of the data is not available for free. It requires to pay a fee to the Gallup to access them. This is the case for the additional dataset that is used in the article, for instance, the education level and the household income quintile. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information about that. 
+1. **Data paywall:** Some part of the data is not available for free. It requires to pay a fee to the Gallup to access them. This is the case for the additional dataset that is used in the article, for instance, the one that contains the education level and the household income quintile. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information on it. 
 
 2. **Data used in study is not available online:** This is what happened for the LogGDP p/c calculated in 2005 US dollars (which is not directly available online). We decided to calculate the LogGDP p/c in 2010 US dollars because it was easily available, which should not change the main findings of the article. 
 
@@ -31,7 +30,7 @@ The procedure for cleaning is described for each dataset, in the corresponding s
 
 This data is protected by copyright and can't be given to third parties.
 
-To download the GPS dataset, go on the website of the Global Preferences Survey in the section "downloads". There, choose the "Dataset" form and after filling this, they will let download the dataset directly. 
+To download the GPS dataset, go to the website of the Global Preferences Survey in the section "downloads". There, choose the "Dataset" form and after filling it, we can download the dataset. 
 
 *Hint: The organisation can be also "private".*
 
@@ -45,11 +44,11 @@ From the [website of the World Bank](https://data.worldbank.org/indicator/), one
 
 The Gender Equality Index is composed of four main datasets.
 
-- **Time since women’s suffrage:** Taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). We cleaned the data in the following way: We kept as a date the first complete date (vote and stand for election, with no other restrictions commented), regardless of whether the country was a colony or not (so, for instance, Kazakhstan is kept to have the first date because nothing changed from the Soviet Union to independence). South Africa was not easy to clean because its history shows the racism part very entangled with women's rights. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USA data doesn't take into account that also up to 1964 black women couldn't vote (in general, Blacks couldn't vote up to that year). We didn’t keep this date, anyway, because it was not explicitly mentioned in the original dataset. We know this is in contrast with other choices made, but we also think that it is important to reproduce the result of the authors, and the USA was often easy to spot on the plots.
+- **Time since women’s suffrage:** Taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). We cleaned the data in the following way: we kept as the suffrage date the one when both vote and stand for election right were granted, with no other restrictions commented), regardless of whether the country was a colony or not (so, for instance, Kazakhstan is kept to have the first date because nothing changed from the Soviet Union to independence). South Africa was not easy to clean because its history shows the racism part very entangled with women's rights. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USA data doesn't take into account that also up to 1964 black women couldn't vote (in general, Blacks couldn't vote up to that year). We didn’t keep this date, anyway, because it was not explicitly mentioned in the original dataset. We know this is in contrast with other choices made, but we also think that it is important to reproduce the result of the authors, and the USA was often easy to spot on the plots.
 
 - **UN Gender Inequality Index:** Taken from the [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). We kept only the table called "Gender Inequality Index".
 
-- **WEF Global Gender Gap:** WEF Global Gender Gap Index Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data were missing, data was added from the World Economic Forum Global Gender Gap Report 2006. We modified some of the country names directly on the csv file, that is why we provide this as an income file
+- **WEF Global Gender Gap:** WEF Global Gender Gap Index Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data were missing, data was added from the World Economic Forum Global Gender Gap Report 2006. We modified some of the country names directly on the csv file, that is why we provide this as an input file.
 
 - **Ratio of female and male labour force participation:** Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the years between 2004 and 2013 and calculated the mean.
 
@@ -64,9 +63,9 @@ They mention on page 14 of the Supplementary Material, that (quoting): "For coun
 
 There are two problems here:
 
-- The first is regarding the year when women received the right to vote in a specific country. The missing values here are the ones coming from the United Arab Emirates and Saudi Arabia, that neither in 2006 (when the WEF Global Gender Gap Report that the authors quote as a reference for the missing values) nor now (in 2021) have guaranteed yet the right to vote for women.
+- regarding the year when women received the right to vote in a specific country. The missing values here are the ones coming from the United Arab Emirates and Saudi Arabia, that neither in 2006 (when the WEF Global Gender Gap Report that the authors quote as a reference for the missing values) nor now (in 2021) have guaranteed yet the right to vote for women.
 
-- The second problem is that there are missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either. 
+- there are missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either. 
 
 These two unclear points, even though in our understanding not crucial for the replication of the analysis, are not desirable. 
 
@@ -98,7 +97,7 @@ In a first step of the reproduction analysis, the Principal Component Analysis (
 
   - Nigeria
 
-This cut our dataset from 76 countries to 69, meaning a 10% less of the initial dataset. As 10% is small enough not to have a strong influence on the result, but it is big enough to be disturbing, we decided to try the way of the imputation of the missing values. 
+This cut our dataset from 76 countries to 69, meaning a 10% less of the initial dataset. As 10% is small enough not to have a strong influence on the result, still to estimate how missing values influes the results, we compared different strateges for inputation of the missing values. 
 
 ##### Imputing NAs: the ````missMDA```` library
 
@@ -106,7 +105,7 @@ With small research on the web, we could find several proposed solutions for the
 
 This function works very nicely: One first selects the columns of the data where there are missing values, then passes it to the function, and then runs the PCA on the sublist called completeObs generated from this function. The result is a list of four columns that are exactly the input data but with the missing values that have been filled with imputed values.
 
-There is just one thing to watch out: The data must be numeric. So here another funny thing happens: When treating the year since women’s suffrage as an integer (1981, 1964, …), the imputation for Saudi Arabia and the UAE are weird dates as 1964.412 and 1952.858.
+There is just one thing to watch out: the data must be numeric. So here another funny thing happens: When treating the year since women’s suffrage as an integer (1981, 1964, …), the imputation for Saudi Arabia and the UAE are weird dates as 1964.412 and 1952.858.
 
 
 ## Research Article
