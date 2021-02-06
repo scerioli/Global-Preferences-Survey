@@ -234,13 +234,11 @@ The files are:
 
   - *personal* is logic, and it is TRUE if the survey has been performed face-to-face in that country
 
-  - *avgGenderDiffStd* is the same measurement as avgGenderDiff, but standardized.
+  - *avgGenderDiffRescaled* is the same measurement as avgGenderDiff, but rescaled using the min-max method.
 
   - *GenderIndex* is numeric and it is the result of the PCA on the four measurements of Gender Equality Indexes (*Date*, *ScoreWEF*, *ValueUN*, and *avgRatioLabor*)
 
   - *logAvgGDPpcStd* same, but standardized
-
-  - *GenderIndexStd* same, but standardized
 
   - *ScoreWEFStd* same, but standardized
 
@@ -249,6 +247,10 @@ The files are:
   - *DateStd* same, but standardized
 
   - *avgRatioLaborStd* same, but standardized
+  
+  - *GenderIndexStd* same, but standardized
+  
+  - *GenderIndexRescaled* same, but rescaled using a min-max method
 
   - *residualslogAvgGDPpcStd* is the variable created using the *logAvgGDPpcStd* residualised using *GenderIndexStd*
 
