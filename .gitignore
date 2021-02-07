@@ -1,0 +1,6 @@
+tmp/
+Documentation.txt
+file/
+.Rhistory
+.DS_Store
+.Rproj.user/
