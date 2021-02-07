@@ -14,11 +14,11 @@ SourceFunctions(path = "functions/helper_functions/")
 LoadRequiredLibraries()
 
 # Load the data
-dataSummary <- fread("files/outcome/main_data_for_histograms.csv")
-summaryIndex <- fread("files/outcome/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
-dataCoeff_summary <- fread("files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
-dataCoeffGlobal <- fread("files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
-dataCoeffAlternative <- fread("files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
+dataSummary <- fread("files/output/main_data_for_histograms.csv")
+summaryIndex <- fread("files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
+dataCoeff_summary <- fread("files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
+dataCoeffGlobal <- fread("files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
+dataCoeffAlternative <- fread("files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
 
 
 # =========================== #

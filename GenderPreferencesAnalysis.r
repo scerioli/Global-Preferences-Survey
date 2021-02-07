@@ -153,7 +153,7 @@ dataCoeffGlobal <- InvertPreference(dataCoeffGlobal)
 # ================================ #
 
 # Add the data from the article
-dt_article <- fread("files/income/data_extracted_from_article.csv")
+dt_article <- fread("files/input/data_extracted_from_article.csv")
 
 # Create a data table for a quick comparison
 dt_compare <- dt_article[summaryIndex, .(avgDiffArticle = AverageGenderDifference,
@@ -180,13 +180,13 @@ comparison <- BESTmcmc(dt_article$AverageGenderDifference,
 
 ## ---------------------- Write csv data summaries -------------------------- ##
 fwrite(dataSummary,
-       file = "files/outcome/main_data_for_histograms.csv")
+       file = "files/output/main_data_for_histograms.csv")
 fwrite(summaryIndex,
-       file = "files/outcome/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
+       file = "files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
 fwrite(dataCoeff_summary,
-       file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
+       file = "files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
 fwrite(dataCoeffGlobal[, c(1, 3, 7, 8, 9)],
-       file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
+       file = "files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
 fwrite(dataCoeffAlternative[, -2],
-       file = "files/outcome/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
+       file = "files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
 #------------------------------------------------------------------------------#
