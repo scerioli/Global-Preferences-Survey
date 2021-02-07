@@ -170,22 +170,49 @@ This has been done for the economic development, for the Gender Equality Index, 
 
 #### Fig. 1. Analysis of gender differences in preferences in relation to economic development and gender equality
 
-##### A
+**(A)**  Mean country-level gender difference in altruism, trust, positive reciprocity, negative reciprocity, risk-taking, and patience by development level. Countries were sorted into four bins according to their GDP per capita quartile. The symbols + and − in the panel titles indicate the sign of the difference for each preference; + indicates that positive differences
 
 ![main_Fig1A.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1A.png)
 
-##### B
+**(B)** Relationship between the aggregate index of gender differences in all six preferences and log GDP per capita.
 
 ![main_Fig1B.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1B.png)
 
-##### C
+**(C)** and
 
 ![main_Fig1C.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1C.png)
 
-##### D
+**(D)** Same relationships as in (A) and (B) for the Gender Equality Index.
 
 ![main_Fig1D.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1D.png)
 
+#### Fig. 2. Analysis of gender differences in preferences in relation to economic development conditional on gender equality, and vice versa.
+
+**(A)** Relationship between the aggregate index of gender differences in preferences and log GDP per capita after residualizing both variables with respect to the Gender Equality Index.
+
+![main_Fig2A.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig2A.png)
+
+**(B)** to **(F)** Relationship between the aggregate index of gender differences in preferences and five indices of gender equality after residualizing all variables with respect to log GDP per capita. Indices of gender equality are 
+
+**(B)** the Gender Equality Index, 
+
+![main_Fig2B.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig2B.png)
+
+**(C)** WEF Global Gender Gap Index,
+
+![main_Fig2C.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig2C.png)
+
+**(D)** UN Gender Equality Index, 
+
+![main_Fig2D.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig2D.png)
+
+**(E)** ratio of female to male labor force participation, and 
+
+![main_Fig2E.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig2E.png)
+
+**(F)** years since women’s suffrage.
+
+![main_Fig2F.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig2F.png)
 
 
 
