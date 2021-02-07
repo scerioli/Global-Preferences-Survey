@@ -1,4 +1,4 @@
-# Global_Preferences_Survey
+# Global Preferences Survey
 
 ## Description
 
