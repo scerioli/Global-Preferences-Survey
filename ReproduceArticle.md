@@ -166,6 +166,29 @@ This has been done for the economic development, for the Gender Equality Index, 
 - The plots showing residuals in the main article are using the log GDP p/c and the Gender Equality Index after standardization, while in the supplementary material they are not standardized.
 
 
+### Plots
+
+#### Fig. 1. Analysis of gender differences in preferences in relation to economic development and gender equality
+
+##### A
+
+![main_Fig1A.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1A.png)
+
+##### B
+
+![main_Fig1B.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1B.png)
+
+##### C
+
+![main_Fig1C.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1C.png)
+
+##### D
+
+![main_Fig1D.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/main_Fig1D.png)
+
+
+
+
 ## Supplementary Online Material
 
 ### Variable Conditioning
@@ -332,4 +355,8 @@ One can check the resulting plots looking at [best_comparison_article_data.png](
 
 What is really interesting to check here are the third and fourth plots on the right: These plots are the difference of the means and the difference of the standard deviations between the two posterior distributions. These plots are telling us that the differences between the mean and the standard deviation of the distributions are lying within the 95% HDI, and thus representing two t-distributions that are not distinguishable and, therefore, statistically the same. **What we found with our models doesn't differ statistically to what the authors found using their models.**
 
-Using a more established method, we also plotted the average gender differences from the article with respect to the average gender differences extracted from our model. The result can be seen in the plot ![correlation_article_data.png](https://github.com/scerioli/Global_Preferences_Survey/blob/master/plots/correlation_article_data.png), where one can see that the data are correlated at almost 98% with a p-value smaller than 0.0001.
+Using a more established method, we also plotted the average gender differences from the article with respect to the average gender differences extracted from our model. The result can be seen in the plot:
+
+![correlation_article_data.png](https://github.com/scerioli/Global_Preferences_Survey/blob/master/plots/correlation_article_data.png) 
+
+where one can see that the data are correlated at almost 98% with a p-value smaller than 0.0001.
