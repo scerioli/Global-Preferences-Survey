@@ -306,7 +306,7 @@ The files are:
 - **main_data_for_histograms.csv**
 
 <details>
-  <summary> This file contains the data for reproducing the plot in Fig. 1 (A and C), the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences.The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI. </summary>
+  <summary> This file contains the data for reproducing the plot in Fig. 1 (A and C), the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences. The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI. </summary>
 
     - _preference_ is a character and can be one of the 6 economic preferences (patience, risk-taking, altruism, negative and positive reciprocity, and trust).
 
@@ -385,7 +385,7 @@ The files are:
 - **supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv** 
 
 <details>
-  <summary> Data aggregated by country but separating each of the six preferences gender difference values. <\summary>
+  <summary> Data aggregated by country but separating each of the six preferences gender difference values. </summary>
 
     - *country*, *isocode*, *logAvgGDPpc*, *GenderIndex*, *GenderIndexStd*, *ScoreWEFStd*, *ValueUNStd*, *DateStd*, *avgRatioLaborStd* are the same variables as described above
 
@@ -399,12 +399,12 @@ The files are:
 
     - *residualslogAvgGDPpc* is the variable created from *GenderIndex* residualised using *logAvgGDPpc*, and *residualsGenderIndex* is the variable created from *logAvgGDPpc* residualised using *GenderIndex*
     
-<\details>
+</details>
 
 - **supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv** 
 
 <details>
-  <summary> Data aggregated by country, separating each of the single preferences and standardize them at a global level. <\summary>
+  <summary> Data aggregated by country, separating each of the single preferences and standardize them at a global level. </summary>
 
     - *country*, *isocode*, and *logAvgGDPpc* are the same variables as described above
 
@@ -412,19 +412,20 @@ The files are:
 
     - *preference* is the same as described above, except that here we standardize them at a global level
   
-<\details>
+</details>
 
 - **supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv** 
 
 <details>
-  <summary> Data created from the alternative model where only the gender is kept as variable to regress the preference, aggregated by country and including the economic development variable. <\summary>
+  <summary> Data created from the alternative model where only the gender is kept as variable to regress the preference, aggregated by country and including the economic development variable. </summary>
 
     - *country*, *isocode*, *preference*, and *logAvgGDPpc* are the same variables as described above
 
     - *gender* is the coefficient calculated from the linear regression when using the alternative model without control variables
 
     - *preference* is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA
-<\details>
+
+</details>
 
 
 ## Comparison of the replication with the original study
