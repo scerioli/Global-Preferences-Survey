@@ -176,15 +176,15 @@ This has been done for the economic development, for the Gender Equality Index, 
 
 **(B)** Relationship between the aggregate index of gender differences in all six preferences and log GDP per capita.
 
-![main_Fig1B.png](https://scerioli.github.io/Global-Preferences-Survey/gh-pages/plots/main_Fig1B.png)
+![main_Fig1B.png](plots/main_Fig1B.png)
 
 **(C)** and
 
-![main_Fig1C.png](https://scerioli.github.io/Global-Preferences-Survey/gh-pages/plots/main_Fig1C.png)
+![main_Fig1C.png](plots/main_Fig1C.png)
 
 **(D)** Same relationships as in (A) and (B) for the Gender Equality Index.
 
-![main_Fig1D.png](https://scerioli.github.io/Global-Preferences-Survey/gh-pages/plots/main_Fig1D.png)
+![main_Fig1D.png](plots/main_Fig1D.png)
 
 ---
 
