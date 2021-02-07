@@ -303,8 +303,10 @@ The result of the analysis is written into five csv files (two for the main anal
 
 The files are:
 
+- **main_data_for_histograms.csv**
+
 <details>
-  <summary> - **main_data_for_histograms.csv** This file contains the data for reproducing the plot in Fig. 1 (A and C), the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences.The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI. </summary>
+  <summary> This file contains the data for reproducing the plot in Fig. 1 (A and C), the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences.The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI. </summary>
 
   - _preference_ is a character and can be one of the 6 economic preferences (patience, risk-taking, altruism, negative and positive reciprocity, and trust).
 
@@ -317,13 +319,16 @@ The files are:
   - _meanGenderGEI_ is the average of the gender difference coefficient by preference by Gender Equality Index quantile
 </details>
 
-- **main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv** Data aggregated by country containing the Average Gender Differences (the first component of the PCA made on the six preferences for the gender coefficient), all the indicators of the economic development and gender equality, plus their Standardization, and the residuals that can be used to build Fig. 2. The data consists of 27 variables: 
+- **main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv** 
 
-  - *country* is a character
+<details>
+  <summary> Data aggregated by country containing the Average Gender Differences (the first component of the PCA made on the six preferences for the gender coefficient), all the indicators of the economic development and gender equality, plus their Standardization, and the residuals that can be used to build Fig. 2. The data consists of 27 variables: </summary>
 
-  - *avgGenderDiff* is numeric and it is the result of the PCA on the gender coefficients at country level
+  - _country_ is a character
 
-  - *isocode* is a character
+  - _avgGenderDiff_ is numeric and it is the result of the PCA on the gender coefficients at country level
+
+  - _isocode_ is a character
 
   - *logAvgGDPpc* is numeric and it is the logarithm of the average GDP of the country in the period from 2003 to 2012, in 2010 US dollars
 
@@ -374,6 +379,8 @@ The files are:
   - *residualsavgRatioLaborStd* is the variable created from the *avgRatioLaborStd* residualised using *logAvgGDPpcStd*
 
   - *residualsDateStd* is the variable created from the *DateStd* residualised using *logAvgGDPpcStd*
+  
+</details>
 
 - **supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv** Data aggregated by country but separating each of the six preferences gender difference values.
 
