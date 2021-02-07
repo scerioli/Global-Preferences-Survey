@@ -287,11 +287,7 @@ Each panel shows the relationship between country-level gender differences in a 
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the level of economic development measured by log GDP p/c, including a linear fit. For each preference, the symbols (+)/(-) in the panel titles indicate the direction of the difference. (+) indicates that women exhibited higher levels of the respective preference if the difference was positive. (-) indicates that men exhibited higher levels of the respective preference if the difference was positive. Preference measures were standardized at the global instead of the country level. For each preference and country, the gender difference was then calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample.
 
-![supplementary_FigS8A.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/supplementary_FigS8A.png) ![supplementary_FigS8B.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/supplementary_FigS8B.png)
-
-![supplementary_FigS8C.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/supplementary_FigS8C.png) ![supplementary_FigS8D.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/supplementary_FigS8D.png)
-
-![supplementary_FigS8E.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/supplementary_FigS8E.png) ![supplementary_FigS8F.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/supplementary_FigS8F.png)
+![supplementary_FigS8.png](https://github.com/scerioli/Global-Preferences-Survey/blob/master/plots/supplementary_FigS8.png)
 
 #### Fig. S9. Gender differences and economic development by preference and country without controls. 
 
@@ -443,7 +439,9 @@ Here the explanation of the plots and the results from them:
 
 - The last plot on the left is another parameter describing the t-distribution: The closer to infinity, the more "normal" the distribution is.
 
-What is really interesting to check here are the third and fourth plots on the right: These plots are the difference of the means and the difference of the standard deviations between the two posterior distributions. These plots are telling us that the differences between the mean and the standard deviation of the distributions are lying within the 95% HDI, and thus representing two t-distributions that are not distinguishable and, therefore, statistically the same. **What we found with our models doesn't differ statistically to what the authors found using their models.**
+What is really interesting to check here are the third and fourth plots on the right: These plots are the difference of the means and the difference of the standard deviations between the two posterior distributions. These plots are telling us that the differences between the mean and the standard deviation of the distributions are lying within the 95% HDI, and thus representing two t-distributions that are not distinguishable and, therefore, statistically the same. 
+
+**What we found with our models doesn't differ statistically to what the authors of the article found using their models.**
 
 Using a more established method, we also plotted the average gender differences from the article with respect to the average gender differences extracted from our model. The result can be seen in the plot:
 
