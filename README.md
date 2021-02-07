@@ -25,8 +25,7 @@ The repository consists of several different sub-directories:
 
 ## Additional Information
 
-In addition to the article [Global Evidence on Economic Preferences](https://doi.org/10.1093/qje/qjy013), the following two papers contains a lot of relevant information for the full understanding of the analysis steps.
-They have to be cited in all publications that make use of or refer in any kind to the GPS dataset:
+In addition to the main article, the following two papers contains a lot of relevant information for the full understanding of the analysis steps. They have to be cited in all publications that make use of or refer in any kind to the GPS dataset:
 
 - Falk, A., Becker, A., Dohmen, T., Enke, B., Huffman, D., & Sunde, U. (2018). [Global evidence on economic preferences.](https://doi.org/10.1093/qje/qjy013) *Quarterly Journal of Economics*, 133 (4), 1645–1692.
 
