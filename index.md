@@ -379,52 +379,53 @@ Data aggregated by country containing the Average Gender Differences (the first 
   <li> residualsavgRatioLaborStd is the variable created from the avgRatioLaborStd residualised using logAvgGDPpcStd </li>
 
   <li> residualsDateStd is the variable created from the DateStd residualised using logAvgGDPpcStd </li>
-  
+</ul>
 </details>
 
 <details>
   <summary> supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv </summary>
 
 Data aggregated by country but separating each of the six preferences gender difference values. 
+<ul type="square">
+  <li> country, isocode, logAvgGDPpc, GenderIndex, GenderIndexStd, ScoreWEFStd, ValueUNStd, DateStd, avgRatioLaborStd are the same variables as described above </li>
 
-  - *country*, *isocode*, *logAvgGDPpc*, *GenderIndex*, *GenderIndexStd*, *ScoreWEFStd*, *ValueUNStd*, *DateStd*, *avgRatioLaborStd* are the same variables as described above
+  <li> gender is the coefficient related to the linear regression on the preference </li>
 
-  - *gender* is the coefficient related to the linear regression on the preference
-
-  - *preference* is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA
+  <li> preference is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA </li>
  
-  - *residualsgenderGEI_trust*, *residualsgenderGEI_altruism*, *residualsgenderGEI_negrecip*, *residualsgenderGEI_posrecip*, *residualsgenderGEI_risktaking*, *residualsgenderGEI_patience* are built performing a linear regression of the gender coefficient of the specific variable and the Gender Equality Index, and then calculating the residuals from it
+  <li> residualsgenderGEI_trust, residualsgenderGEI_altruism, residualsgenderGEI_negrecip, residualsgenderGEI_posrecip, residualsgenderGEI_risktaking, residualsgenderGEI_patience are built performing a linear regression of the gender coefficient of the specific variable and the Gender Equality Index, and then calculating the residuals from it </li>
 
-  - *residualsgenderGDP_trust*, *residualsgenderGDP_altruism*, *residualsgenderGDP_negrecip*, *residualsgenderGDP_posrecip*, *residualsgenderGDP_risktaking*, *residualsgenderGDP_patience* are built performing a linear regression of the gender coefficient of the specific variable and the log GDP p/c, and then calculating the residuals from it
+  <li> residualsgenderGDP_trust, residualsgenderGDP_altruism, residualsgenderGDP_negrecip, residualsgenderGDP_posrecip, residualsgenderGDP_risktaking, residualsgenderGDP_patience are built performing a linear regression of the gender coefficient of the specific variable and the log GDP p/c, and then calculating the residuals from it </li>
 
-  - *residualslogAvgGDPpc* is the variable created from *GenderIndex* residualised using *logAvgGDPpc*, and *residualsGenderIndex* is the variable created from *logAvgGDPpc* residualised using *GenderIndex*
-    
+  <li> residualslogAvgGDPpc is the variable created from GenderIndex residualised using logAvgGDPpc, and residualsGenderIndex is the variable created from logAvgGDPpc residualised using GenderIndex </li>
+
+</ul>
 </details>
 
 <details>
   <summary> supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv </summary>
 
 Data aggregated by country, separating each of the single preferences and standardize them at a global level. 
+<ul type="square">
+  <li> country, isocode, and logAvgGDPpc are the same variables as described above </li>
 
-  - *country*, *isocode*, and *logAvgGDPpc* are the same variables as described above
+  <li> gender is the coefficient related to the linear regression on the preference </li>
 
-  - *gender* is the coefficient related to the linear regression on the preference
-
-  - *preference* is the same as described above, except that here we standardize them at a global level
-  
+  <li> preference is the same as described above, except that here we standardize them at a global level </li>
+</ul>  
 </details>
 
 <details>
   <summary> supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv </summary>
 
 Data created from the alternative model where only the gender is kept as variable to regress the preference, aggregated by country and including the economic development variable. 
+<ul type="square">
+  <li> country, isocode, preference, and logAvgGDPpc are the same variables as described above </li>
 
-  - *country*, *isocode*, *preference*, and *logAvgGDPpc* are the same variables as described above
+  <li> gender is the coefficient calculated from the linear regression when using the alternative model without control variables </li>
 
-  - *gender* is the coefficient calculated from the linear regression when using the alternative model without control variables
-
-  - *preference* is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA
-
+  <li> preference is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA </li>
+</ul>
 </details>
 
 
