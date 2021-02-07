@@ -4,6 +4,8 @@
 
 In this repository, we are reproducing the analysis of the article [Relationship of gender differences in preferences to economic development and gender equality](https://science.sciencemag.org/content/362/6412/eaas9899.full) (doi: 10.1126/science.aas9899). It is suggested to have a look at the page [ReproduceArticle.md](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ReproduceArticle.md), which describes steps  from the data collection (sources of the datasets and the way we cleaned them) to the logic behind the analysis.
 
+The online version of the page is available at the website [scerioli.github.io/Global-Preferences-Survey/](https://scerioli.github.io/Global-Preferences-Survey/)
+
 
 ## Content
 
@@ -11,8 +13,8 @@ The repository consists of several different sub-directories:
 
 - [**ReproduceArticle.md**](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ReproduceArticle.md), as already mentioned, it helps to get through the main code and get the concept of the analysis. For a more in-depth look at the analysis and the methods, the authors refer to the main paper (mentioned above) and to this file.
 - [files](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files)
-  - [income](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/income): files used for the analysis, modified to be easy to read. These code allows the reader to reproduce the analysis. The core GPS dataset on economic preferences is not included due to copyright restrictions but can be easily downloaded using the links on the official webpage we provided.
-  - [outcome](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/outcome): the .csv files that contain the results of our replication of the analysis that we subsequently use for plots. The same files can be obtained by running the analysis pipeline
+  - [input](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/input): files used for the analysis, modified to be easy to read. These code allows the reader to reproduce the analysis. The core GPS dataset on economic preferences is not included due to copyright restrictions but can be easily downloaded using the links on the official webpage we provided.
+  - [output](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/output): the .csv files that contain the results of our replication of the analysis that we subsequently use for plots. The same files can be obtained by running the analysis pipeline
 - [functions](https://github.com/scerioli/Global_Preferences_Survey/tree/master/functions)
   - The replication of pipeline is divided in functions.
   - [helper_functions](https://github.com/scerioli/Global_Preferences_Survey/tree/master/functions/helper_functions): 
