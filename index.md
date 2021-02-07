@@ -307,76 +307,78 @@ The files are:
   <summary> main_data_for_histograms.csv </summary>
 This file contains the data for reproducing the plot in Fig. 1 (A and C), the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences. The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI.
 <ul type="square">
-  <li> _preference_ is a character and can be one of the 6 economic preferences (patience, risk-taking, altruism, negative and positive reciprocity, and trust). </li>
+  <li> preference is a character and can be one of the 6 economic preferences (patience, risk-taking, altruism, negative and positive reciprocity, and trust). </li>
 
-  <li> _GDPquant_ is a numeric, from 1 to 4, where 1 represents the lowest quantile, meaning the poorest countries of the dataset, and 4 represents the highest quantile, that is the richest countries from the dataset </li>
+  <li> GDPquant is a numeric, from 1 to 4, where 1 represents the lowest quantile, meaning the poorest countries of the dataset, and 4 represents the highest quantile, that is the richest countries from the dataset </li>
 
-  <li> _GEIquant_ is a numeric, from 1 to 4, representing the equality of the countries in terms of gender opportunities, where 1 is the lowest quantile (the less gender-equal countries), and 4 is the highest (the more gender-equal) </li>
+  <li> GEIquant is a numeric, from 1 to 4, representing the equality of the countries in terms of gender opportunities, where 1 is the lowest quantile (the less gender-equal countries), and 4 is the highest (the more gender-equal) </li>
 
-  <li> _meanGenderGDP_ is the average of the gender difference coefficient by preference by GDP quantile </li>
+  <li> meanGenderGDP is the average of the gender difference coefficient by preference by GDP quantile </li>
 
-  <li> _meanGenderGEI_ is the average of the gender difference coefficient by preference by Gender Equality Index quantile </li>
+  <li> meanGenderGEI is the average of the gender difference coefficient by preference by Gender Equality Index quantile </li>
+</ul>
 </details>
 
 <details>
   <summary> main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv  </summary>
 Data aggregated by country containing the Average Gender Differences (the first component of the PCA made on the six preferences for the gender coefficient), all the indicators of the economic development and gender equality, plus their Standardization, and the residuals that can be used to build Fig. 2.  The data consists of 27 variables:
+<ul type="square">
 
-  - _country_ is a character
+  <li> country is a character </li>
 
-  - _avgGenderDiff_ is numeric and it is the result of the PCA on the gender coefficients at country level
+  <li> avgGenderDiff is numeric and it is the result of the PCA on the gender coefficients at country level </li>
 
-  - _isocode_ is a character
+  <li> isocode is a character </li>
 
-  - *logAvgGDPpc* is numeric and it is the logarithm of the average GDP of the country in the period from 2003 to 2012, in 2010 US dollars
+  <li> logAvgGDPpc is numeric and it is the logarithm of the average GDP of the country in the period from 2003 to 2012, in 2010 US dollars </li>
   
-  - *Date* is a date and corresponds to the time of women’s suffrage
+  <li> Date is a date and corresponds to the time of women’s suffrage </li>
 
-  - *ScoreWEF* is numeric and corresponds to a score extracted from the WEF Gender Equality Index
+  <li> ScoreWEF is numeric and corresponds to a score extracted from the WEF Gender Equality Index </li>
 
-  - *avgRatioLabor* is numeric and is the average of the labor of females divided by the labor of males in the country (if 1, the working force of the country is equally distributed between females and males)
+  <li> avgRatioLabor is numeric and is the average of the labor of females divided by the labor of males in the country (if 1, the working force of the country is equally distributed between females and males) </li>
 
-  - *ValueUN* is numeric and corresponds to a score extracted from the UN Gender Inequality Index
+  <li> ValueUN is numeric and corresponds to a score extracted from the UN Gender Inequality Index </li>
 
-  - *region* is a character and corresponds to the region of the world in which the country belongs
+  <li> region is a character and corresponds to the region of the world in which the country belongs </li>
 
-  - *telephone* is logic, and it is TRUE if the survey has been performed by telephone in that country
+  <li> telephone is logic, and it is TRUE if the survey has been performed by telephone in that country </li>
 
-  - *personal* is logic, and it is TRUE if the survey has been performed face-to-face in that country
+  <li> personal is logic, and it is TRUE if the survey has been performed face-to-face in that country </li>
 
-  - *avgGenderDiffRescaled* is the same measurement as avgGenderDiff, but rescaled using the min-max method.
+  <li> avgGenderDiffRescaled is the same measurement as avgGenderDiff, but rescaled using the min-max method </li>
 
-  - *GenderIndex* is numeric and it is the result of the PCA on the four measurements of Gender Equality Indexes (*Date*, *ScoreWEF*, *ValueUN*, and *avgRatioLabor*)
+  <li> GenderIndex is numeric and it is the result of the PCA on the four measurements of Gender Equality Indexes (Date, ScoreWEF, ValueUN, and avgRatioLabor) </li>
 
-  - *logAvgGDPpcStd* same, but standardized
+  <li> logAvgGDPpcStd same, but standardized </li>
 
-  - *ScoreWEFStd* same, but standardized
+  <li> ScoreWEFStd same, but standardized </li>
 
-  - *ValueUNStd* same, but standardized
+  <li> ValueUNStd same, but standardized </li>
 
-  - *DateStd* same, but standardized
+  <li> DateStd same, but standardized </li>
 
-  - *avgRatioLaborStd* same, but standardized
+  <li> avgRatioLaborStd same, but standardized </li>
   
-  - *GenderIndexStd* same, but standardized
+  <li> GenderIndexStd same, but standardized </li>
   
-  - *GenderIndexRescaled* same, but rescaled using a min-max method
+  <li> GenderIndexRescaled same, but rescaled using a min-max method </li>
 
-  - *residualslogAvgGDPpcStd* is the variable created using the *logAvgGDPpcStd* residualised using *GenderIndexStd*
+  <li> residualslogAvgGDPpcStd is the variable created using the logAvgGDPpcStd residualised using GenderIndexStd </li>
 
-  - *residualsavgGenderDiffStd_GEI* is the variable created from the *avgGenderDiffStd* residualised using *GenderIndexStd*
+  <li> residualsavgGenderDiffStd_GEI is the variable created from the avgGenderDiffStd residualised using GenderIndexStd </li>
 
-  - *residualsGenderIndexStd* is the variable created from *GenderIndexStd* residualised using *logAvgGDPpcStd*
+  <li> residualsGenderIndexStd is the variable created from GenderIndexStd residualised using logAvgGDPpcStd </li>
 
-  - *residualsavgGenderDiffStd_GDP* is the variable created from the *avgGenderDiffStd* residualised using *logAvgGDPpcStd*
+  <li> residualsavgGenderDiffStd_GDP is the variable created from the avgGenderDiffStd residualised using logAvgGDPpcStd </li>
 
-  - *residualsScoreWEFStd* is the variable created from the *ScoreWEFStd* residualised using *logAvgGDPpcStd* 
+  <li> residualsScoreWEFStd is the variable created from the ScoreWEFStd residualised using logAvgGDPpcStd </li>
 
-  - *residualsValueUNStd* is the variable created from the *ValueUNStd* residualised using *logAvgGDPpcStd*
+  <li> residualsValueUNStd is the variable created from the ValueUNStd residualised using logAvgGDPpcStd </li>
 
-  - *residualsavgRatioLaborStd* is the variable created from the *avgRatioLaborStd* residualised using *logAvgGDPpcStd*
+  <li> residualsavgRatioLaborStd is the variable created from the avgRatioLaborStd residualised using logAvgGDPpcStd </li>
 
-  - *residualsDateStd* is the variable created from the *DateStd* residualised using *logAvgGDPpcStd*
+  <li> residualsDateStd is the variable created from the DateStd residualised using logAvgGDPpcStd </li>
   
 </details>
 
