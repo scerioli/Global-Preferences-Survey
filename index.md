@@ -306,16 +306,16 @@ The files are:
 <details>
   <summary> main_data_for_histograms.csv </summary>
 This file contains the data for reproducing the plot in Fig. 1 (A and C), the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences. The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI.
+<ul type="square">
+  <li> _preference_ is a character and can be one of the 6 economic preferences (patience, risk-taking, altruism, negative and positive reciprocity, and trust). </li>
 
-  * _preference_ is a character and can be one of the 6 economic preferences (patience, risk-taking, altruism, negative and positive reciprocity, and trust).
+  <li> _GDPquant_ is a numeric, from 1 to 4, where 1 represents the lowest quantile, meaning the poorest countries of the dataset, and 4 represents the highest quantile, that is the richest countries from the dataset </li>
 
-  * _GDPquant_ is a numeric, from 1 to 4, where 1 represents the lowest quantile, meaning the poorest countries of the dataset, and 4 represents the highest quantile, that is the richest countries from the dataset.
+  <li> _GEIquant_ is a numeric, from 1 to 4, representing the equality of the countries in terms of gender opportunities, where 1 is the lowest quantile (the less gender-equal countries), and 4 is the highest (the more gender-equal) </li>
 
-  * _GEIquant_ is a numeric, from 1 to 4, representing the equality of the countries in terms of gender opportunities, where 1 is the lowest quantile (the less gender-equal countries), and 4 is the highest (the more gender-equal).
+  <li> _meanGenderGDP_ is the average of the gender difference coefficient by preference by GDP quantile </li>
 
-  * _meanGenderGDP_ is the average of the gender difference coefficient by preference by GDP quantile
-
-  * _meanGenderGEI_ is the average of the gender difference coefficient by preference by Gender Equality Index quantile
+  <li> _meanGenderGEI_ is the average of the gender difference coefficient by preference by Gender Equality Index quantile </li>
 </details>
 
 <details>
