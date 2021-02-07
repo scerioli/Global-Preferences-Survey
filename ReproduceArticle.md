@@ -3,24 +3,23 @@
 
 ## Introduction
 
-This study aims to reproduce the results showed in the article [Relationship of gender differences in preferences to economic development and gender equality](https://science.sciencemag.org/content/362/6412/eaas9899.full) (DOI: 10.1126/science.aas9899) and part of the [supplementary material](https://science.sciencemag.org/content/sci/suppl/2018/10/17/362.6412.eaas9899.DC1/aas9899_Falk_SM.pdf).
+This study reproduces the results of the article [Relationship of gender differences in preferences to economic development and gender equality](https://science.sciencemag.org/content/362/6412/eaas9899.full) (DOI: 10.1126/science.aas9899) and partially its [supplementary material](https://science.sciencemag.org/content/sci/suppl/2018/10/17/362.6412.eaas9899.DC1/aas9899_Falk_SM.pdf).
 
-Moreover, the following two papers have to be cited in all publications that make use of or refer in any kind to the files provided:
+The following two relevant papers have to be also cited in all publications that make use of or refer in any kind to GPS dataset:
 
 - Falk, A., Becker, A., Dohmen, T., Enke, B., Huffman, D., & Sunde, U. (2018). [Global evidence on economic preferences.](https://doi.org/10.1093/qje/qjy013) *Quarterly Journal of Economics*, 133 (4), 1645–1692.
 
 - Falk, A., Becker, A., Dohmen, T. J., Huffman, D., & Sunde, U. (2016). The preference survey module: A validated instrument for measuring risk, time, and social preferences. IZA Discussion Paper No. 9674.
 
-We present here how we prepared the data in terms of collection, cleaning and standardization of the variables (what is usually called “data engineering”), the output files allowing the reader to reproduce the plots we produced in this analysis, and the methods used to analyse the data. For more details, especially on the background study and the meaning of the variables, we refer to the main paper.
-
+Below we describe how we collected, clean and standardized the the data, as well the the whole analysis pipeline. The output files allow the reader to reproduce the figures directly, bypassing the pipeline. For more details, especially on the background study and the meaning of the variables, refer to the main paper.
 
 ## Preparation of the data
 
-### Data Collection, Clean, and Standardization
+### Data Collection, Cleaning, and Standardization
 
 The data used by the authors is not fully available because of two reasons:
 
-1. **Data paywall:** Some part of the data is not available for free. It requires to pay a fee to the Gallup to access them. This is the case for the additional dataset that is used in the article, for instance, the education level and the household income quintile. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information about that. 
+1. **Data paywall:** Some part of the data is not available for free. It requires to pay a fee to the Gallup to access them. This is the case for the additional dataset that is used in the article, for instance, the one that contains the education level and the household income quintile. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information on it. 
 
 2. **Data used in study is not available online:** This is what happened for the LogGDP p/c calculated in 2005 US dollars (which is not directly available online). We decided to calculate the LogGDP p/c in 2010 US dollars because it was easily available, which should not change the main findings of the article. 
 
@@ -31,42 +30,42 @@ The procedure for cleaning is described for each dataset, in the corresponding s
 
 This data is protected by copyright and can't be given to third parties.
 
-To download the GPS dataset, go on the website of the Global Preferences Survey in the section "downloads". There, choose the "Dataset" form and after filling this, they will let download the dataset directly. 
+To download the GPS dataset, go to the website of the Global Preferences Survey in the section "downloads". There, choose the "Dataset" form and after filling it, we can download the dataset. 
 
 *Hint: The organisation can be also "private".*
 
 
 #### GDP per capita
 
-From the [website of the World Bank](https://data.worldbank.org/indicator/), one can access the data about the GDP per capita on a certain set of years. We took the GDP per capita (constant 2010 US$), made an average of the data from 2003 until 2012 for all the available countries and matched them with the GPS dataset.
+From the [website of the World Bank](https://data.worldbank.org/indicator/), one can access the data about the GDP per capita on a certain set of years. We took the GDP per capita (constant 2010 US$), made an average of the data from 2003 until 2012 for all the available countries, and matched the names of the countries with the onces from the GPS dataset.
 
 
 #### Gender Equality Index
 
 The Gender Equality Index is composed of four main datasets.
 
-- **Time since women’s suffrage:** Taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). We cleaned the data in the following way: We kept as a date the first complete date (vote and stand for election, with no other restrictions commented), regardless of whether the country was a colony or not (so, for instance, Kazakhstan is kept to have the first date because nothing changed from the Soviet Union to independence). South Africa was not easy to clean because its history shows the racism part very entangled with women's rights. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USA data doesn't take into account that also up to 1964 black women couldn't vote (in general, Blacks couldn't vote up to that year). We didn’t keep this date, anyway, because it was not explicitly mentioned in the original dataset. We know this is in contrast with other choices made, but we also think that it is important to reproduce the result of the authors, and the USA was often easy to spot on the plots.
+- **Time since women’s suffrage:** Taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). We prepared the data in the following way. For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election right were granted, with no other restrictions commented. Some counties were a colony or within union of the countries (for instance, Kazakhstan in Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within union and as independent state. In this case we kept the first date. It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USA data doesn't take into account that also up to 1964 black women couldn't vote (in general, Blacks couldn't vote up to that year). We didn’t keep this date, because it was not explicitly mentioned in the original dataset. This is in contrast with other choices made, but it is important to reproduce exactly the results of the publication, and the USA is often easy to spot on the plots.
 
 - **UN Gender Inequality Index:** Taken from the [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). We kept only the table called "Gender Inequality Index".
 
-- **WEF Global Gender Gap:** WEF Global Gender Gap Index Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data were missing, data was added from the World Economic Forum Global Gender Gap Report 2006. We modified some of the country names directly on the csv file, that is why we provide this as an income file
+- **WEF Global Gender Gap:** WEF Global Gender Gap Index Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data were missing, data was added from the World Economic Forum Global Gender Gap Report 2006. We modified some of the country names directly on the csv file, that is why we provide this as an input file.
 
-- **Ratio of female and male labour force participation:** Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the years between 2004 and 2013 and calculated the mean.
+- **Ratio of female and male labour force participation:** Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the years the avarage for the period between 2004 and 2013.
 
 
 ### About Missing Data
 
 #### Main issue
 
-During the reproduction of the article, we came across one problem that couldn't be easily solved and that the authors didn't mention clearly how they treated: How to handle missing data in the indicators.
+During the reproduction of the article, we found that the authors didn't write in ditails how they handled missing data in the indicators.
 
 They mention on page 14 of the Supplementary Material, that (quoting): "For countries where data were missing data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)."
 
-There are two problems here:
+However, there are two problems here:
 
-- The first is regarding the year when women received the right to vote in a specific country. The missing values here are the ones coming from the United Arab Emirates and Saudi Arabia, that neither in 2006 (when the WEF Global Gender Gap Report that the authors quote as a reference for the missing values) nor now (in 2021) have guaranteed yet the right to vote for women.
+- regarding the year when women received the right to vote in a specific country. The missing values here are the ones coming from the United Arab Emirates and Saudi Arabia, that neither in 2006 (when the WEF Global Gender Gap Report that the authors quote as a reference for the missing values) nor now (in 2021) have guaranteed yet the right to vote for women.
 
-- The second problem is that there are missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either. 
+- there are missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either. 
 
 These two unclear points, even though in our understanding not crucial for the replication of the analysis, are not desirable. 
 
@@ -76,7 +75,7 @@ What one can do when dealing with missing values is a matter of debate and of ta
 
 ##### Cut the NAs
 
-In a first step of the reproduction analysis, the Principal Component Analysis (PCA) has been performed only on the complete dataset, leading to a cut of 7 countries from the initial dataset for different missing values:
+As a firts step of the reproduction analysis, the Principal Component Analysis (PCA) has been performed only on the complete dataset, leading to a cut of 7 countries from the initial dataset for different missing values:
 
 - For the **time since women’s suffrage**:
 
@@ -98,20 +97,20 @@ In a first step of the reproduction analysis, the Principal Component Analysis (
 
   - Nigeria
 
-This cut our dataset from 76 countries to 69, meaning a 10% less of the initial dataset. As 10% is small enough not to have a strong influence on the result, but it is big enough to be disturbing, we decided to try the way of the imputation of the missing values. 
+This cut our dataset from 76 countries to 69, meaning a 10% less of the initial dataset. As 10% is small enough not to have a strong influence on the result, still to estimate how missing values influes the results, we compared different strateges for inputation of the missing values. 
 
 ##### Imputing NAs: the ````missMDA```` library
 
-With small research on the web, we could find several proposed solutions for the imputation of NAs with the scope of performing a PCA in *R*. One of these was to install the ```missMDA``` package and use the ```imputePCA``` function on the data we needed to fill.
+With a small research on the web, we could find several proposed solutions for the imputation of NAs with the scope of performing a PCA in *R*. One of these was to install the ```missMDA``` package and use the ```imputePCA``` function on the data we needed to fill.
 
-This function works very nicely: One first selects the columns of the data where there are missing values, then passes it to the function, and then runs the PCA on the sublist called completeObs generated from this function. The result is a list of four columns that are exactly the input data but with the missing values that have been filled with imputed values.
+This function works very nicely: one first selects the columns of the data where there are missing values, then passes it to the function, and then runs the PCA on the sublist called completeObs generated from this function. The result is a list of four columns that are exactly the input data but with the missing values that have been filled with imputed values.
 
-There is just one thing to watch out: The data must be numeric. So here another funny thing happens: When treating the year since women’s suffrage as an integer (1981, 1964, …), the imputation for Saudi Arabia and the UAE are weird dates as 1964.412 and 1952.858.
+There is just one thing to watch out: the data must be numeric.
 
 
 ## Research Article
 
-Here a quick explanation of the methods used to perform the analysis on the data, which variables are used, and some further information about the creation of the plots.
+Here a quick explanation of the methods used to perform the analysis on the data and some further information about the creation of the plots.
 
 ### Creation of the Models
 
@@ -119,7 +118,7 @@ Here a quick explanation of the methods used to perform the analysis on the data
 
 Starting from the complete dataset (meaning with removed NA rows), we wanted to reproduce the data plotted in Fig. S2. regarding the gender differences and economic development by preference and by country.
 
-As already mentioned in the previous paragraph, part of the data to reproduce the article is missing and it can be accessed only after payment of a subscription fee to the Gallup World Poll. We decided therefore to continue the analysis without using 2 of the variables used in the model (education level and household income quintile).
+As already mentioned in the previous paragraph, part of the data to reproduce the article is missing and it can be accessed only after payment of a subscription fee to the Gallup World Poll. We decided, therefore, to continue the analysis without using two of the variables used in the model (education level and household income quintile).
 
 We created a linear model for each country using an expression from the article, omitting the 2 missing variables:
 
@@ -141,11 +140,11 @@ We performed a PCA also on the four datasets used for Gender Equality, to extrac
 
 ### Variable Conditioning
 
-For the plots in Fig. 2, a conditional analysis was performed. To do this, we did the following: To plot the variables x and y residualised using the variable z:
+For the plots in Fig. 2, a conditional analysis was performed. To plot the variables x and y residualised using the variable z:
 
 1. We performed a linear regression of x on z, and then a linear regression of y on z.
 
-2. We calculated the residuals of the variable x, meaning that we take the points on the x-axis and calculate the difference between these and the projection of these points on the model created from the linear regression of x on z. The same for y.
+2. We calculated the residuals of the variable x, meaning that we take the points on the x-axis and calculate the difference between these and the projection of these points on the model created from the linear regression of x on z; the same for y.
 
 3. We plot the residuals on the corresponding axis.
 
@@ -173,7 +172,7 @@ This has been done for the economic development, for the Gender Equality Index, 
 
 For the plots in Fig. S5 and S6, we were following the same approach described above in the Main Article section regarding the Variable Conditioning.
 
-Regarding the x-axis, we have already taken the same variables used already in Fig. S2A (for plot S5) and S2B (for plot S6), while for the y-axis we have taken the gender coefficient for each country selecting for the specific preference, made a linear regression on the same z variable used to residualize the x-axis, and then taken the residuals.
+Regarding the x-axis, we took the same variables used already in Fig. S2A (for plot S5) and S2B (for plot S6), while for the y-axis we took the gender coefficient for each country selecting for the specific preference, made a linear regression on the same z variable used to residualize the x-axis, and then the residuals.
 
 
 ### Preferences Standardized at Global Level
@@ -198,7 +197,7 @@ The result of the analysis is written into five csv files (two for the main anal
 
 The files are:
 
-- **main_data_for_histograms.csv** This file contains the data for reproducing the plot in Fig. 1 (A and C) about the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences.The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI.
+- **main_data_for_histograms.csv** This file contains the data for reproducing the plot in Fig. 1 (A and C), the distribution of the gender differences within poorer/less gender-equal (corresponding to 1 in the data) and richer/more gender-equal countries (corresponding to 4) among the six preferences.The data consists of 4 variables: preference, GDPquant, GEIquant, meanGenderGDP, meanGenderGEI.
 
   - *preference* is a character and can be one of the 6 economic preferences (patience, risk-taking, altruism, negative and positive reciprocity, and trust).
 
@@ -210,7 +209,7 @@ The files are:
 
   - *meanGenderGEI* is the average of the gender difference coefficient by preference by Gender Equality Index quantile
 
-- **main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv** Data aggregated by country containing the Average Gender Differences (the first component of the PCA made on the six preferences for the gender coefficient), all the indicators of the economic development and gender equality, plus their Stdalization, and the residuals that can be used to build Fig. 2.The data consists of 27 variables: 
+- **main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv** Data aggregated by country containing the Average Gender Differences (the first component of the PCA made on the six preferences for the gender coefficient), all the indicators of the economic development and gender equality, plus their Standardization, and the residuals that can be used to build Fig. 2. The data consists of 27 variables: 
 
   - *country* is a character
 
@@ -299,15 +298,15 @@ The files are:
   - *preference* is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA
 
 
-## Compare the results
+## Comparison of the replication with the original study
 
-To have a feeling about our analysis' results, we wanted to compare the outcome from our analysis and the main article's one.
+To have a feeling about our analysis' results, we wanted to compare the output from our analysis and the main article's one.
 
 Using an online tool for the data extraction (like [this one here](https://automeris.io/WebPlotDigitizer/) for instance), we extracted the average gender differences from the article's plot, in order to compare it with the gender coefficients extracted from our models. 
 
 ### The method used
 
-To make this comparison, we made use of the Bayesian Estimation Supersedes the t-Test as a method for understanding if the resulting distributions were statistically the same.
+To make this comparison, we used the Bayesian Estimation Supersedes the t-Test as a method for understanding if the resulting distributions were statistically the same.
 
 For a better understanding of the following results, we highly recommend to read [this article](https://rdrr.io/cran/BEST/f/inst/doc/BEST.pdf) or to watch [this video](https://www.youtube.com/watch?v=fhw1j1Ru2i0) to have an idea of the method behind.
 
