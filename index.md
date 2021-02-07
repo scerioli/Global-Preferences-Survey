@@ -173,7 +173,7 @@ This has been done for the economic development, for the Gender Equality Index, 
 **(A)**  Mean country-level gender difference in altruism, trust, positive reciprocity, negative reciprocity, risk-taking, and patience by development level. Countries were sorted into four bins according to their GDP per capita quartile. The symbols + and − in the panel titles indicate the sign of the difference for each preference; + indicates that positive differences
 
 <p>
-    <img src="./blob/master/plots/main_Fig1A.png" />
+    <img src="../blob/master/plots/main_Fig1A.png" />
 </p>
 
 
