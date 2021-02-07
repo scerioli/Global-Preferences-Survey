@@ -1,4 +1,4 @@
-SourceFunctions <- function(path, print = TRUE, recursive = TRUE) {
+SourceFunctions <- function(path, print = TRUE) {
   # This function sources all the functions in (sub)-directories of path
   # 
   # ARGS
@@ -9,14 +9,14 @@ SourceFunctions <- function(path, print = TRUE, recursive = TRUE) {
   # RETURN
   #   it sources all the files into the current environment
   
-  files <- list.files(path, pattern = "[.][Rr]$", recursive = recursive)
+  files <- list.files(path, pattern = "[.][Rr]$", recursive = TRUE)
   
   for (file in files) {
     if (print) {
       cat(file)
     } 
     
-    source(file.path(path, file), local = TRUE)
+    source(file.path(path, file), local = FALSE)
     
     if (print) {
       cat("\n")

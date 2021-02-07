@@ -7,7 +7,7 @@ AddResidualsSinglePreference <- function(dt) {
   for (pref in unique(dt$preference)) {
     # using the Gender Equality Index
     dt_tmpGEI <- Residualise(dt[preference == pref], 
-                             var1 = "GenderIndexStd",
+                             var1 = "GenderIndex",
                              var2 = "gender")
     
     new_nameGEI <- paste0("residualsgenderGEI_", pref)
@@ -28,13 +28,13 @@ AddResidualsSinglePreference <- function(dt) {
   
   # LogGDP residualised using the Gender Equality Index
   dt <- Residualise(dt, 
-                    var1 = "GenderIndexStd",
+                    var1 = "GenderIndex",
                     var2 = "logAvgGDPpc")
   
   # Gender Equality Index residualised using logGDP
   dt <- Residualise(dt, 
                     var1 = "logAvgGDPpc",
-                    var2 = "GenderIndexStd")
+                    var2 = "GenderIndex")
   
   return(dt)
 }
