@@ -388,17 +388,17 @@ Data aggregated by country containing the Average Gender Differences (the first 
 
 Data aggregated by country but separating each of the six preferences gender difference values. 
 <ul type="square">
-  <li> country, isocode, logAvgGDPpc, GenderIndex, GenderIndexStd, ScoreWEFStd, ValueUNStd, DateStd, avgRatioLaborStd are the same variables as described above </li>
+  <li> country, isocode, logAvgGDPpc, GenderIndex are the same variables as described above </li>
 
   <li> gender is the coefficient related to the linear regression on the preference </li>
 
   <li> preference is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA </li>
  
-  <li> residualsgenderGEI_trust, residualsgenderGEI_altruism, residualsgenderGEI_negrecip, residualsgenderGEI_posrecip, residualsgenderGEI_risktaking, residualsgenderGEI_patience are built performing a linear regression of the gender coefficient of the specific variable and the Gender Equality Index, and then calculating the residuals from it </li>
+  <li> residualsgenderGEI_trust, residualsgenderGEI_altruism, residualsgenderGEI_negrecip, residualsgenderGEI_posrecip, residualsgenderGEI_risktaking, residualsgenderGEI_patience are built performing a linear regression of the gender coefficient of the specific preference and the Gender Equality Index, and then calculating the residuals from it </li>
 
-  <li> residualsgenderGDP_trust, residualsgenderGDP_altruism, residualsgenderGDP_negrecip, residualsgenderGDP_posrecip, residualsgenderGDP_risktaking, residualsgenderGDP_patience are built performing a linear regression of the gender coefficient of the specific variable and the log GDP p/c, and then calculating the residuals from it </li>
+  <li> residualsgenderGDP_trust, residualsgenderGDP_altruism, residualsgenderGDP_negrecip, residualsgenderGDP_posrecip, residualsgenderGDP_risktaking, residualsgenderGDP_patience are built performing a linear regression of the gender coefficient of the specific preference and the log GDP p/c, and then calculating the residuals from it </li>
 
-  <li> residualslogAvgGDPpc is the variable created from GenderIndex residualised using logAvgGDPpc, and residualsGenderIndex is the variable created from logAvgGDPpc residualised using GenderIndex </li>
+  <li> residualslogAvgGDPpc_trust is the variable created from GenderIndex residualised using logAvgGDPpc, and residualsGenderIndex_trust is the variable created from logAvgGDPpc residualised using GenderIndex, selecting the dataset on the specific preference "trust". The other ten variables (residualslogAvgGDPpc_altruism, residualslogAvgGDPpc_negrecip, residualslogAvgGDPpc_posrecip, residualslogAvgGDPpc_risktaking, residualslogAvgGDPpc_patience, and residualsGenderIndex_altruism, residualsGenderIndex_negrecip, residualsGenderIndex_posrecip, residualsGenderIndex_risktaking, residualsGenderIndex_patience) are created in the same way for each of the correspoding preference. </li>
 
 </ul>
 </details>
