@@ -93,9 +93,7 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
 
 colsToKeep_coeff <- c("gender", "preference", "country", "isocode", "logAvgGDPpc")
 
-colsToKeep_summary <- c("GenderIndex", "GenderIndexStd", "ScoreWEFStd", 
-                        "ValueUNStd", "DateStd", "avgRatioLaborStd", 
-                        "residualslogAvgGDPpc", "residualsavgGenderDiff_GEI", 
+colsToKeep_summary <- c("GenderIndex",
                         "country")
 dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
                            summaryIndex[, ..colsToKeep_summary],
