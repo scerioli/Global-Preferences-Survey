@@ -1,7 +1,3 @@
-<head>
-  <meta name="google-site-verification" content="ixHZLVLvL6rye6qJ8NAbP4rCl67uNzVBYkjTuPE__wY" />
-</head>
-
 # Reproduce the results of the article 
 # **Relationship of gender differences in preferences to economic development and gender equality**
 
