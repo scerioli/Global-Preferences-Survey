@@ -177,8 +177,8 @@ PlotSummary(data = dataCoeff_summary,
             var3 = "preference",
             labs = c("Log GDP p/c",
                      "Gender Differences (in standard deviations)"),
-            display = TRUE,
-           # save = "plots/supplementary_FigS2.png"
+           # display = TRUE,
+            save = "plots/supplementary_FigS2.png"
             )
 
 # -------------------------------- Fig. S3 ----------------------------------- #
@@ -188,8 +188,8 @@ PlotSummary(data = dataCoeff_summary,
             var3 = "preference",
             labs = c("Gender Equality Index",
                      "Gender Differences (in standard deviations)"),
-            display = TRUE,
-           # save = "plots/supplementary_FigS3.png"
+          #  display = TRUE,
+            save = "plots/supplementary_FigS3.png"
             )
 
 ## ------------------------------- Fig. S4 ----------------------------------- #
@@ -235,27 +235,27 @@ PlotSummary(data = summaryIndex,
 
 ## ------------------------------- Fig. S5 ----------------------------------- #
 PlotSummary(data = dataCoeff_summary[preference == "trust"],
-            var1 = "residualslogAvgGDPpc",
+            var1 = "residualslogAvgGDPpc_trust",
             var2 = "residualsgenderGEI_trust",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)",
                      "Trust (+)"),
-            display = TRUE,
-          #  save = "plots/supplementary_FigS5A.png"
+          #  display = TRUE,
+            save = "plots/supplementary_FigS5A.png"
             )
 
 PlotSummary(data = dataCoeff_summary[preference == "altruism"],
-            var1 = "residualslogAvgGDPpc",
+            var1 = "residualslogAvgGDPpc_altruism",
             var2 = "residualsgenderGEI_altruism",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)",
                      "Altruism (+)"),
-           # display = TRUE,
+          #  display = TRUE,
             save = "plots/supplementary_FigS5B.png"
             )
 
 PlotSummary(data = dataCoeff_summary[preference == "posrecip"],
-            var1 = "residualslogAvgGDPpc",
+            var1 = "residualslogAvgGDPpc_posrecip",
             var2 = "residualsgenderGEI_posrecip",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)",
@@ -265,7 +265,7 @@ PlotSummary(data = dataCoeff_summary[preference == "posrecip"],
             )
 
 PlotSummary(data = dataCoeff_summary[preference == "negrecip"],
-            var1 = "residualslogAvgGDPpc",
+            var1 = "residualslogAvgGDPpc_negrecip",
             var2 = "residualsgenderGEI_negrecip",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)",
@@ -275,7 +275,7 @@ PlotSummary(data = dataCoeff_summary[preference == "negrecip"],
             )
 
 PlotSummary(data = dataCoeff_summary[preference == "risktaking"],
-            var1 = "residualslogAvgGDPpc",
+            var1 = "residualslogAvgGDPpc_risktaking",
             var2 = "residualsgenderGEI_risktaking",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)",
@@ -285,7 +285,7 @@ PlotSummary(data = dataCoeff_summary[preference == "risktaking"],
             )
 
 PlotSummary(data = dataCoeff_summary[preference == "patience"],
-            var1 = "residualslogAvgGDPpc",
+            var1 = "residualslogAvgGDPpc_patience",
             var2 = "residualsgenderGEI_patience",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)",
@@ -296,7 +296,7 @@ PlotSummary(data = dataCoeff_summary[preference == "patience"],
 
 ## ------------------------------- Fig. S6 ----------------------------------- #
 PlotSummary(data = dataCoeff_summary[preference == "trust"],
-            var1 = "residualsGenderIndex",
+            var1 = "residualsGenderIndex_trust",
             var2 = "residualsgenderGDP_trust",
             labs = c("Gender Equality (Index) (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
@@ -306,54 +306,54 @@ PlotSummary(data = dataCoeff_summary[preference == "trust"],
             )
 
 PlotSummary(data = dataCoeff_summary[preference == "altruism"],
-            var1 = "residualsGenderIndex",
-            var2 = "residualsgenderGDP_trust",
+            var1 = "residualsGenderIndex_altruism",
+            var2 = "residualsgenderGDP_altruism",
             labs = c("Gender Equality (Index) (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Altruism (+)"),
           #  display = TRUE,
             save = "plots/supplementary_FigS6B.png"
-)
+            )
 
 PlotSummary(data = dataCoeff_summary[preference == "posrecip"],
-            var1 = "residualsGenderIndex",
-            var2 = "residualsgenderGDP_trust",
+            var1 = "residualsGenderIndex_posrecip",
+            var2 = "residualsgenderGDP_posrecip",
             labs = c("Gender Equality (Index) (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Positive Reciprocity (+)"),
           #  display = TRUE,
             save = "plots/supplementary_FigS6C.png"
-)
+            )
 
 PlotSummary(data = dataCoeff_summary[preference == "negrecip"],
-            var1 = "residualsGenderIndex",
-            var2 = "residualsgenderGDP_trust",
+            var1 = "residualsGenderIndex_negrecip",
+            var2 = "residualsgenderGDP_negrecip",
             labs = c("Gender Equality (Index) (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Negative Reciprocity (-)"),
           #  display = TRUE,
             save = "plots/supplementary_FigS6D.png"
-)
+            )
 
 PlotSummary(data = dataCoeff_summary[preference == "risktaking"],
-            var1 = "residualsGenderIndex",
-            var2 = "residualsgenderGDP_trust",
+            var1 = "residualsGenderIndex_risktaking",
+            var2 = "residualsgenderGDP_risktaking",
             labs = c("Gender Equality (Index) (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Risk taking (-)"),
           #  display = TRUE,
             save = "plots/supplementary_FigS6E.png"
-)
+            )
 
 PlotSummary(data = dataCoeff_summary[preference == "patience"],
-            var1 = "residualsGenderIndex",
-            var2 = "residualsgenderGDP_trust",
+            var1 = "residualsGenderIndex_patience",
+            var2 = "residualsgenderGDP_patience",
             labs = c("Gender Equality (Index) (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Patience (-)"),
           #  display = TRUE,
             save = "plots/supplementary_FigS6F.png"
-)
+            )
 
 # ------------------------------- Fig. S8 ------------------------------------ #
 PlotSummary(data = dataCoeffGlobal,
@@ -375,7 +375,7 @@ PlotSummary(data = dataCoeffAlternative,
             labs = c("Log GDP p/c",
                      "Gender Differences (in Standard Deviations)",
                      "Alternative Model without Control Variables"),
-            display = TRUE,
-          #  save = "plots/supplementary_FigS9.png"
+          #  display = TRUE,
+            save = "plots/supplementary_FigS9.png"
             )
 
