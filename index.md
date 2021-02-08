@@ -267,8 +267,6 @@ Each panel shows the relationship between the index of gender differences in pre
 #### Fig. S5. Gender differences and economic development conditional on gender equality by preference and country. 
 Each panel shows the relationship between country-level gender differences in a particular preference and economic development measured by log GDP p/c, including a linear fit. Gender differences in preferences and log GDP p/c were residualized with respect to the Gender Equality Index. For each preference, the symbols (+)/(-) in the panel titles indicate the general direction of the difference. (+) indicates that women generally exhibited higher levels of the respective preference. (-) indicates that men generally exhibited higher levels of the respective preference. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample.
 
-**WARNING:** These plots are very different from the article's ones. We have written the authors of the article and are waiting for comparison of the methods to obtain them.
-
 ![supplementary_FigS5A.png](plots/supplementary_FigS5A.png) ![supplementary_FigS5B.png](plots/supplementary_FigS5B.png)
 
 ![supplementary_FigS5C.png](plots/supplementary_FigS5C.png) ![supplementary_FigS5D.png](plots/supplementary_FigS5D.png)
@@ -278,8 +276,6 @@ Each panel shows the relationship between country-level gender differences in a 
 #### Fig. S6. Gender differences and gender equality conditional on economic development by preference and country. 
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the Gender Equality Index, including a linear fit. Gender differences in preferences and the Gender Equality Index were residualized with respect to log GDP p/c. For each preference, the symbols (+)/(-) in the panel titles indicate the general direction of the difference. (+) indicates that women generally exhibited higher levels of the respective preference. (-) indicates that men generally exhibited higher levels of the respective preference. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample.
-
-**WARNING:** These plots are very different from the article's ones. We have written the authors of the article and are waiting for comparison of the methods to obtain them.
 
 ![supplementary_FigS6A.png](plots/supplementary_FigS6A.png) ![supplementary_FigS6B.png](plots/supplementary_FigS6B.png)
 
