@@ -3,13 +3,14 @@ AddResidualsSinglePreference <- function(dt) {
   # regression performed on various variables of interest.
   # It returns the summary of the data including these residuals.
   
+  dt_tmp <- c()
+  
   # Single preference average gender difference residualised 
   for (pref in unique(dt$preference)) {
     # using the Gender Equality Index
     dt_tmpGEI <- Residualise(dt[preference == pref], 
                              var1 = "GenderIndex",
                              var2 = "gender")
-    
     new_nameGEI <- paste0("residualsgenderGEI_", pref)
     dt_tmpGEI[, ((new_nameGEI)) := residualsgender]
     dt_tmpGEI <- rev(dt_tmpGEI)[, 1]
@@ -23,18 +24,31 @@ AddResidualsSinglePreference <- function(dt) {
     dt_tmpGDP[, ((new_nameGDP)) := residualsgender]
     dt_tmpGDP <- rev(dt_tmpGDP)[, 1]
     
-    dt <- cbind(dt, dt_tmpGEI, dt_tmpGDP)
+    # LogGDP residualised using the Gender Equality Index
+    dt_logGDP_GEI <- Residualise(dt[preference == pref], 
+                                 var1 = "GenderIndex",
+                                 var2 = "logAvgGDPpc")
+    new_nameGEI <- paste0("residualslogAvgGDPpc_", pref)
+    dt_logGDP_GEI[, ((new_nameGEI)) := residualslogAvgGDPpc]
+    dt_logGDP_GEI <- rev(dt_logGDP_GEI)[, 1]
+    
+    # Gender Equality Index residualised using logGDP
+    dt_GEI_logGDP <- Residualise(dt[preference == pref], 
+                                 var1 = "logAvgGDPpc",
+                                 var2 = "GenderIndex")
+    new_nameGDP <- paste0("residualsGenderIndex_", pref)
+    dt_GEI_logGDP[, ((new_nameGDP)) := residualsGenderIndex]
+    dt_GEI_logGDP <- rev(dt_GEI_logGDP)[, 1]
+    
+    dt_tmp <- cbind(dt_tmp, dt_tmpGEI, dt_tmpGDP, dt_logGDP_GEI, dt_GEI_logGDP)
+    
+    rm(dt_logGDP_GEI)
+    rm(dt_GEI_logGDP)
   }
   
-  # LogGDP residualised using the Gender Equality Index
-  dt <- Residualise(dt, 
-                    var1 = "GenderIndex",
-                    var2 = "logAvgGDPpc")
+  dt_tmp$country <- unique(dt$country)
   
-  # Gender Equality Index residualised using logGDP
-  dt <- Residualise(dt, 
-                    var1 = "logAvgGDPpc",
-                    var2 = "GenderIndex")
+  dt <- merge(dt, dt_tmp, by = "country")
   
   return(dt)
 }
