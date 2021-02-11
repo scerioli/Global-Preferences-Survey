@@ -5,7 +5,7 @@
 # =============================== #
 
 # Set the path
-setwd("/Users/sara/Desktop/Projects/Global_Preferences_Survey/")
+setwd("~/Desktop/Projects/Global-Preferences-Survey/")
 
 # Source helper functions
 source("functions/helper_functions/SourceFunctions.r")
