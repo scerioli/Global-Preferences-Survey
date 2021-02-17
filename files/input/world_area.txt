@@ -18,7 +18,7 @@ France, Europe, T, F
 Georgia, Ex Soviet, F, T
 Germany, Europe, T, F
 Greece, Europe, F, T
-Hungary, Europe, F, T
+Hungary, Ex Soviet, F, T
 Italy, Europe, T, F
 Kazakhstan, Ex Soviet, F, T
 Lithuania, Ex Soviet, F, T
@@ -32,7 +32,7 @@ Serbia, Ex Soviet, F, T
 Spain, Europe, T, F
 Sweden, Europe, T, F
 Switzerland, Europe, T, F
-Turkey, Europe, F, T
+Turkey, Middle East and North Africa, F, T
 Ukraine, Ex Soviet, F, T
 United Kingdom, Europe, T, F
 Argentina, Latin America and Caribbean, F, T
