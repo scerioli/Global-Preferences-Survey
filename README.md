@@ -18,10 +18,11 @@ The repository consists of several different sub-directories:
 - [functions](https://github.com/scerioli/Global_Preferences_Survey/tree/master/functions)
   - The replication of pipeline is divided in functions.
   - [helper_functions](https://github.com/scerioli/Global_Preferences_Survey/tree/master/functions/helper_functions): 
- parts of the code were agregated into functions, that we called "helper_functions". They are sourced in the main code with *SourceFunctions.r*.
+  parts of the code were aggregated into functions, that we called "helper_functions". They are sourced in the main code with *SourceFunctions.r*.
 - [plots](https://github.com/scerioli/Global_Preferences_Survey/tree/master/plots): The relevant plots are saved here. The files which start with "main" are figures from the main part of the article, while the "supplementary" are from the supplementary online material. Two extra plots for the comparison between our analysis and the article's results are in this folder as well.
 - [GenderPreferencesAnalysis.r](https://github.com/scerioli/Global_Preferences_Survey/blob/master/GenderPreferencesAnalysis.r) is the main code of this analysis. It produces the *output* files (see above).
 - [CreatePlotsArticle.r](https://github.com/scerioli/Global_Preferences_Survey/blob/master/CreatePlotsArticle.r) uses the output files to create figures from the main text and supplementary).
+- [PublicPosts](https://github.com/scerioli/Global-Preferences-Survey/tree/master/PublicPosts) contains some short analysis to be published as posts.
 
 ## Additional Information
 
