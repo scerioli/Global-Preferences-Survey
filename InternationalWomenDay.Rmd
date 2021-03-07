@@ -1,13 +1,7 @@
----
-title: "International Women's Day"
-author: "Sara Cerioli & Andrey Formozov"
-date: "3/7/2021"
-output: html_document
----
+# International Women's Day
+#### author: Sara Cerioli & Andrey Formozov
+#### date: 7/3/2021
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
-```
 
 ## Do girls dislike math or do they just feel more insecure about it?
 
