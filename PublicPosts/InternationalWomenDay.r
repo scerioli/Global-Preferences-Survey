@@ -145,11 +145,13 @@ extra <- extra[!is.na(avgFemalePerc)]
 # Difference between mean of subjective math skills between men and women by
 # country, ordered by difference
 meanDiff <- ggplot(dataMean, aes(x = reorder(country, diffMean), y = diffMean)) +
-  geom_point() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5)) +
-  ylab("Difference of the mean") + xlab("Country") +
+  geom_point(size = 3) +
+  geom_hline(yintercept = 0, col = "red") +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 12),
+        axis.text.y = element_text(size = 12)) +
+  ylab("") + xlab("") +
   labs(title = "Difference of the mean of subjective math skills between men and women by country")
-ggsave(filename = "New_Analysis/plots/difference_mean_subjMathSkills.png")
+ggsave(filename = "PublicPosts/plots/difference_mean_subjMathSkills.png")
 
 modelGDP <- lm(diffMean ~ logGDP, data = extra)
 
@@ -273,7 +275,7 @@ italy <-
 
 together <- ggpubr::ggarrange(italy, germany, common.legend = TRUE, align = "v")
 
-ggsave(filename = "New_Analysis/plots/together_histograms.png", together)
+ggsave(filename = "PublicPosts/plots/together_histograms.png", together)
 
 # Plot the heat map of the gender differences distributions ordered by difference
 heatmap_diff <- ggplot(differenceSMS) +
@@ -281,6 +283,7 @@ heatmap_diff <- ggplot(differenceSMS) +
   scale_fill_gradient2(low = "blue", high = "red") +
   labs(fill = "Difference") +
   xlab("Country") + ylab("Subjective Math Skills") +
-  theme_bw() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5))
-ggsave(filename = "New_Analysis/plots/heatmap_countries.png", heatmap_diff)
+  theme_bw(base_size = 15) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 15),
+        axis.text.y = element_text(size = 15))
+ggsave(filename = "PublicPosts/plots/heatmap_countries.png", heatmap_diff)
