@@ -16,6 +16,7 @@ SourceFunctions(path = "New_Analysis/functions")
 # Load libraries
 LoadRequiredLibraries()
 library(MASS)
+library(lmtest)
 require(GGally)
 require(reshape2)
 require(lme4)
@@ -28,6 +29,8 @@ melt <- reshape2::melt
 
 # Load the data
 data_all <- LoadData()
+genderIndicators <- fread("tmp/GenderBias.csv")
+OECDlist <- fread("tmp/OECD_countries.csv")
 
 
 # ========================= #
@@ -38,6 +41,10 @@ data_all <- PrepareData(data_all)
 
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
+dataComplete[genderIndicators, `:=` (explicit = i.Explicit,
+                                     implicit = i.Implicit), on = "country"]
+dataComplete[OECDlist, OECDmember := TRUE, on = "country"]
+dataComplete[is.na(OECDmember), OECDmember := FALSE]
 
 # Shift the values to have a scale of 0-10
 dataComplete[, trustRaw := round(((trust - min(trust)) / 
@@ -57,30 +64,79 @@ dataComplete[, `:=` (trustRaw = as.factor(trustRaw),
                      gender = as.factor(gender),
                      age = as.numeric(age))]
 
+# Add the age as category
+dataComplete[age <= 32, ageCateg := 1]
+dataComplete[age > 32 & age <= 53, ageCateg := 2]
+dataComplete[age > 53, ageCateg := 3]
+
+dataComplete[, ageCateg := as.factor(ageCateg)]
+
+
+
 # ======================= #
 #### 2. MODEL ANALYSIS ####
 # ======================= #
 
 # What does influences the results on trust?
-# 
-# Only gender
-model_g <- dlply(dataComplete, "country", function(dt)
-  polr(trustRaw ~ gender, 
+# TODO: 
+# - Table to summarise the odds
+# - Compare predicted and observed odds
+
+# Intercept only
+model <- dlply(dataComplete, "country", function(dt)
+  polr(trustRaw ~ 1, 
        data = dt, Hess = TRUE))
+# Only gender
+# model_g <- dlply(dataComplete, "country", function(dt)
+#   polr(trustRaw ~ gender, 
+#        data = dt, Hess = TRUE))
 # Gender and subjective math skills
 model_gSMS <- dlply(dataComplete, "country", function(dt)
   polr(trustRaw ~ gender + subj_math_skills, 
        data = dt, Hess = TRUE))
 # Gender, subjective math skills and age
-model_gSMSa <- dlply(dataComplete, "country", function(dt)
-  polr(trustRaw ~ gender + subj_math_skills + age, 
+# model_gSMSa <- dlply(dataComplete, "country", function(dt)
+#   polr(trustRaw ~ gender + subj_math_skills + age, 
+#        data = dt, Hess = TRUE))
+# Gender, subjective math skills and age as category
+model_gSMSaCat <- dlply(dataComplete, "country", function(dt)
+  polr(trustRaw ~ gender + subj_math_skills + ageCateg, 
        data = dt, Hess = TRUE))
+# Gender and age
+# model_ga <- dlply(dataComplete, "country", function(dt)
+#   polr(trustRaw ~ gender + age, 
+#        data = dt, Hess = TRUE))
 
 # Linear model (trustRaw must be converted to numeric otherwise it gives problems)
-linear_model <- dlply(dataComplete[, trustRaw := as.numeric(trustRaw)], "country", 
-                      function(dt)
-                        lm(trustRaw ~ gender + subj_math_skills + age, 
-                           data = dt))
+# linear_model <- dlply(dataComplete[, trustRaw := as.numeric(trustRaw)], "country", 
+#                       function(dt)
+#                         lm(trustRaw ~ gender + subj_math_skills + age + I(age^2), 
+#                            data = dt))
+
+# Comparing the models
+AIC_models <- Map(function(intercepts, genderSMS, genderSMSageCateg)
+  AIC(intercepts, genderSMS, genderSMSageCateg), 
+  model, model_gSMS, model_gSMSaCat)
+
+# Linear model can't be compared
+LRtest <- Map(function(intercepts, genderSMS, genderSMSageCateg)
+  lrtest(intercepts, genderSMS, genderSMSageCateg), 
+  model, model_gSMS, model_gSMSaCat)
+
+i <- 1
+for (lr in LRtest) {
+  dt_lr <- data.table(country = names(LRtest)[i],
+                      model = c("Intercepts", 
+                                "Gender + SMS",
+                                "Gender + SMS + AgeCat"))
+  lr <- as.data.table(LRtest[[i]])
+  new <- cbind(dt_lr, lr)
+  fwrite(new, file = "LRtest.csv", append = T)
+  i <- i + 1
+}
+
+plotLR <- fread("LRtest.csv")
+
 
 # Extract confident intervals from models
 confint_g <- lapply(model_g, function(x) confint(x))
@@ -147,12 +203,6 @@ length(containsZero_linear[containsZero_linear != TRUE])
 # even less than the age (25 non-zero vs. 35 non-zero).
 
 
-# Comparing the model shows that using the gender + SMS is better, sometimes
-# also age is improving the information
-AIC_models <- Map(function(gender, genderSMS, genderSMSage, linear)
-  AIC(gender, genderSMS, genderSMSage, linear), 
-  model_g, model_gSMS, model_gSMSa, linear_model)
-
 
 # What about plotting the gender coefficient for the new model as they did, 
 # and see the difference to what they have with the linear model?
@@ -184,8 +234,14 @@ for (i in 1:length(model_gSMSa)) {
 }
 
 dataToPlot <- dt_coefficients[dataComplete, `:=` (logAvgGDPpc = i.logAvgGDPpc,
-                                                  isocode = i.isocode), 
+                                                  isocode = i.isocode,
+                                                  implicit = i.implicit,
+                                                  explicit = i.explicit), 
                               on = "country"]
+dataToPlot[data_all$world_area, `:=` (area =i.region,
+                                      personal = i.personal,
+                                      telephone = i.telephone),
+           on = "country"]
 
 ggplot(dataToPlot, aes(x = logAvgGDPpc, y = genderCoeff)) +
   geom_point(aes(x = logAvgGDPpc, y = genderCoeff)) +
@@ -198,8 +254,9 @@ ggplot(dataToPlot) +
   geom_point(aes(x = logAvgGDPpc, y = SMSCoeff)) +
   facet_wrap(~ modelType)
 
-PlotSummary(data = dataToPlot, var1 = "logAvgGDPpc", var2 = "genderCoeff",
-            var3 = "modelType",
+PlotSummary(data = dataToPlot[!is.na(implicit)], var1 = "logAvgGDPpc", var2 = "genderCoeff",
+            fill = "personal",
+           # var3 = "modelType",
             regression = TRUE, display = T)
 
 # What about the average age within the dataset?
@@ -251,6 +308,18 @@ tab <- cbind(Est = fixef(glme_gSMSa), LL = fixef(glme_gSMSa) - 1.96 * se,
 #### 3. MODEL INTERPRETATION ####
 # ============================= #
 
+# Barplot of the probability
+prova <- dataComplete[, .(trustRaw, gender, country)]
+totalSample <- prova[, .N, by = .(gender, country)]
+singleNumb <- prova[, .N, by = .(gender, trustRaw, country)]
+singleNumb[totalSample, on = .(gender, country), fracN := N / i.N]
+
+ggplot(singleNumb[country == "Germany"]) +
+  geom_bar(aes(x = gender, y = fracN, fill = trustRaw), stat = "identity") +
+  labs(title = singleNumb[country == "Germany", unique(country)])
+
+
+
 # Interpreting the model & visualize the changes
 newdat <- data.table(gender = factor(rep(0:1, 110)),
                      subj_math_skills = rep(0:10, each = 100))
@@ -289,6 +358,4 @@ ggplot(lnewdat[country %in% c("Russia")],
 prova <-randomSample
 setkey(prova, gender, country)
 prova[, diff := Probability - shift(Probability, fill = max(Probability)), by = gender]
-
-
 
