@@ -134,7 +134,12 @@ dataMean[dataComplete, isocode := i.isocode, on = "country"]
 
 
 extra <- dataMean[dataUIS, avgFemalePerc := i.avgFemalePerc, on = "country"]
-extra <- extra[data_all$UNindex, score := i.Value, on = "country"]
+extra[data_all$UNindex, score := i.Value, on = "country"]
+extra[data_all$timeWomenSuff, date := i.Date, on = "country"]
+extra[data_all$WEF, rank := i.Score, on = "country"]
+extra[data_all$ratioLabor, ratioLabor := i.avgRatioLabor, on = "country"]
+extra$genderIndex <- GenderIndexPCA(extra[, c(8:12)])
+
 extra <- extra[!is.na(avgFemalePerc)]
 
 
@@ -147,19 +152,20 @@ extra <- extra[!is.na(avgFemalePerc)]
 meanDiff <- ggplot(dataMean, aes(x = reorder(country, diffMean), y = diffMean)) +
   geom_point(size = 3) +
   geom_hline(yintercept = 0, col = "red") +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 12),
-        axis.text.y = element_text(size = 12)) +
-  ylab("") + xlab("") +
+  theme_bw(base_size = 15) +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 15),
+        axis.text.y = element_text(size = 15)) +
+  ylab("Mean difference of subjective math skills") + xlab("")# +
   labs(title = "Difference of the mean of subjective math skills between men and women by country")
-ggsave(filename = "PublicPosts/plots/difference_mean_subjMathSkills.png")
+ggsave(filename = "PublicPosts/plots/difference_mean_subjMathSkills.jpg")
 
+# Difference between mean of subjective math skills between men and women by
+# country, ordered by log GDP
 modelGDP <- lm(diffMean ~ logGDP, data = extra)
 
 labels <- data.table(correlation = paste0("Correlation = ", round(cor(extra$logGDP, extra$diffMean), 4)),
                      pvalue = paste0("P-value = ", round(summary(modelGDP)$coefficients[, "Pr(>|t|)"][2], 4)))
 
-# Difference between mean of subjective math skills between men and women by
-# country, ordered by log GDP
 ggplot(extra, aes(x = logGDP, y = diffMean)) +
   geom_point(shape = 21, size = 3, fill = "white") +
   geom_text(aes(label = isocode), color = "gray20", size = 3,
@@ -172,33 +178,32 @@ ggplot(extra, aes(x = logGDP, y = diffMean)) +
   ylab("Difference of the mean") + xlab("Country") +
   labs(title = "Difference of the mean of subjective math skills between men and women by country")
 
-modelGEI <- lm(diffMean ~ score, data = extra)
+# Difference between mean of subjective math skills between men and women by
+# country, ordered by GEI
+modelGEI <- lm(diffMean ~ genderIndex, data = extra)
 
-labels <- data.table(correlation = paste0("Correlation = ", round(cor(extra$score, extra$diffMean), 4)),
+labels <- data.table(correlation = paste0("Correlation = ", round(cor(extra$genderIndex, extra$diffMean), 4)),
                      pvalue = paste0("P-value = ", round(summary(modelGEI)$coefficients[, "Pr(>|t|)"][2], 4)))
 
-# Difference between mean of subjective math skills between men and women by
-# country, ordered by log GDP
-ggplot(extra, aes(x = score, y = diffMean)) +
+ggplot(extra, aes(x = genderIndex, y = diffMean)) +
   geom_point(shape = 21, size = 3, fill = "white") +
   geom_text(aes(label = isocode), color = "gray20", size = 3,
             check_overlap = F, hjust = -0.5) +
-  geom_smooth(aes(x = score, y = diffMean), method = "lm", se = T, col = "red") +
-  geom_text(x = min(extra$score) + 0.5, y = max(extra$diffMean) - 0.01,
+  geom_smooth(aes(x = genderIndex, y = diffMean), method = "lm", se = T, col = "red") +
+  geom_text(x = min(extra$genderIndex) + 0.5, y = max(extra$diffMean) - 0.01,
             data = labels, aes(label = correlation), hjust = 0) +
-  geom_text(x = min(extra$score) + 0.5, y = max(extra$diffMean) - 0.1,
+  geom_text(x = min(extra$genderIndex) + 0.5, y = max(extra$diffMean) - 0.1,
             data = labels, aes(label = pvalue), hjust = 0) +
   ylab("Difference of the mean") + xlab("Country") +
   labs(title = "Difference of the mean of subjective math skills between men and women by country")
 
-
+# Difference between mean of subjective math skills between men and women by
+# country, ordered by log fraction of women in STEM
 modelFratio <- lm(diffMean ~ avgFemalePerc, data = extra)
 
 labels <- data.table(correlation = paste0("Correlation = ", round(cor(extra$avgFemalePerc, extra$diffMean), 4)),
                      pvalue = paste0("P-value = ", round(summary(modelFratio)$coefficients[, "Pr(>|t|)"][2], 4)))
 
-# Difference between mean of subjective math skills between men and women by
-# country, ordered by log GDP
 ggplot(extra, aes(x = avgFemalePerc, y = diffMean)) +
   geom_point(shape = 21, size = 3, fill = "white") +
   geom_text(aes(label = isocode), color = "gray20", size = 3,
@@ -258,7 +263,7 @@ germany <-
              col = "darkgoldenrod1", size = 1.5, show.legend = T) +
   xlab("Subjective Math Skills") + ylab("") +
   labs(title = "Germany") + ylim(c(0, 0.13)) +
-  theme_bw() 
+  theme_bw(base_size = 15)
 
 italy <- 
   ggplot(dataComplete[country == "Italy"]) +
@@ -271,7 +276,7 @@ italy <-
              col = "darkgoldenrod1", size = 1.5, show.legend = T) +
   xlab("Subjective Math Skills") + ylab("Percentage over the whole country") +
   labs(title = "Italy") + ylim(c(0, 0.13)) +
-  theme_bw()
+  theme_bw(base_size = 15)
 
 together <- ggpubr::ggarrange(italy, germany, common.legend = TRUE, align = "v")
 
@@ -280,7 +285,8 @@ ggsave(filename = "PublicPosts/plots/together_histograms.png", together)
 # Plot the heat map of the gender differences distributions ordered by difference
 heatmap_diff <- ggplot(differenceSMS) +
   geom_tile(aes(x = reorder(country, diffSMS), y = Y, fill = diff)) +
-  scale_fill_gradient2(low = "blue", high = "red") +
+  scale_fill_gradient2(low = "blue", high = "red", 
+                       limits = c(-0.065, 0.065)) +
   labs(fill = "Difference") +
   xlab("Country") + ylab("Subjective Math Skills") +
   theme_bw(base_size = 15) +
