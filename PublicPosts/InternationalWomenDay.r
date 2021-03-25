@@ -157,7 +157,7 @@ meanDiff <- ggplot(dataMean, aes(x = reorder(country, diffMean), y = diffMean)) 
         axis.text.y = element_text(size = 15)) +
   ylab("Mean difference of subjective math skills") + xlab("")# +
   labs(title = "Difference of the mean of subjective math skills between men and women by country")
-ggsave(filename = "PublicPosts/plots/difference_mean_subjMathSkills.jpg")
+ggsave(filename = "PublicPosts/plots/difference_mean_subjMathSkills.png")
 
 # Difference between mean of subjective math skills between men and women by
 # country, ordered by log GDP
