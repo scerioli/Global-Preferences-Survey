@@ -20,7 +20,7 @@ LoadRequiredLibraries()
 
 # Load the data
 data_all <- LoadData()
-dataUIS <- fread("tmp/UISdataset.csv")
+dataUIS  <- fread("tmp/UISdataset.csv")
 
 
 # ========================= #
@@ -67,16 +67,12 @@ dataComplete[, fracN := .N / unique(totalGender) / 2,
              by = .(gender, subj_math_skills, country)]
 dataComplete[, meanSMS := mean(subj_math_skills), by = .(country, gender)]
 dataComplete[, meanPopulation := mean(subj_math_skills), by = "country"]
-dataComplete[, modeSMS := getmode(subj_math_skills), by = .(country, gender)]
 
-dataMeanMale   <- dataComplete[gender == 0, .(meanSMS = unique(meanSMS),
-                                              modeSMS = as.numeric(unique(modeSMS))), by = "country"]
-dataMeanFemale <- dataComplete[gender == 1, .(meanSMS = unique(meanSMS),
-                                              modeSMS = as.numeric(unique(modeSMS))), by = "country"]
+dataMeanMale   <- dataComplete[gender == 0, .(meanSMS = unique(meanSMS)), by = "country"]
+dataMeanFemale <- dataComplete[gender == 1, .(meanSMS = unique(meanSMS)), by = "country"]
 
 # Select only differences
-dataMean <- dataMeanMale[dataMeanFemale, `:=` (diffMean = meanSMS - i.meanSMS,
-                                               diffMode = modeSMS - i.modeSMS), 
+dataMean <- dataMeanMale[dataMeanFemale, `:=` (diffMean = meanSMS - i.meanSMS), 
                          on = "country"]
 dataMean[dataComplete, meanPopulation := i.meanPopulation, on = "country"]
 dataMean[dataComplete, area := i.area, on = "country"]
@@ -135,7 +131,7 @@ differenceSMS[dataMean, diffSMS := i.diffMean, on = "country"]
 dataMean[dataComplete, logGDP := i.logAvgGDPpc, on = "country"]
 dataMean[dataComplete, isocode := i.isocode, on = "country"]
 
-
+# TODO: needs to check the gender index
 extra <- dataMean[dataUIS, avgFemalePerc := i.avgFemalePerc, on = "country"]
 extra[data_all$UNindex, score := i.Value, on = "country"]
 extra[data_all$timeWomenSuff, date := i.Date, on = "country"]
@@ -162,17 +158,6 @@ meanDiff <- ggplot(dataMean, aes(x = reorder(country, diffMean), y = diffMean)) 
   labs(title = "Difference of the mean of subjective math skills between men and women by country")
 ggsave(filename = "PublicPosts/plots/difference_mean_subjMathSkills.png")
 
-
-# Difference between mode of subjective math skills between men and women by
-# country, ordered by difference
-modeDiff <- ggplot(dataMean, aes(x = reorder(country, diffMode), y = diffMode)) +
-  geom_point(size = 3) +
-  geom_hline(yintercept = 0, col = "red") +
-  theme_bw(base_size = 15) +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1, vjust = 0.5, size = 15),
-        axis.text.y = element_text(size = 15)) +
-  ylab("Mean difference of subjective math skills") + xlab("")# +
-labs(title = "Difference of the mean of subjective math skills between men and women by country")
 
 # Difference between mean of subjective math skills between men and women by
 # country, ordered by log GDP
