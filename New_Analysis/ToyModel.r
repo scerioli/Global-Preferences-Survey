@@ -107,86 +107,71 @@ dumb <- lm(trustNumb ~ gender + subj_math_skills + age, data = dummyTrain)
 #### Multilevel ####
 # Need more studies, it is not clear how to achieve the goal of having country
 # random effects
-dumb_multi <- clmm(trustRaw ~ subj_math_skills + age + (1 | country), nominal = ~ gender,
-                   data = dataComplete, link = "probit", threshold = "flexible")
+library(lme4)
 
-dumb_multi2 <- clmm2(trustRaw ~ subj_math_skills + age, nominal = ~ gender,
-                     data = dataComplete, link = "probit", threshold = "flexible")
+#### Let's first try a linear approach for making our head clear on it
+# Step 1: Random intercept
+linear_multi <- lmer(trustNumb ~ 1 + (1 | country), REML = TRUE, data = dataComplete)
+
+# Step 2: Random Slopes and Intercepts
+# - Add the gender as Level One variable
+linear_multi2 <- lmer(trustNumb ~ gender + (gender | country), data = dataComplete)
+coef(summary(linear_multi2))[, "t value"]
+# Gender t-value is almost 2 --> at the limit of commonly-used acceptability
+# TODO: Would be nice to plot
+
+# - Add the logGDP as a Level Two variable
+linear_multi3 <- lmer(trustNumb ~ logAvgGDPpc + gender + logAvgGDPpc:gender + (gender | country), 
+                      data = dataComplete)
+
+library(optimx)
+# - Add the subjective math skills at Level One
+linear_multi4 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills +
+                        logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
+                        (gender + subj_math_skills | country), 
+                      data = dataComplete, 
+                      control = lmerControl(
+                        optimizer ='optimx', optCtrl=list(method='nlminb')))
+
+# TODO: 
+# - Finish the interpretation/to write the model
+# - Centering
+# - Add age (and language?)
+# - Add interpretation
+# - Think about splitting the analysis between multilevel and ordinal
+
+# Interesting way to predict
+iqrvec <- sapply(simulate(linear_multi4, 1000), IQR)
+obsval <- IQR(dataComplete$trustNumb)
+post.pred.p <- mean(obsval >= c(obsval, iqrvec))
 
 
-# xgboost
-library(xgboost)
-library(xgboostExplainer)
-# https://medium.com/applied-data-science/new-r-package-the-xgboost-explainer-51dd7d1aa211
-# Thanks to David Foster!
-set.seed(123)
+### Going ordinal
 
-dataDummy2 <- dataComplete[country == "Italy", 
-                           .(gender, age, trustRaw, subj_math_skills)]
+# Step 1: Create the first multilevel model using only the random intercept and 
+# grouping by the variable that might be significant for the level 2
+dumb_multi <- clmm(trustRaw ~ 1 + (1 | country), 
+                   data = dataComplete, link = "probit",
+                   threshold = "flexible", Hess = TRUE)
+# Then, I do the same but I exclude the grouping variable
+dumb_nonmulti <- clm(trustRaw ~ 1, 
+                     data = dataComplete, link = "probit",
+                     threshold = "flexible", Hess = TRUE)
+# Comparing the models, I see that including the country has an impact
+anova(dumb_multi, dumb_nonmulti)
 
-# Split the data into train and test
-index <- createDataPartition(dataDummy2$trustRaw, p = 0.7, list = FALSE)
+# Step 2: I add a variable that might be meaningful both on level 1 and on 
+# level 2 . I used the language as an example, as it varies across individuals
+# in the same countries
+dumb_multi2 <- clmm(trustRaw ~ gender + subj_math_skills + (subj_math_skills | country), 
+                    data = dataComplete,
+                    link = "probit")
 
-dummyTrain2 <- dataDummy2[index, ]
-dummyTest2 <- dataDummy2[-index, ]
 
-train_x <- model.matrix(~.+0, data = dummyTrain2[, -c("gender")], with = F)
-train_y <- dummyTrain2$gender
+dumb_multi3 <- clmm(trustRaw ~ gender + subj_math_skills + age + (subj_math_skills + age | country), 
+                    data = dataComplete,
+                    link = "probit")
 
-test_x <- model.matrix(~.+0, data = dummyTest2[, -c("gender")], with = F)
-test_y <- dummyTest2$gender
-
-xgb_train <- xgb.DMatrix(data = train_x, label = train_y)
-xgb_test <- xgb.DMatrix(data = test_x, label = test_y)
-
-params <- list(booster = "gbtree", eta = 0.3, 
-               gamma = 0, max_depth = 6, min_child_weight = 1, subsample = 1, 
-               colsample_bytree = 1)
-
-watchlist = list(train = xgb_train, test = xgb_test)
-
-#fit XGBoost model and display training and testing data at each round
-dummy_xgboost = xgb.train(data = xgb_train, nrounds = 100, watchlist = watchlist,
-                          gamma = 3, max_depth = 2, min_child_weight = 1,
-                          eta = 0.1, subsampla = 1)
-
-#define final model
-final = xgboost(data = xgb_train, max.depth = 2, gamma = 1, nrounds = 10, verbose = 0, eta = 0.3)
-
-xgboost_predict <- predict(final, xgb_test)
-pred_y = as.factor((levels(test_y))[round(xgboost_predict)])
-confusionMatrix(pred_y, test_y)
-
-#view variable importance plot
-mat <- xgb.importance(feature_names = colnames(train_x), model = final)
-xgb.plot.importance(importance_matrix = mat) 
-
-explainer <- buildExplainer(final, xgb_train, type = "binary", base_score = 0.5)
-pred.breakdown <- explainPredictions(final, explainer, xgb_test)
-
-cat('Breakdown Complete','\n')
-weights = rowSums(pred.breakdown)
-pred.xgb = 1/(1+exp(-weights))
-cat(max(xgboost_predict-pred.xgb),'\n')
-idx_to_get = as.integer(200)
-dummyTest2[idx_to_get]
-showWaterfall(final, explainer, xgb_test, data.matrix(dummyTest2[, -c("gender")]),
-              idx_to_get, type = "binary")
-####### IMPACT AGAINST VARIABLE VALUE
-plot(dummyTest2[, subj_math_skills], pred.breakdown[, subj_math_skills], 
-     cex=0.4, pch=16, xlab = "Subj Math Skils", ylab = "Subj Math Skils impact on log-odds")
-plot(dummyTest2[, age], pred.breakdown[, age], 
-     cex=0.4, pch=16, xlab = "Age", ylab = "Age impact on log-odds")
-cr <- colorRamp(c("blue", "red"))
-plot(dummyTest2[,age], pred.breakdown[,age], 
-   #  col = rgb(cr(dummyTest2[, gender]), max=255), 
-     cex=0.4, pch=16, xlab = "Age", ylab = "Age impact on log-odds")
-
-# cbind(orig = as.character(test_y),
-#       factor = as.factor(test_y),
-#       pred = xgboost_predict,
-#       rounded = round(xgboost_predict),
-#       pred = as.character(levels(test_y))[round(xgboost_predict)])
 
 
 # ======================= #
