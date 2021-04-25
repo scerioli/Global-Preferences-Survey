@@ -5,7 +5,7 @@
 # =============================== #
 
 # Set the path
-setwd("~/Desktop/Projects/Global-Preferences-Survey/")
+setwd("~/Desktop/Projects/Global-Preferences-Survey/ReproductionAnalysis/")
 
 # Source helper functions
 source("functions/helper_functions/SourceFunctions.r")
@@ -163,7 +163,7 @@ dt_compare <- dt_compare[complete.cases(dt_compare)]
 PlotSummary(data = dt_compare, var1 = "avgDiffArticle", var2 = "avgDiffOurs",
             labs = c("Average Gender Differences from the Article",
                      "Average Gender Differences from our Model"),
-           # display = TRUE
+            display = TRUE
             )
 
 # Compare with the Bayesian Supersedes the t-Test method: Uncomment this part to

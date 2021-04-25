@@ -3,7 +3,7 @@
 # =============================== #
 
 # Set the path
-setwd("/Users/sara/Desktop/Projects/Global-Preferences-Survey/")
+setwd("/Users/sara/Desktop/Projects/Global-Preferences-Survey/ReproductionAnalysis/")
 
 # Source helper functions
 source("functions/helper_functions/SourceFunctions.r")
@@ -59,8 +59,8 @@ PlotSummary(data = summaryIndex,
             var2 = "avgGenderDiffRescaled",
             labs = c("Log GDP p/c",
                      "Average Gender Differences (Index)"),  
-           # display = TRUE,
-            save = "plots/main_Fig1B.png"
+            display = TRUE,
+           # save = "plots/main_Fig1B.png"
             )
 
 ## ----------------------------- Fig. 1 C ------------------------------------ #
