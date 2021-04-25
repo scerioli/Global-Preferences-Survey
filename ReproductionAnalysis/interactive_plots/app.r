@@ -7,8 +7,8 @@ library(ggplot2)
 # ====================== #
 
 # Datasets to create the same plots that we have in the CreatePlotsArticle.r
-dataset_1 <- fread("../Global-Preferences-Survey/ReproductionAnalysis/files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
-dataset_2 <- fread("../Global-Preferences-Survey/ReproductionAnalysis/files/output/main_data_for_histograms.csv")
+dataset_1 <- fread("../files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
+dataset_2 <- fread("../files/output/main_data_for_histograms.csv")
 
 not_sel <- "Not Selected"
 
