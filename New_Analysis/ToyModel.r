@@ -108,6 +108,7 @@ dumb <- lm(trustNumb ~ gender + subj_math_skills + age, data = dummyTrain)
 # Need more studies, it is not clear how to achieve the goal of having country
 # random effects
 library(lme4)
+library(optimx)
 
 #### Let's first try a linear approach for making our head clear on it
 # Step 1: Random intercept
@@ -124,7 +125,6 @@ coef(summary(linear_multi2))[, "t value"]
 linear_multi3 <- lmer(trustNumb ~ logAvgGDPpc + gender + logAvgGDPpc:gender + (gender | country), 
                       data = dataComplete)
 
-library(optimx)
 # - Add the subjective math skills at Level One
 linear_multi4 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills +
                         logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
@@ -132,6 +132,20 @@ linear_multi4 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills +
                       data = dataComplete, 
                       control = lmerControl(
                         optimizer ='optimx', optCtrl=list(method='nlminb')))
+
+# -Add the age --> doesn't work because of singularity
+# linear_multi5 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills + age +
+#                         logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
+#                         (gender + subj_math_skills + age | country), 
+#                       data = dataComplete, 
+#                       control = lmerControl(
+#                         optimizer ='optimx', optCtrl=list(method='nlminb')))
+
+dummy_bayes <- brm(trustNumb ~ logAvgGDPpc + gender +
+                     logAvgGDPpc:gender +
+                     (gender | country), 
+                   data = dataComplete, 
+                   family = "gaussian", seed = 1)
 
 # TODO: 
 # - Finish the interpretation/to write the model
