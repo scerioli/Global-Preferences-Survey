@@ -4,5 +4,5 @@
 .Ruserdata
 Documentation.txt
 /tmp/
-.DS_Store
+**/.DS_Store
 .Rhistory
