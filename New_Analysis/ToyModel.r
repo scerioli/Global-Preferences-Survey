@@ -104,42 +104,6 @@ dummy_bayes2 <- brm(trustRaw ~ gender*subj_math_skills + ageCateg,
 #### Linear ####
 dumb <- lm(trustNumb ~ gender + subj_math_skills + age, data = dummyTrain)
 
-#### Multilevel ####
-# Need more studies, it is not clear how to achieve the goal of having country
-# random effects
-library(lme4)
-library(optimx)
-
-#### Let's first try a linear approach for making our head clear on it
-# Step 1: Random intercept
-linear_multi <- lmer(trustNumb ~ 1 + (1 | country), REML = TRUE, data = dataComplete)
-
-# Step 2: Random Slopes and Intercepts
-# - Add the gender as Level One variable
-linear_multi2 <- lmer(trustNumb ~ gender + (gender | country), data = dataComplete)
-coef(summary(linear_multi2))[, "t value"]
-# Gender t-value is almost 2 --> at the limit of commonly-used acceptability
-# TODO: Would be nice to plot
-
-# - Add the logGDP as a Level Two variable
-linear_multi3 <- lmer(trustNumb ~ logAvgGDPpc + gender + logAvgGDPpc:gender + (gender | country), 
-                      data = dataComplete)
-
-# - Add the subjective math skills at Level One
-linear_multi4 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills +
-                        logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
-                        (gender + subj_math_skills | country), 
-                      data = dataComplete, 
-                      control = lmerControl(
-                        optimizer ='optimx', optCtrl=list(method='nlminb')))
-
-# -Add the age --> doesn't work because of singularity
-# linear_multi5 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills + age +
-#                         logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
-#                         (gender + subj_math_skills + age | country), 
-#                       data = dataComplete, 
-#                       control = lmerControl(
-#                         optimizer ='optimx', optCtrl=list(method='nlminb')))
 
 dummy_bayes <- brm(trustNumb ~ logAvgGDPpc + gender +
                      logAvgGDPpc:gender +
@@ -147,20 +111,8 @@ dummy_bayes <- brm(trustNumb ~ logAvgGDPpc + gender +
                    data = dataComplete, 
                    family = "gaussian", seed = 1)
 
-# TODO: 
-# - Finish the interpretation/to write the model
-# - Centering
-# - Add age (and language?)
-# - Add interpretation
-# - Think about splitting the analysis between multilevel and ordinal
 
-# Interesting way to predict
-iqrvec <- sapply(simulate(linear_multi4, 1000), IQR)
-obsval <- IQR(dataComplete$trustNumb)
-post.pred.p <- mean(obsval >= c(obsval, iqrvec))
-
-
-### Going ordinal
+### Going multilevel 
 
 # Step 1: Create the first multilevel model using only the random intercept and 
 # grouping by the variable that might be significant for the level 2
