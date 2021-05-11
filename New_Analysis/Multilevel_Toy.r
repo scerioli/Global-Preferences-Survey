@@ -129,14 +129,82 @@ load("tmp/files/dummy_bayes.RData")
 
 # Interesting fact: Grouping by language instead of country results in an almost
 # doubled ICC (0.14 vs 0.08)
-dummy_bayes2 <- brm(trustNumb ~ 1 + (1 | language), 
-                   data = dataComplete, 
-                   prior = c(
-                     prior(normal(5, 2), class = "Intercept"),
-                     prior(student_t(2, 0, 5), class = "sigma"),
-                     prior(gamma(2, 0.125), class = "sd", coef = "Intercept", group = "language")
-                   ),
-                   control = list(adapt_delta = .99))
+# dummy_bayes2 <- brm(trustNumb ~ 1 + (1 | language), 
+#                     data = dataComplete, 
+#                     prior = c(
+#                       prior(normal(5, 2), class = "Intercept"),
+#                       prior(student_t(2, 0, 5), class = "sigma"),
+#                       prior(gamma(2, 0.125), class = "sd", coef = "Intercept", group = "language")
+#                     ),
+#                     control = list(adapt_delta = .99))
+
+# Whoever you are, I love you:
+# https://kevinstadler.github.io/notes/bayesian-ordinal-regression-with-random-effects-using-brms/
+# This lasted something like 10 hours...!
+# This had no warning, no errors, nothing <3
+# Saved in tmp/files
+# dummy_bayes3 <- brm(trustRaw ~ gender + (gender | country),
+#                     data = dataComplete,
+#                     family = cumulative("logit"), file = "dummy_bayes3")
+# 
+# dummy_bayes4 <- brm(trustRaw ~ gender*logAvgGDPpc + (gender | country),
+#                     data = dataComplete,
+#                     family = cumulative("logit"), file = "dummy_bayes4",
+#                     cores = 4, max_treedepth = 15)
+# 
+# dummy_bayes5 <- brm(trustRaw ~ gender*logAvgGDPpc + subj_math_skills + 
+#                       subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
+#                       (gender + subj_math_skills | country),
+#                     data = dataComplete,
+#                     family = cumulative("logit"), file = "dummy_bayes5",
+#                     cores = 4)
+
+
+#### STATISTICAL RETHINKING ####
+###  0. Ordered logit model ####
+
+# Add 1 because having 0 is disturbing it
+# Change from char to numeric
+data <- list(trust = as.numeric(dataComplete$trustNumb) + 1,
+             gender = dataComplete$gender,
+             country = as.factor(dataComplete$country))
+data$country <- as.numeric(data$country)
+
+dummy_stat_reth <- ulam(
+  alist(
+    trust ~ dordlogit(phi, cutpoints),
+    phi <- bG * gender,
+    bG ~ dnorm(0, 0.5),
+    cutpoints ~ dnorm(0, 1.5)),
+  data = data,
+  chains = 4)
+
+
+##### Multilevel ####
+### 1. Super simple model with only random intercept, to start with ####
+dummy_stat_reth2 <- ulam(
+  alist(
+    trust ~ dordlogit(phi, cutpoints),
+    phi <- bG[country] * gender,
+    bG[country] ~ dnorm(bG_bar, sigmaG),
+    cutpoints[country] ~ dnorm(cutpoints_bar, sigmacut),
+    bG_bar ~ dnorm(0, 1.5),
+    sigmaG ~dexp(1),
+    cutpoints_bar ~ dnorm(0, 1.5),
+    sigmacut ~ dexp(1)),
+  data = data,
+  chains = 4, log_lik = TRUE)
+
+### 2. Adding the first slope ####
+dummy_stat_reth3 <- ulam(
+  alist(
+    trust ~ dordlogit(phi, cutpoints),
+    phi <- bG[country] * gender,
+    bG[country] ~ dnorm(0, 0.5),
+    cutpoints ~ dnorm(0, 1.5)),
+  data = data,
+  chains = 4)
+
 
 
 # TODO: 
