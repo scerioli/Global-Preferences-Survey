@@ -44,13 +44,43 @@ dataComplete[, avgGDPpc := NULL]
 dataComplete <- AdjustColumns(dataComplete)
 
 
+# ============================= #
+#### 2. CHECK DATA NORMALITY ####
+# ============================= #
+
+# Random choice of 5000 elements (max size for shapiro.test)
+index <- createDataPartition(dataComplete$trust, p = 0.06, list = FALSE)
+dataNorm1 <- dataComplete[index, ]
+
+## Trust ####
+shapiro.test(dataNorm1$trust)
+
+## Altruism ####
+shapiro.test(dataNorm1$altruism)
+
+## Patience ####
+shapiro.test(dataNorm1$patience)
+
+## Positive Reciprocity ####
+shapiro.test(dataNorm1$posrecip)
+
+## Negative Reciprocity ####
+shapiro.test(dataNorm1$negrecip)
+
+## Risk Taking ####
+shapiro.test(dataNorm1$risktaking)
+
+# Results: p-value < 2.2e-16 for all the preferences
+# Note: I checked that the sample distribution corresponds in shape to the 
+# original one "by eyes"
+
 
 # ======================= #
-#### 2. DUMMY ANALYSIS ####
+#### 3. DUMMY ANALYSIS ####
 # ======================= #
 
 #### Prepare Dummy Data ####
-dataDummy <- dataComplete[country == "Afghanistan", 
+dataDummy <- dataComplete[country == "Italy", 
                           .(gender, age, ageCateg, trustRaw, trustNumb, subj_math_skills, 
                             country, trust, language, region)]
 
@@ -64,7 +94,16 @@ dummyTest <- dataDummy[-index, ]
 # Try out different models
 
 #### Ordered Logistic Model ####
+dummy_polr_base <- polr(trustRaw ~ gender, 
+                   data = dummyTrain, Hess = TRUE)
+
 dummy_polr <- polr(trustRaw ~ gender*subj_math_skills + age, 
+                   data = dummyTrain, Hess = TRUE)
+
+dummy_polr2 <- polr(trustRaw ~ gender*subj_math_skills + gender*age, 
+                    data = dummyTrain, Hess = TRUE)
+
+dummy_polr3 <- polr(trustRaw ~ gender*subj_math_skills + gender*age + subj_math_skills*age, 
                    data = dummyTrain, Hess = TRUE)
 
 #### Multinomial Logit Model ####
@@ -91,25 +130,26 @@ dummy_ppo3 <- clm(trustRaw ~ subj_math_skills*gender + ageCateg, nominal = ~ gen
                   data = dummyTrain, link = "logit", threshold = "flexible")
 # To extract p-values from the summary: summary(dummy_ppo)[[6]]
 
-
 #### Bayes Ordinal Regression ####
-dummy_bayes <- brm(trustRaw ~ gender*subj_math_skills + age, 
-                   data = dummyTrain,
-                   family = cumulative("logit"), seed = 1)
-
-dummy_bayes2 <- brm(trustRaw ~ gender*subj_math_skills + ageCateg, 
-                    data = dummyTrain,
-                    family = cumulative("logit"), seed = 1)
+# dummy_bayes <- brm(trustRaw ~ gender*subj_math_skills + age, 
+#                    data = dummyTrain,
+#                    family = cumulative("logit"), seed = 1)
+# 
+# dummy_bayes2 <- brm(trustRaw ~ gender*subj_math_skills + ageCateg, 
+#                     data = dummyTrain,
+#                     family = cumulative("logit"), seed = 1)
 
 #### Linear ####
 dumb <- lm(trustNumb ~ gender + subj_math_skills + age, data = dummyTrain)
 
 
-dummy_bayes <- brm(trustNumb ~ logAvgGDPpc + gender +
-                     logAvgGDPpc:gender +
-                     (gender | country), 
-                   data = dataComplete, 
-                   family = "gaussian", seed = 1)
+# dummy_bayes <- brm(trustNumb ~ logAvgGDPpc + gender +
+#                      logAvgGDPpc:gender +
+#                      (gender | country), 
+#                    data = dataComplete, 
+#                    family = "gaussian", seed = 1)
+
+AIC(dummy_polr, dummy_mlm, dummy_oglm, dummy_ppo, dummy_ppo2, dummy_ppo3, dumb)
 
 
 ### Going multilevel 
@@ -141,7 +181,7 @@ dumb_multi3 <- clmm(trustRaw ~ gender + subj_math_skills + age + (subj_math_skil
 
 
 # ======================= #
-#### 3. MODEL ANALYSIS ####
+#### 4. MODEL ANALYSIS ####
 # ======================= #
 
 # Many thanks to Kevin Stadler for this trick found here:
@@ -169,7 +209,7 @@ cumulativemodelfit <- function(formula, data,
 }
 
 # Choose the best link function and thresholds
-cumulativemodelfit(trustRaw ~ subj_math_skills*gender + ageCateg, data = dummyTrain)
+cumulativemodelfit(trustRaw ~ subj_math_skills*gender + age, data = dummyTrain)
 
 # Compare the models
 # NOTE: linear models can't be compared because they lack AIC
@@ -194,7 +234,7 @@ scale_test(clm(trustRaw ~ subj_math_skills + gender + age,
 
 
 # ============================ #
-#### 4. PREDICTION ANALYSIS ####
+#### 5. PREDICTION ANALYSIS ####
 # ============================ #
 
 # Predictions
