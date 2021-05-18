@@ -3,7 +3,7 @@
 # =============================== #
 
 # Set the path
-setwd("/Users/sara/Desktop/Projects/Global-Preferences-Survey/")
+setwd("/Users/sara/Desktop/Projects/Global-Preferences-Survey/ReproductionAnalysis/")
 
 # Source helper functions
 source("functions/helper_functions/SourceFunctions.r")
@@ -26,6 +26,9 @@ dataCoeffAlternative <- fread("files/output/supplementary_data_aggregatedByCount
 # =========================== #
 
 ## ----------------------------- Fig. 1 A ------------------------------------ #
+dataSummary$preference_f <- factor(dataSummary$preference, 
+                                   levels = c("altruism", "trust", "posrecip",
+                                              "negrecip", "risktaking", "patience"))
 labels_preferences <- c("Altruism (+)", "Trust (+)", "Pos. Recip. (+)",
                         "Neg. Recip. (-)", "Risk Taking (-)", "Patience (-)")
 names(labels_preferences) <- c("altruism", "trust", "posrecip",
@@ -34,9 +37,11 @@ names(labels_preferences) <- c("altruism", "trust", "posrecip",
 plotHistA <-
   ggplot(data = unique(dataSummary[, c(-3, -5)])) +
   geom_col(aes(x = GDPquant, y = meanGenderGDP, fill = preference), width = 0.5) +
-  facet_wrap(~ preference, labeller = labeller(preference = labels_preferences)) +
+  facet_wrap(~ preference_f, labeller = labeller(preference_f = labels_preferences)) +
   xlab("") + ylab("Average Gender Differences (in Standard Deviations)") +
   scale_fill_brewer(palette = "Dark2") +
+  scale_y_continuous(breaks = c(0.0, 0.05, 0.1, 0.15, 0.2, 0.25)) +
+  scale_x_discrete(breaks = element_blank()) +
   theme_bw() +
   theme(legend.title     = element_blank(),
         strip.background = element_rect(colour = "white", fill = "white"),
@@ -45,12 +50,12 @@ plotHistA <-
         axis.text.x      = element_blank(),
         axis.ticks.x     = element_blank(),
         panel.spacing.y  = unit(1.5, "lines"),
-        strip.text.x     = element_text(size = 12)) +
-  annotate(geom = "text", x = 1.3, y = -0.05, color = 'black',
+        strip.text.x     = element_text(size = 14)) +
+  annotate(geom = "text", x = 1.3, y = -0.08, color = 'black', size = 4,
            label = "Poorer Countries") +
-  annotate(geom = "text", x = 3.7, y = -0.05, color = 'black',
+  annotate(geom = "text", x = 3.7, y = -0.08, color = 'black', size = 4,
            label = "Richer Countries") +
-  coord_cartesian(ylim = c(-0.02, 0.3), clip = "off")
+  coord_cartesian(ylim = c(-0.05, 0.25), clip = "off")
 ggsave(filename = "plots/main_Fig1A.png", plot = plotHistA)
 
 ## ----------------------------- Fig. 1 B ------------------------------------ #
@@ -59,17 +64,19 @@ PlotSummary(data = summaryIndex,
             var2 = "avgGenderDiffRescaled",
             labs = c("Log GDP p/c",
                      "Average Gender Differences (Index)"),  
-           # display = TRUE,
-            save = "plots/main_Fig1B.png"
+            display = TRUE,
+           # save = "plots/main_Fig1B.png"
             )
 
 ## ----------------------------- Fig. 1 C ------------------------------------ #
 plotHistC <-
   ggplot(data = unique(dataSummary[, c(-2, -4)])) +
   geom_col(aes(x = GEIquant, y = meanGenderGEI, fill = preference), width = 0.5) +
-  facet_wrap(~ preference, labeller = labeller(preference = labels_preferences)) +
+  facet_wrap(~ preference_f, labeller = labeller(preference_f = labels_preferences)) +
   xlab("") + ylab("Average Gender Differences (in Standard Deviations)") +
   scale_fill_brewer(palette = "Dark2") +
+  scale_y_continuous(breaks = c(0.0, 0.05, 0.1, 0.15, 0.2, 0.25)) +
+  scale_x_discrete(breaks = element_blank()) +
   theme_bw() +
   theme(legend.title     = element_blank(),
         strip.background = element_rect(colour = "white", fill = "white"),
@@ -79,12 +86,12 @@ plotHistC <-
         axis.ticks.x     = element_blank(),
         panel.spacing.y  = unit(2, "lines"),
         plot.margin      = unit(c(1, 1, 1, 1), "lines"),
-        strip.text.x     = element_text(size = 12)) +
-  annotate(geom = "text", x = 1.3, y = -0.035, color = 'black', size = 3,
+        strip.text.x     = element_text(size = 15)) +
+  annotate(geom = "text", x = 1.3, y = -0.095, color = 'black', size = 3,
            label = "Less Gender\nEqual Countries") +
-  annotate(geom = "text", x = 3.7, y = -0.035, color = 'black', size = 3,
+  annotate(geom = "text", x = 3.7, y = -0.095, color = 'black', size = 3,
            label = "More Gender\nEqual Countries") +
-  coord_cartesian(ylim = c(-0.001, 0.25), clip = "off")
+  coord_cartesian(ylim = c(-0.05, 0.25), clip = "off")
 ggsave(filename = "plots/main_Fig1C.png", plot = plotHistC)
 
 ## ----------------------------- Fig. 1 D ------------------------------------ #
@@ -93,8 +100,8 @@ PlotSummary(data = summaryIndex,
             var2 = "avgGenderDiffRescaled",
             labs = c("Gender Equality Index",
                      "Average Gender Differences (Index)"),  
-          #  display = TRUE,
-            save = "plots/main_Fig1D.png"
+            display = TRUE,
+          #  save = "plots/main_Fig1D.png"
            )
 
 
@@ -105,8 +112,8 @@ PlotSummary(data = summaryIndex,
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Average Gender Differences \n(residualized using Gender Equality Index)",
                      "Economic Development"),
-           # display = TRUE,
-            save = "plots/main_Fig2A.png"
+            display = TRUE,
+           # save = "plots/main_Fig2A.png"
             )
 
 ## ------------------------------ Fig. 2 B ----------------------------------- #
