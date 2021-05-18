@@ -52,6 +52,7 @@ dataComplete[, paste0(rescaled_vars, "_rescaled") := lapply(.SD, scale), .SDcols
 #### 2. DUMMY ANALYSIS ####
 # ======================= #
 
+
 # Step 1: Random intercept
 linear_multi <- lmer(trustNumb ~ 1 + (1 | country), REML = TRUE, data = dataComplete)
 
@@ -68,6 +69,14 @@ linear_multi3 <- lmer(trustNumb ~ logAvgGDPpc + gender + logAvgGDPpc:gender + (g
 
 # - Add the subjective math skills at Level One
 linear_multi4 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills +
+                        logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
+                        (gender + subj_math_skills | country), 
+                      data = dataComplete, 
+                      control = lmerControl(
+                        optimizer ='optimx', optCtrl = list(method = 'nlminb')))
+
+# - Add the subjective math skills at Level One
+linear_multi5 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills +
                         logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
                         (gender + subj_math_skills | country), 
                       data = dataComplete, 
