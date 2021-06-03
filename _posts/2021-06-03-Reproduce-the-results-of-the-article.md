@@ -2,7 +2,7 @@
 layout: post
 title:  "Reproduce the results of the article"
 date:   2021-06-03 21:30:54 +0200
-categories: replication study
+category: replication study
 ---
 
 ## Introduction

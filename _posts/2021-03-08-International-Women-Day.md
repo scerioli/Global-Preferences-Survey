@@ -2,7 +2,7 @@
 layout: post
 title:  "International Women's Day"
 date:   2021-03-08 08:30:00 +0200
-categories: international women day
+category: international women day
 ---
 
 ## Do girls dislike math or do they just feel more insecure about it?
