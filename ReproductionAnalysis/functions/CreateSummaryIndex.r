@@ -1,4 +1,4 @@
-CreateSummaryIndex <- function(dt_summary, dt_data) {
+CreateSummaryIndex <- function(dt_summary, dt_data, rescale = TRUE) {
   # This function creates the data table containing all the information needed
   # to create the plots in the article (that is why the name is summary index).
   #
@@ -7,6 +7,8 @@ CreateSummaryIndex <- function(dt_summary, dt_data) {
   # - dt_data    [data.table]  The complete data table. This will be used to
   #                            merge all the useful information on a country
   #                            level to the data_summary
+  # - rescale    [logical]     TRUE if the average gender differences should be 
+  #                            rescaled; Default TRUE
   #
   # RETURNS:
   # - dt_summary
@@ -20,7 +22,9 @@ CreateSummaryIndex <- function(dt_summary, dt_data) {
   dt_summary[dt_data$UNindex, ValueUN := i.Value, on = "country"]
   dt_summary <- merge(dt_summary, dt_data$world_area, by = "country")
   
-  dt_summary[, avgGenderDiffRescaled := Rescale(avgGenderDiff)]
+  if (rescale) {
+    dt_summary[, avgGenderDiffRescaled := Rescale(avgGenderDiff)]
+  }
 
   return(dt_summary)
 }

@@ -9,13 +9,13 @@
 # =============================== #
 
 # Set the path
-setwd("~/Desktop/Projects/Global-Preferences-Survey/")
+setwd("~/Desktop/Projects/Global-Preferences-Survey/ReproductionAnalysis/")
 
 # Source helper functions
-source("ReproductionAnalysis/functions/helper_functions/SourceFunctions.r")
-SourceFunctions(path = "ReproductionAnalysis/functions/")
-SourceFunctions(path = "ReproductionAnalysis/functions/helper_functions/")
-SourceFunctions(path = "New_Analysis/functions/")
+source("functions/helper_functions/SourceFunctions.r")
+SourceFunctions(path = "functions/")
+SourceFunctions(path = "functions/helper_functions/")
+SourceFunctions(path = "../New_Analysis/functions/")
 
 # Load libraries
 LoadRequiredLibraries()
@@ -36,9 +36,12 @@ data_all <- PrepareData(data_all)
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
 
-# Add important column
-dataComplete[, logAvgGDPpc := log(avgGDPpc), by = "country"]
-dataComplete[, avgGDPpc := NULL]
+# Add important columns
+dataComplete <- CreateSummaryIndex(dataComplete, data_all, rescale = FALSE)
+# Rescale date
+dataComplete[, Date := 2020 - Date]
+
+dataComplete$GenderIndex <- GenderIndexPCA(dataComplete[, c(16:19)])
 
 # Adjust some of the columns and add new ones
 dataComplete <- AdjustColumns(dataComplete)
@@ -82,10 +85,10 @@ shapiro.test(dataNorm1$risktaking)
 #### Prepare Dummy Data ####
 dataDummy <- dataComplete[country == "Italy", 
                           .(gender, age, ageCateg, trustRaw, trustNumb, subj_math_skills, 
-                            country, trust, language, region)]
+                            country, trust)]
 
 # Split the data into train and test
-index <- createDataPartition(dataDummy$trustRaw, p = 0.7, list = FALSE)
+index <- createDataPartition(dataDummy$trustRaw, p = 1, list = FALSE)
 
 dummyTrain <- dataDummy[index, ]
 dummyTest <- dataDummy[-index, ]
@@ -94,17 +97,40 @@ dummyTest <- dataDummy[-index, ]
 # Try out different models
 
 #### Ordered Logistic Model ####
-dummy_polr_base <- polr(trustRaw ~ gender, 
-                   data = dummyTrain, Hess = TRUE)
+# Take as a base level the global average trust
+# https://www.r-bloggers.com/2015/01/using-and-interpreting-different-contrasts-in-linear-models-in-r/
+levels(dataComplete$country) <- names(dataComplete$country)
+options(contrast = c("contr.sum"))
 
-dummy_polr <- polr(trustRaw ~ gender*subj_math_skills + age, 
-                   data = dummyTrain, Hess = TRUE)
+dummy_polr_base <- polr(trustRaw ~ 1, 
+                        data = dataComplete, Hess = TRUE)
 
-dummy_polr2 <- polr(trustRaw ~ gender*subj_math_skills + gender*age, 
+dummy_polr <- polr(trustRaw ~ gender, 
+                   data = dataComplete, Hess = TRUE)
+
+dummy_polr2 <- polr(trustRaw ~ gender*subj_math_skills, 
+                    data = dataComplete, Hess = TRUE)
+
+dummy_polr3 <- polr(trustRaw ~ gender*subj_math_skills + age, 
                     data = dummyTrain, Hess = TRUE)
 
-dummy_polr3 <- polr(trustRaw ~ gender*subj_math_skills + gender*age + subj_math_skills*age, 
-                   data = dummyTrain, Hess = TRUE)
+dummy_polr4 <- polr(trustRaw ~ gender*subj_math_skills + gender*age, 
+                    data = dummyTrain, Hess = TRUE)
+
+dummy_polr5 <- polr(trustRaw ~ gender*subj_math_skills + gender*age + subj_math_skills*age, 
+                    data = dummyTrain, Hess = TRUE)
+
+# https://data.library.virginia.edu/visualizing-the-effects-of-proportional-odds-logistic-regression/
+library(effects)
+
+
+dummy_polr_prova <- polr(trustRaw ~ logAvgGDPpc + GenderIndex  +
+                           gender + logAvgGDPpc:gender + gender:GenderIndex, 
+                         data = dataComplete, Hess = TRUE)
+plot(Effect(focal.predictors = c("logAvgGDPpc", "gender"), dumb_multi4), 
+     rug = FALSE, style = "stacked")
+plot(Effect(focal.predictors = c("gender", "GenderIndex"), dumb_multi4), 
+     rug = FALSE, style = "stacked")
 
 #### Multinomial Logit Model ####
 dummy_mlm <- multinom(trustRaw ~ subj_math_skills + gender + age,
@@ -117,8 +143,8 @@ dummy_oglm <- oglmx(trustNumb ~ subj_math_skills*gender + ageCateg,
                     delta = 0, threshparam = NULL)
 
 #### Partial Proportional Odds ####
-dummy_ppo <- clm(trustRaw ~ subj_math_skills + age, nominal = ~ gender,
-                 data = dummyTrain, link = "logit", threshold = "flexible")
+dummy_ppo <- clm(trustRaw ~ subj_math_skills, nominal = ~ gender,
+                 data = dataComplete, link = "logit", threshold = "flexible")
 
 dummy_ppo_min <- clm(trustRaw ~ 1,
                      data = dummyTrain, link = "logit", threshold = "flexible")
@@ -138,10 +164,6 @@ dummy_ppo3 <- clm(trustRaw ~ subj_math_skills*gender + ageCateg, nominal = ~ gen
 # dummy_bayes2 <- brm(trustRaw ~ gender*subj_math_skills + ageCateg, 
 #                     data = dummyTrain,
 #                     family = cumulative("logit"), seed = 1)
-
-#### Linear ####
-dumb <- lm(trustNumb ~ gender + subj_math_skills + age, data = dummyTrain)
-
 
 # dummy_bayes <- brm(trustNumb ~ logAvgGDPpc + gender +
 #                      logAvgGDPpc:gender +
@@ -169,15 +191,57 @@ anova(dumb_multi, dumb_nonmulti)
 # Step 2: I add a variable that might be meaningful both on level 1 and on 
 # level 2 . I used the language as an example, as it varies across individuals
 # in the same countries
-dumb_multi2 <- clmm(trustRaw ~ gender + subj_math_skills + (subj_math_skills | country), 
+dumb_multi2 <- clmm(trustRaw ~ gender + (gender | country), 
                     data = dataComplete,
-                    link = "probit")
+                    link = "probit", threshold = "flexible", Hess = TRUE)
 
-
-dumb_multi3 <- clmm(trustRaw ~ gender + subj_math_skills + age + (subj_math_skills + age | country), 
+dumb_multi3 <- clmm(trustRaw ~ gender*logAvgGDPpc + (gender | country), 
                     data = dataComplete,
-                    link = "probit")
+                    link = "probit", threshold = "flexible", Hess = TRUE)
 
+
+dumb_multi4 <- clmm(trustRaw ~ logAvgGDPpc + GenderIndex  +
+                      gender + logAvgGDPpc:gender + gender:GenderIndex + 
+                      (gender | country), 
+                    link = "probit", threshold = "flexible",
+                    Hess = TRUE,
+                    data = dataComplete)
+
+ConvertToLatent(dumb_multi4)
+
+dumb_multi5 <- clmm(trustRaw ~ logAvgGDPpc + GenderIndex  +
+                      gender + logAvgGDPpc:gender + gender:GenderIndex + subj_math_skills +
+                      (gender + subj_math_skills | country), 
+                    link = "logit", threshold = "flexible",
+                    Hess = TRUE,
+                    data = dataComplete)
+
+dumb_multi4_logit <- clmm(trustRaw ~ logAvgGDPpc + GenderIndex  +
+                      gender + logAvgGDPpc:gender + gender:GenderIndex + 
+                      (gender | country), 
+                    link = "logit", threshold = "flexible",
+                    Hess = TRUE,
+                    data = dataComplete)
+
+
+
+anova(dumb_multi, dumb_multi2, dumb_multi3, dumb_multi4)
+
+# Effect Displays in R for Multinomial and Proportional-Odds Logit Models: 
+# Extensions to the effects Package, John Fox & Jangman Hong
+plot(Effect(focal.predictors = c("gender", "logAvgGDPpc"), dumb_multi4_logit,
+            xlevels = list(logAvgGDPpc = c(6, 11)), 
+            latent = TRUE
+            ), 
+     rug = FALSE)
+plot(Effect(focal.predictors = c("gender", "GenderIndex"), dumb_multi4_logit), 
+     rug = FALSE, style = "stacked")
+
+plot(Effect(focal.predictors = c("gender", "GenderIndex"), dumb_multi4_logit,
+            xlevels = list(GenderIndex = c(-4, 4)), 
+            latent = TRUE
+), 
+rug = FALSE)
 
 
 # ======================= #
@@ -277,5 +341,20 @@ tab <- table(dummyTrain$trustRaw, dummyTrain$trustPredicted)
 # Calculating accuracy - sum of diagonal elements divided by total obs
 round((sum(diag(tab))/sum(tab)) * 100, 2)
 
+## -------------------------------------------------------------------------- ##
+dataProva <- dataComplete[, subj_math_skills := as.factor(subj_math_skills)]
 
+prova_simple <- clm(subj_math_skills ~ logAvgGDPpc +
+                      gender + logAvgGDPpc:gender + age, 
+                    link = "logit", threshold = "flexible",
+                    Hess = TRUE,
+                    data = dataProva)
+
+plot(Effect(focal.predictors = c("logAvgGDPpc", "gender"), prova_simple, 
+            #given.values = c(gender1 = 1),
+            given.values = c(age = 80),
+            # xlevels = list(age = 20:80)
+), 
+rug = FALSE, style = "stacked")
+## -------------------------------------------------------------------------- ##
 

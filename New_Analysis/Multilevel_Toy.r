@@ -36,9 +36,12 @@ data_all <- PrepareData(data_all)
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
 
-# Add important column
-dataComplete[, logAvgGDPpc := log(avgGDPpc), by = "country"]
-dataComplete[, avgGDPpc := NULL]
+# Add important columns
+dataComplete <- CreateSummaryIndex(dataComplete, data_all, rescale = FALSE)
+# Rescale date
+dataComplete[, Date := 2020 - Date]
+
+dataComplete$GenderIndex <- GenderIndexPCA(dataComplete[, c(16:19)])
 
 # Adjust some of the columns and add new ones
 dataComplete <- AdjustColumns(dataComplete)
@@ -47,30 +50,33 @@ dataComplete <- AdjustColumns(dataComplete)
 rescaled_vars <- c("subj_math_skills", "age")
 dataComplete[, paste0(rescaled_vars, "_rescaled") := lapply(.SD, scale), .SDcols = rescaled_vars]
 
+dataComplete[, "trust_rescaled" := lapply(.SD, function(x) {x - mean(x)}), 
+             .SDcols = "trustNumb"]
 
 # ======================= #
 #### 2. DUMMY ANALYSIS ####
 # ======================= #
-
 
 # Step 1: Random intercept
 linear_multi <- lmer(trustNumb ~ 1 + (1 | country), REML = TRUE, data = dataComplete)
 
 # Step 2: Random Slopes and Intercepts
 # - Add the gender as Level One variable
-linear_multi2 <- lmer(trustNumb ~ gender + (gender | country), data = dataComplete)
+linear_multi2 <- lmer(trustNumb ~ gender + (gender | country), REML = TRUE,
+                      data = dataComplete)
 coef(summary(linear_multi2))[, "t value"]
 # Gender t-value is almost 2 --> at the limit of commonly-used acceptability
 # TODO: Would be nice to plot
 
 # - Add the logGDP as a Level Two variable
-linear_multi3 <- lmer(trustNumb ~ logAvgGDPpc + gender + logAvgGDPpc:gender + (gender | country), 
-                      data = dataComplete)
+linear_multi3 <- lmer(trust_rescaled ~ logAvgGDPpc + gender + logAvgGDPpc:gender + (gender | country), 
+                      REML = TRUE, data = dataComplete)
 
 # - Add the subjective math skills at Level One
-linear_multi4 <- lmer(trustNumb ~ logAvgGDPpc + gender + subj_math_skills +
-                        logAvgGDPpc:gender + subj_math_skills:gender + subj_math_skills:logAvgGDPpc +
-                        (gender + subj_math_skills | country), 
+linear_multi4 <- lmer(trustNumb ~ logAvgGDPpc + GenderIndex  +
+                        gender + logAvgGDPpc:gender + gender:GenderIndex + 
+                        (gender | country), 
+                      REML = TRUE,
                       data = dataComplete, 
                       control = lmerControl(
                         optimizer ='optimx', optCtrl = list(method = 'nlminb')))

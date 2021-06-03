@@ -1,7 +1,7 @@
 LoadData <- function() {
   
   # Select the directory
-  path_dir     <- "ReproductionAnalysis/files/input/"
+  path_dir     <- "files/input/"
   path_GPS_dir <- paste0(path_dir, "GPS_Dataset/GPS_dataset_individual_level/")
   
   # Load the data

@@ -118,8 +118,50 @@ dataCoeffAlternative[data_all$data, `:=` (isocode     = i.isocode,
                      on = "country"]
 setnames(dataCoeffAlternative, old = "gender1", new = "gender")
 
+
+#-----
+# PCA on the preferences
+summaryIndexAlternative <- AvgGenderDiffPreferencesPCA(dataCoeffAlternative)
+
+# Prepare summary index
+summaryIndexAlternative <- CreateSummaryIndex(summaryIndexAlternative, data_all)
+
+# Perform the principal component analysis imputing missing values
+summaryIndexAlternative$GenderIndex <- GenderIndexPCA(summaryIndexAlternative[, c(5:8)])
+
+# Standardize the predictors (mean 0 and std dev 1)
+summaryIndexAlternative <- Standardize(data    = summaryIndexAlternative, 
+                            columns = c(4:8, 13),
+                            newName = TRUE)
+# Set the Gender Index on a scale between 0 and 1
+summaryIndexAlternative[, GenderIndexRescaled := Rescale(GenderIndex)]
+
+# Add residuals to the summary index
+summaryIndexAlternative <- AddResiduals(summaryIndexAlternative)
+
+# Invert trend for two variables
+summaryIndexAlternative[, `:=` (ValueUNStd = -1 * ValueUNStd,
+                     DateStd    = -1 * DateStd)]
+#-----
+
+dataCoeffAlternative_summary <- merge(dataCoeffAlternative[, ..colsToKeep_coeff], 
+                                      summaryIndexAlternative[, ..colsToKeep_summary],
+                           by = "country")
+
 # Invert the trend of those preferences with opposite direction of the difference
-dataCoeffAlternative <- InvertPreference(dataCoeffAlternative)
+dataCoeffAlternative_summary <- InvertPreference(dataCoeffAlternative_summary)
+
+dataCoeffAlternative_summary <- AddResidualsSinglePreference(dataCoeffAlternative_summary)
+
+PlotSummary(data = dataCoeffAlternative_summary[preference == "trust"],
+            var1 = "residualslogAvgGDPpc_trust",
+            var2 = "residualsgenderGEI_trust",
+            labs = c("Log GDP p/c (residualized using Gender Equality Index)",
+                     "Gender Differences (residualized using Gender Equality Index)",
+                     "Trust (+)"),
+              display = TRUE,
+           # save = "plots/supplementary_FigS5A.png"
+)
 
 # -------------- #
 
