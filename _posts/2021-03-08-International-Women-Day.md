@@ -19,7 +19,7 @@ We noticed that in many countries, on average, women tended to be less secure ab
 
 We calculated the average subjective math skills by country and by gender, and then plotted the difference between the average of the male subjective math skills minus the female one:
 
-![](/plots/difference_mean_subjMathSkills.png)
+![]({{ site.url }}/Global-Preferences-Survey/plots/difference_mean_subjMathSkills.png)
 
 Only 3 out of 76 countries have a negative difference, meaning that women tend to consider themselves good at math, while men tend to consider themselves worse. All the other countries show the opposite. 
 
@@ -29,11 +29,11 @@ Checking out the single countries, we can learn something more interesting about
 
 For example, in Italy and Germany the differences between women and men in subjective math skills are almost identical. But once we plot the actual distributions, we see that they are very different from each other. In Italy, the mode (the most frequent answer) of both distributions is 6. In Germany, on the contrary, the mode for the two distributions is different: Males tend to assign themselves a score of 8, while females are much more moderate and assign more 5s.
 
-![](/plots/together_histograms.png)
+![]({{ site.url }}/Global-Preferences-Survey/plots/together_histograms.png)
 
 To plot the same differences between man and women for all countries (find yours!), we plot a 2D-heatmap, where blue colour represents a negative difference (thus a lower number of female answered that value of the subjective math skills with respect to males), and red represents a positive difference (a higher number of female answered that value with respect to males).
 
-![](/plots/heatmap_countries.png)
+![]({{ site.url }}/Global-Preferences-Survey/plots/heatmap_countries.png)
 
 The order of the countries is the same as the one displayed for the mean of the differences, but this time one can clearly see the pattern of the differences. Higher values of differences are stressed by more intense colour, while white represents the absence of difference.
 
