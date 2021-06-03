@@ -1,7 +1,5 @@
-tmp/
-Documentation.txt
-files/
-files/input/
-.Rhistory
-.DS_Store
-.Rproj.user/
+_site
+.sass-cache
+.jekyll-cache
+.jekyll-metadata
+vendor
