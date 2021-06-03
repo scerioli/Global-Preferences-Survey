@@ -23,7 +23,7 @@ email: sara.cerioli97@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   This is my first attempt to create a personal site using GitHub Pages. Be nice :)
 # baseurl: "" # the subpath of your site, e.g. /blog
-url: "" # the base hostname & protocol for your site, e.g. http://example.com
+url: "https://scerioli.github.io/Global-Preferences-Survey/" # the base hostname & protocol for your site, e.g. http://example.com
 github_username:  scerioli
 
 # Build settings
