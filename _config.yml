@@ -27,7 +27,7 @@ url: "https://scerioli.github.io/Global-Preferences-Survey/" # the base hostname
 github_username:  scerioli
 
 # Build settings
-theme: minima
+theme: jekyll-theme-dinky
 plugins:
   - jekyll-feed
 
