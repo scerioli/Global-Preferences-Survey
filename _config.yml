@@ -18,8 +18,7 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 
-title: Replication Study of the article "Relationship of gender differences in 
-preferences to economic development and gender equality"
+title: Replication Study of the article "Relationship of gender differences in preferences to economic development and gender equality"
 email: sara.cerioli97@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   This study reproduces the results of the article 
