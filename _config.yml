@@ -28,8 +28,11 @@ github_username:  scerioli
 
 # Build settings
 theme: minimal-mistakes-jekyll
+minimal_mistakes_skin: "contrast"
 plugins:
   - jekyll-feed
+  
+include: ["_pages", "assets"]
 
 # Exclude from processing.
 # The following items will not be processed, by default.

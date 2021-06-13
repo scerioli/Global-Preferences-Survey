@@ -1,0 +1,16 @@
+Sara Cerioli:
+  name        : "Sara Cerioli"
+  bio         : "Italian physicist, living in Germany as Data Scientist. Passionate about data, feminism and horses"
+  avatar      : "/assets/images/xena_delicate-flower.jpg"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:sara.cerioli97@gmail.com"
+
+Andrey Formozov:
+  name        : "Andrey Formozov"
+  bio         : "The social-justice warrior"
+  links:
+    - label: "Email"
+      icon: "fas fa-fw fa-envelope-square"
+      url: "mailto:formozoff@gmail.com"
