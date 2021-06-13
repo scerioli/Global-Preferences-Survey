@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 title:  "International Women's Day"
 date:   2021-03-08 08:30:00 +0200
 category: international women day

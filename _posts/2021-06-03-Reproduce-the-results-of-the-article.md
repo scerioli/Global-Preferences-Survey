@@ -1,5 +1,5 @@
 ---
-layout: single
+layout: post
 title:  "Reproduce the results of the article"
 date:   2021-06-03 21:30:54 +0200
 category: replication study
@@ -176,19 +176,19 @@ This has been done for the economic development, for the Gender Equality Index, 
 
 **(A)**  Mean country-level gender difference in altruism, trust, positive reciprocity, negative reciprocity, risk-taking, and patience by development level. Countries were sorted into four bins according to their GDP per capita quartile. The symbols + and − in the panel titles indicate the sign of the difference for each preference; + indicates that positive differences
 
-![main_Fig1A.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig1A.png)
+![main_Fig1A.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig1A.png)
 
 **(B)** Relationship between the aggregate index of gender differences in all six preferences and log GDP per capita.
 
-![main_Fig1B.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig1B.png)
+![main_Fig1B.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig1B.png)
 
 **(C)** and
 
-![main_Fig1C.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig1C.png)
+![main_Fig1C.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig1C.png)
 
 **(D)** Same relationships as in (A) and (B) for the Gender Equality Index.
 
-![main_Fig1D.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig1D.png)
+![main_Fig1D.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig1D.png)
 
 ---
 
@@ -196,29 +196,29 @@ This has been done for the economic development, for the Gender Equality Index, 
 
 **(A)** Relationship between the aggregate index of gender differences in preferences and log GDP per capita after residualizing both variables with respect to the Gender Equality Index.
 
-![main_Fig2A.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig2A.png)
+![main_Fig2A.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig2A.png)
 
 **(B)** to **(F)** Relationship between the aggregate index of gender differences in preferences and five indices of gender equality after residualizing all variables with respect to log GDP per capita. Indices of gender equality are 
 
 **(B)** the Gender Equality Index, 
 
-![main_Fig2B.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig2B.png)
+![main_Fig2B.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig2B.png)
 
 **(C)** WEF Global Gender Gap Index,
 
-![main_Fig2C.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig2C.png)
+![main_Fig2C.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig2C.png)
 
 **(D)** UN Gender Equality Index, 
 
-![main_Fig2D.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig2D.png)
+![main_Fig2D.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig2D.png)
 
 **(E)** ratio of female to male labor force participation, and 
 
-![main_Fig2E.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig2E.png)
+![main_Fig2E.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig2E.png)
 
 **(F)** years since women’s suffrage.
 
-![main_Fig2F.png]({{ site.url }}/Global-Preferences-Survey/assets/images/main_Fig2F.png)
+![main_Fig2F.png]({{ site.url }}/Global-Preferences-Survey/plots/main_Fig2F.png)
 
 ---
 
@@ -252,53 +252,53 @@ We plotted the logarithm of the average GDP per capita versus the preference dif
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the level of economic development measured by log GDP p/c, including a linear fit. For each preference, the symbols (+)/(-) in the panel titles indicate the direction of the difference. (+) indicates that women exhibited higher levels of the respective preference if the difference was positive. (-) indicates that men exhibited higher levels of the respective preference if the difference was positive. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample
 
-![supplementary_FigS2.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS2.png)
+![supplementary_FigS2.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS2.png)
 
 #### Fig. S3. Gender differences and gender equality by preference and country. 
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the Gender Equality Index, including a linear fit. For each preference, the symbols (+)/(-) in the panel titles indicate the direction of the difference. (+) indicates that women exhibited higher levels of the respective preference if the difference was positive. (-) indicates that men exhibited higher levels of the respective preference if the difference was positive. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample.
 
-![supplementary_FigS3.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS3.png)
+![supplementary_FigS3.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS3.png)
 
 #### Fig. S4. Gender differences and gender equality by equality index. 
 
 Each panel shows the relationship between the index of gender differences in preferences and an indicator for gender equality, including a linear fit. (A) the Global Gender Gap Index of the World Economic Forum (WEF), (B) the Gender Equality Index of the United Nations (UN), (C) the ratio of female and male labor force participation rates, and (D) years since women’s suffrage.
 
-![supplementary_FigS4A.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS4A.png) ![supplementary_FigS4B.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS4B.png)
+![supplementary_FigS4A.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS4A.png) ![supplementary_FigS4B.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS4B.png)
 
-![supplementary_FigS4C.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS4C.png) ![supplementary_FigS4D.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS4D.png)
+![supplementary_FigS4C.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS4C.png) ![supplementary_FigS4D.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS4D.png)
 
 #### Fig. S5. Gender differences and economic development conditional on gender equality by preference and country. 
 Each panel shows the relationship between country-level gender differences in a particular preference and economic development measured by log GDP p/c, including a linear fit. Gender differences in preferences and log GDP p/c were residualized with respect to the Gender Equality Index. For each preference, the symbols (+)/(-) in the panel titles indicate the general direction of the difference. (+) indicates that women generally exhibited higher levels of the respective preference. (-) indicates that men generally exhibited higher levels of the respective preference. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample.
 
-![supplementary_FigS5A.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS5A.png) ![supplementary_FigS5B.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS5B.png)
+![supplementary_FigS5A.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS5A.png) ![supplementary_FigS5B.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS5B.png)
 
-![supplementary_FigS5C.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS5C.png) ![supplementary_FigS5D.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS5D.png)
+![supplementary_FigS5C.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS5C.png) ![supplementary_FigS5D.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS5D.png)
 
-![supplementary_FigS5E.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS5E.png) ![supplementary_FigS5F.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS5F.png)
+![supplementary_FigS5E.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS5E.png) ![supplementary_FigS5F.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS5F.png)
 
 #### Fig. S6. Gender differences and gender equality conditional on economic development by preference and country. 
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the Gender Equality Index, including a linear fit. Gender differences in preferences and the Gender Equality Index were residualized with respect to log GDP p/c. For each preference, the symbols (+)/(-) in the panel titles indicate the general direction of the difference. (+) indicates that women generally exhibited higher levels of the respective preference. (-) indicates that men generally exhibited higher levels of the respective preference. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample.
 
-![supplementary_FigS6A.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS6A.png) ![supplementary_FigS6B.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS6B.png)
+![supplementary_FigS6A.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS6A.png) ![supplementary_FigS6B.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS6B.png)
 
-![supplementary_FigS6C.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS6C.png) ![supplementary_FigS6D.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS6D.png)
+![supplementary_FigS6C.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS6C.png) ![supplementary_FigS6D.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS6D.png)
 
-![supplementary_FigS6E.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS6E.png) ![supplementary_FigS6F.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS6F.png)
+![supplementary_FigS6E.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS6E.png) ![supplementary_FigS6F.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS6F.png)
 
 
 #### Fig. S8. Gender differences and economic development by preference and country using preferences standardized at the global level. 
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the level of economic development measured by log GDP p/c, including a linear fit. For each preference, the symbols (+)/(-) in the panel titles indicate the direction of the difference. (+) indicates that women exhibited higher levels of the respective preference if the difference was positive. (-) indicates that men exhibited higher levels of the respective preference if the difference was positive. Preference measures were standardized at the global instead of the country level. For each preference and country, the gender difference was then calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample.
 
-![supplementary_FigS8.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS8.png)
+![supplementary_FigS8.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS8.png)
 
 #### Fig. S9. Gender differences and economic development by preference and country without controls. 
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the level of economic development measured by log GDP p/c, including a linear fit. For each preference, the symbols (+)/(-) in the panel titles indicate the direction of the difference. (+) indicates that women exhibited higher levels of the respective preference if the difference was positive. (-) indicates that men exhibited higher levels of the respective preference if the difference was positive. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator without controls for the particular country sample.
 
-![supplementary_FigS9.png]({{ site.url }}/Global-Preferences-Survey/assets/images/supplementary_FigS9.png)
+![supplementary_FigS9.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS9.png)
 
 ---
 
@@ -457,7 +457,7 @@ For our purpose, it was pretty relevant to have a statistical confirmation that 
 ### Results
 
 One can check the resulting plots looking at the plot:
-![best_comparison_article_data.png]({{ site.url }}/Global-Preferences-Survey/assets/images/best_comparison_article_data.png). 
+![best_comparison_article_data.png]({{ site.url }}/Global-Preferences-Survey/plots/best_comparison_article_data.png). 
 
 Here the explanation of the plots and the results from them:
 
@@ -475,6 +475,6 @@ What is really interesting to check here are the third and fourth /plots on the 
 
 Using a more established method, we also plotted the average gender differences from the article with respect to the average gender differences extracted from our model. The result can be seen in the plot:
 
-![correlation_article_data.png]({{ site.url }}/Global-Preferences-Survey/assets/images/correlation_article_data.png) 
+![correlation_article_data.png]({{ site.url }}/Global-Preferences-Survey/plots/correlation_article_data.png) 
 
 where one can see that the data are correlated at almost 98% with a p-value smaller than 0.0001.
