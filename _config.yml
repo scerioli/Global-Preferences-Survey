@@ -27,7 +27,7 @@ url: "https://scerioli.github.io" # the base hostname & protocol for your site, 
 github_username:  scerioli
 
 # Build settings
-theme: minima
+theme: minimal-mistakes-jekyll
 plugins:
   - jekyll-feed
 
