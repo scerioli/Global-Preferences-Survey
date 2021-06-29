@@ -3,9 +3,12 @@ InvertPreference <- function(data) {
   # single level (no PCA) and it multiplies the ones with an opposite trend by
   # a -1
   
-  data[preference == "risktaking", gender := -1 * gender]
-  data[preference == "negrecip", gender := -1 * gender]
-  data[preference == "patience", gender := -1 * gender]
+  # Define the original value of the gender to preserve the direction of the
+  # change
+  data[, genderOrig := gender] 
+  # Invert the sign for the known preferences
+  data[preference %in% c("risktaking", "negrecip", "patience"), 
+       gender := -1 * genderOrig]
   
   return(data)
 }

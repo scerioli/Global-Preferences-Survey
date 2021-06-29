@@ -104,6 +104,13 @@ dataCoeff_summary <- InvertPreference(dataCoeff_summary)
 
 dataCoeff_summary <- AddResidualsSinglePreference(dataCoeff_summary)
 
+dataCoeff_summary[, meanGender := mean(genderOrig), by = "preference"]
+# TODO: Error bars indicate 95% confidence intervals obtained from standard 
+# errors clustered at the country level
+dataCoeff_summary <- Standardize(data = dataCoeff_summary,
+                                 columns = "meanGender",
+                                 newName = TRUE)
+
 # -------------- #
 
 ## Alternative model
