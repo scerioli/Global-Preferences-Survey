@@ -248,6 +248,13 @@ We plotted the logarithm of the average GDP per capita versus the preference dif
 
 ### Plots
 
+#### Fig. S1. Gender differences in preferences on the global level. 
+
+Positive values indicate that women exhibited higher levels of the respective preference, negative values indicate that women exhibited lower levels of the respective preference. For each preference, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile, and country fixed effects on the worldwide sample. Error bars indicate 95% confidence intervals obtained from standard errors clustered at the country level.
+
+![supplementary_FigS1.png]({{ site.url }}/Global-Preferences-Survey/plots/supplementary_FigS1.png)
+
+
 #### Fig. S2. Gender differences and economic development by preference and country. 
 
 Each panel shows the relationship between country-level gender differences in a particular preference and the level of economic development measured by log GDP p/c, including a linear fit. For each preference, the symbols (+)/(-) in the panel titles indicate the direction of the difference. (+) indicates that women exhibited higher levels of the respective preference if the difference was positive. (-) indicates that men exhibited higher levels of the respective preference if the difference was positive. For each preference and country, the gender difference was calculated as the coefficient on a gender indicator with male as the reference category in an OLS regression of the respective preference on the gender indicator, controlling for age, age squared, subjective math skills, education level, household income quintile for the particular country sample
