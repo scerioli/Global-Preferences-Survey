@@ -394,7 +394,9 @@ Data aggregated by country but separating each of the six preferences gender dif
 <ul type="square">
   <li> country, isocode, logAvgGDPpc, GenderIndex are the same variables as described above </li>
 
-  <li> gender is the coefficient related to the linear regression on the preference </li>
+  <li> gender is the inverted coefficient related to the linear regression on the preference (inverted only for those preferences requiring an inversion in the sign) </li>
+  
+  <li> genderOrig is the original coefficient related to the linear regression on the preference </li>
 
   <li> preference is the same as described above, and in this dataset we kept the six preferences distinguished and not combined into a PCA </li>
  
@@ -403,6 +405,8 @@ Data aggregated by country but separating each of the six preferences gender dif
   <li> residualsgenderGDP_trust, residualsgenderGDP_altruism, residualsgenderGDP_negrecip, residualsgenderGDP_posrecip, residualsgenderGDP_risktaking, residualsgenderGDP_patience are built performing a linear regression of the gender coefficient of the specific preference and the log GDP p/c, and then calculating the residuals from it </li>
 
   <li> residualslogAvgGDPpc_trust is the variable created from GenderIndex residualised using logAvgGDPpc, and residualsGenderIndex_trust is the variable created from logAvgGDPpc residualised using GenderIndex, selecting the dataset on the specific preference "trust". The other ten variables (residualslogAvgGDPpc_altruism, residualslogAvgGDPpc_negrecip, residualslogAvgGDPpc_posrecip, residualslogAvgGDPpc_risktaking, residualslogAvgGDPpc_patience, and residualsGenderIndex_altruism, residualsGenderIndex_negrecip, residualsGenderIndex_posrecip, residualsGenderIndex_risktaking, residualsGenderIndex_patience) are created in the same way for each of the correspoding preference. </li>
+  
+  <li> meanGender is the gender coefficient above-described, averaged on preferences, while meanGenderStd is the same but standardized </li>
 
 </ul>
 </details>
