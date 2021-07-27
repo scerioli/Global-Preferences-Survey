@@ -178,15 +178,16 @@ PlotSummary(data = summaryIndex,
 # ===================================== #
 
 # -------------------------------- Fig. S1 ----------------------------------- #
-toPlot <- unique(dataCoeff_summary[, .(preference, meanGenderStd)])
+toPlot <- unique(dataCoeff_summary[, .(preference, meanGender, stdGender)])
 
 toPlot$preference_f <- factor(toPlot$preference, 
                               levels = c("altruism", "trust", "posrecip",
                                          "negrecip", "risktaking", "patience"))
 
 plotS1 <-
-  ggplot(toPlot, aes(x = preference_f, y = meanGenderStd)) +
+  ggplot(toPlot, aes(x = preference_f, y = meanGender)) +
   geom_bar(stat = "identity", aes(fill = preference)) +
+  geom_errorbar(aes(ymin = meanGender - stdGender / 2, ymax = meanGender + stdGender / 2)) +
   scale_fill_brewer(palette = "Dark2") +
   theme_bw() +
   theme(legend.title     = element_blank(),

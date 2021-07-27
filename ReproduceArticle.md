@@ -50,14 +50,14 @@ The Gender Equality Index is composed of four main datasets.
 
 - **WEF Global Gender Gap:** WEF Global Gender Gap Index Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data were missing, data was added from the World Economic Forum Global Gender Gap Report 2006. We modified some of the country names directly on the csv file, that is why we provide this as an input file.
 
-- **Ratio of female and male labour force participation:** Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the years the avarage for the period between 2004 and 2013.
+- **Ratio of female and male labour force participation:** Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the average for the period between 2004 and 2013.
 
 
 ### About Missing Data
 
 #### Main issue
 
-During the reproduction of the article, we found that the authors didn't write in ditails how they handled missing data in the indicators.
+During the reproduction of the article, we found that the authors didn't write in details how they handled missing data in the indicators.
 
 They mention on page 14 of the Supplementary Material, that (quoting): "For countries where data were missing data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)."
 
@@ -129,7 +129,7 @@ This resulted in 6 different models (one for each preference measure), having in
 We plotted the logarithm of the average GDP per capita versus the preference differences, for the 6 different preference measurements. When plotting this, we used a linear model to fit and extract the correlation and the p-value.
 
 
-## Principal Component Analysis
+#### Principal Component Analysis
 
 To summarise the average gender difference among these preferences, we performed a principal component analysis on the gender preference differences from the linear model and used the first component as a summary index of average gender differences in preferences. 
 
@@ -138,7 +138,7 @@ We then performed a linear regression on the data points, extracting the correla
 We performed a PCA also on the four datasets used for Gender Equality, to extract a more general Gender Equality Index based on them. We then used this Gender-Equality Index for plotting the same average gender differences as a function of this index, performing a linear regression to calculate the p-value and the correlation value (see Fig. 1D). Note that here also the Gender Equality Index is transformed to be on a scale between 0 and 1.
 
 
-### Variable Conditioning
+#### Variable Conditioning
 
 For the plots in Fig. 2, a conditional analysis was performed. To plot the variables x and y residualised using the variable z:
 
