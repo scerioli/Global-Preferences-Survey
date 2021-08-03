@@ -21,20 +21,20 @@ Standardize <- function(data, columns, level = NULL, newName = FALSE) {
   if (!is.null(level)) {
     for (column in columns) {
       if (newName) {
-        data[, paste0(((column)), "Std") := standardize(eval(as.name(column))), 
+        data[, paste0(((column)), "Std") := scale(eval(as.name(column))), 
              by = level]
       }
       else {
-        data[, ((column)) := standardize(eval(as.name(column))), by = level]
+        data[, ((column)) := scale(eval(as.name(column))), by = level]
       }
     }
   } else {
     for (column in columns) {
       if (newName) {
-        data[, paste0(((column)), "Std") := standardize(eval(as.name(column)))]
+        data[, paste0(((column)), "Std") := scale(eval(as.name(column)))]
       }
       else {
-        data[, ((column)) := standardize(eval(as.name(column)))]
+        data[, ((column)) := scale(eval(as.name(column)))]
       }
     }
   }

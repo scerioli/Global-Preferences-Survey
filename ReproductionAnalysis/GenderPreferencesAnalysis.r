@@ -172,12 +172,6 @@ PlotSummary(data = dt_compare, var1 = "avgDiffArticle", var2 = "avgDiffOurs",
             display = TRUE
             )
 
-# Compare with the Bayesian Supersedes the t-Test method: Uncomment this part to
-# perform the test.
-# Plots can be reproduced using the plotAll function
-# comparison <- BESTmcmc(dt_article$AverageGenderDifference,
-#                        summaryIndex$avgGenderDiffNorm)
-
 
 # ============================= #
 #### 7. WRITE DATA SUMMARIES ####
