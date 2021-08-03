@@ -20,6 +20,8 @@ bibliography: bibliography.bibtex
 
 ## Introduction
 
+This study reproduces the results of the article @FH and partially its supplementary material.
+
 Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and these differences concerning the economic behaviors (such risk taking, patience, or altruism, for instance) are being studied both in economics and in psychology. *we need a citation here*
 
 One of the problems common for many experiments in social sciences is the lack of large and heterogeneous data-sets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed.
@@ -266,6 +268,5 @@ A first thought was that this might be the result of using a different data-set 
 
 The study indicates that higher economic development and higher gender equality are associated with an increase in the gender differences in preferences, and therefore rules out the social-role theory over the post-materialistic one: When more resources are available to both men and women, the expression of the gender specific preferences can be seen. Our replication leads to the same conclusions, but we have some open questions regarding unexplained differences that might lead to further checks on the results’ robustness. 
 
-Let's try to cite @patashnik-bibtexing
 
 ## References
