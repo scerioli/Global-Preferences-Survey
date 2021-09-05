@@ -22,11 +22,11 @@ bibliography: bibliography.bibtex
 
 This study reproduces the results of the article @FH and partially its supplementary material.
 
-Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and these differences concerning the economic behaviors (such risk taking, patience, or altruism, for instance) are being studied both in economics and in psychology. *we need a citation here*
+Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors (such risk taking, patience, or altruism, for instance) are being studied both in economics and in psychology. *we need a citation here*
 
-One of the problems common for many experiments in social sciences is the lack of large and heterogeneous data-sets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed.
+One of the problems common for many experiments in social sciences is the lack of large and heterogeneous data-sets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed for the study.
 
-In the Gallup World Poll 2012 there was included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world, that aimed to fill this gap: Covering almost 90% of the world population representation, with each Country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust.
+The Gallup World Poll 2012 included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world, that aimed to fill this gap: Covering almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust.
 
 The data-set provides a unique insight in the economic preferences of a heterogeneous amount of people. The original study published in the Quarterly Journal of Economics [@QJE_Falk, 133 (4) pp. 1645-1692] focused on more general questions about the economic preferences distributions in different countries, trying to explore different covariates from the Gallup World Poll. While, the subsequent article, replicated in this work, focused specifically on the gender differences arising from the previous study.
 
@@ -34,15 +34,10 @@ The main question that the article wants to answer is the old one nature versus 
 
 The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*, and methods from the Machine Learning toolbox. In order to achieve that, one needs first to replicate the original analysis since the original code is written by Falk and Hermle (FH) in Stata. *[Check further what's available here https://www.briq-institute.org/global-preferences/downloads#]*
 
-Motivation for reproduction. Other opinions, Open science perspective, cross and meta studies, alternative methodology (beyond OLS, ML).
+*Motivation for reproduction. Other opinions, Open science perspective, cross and meta studies, alternative methodology (beyond OLS, ML).*
 
-*We would need to add a section for the critics to the Gender Equality Index*
 
 # 2. Methods 
-
-<!--
-Maybe we should do some kind of critical revision here check as robust these methods are. or make a separate section about it before/after the reproduction of the article*
--->
 
 ## Overview
 
@@ -89,43 +84,9 @@ From the [website of the World Bank](https://data.worldbank.org/indicator/), one
 
 ### Gender Equality Index
 
-The article lacks the analysis of the gender equality indexes involved in the analysis. 
-
-In particular, no discussion on their relation to the economic preferences were provided.
-
-No links were provided on the literature that evaluates their performance.
-
-Even though some of these indexes are commonly accepted in economics and politics as a measure of gender equality, the status and performance from a scientific perspective is a subject of in-depth investigation that goes beyond this reproduction analysis.
-
-In this section, we provide a brief description and investigation of the indexes that were used in the original article, together with related sources of data and methodology.
-
-Four different measures were used to build gender equality index, which was defined as the first Principle Component of them. We show the structure of the index as a diagram (figure).
-
-As one can see several indexes contain the repetitive components, so most likely after PCA application they are going to be filtrated.
-
-- How PCA correlates with other components?
-
-- What are the first and the second component?
-
-Is the resulting Gender Equality Index is just the same as work-force ratio because of PCA filtration of the result?
-
-H: overall index is strongly correlated with the indicators that are repeated in the calculation of the overall index.
-
-A brief look at the composition of the data and sources provoc several questions regarding the validity of the indicators to be used as a proxy for gender equality in the study.
-
-One of the integral components of the WEF index is the ratio of avarage income for man and women. Surprisingly, an arbitrary maximum value of the income in 40 000 $ was set in index calculation. For example, ***, rated as the last country in the list had the 111 and 222 dollars outcome with an index ratio 111/222, while the first county in the rating was ***, with 333 and 444 avarage salaries rates for man and women, respectively. However, the calculated rate is 333/500. As the arbitrary maximum income was set. 
-
-Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives.
-
-Information summary on time since women suffrage: the table does not contain links on the related sources.
-
-
-
 *Check the many updates since then! https://eige.europa.eu/gender-equality-index/2020/SE*
 
 The Gender Equality Index is composed of four main data-sets. Here below we describe where to get them (as originally sourced by the authors) and how we treated the data within them, if needed.
-
-Closest look
 
 - **Time since women’s suffrage:** Taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). We prepared the data in the following way. For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election right were granted, with no other restrictions commented. Some countries were colonies or within union of the countries (for instance, Kazakhstan in Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within union and as independent state. In this case we kept the first date. 
 It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights [citation]. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. 
@@ -138,7 +99,7 @@ Note: USA data doesn't take into account that also up to 1964 black women couldn
 - **Ratio of female and male labour force participation:** Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the average for the period between 2004 and 2013.
 
 
-### Main issue About Missing Data 
+### Missing Data and Imputation 
 
 During the reproduction of the article, we found that the authors didn't write in details how they handled missing data in the indicators.
 
@@ -150,9 +111,9 @@ However, there are two problems here:
 
 - There are missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either.
 
-These two unclear points, even though in our understanding not crucial for the replication of the analysis, are not desirable, but couldn't be further clarified with the authors. *[Try to ping again the authors]*
+These two unclear points, even though in our understanding not crucial for the replication of the analysis, are not desirable, but couldn't be further clarified with the authors.
 
-The problem of missing data for a given countries often does not influence much the overall trends of found correlations, however, very relevant if one would to see the implecations of the study with respect to one cirtain coutry of interest.
+The problem of missing data for a given countries often does not influence much the overall trends of found correlations, however, very relevant if one would to see the implications of the study with respect to one certain country of interest.
 
 
 ## Data Analysis
@@ -283,17 +244,61 @@ In Table 3, we compare the two core concepts of the article, where the summarise
 
 Lastly, we have the conditional analysis (Table 4). For the two main country-level variable, we see that the values tend to agree and be on the same direction (similar r coefficients, significant p-value, and low z-score). But when we start to check for the single indeces, we see that there are some differences which are worthy to discuss. 
 
-The first thing to say is that we had to make choices on how to impute data and also how to handle the missing data (see discussion above in paragraph "Methods"). The main imputation on missing data has been done on the "time since women’s suffrage" data-set", that is where we see a substantial difference in the results. Other data-sets, on the other hand, has not been treated for missing data but still they present some difference. For instance, the data-set "F/M in Labor Force Participation" in our analysis has a non-statistically significant correlation, while in the original paper they found a correlation with p-value less than 0.05. 
+The first thing to say is that we had to make choices on how to impute data and also how to handle the missing data (see discussion above in paragraph "Methods"). The main imputation on missing data has been done on the "time since women’s suffrage" data-set, that is where we see a substantial difference in the results. Other data-sets, on the other hand, has not been treated for missing data but still they present some difference. For instance, the data-set "F/M in Labor Force Participation" in our analysis has a non-statistically significant correlation, while in the original paper they found a correlation with p-value less than 0.05. 
 
 A first thought was that this might be the result of using a different data-set for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open. 
 
 ## Critics
 
-- Gender Equality Index robustness and validity
+### Gender Equality Index robustness and validity
+
+The article lacks the analysis of the gender equality indexes involved in the analysis. 
+
+In particular, no discussion on their relation to the economic preferences were provided.
+
+No links were provided on the literature that evaluates their performance.
+
+Even though some of these indexes are commonly accepted in economics and politics as a measure of gender equality, the status and performance from a scientific perspective is a subject of in-depth investigation that goes beyond this reproduction analysis.
+
+In this section, we provide a brief description and investigation of the indexes that were used in the original article, together with related sources of data and methodology.
+
+Four different measures were used to build gender equality index, which was defined as the first Principle Component of them. We show the structure of the index as a diagram (figure).
+
+As one can see several indexes contain the repetitive components, so most likely after PCA application they are going to be filtrated.
+
+- How PCA correlates with other components?
+
+- What are the first and the second component?
+
+Is the resulting Gender Equality Index is just the same as work-force ratio because of PCA filtration of the result?
+
+H: overall index is strongly correlated with the indicators that are repeated in the calculation of the overall index.
+
+A brief look at the composition of the data and sources provoc several questions regarding the validity of the indicators to be used as a proxy for gender equality in the study.
+
+One of the integral components of the WEF index is the ratio of avarage income for man and women. Surprisingly, an arbitrary maximum value of the income in 40 000 $ was set in index calculation. For example, ***, rated as the last country in the list had the 111 and 222 dollars outcome with an index ratio 111/222, while the first county in the rating was ***, with 333 and 444 avarage salaries rates for man and women, respectively. However, the calculated rate is 333/500. As the arbitrary maximum income was set. 
+
+Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives.
+
+Information summary on time since women suffrage: the table does not contain links on the related sources.
+
+---
 
 - What about cross-calibration for personal interview vs telephone interview? Was it verified that the results for economic preferences are the same in both cases? Where? I would expect it different. There are should be some info in literature about that (XiaoChi Zhang, 2017).
 
-- Cohen's effect size?
+### Differences effect size
+
+The original article presents the results in a normalized way: Taking the minimum difference as 0 and the maximum as 1, any reference to the size of the effect is lost. The question arising from it is the following: Is the detected gender difference only statistically significant, or has it also a "visible" effect in the real world? 
+
+To answer this question, one must keep in mind that:
+
+1. The data provided by the authors are already merged together into a single bit of information for each preference. Any preference (except from trust) had 2 or 3 questions that were later merged by the authors into a single answer, and then standardized. This means that any reference to the reality is lost, and one can't answer the question "how different are men and women regarding patience?", because the scale is an abstract one and can't provide any insight but a relative one.
+
+2. Even worse happens when looking at the PCA of the preferences, when they are then all mixed together.
+
+The point here is that when we look at the data, it seems that it is heteroskedastic, because with increasing GDP the standard deviation increases (see our studies). Then having a standardization on the whole dataset might be not the best idea to measure the gender differences.
+
+*I need to write better this part*
 
 - Not raw data available (and in general not all data available)
 

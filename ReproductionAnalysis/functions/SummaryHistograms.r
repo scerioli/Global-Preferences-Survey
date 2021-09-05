@@ -31,13 +31,10 @@ SummaryHistograms <- function(dt, summ) {
 
   data <- unique(data[, c(-1, -2, -4, -5)])
 
-  data[preference == "negrecip", meanGenderGDP := -1 * meanGenderGDP]
-  data[preference == "risktaking", meanGenderGDP := -1 * meanGenderGDP]
-  data[preference == "patience", meanGenderGDP := -1 * meanGenderGDP]
+  data[preference %in% c("negrecip", "risktaking", "patience"), 
+       `:=` (meanGenderGDP = -1 * meanGenderGDP,
+             meanGenderGEI = -1 * meanGenderGEI)]
 
-  data[preference == "negrecip", meanGenderGEI := -1 * meanGenderGEI]
-  data[preference == "risktaking", meanGenderGEI := -1 * meanGenderGEI]
-  data[preference == "patience", meanGenderGEI := -1 * meanGenderGEI]
 
   return(data)
 }
