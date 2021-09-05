@@ -18,7 +18,7 @@ bibliography: bibliography.bibtex
 
 
 
-## Introduction
+# 1. Introduction
 
 This study reproduces the results of the article @FH and partially its supplementary material.
 
@@ -32,19 +32,19 @@ The data-set provides a unique insight in the economic preferences of a heteroge
 
 The main question that the article wants to answer is the old one nature versus nurture *(underline the resource based factor)*: Are gender differences arising from some kind of biological differences, or from social stereotypes? The first hypothesis means that the differences could potentially be masked by the necessity of fulfilling basic needs for survival reasons, and therefore in less developed Country we would see less gender differences (because people aim for survival first), while in most developed Countries we would see more gender differences (because of the liberation of the women - and men - from basic, granted needs). On the other hand, if it is society that creates those differences, we should see less differences in the more developed Countries, where people are freed from stereotypes and can freely express themselves. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c of the Countries, and thus "confirming" the first hypothesis (nature is the reason).
 
-The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*, and methods from the Machine Learning toolbox. In order to achieve that, one needs first to replicate the original analysis since the data and the original code were not provided by Falk and Hermle [FH]. *[Check further what's available]*
+The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*, and methods from the Machine Learning toolbox. In order to achieve that, one needs first to replicate the original analysis since the original code is written by Falk and Hermle (FH) in Stata. *[Check further what's available here https://www.briq-institute.org/global-preferences/downloads#]*
 
 Motivation for reproduction. Other opinions, Open science perspective, cross and meta studies, alternative methodology (beyond OLS, ML).
 
 *We would need to add a section for the critics to the Gender Equality Index*
 
-## Methods 
+# 2. Methods 
 
 <!--
 Maybe we should do some kind of critical revision here check as robust these methods are. or make a separate section about it before/after the reproduction of the article*
 -->
 
-### Overview
+## Overview
 
 We replicate the results using the R programming language version 4.0.3 (2020-10-10), and its open-source IDE RStudio for an easy access of the code. The following packages with respective version are used:
 
@@ -60,7 +60,7 @@ We replicate the results using the R programming language version 4.0.3 (2020-10
 | missMDA | | 1.18 |
 
 
-### Data Collection, Cleaning, and Standardization
+## Data Collection, Cleaning, and Standardization
 
 The data used by the authors is not fully available because of two reasons:
 
@@ -73,7 +73,7 @@ An additional issue that we faced while trying to reproduce the results of the a
 The procedure for cleaning is described for each data-set in the corresponding section below. After manually cleaning the data-set, we standardized the names of the countries and merged the data-sets into one within the function [PrepareData.r](https://github.com/scerioli/Global_Preferences_Survey/blob/master/functions/PrepareData.r).
 
 
-#### Global Preferences Survey
+### Global Preferences Survey
 
 This data is protected by copyright and can't be given to third parties.
 
@@ -82,12 +82,12 @@ To download the GPS dataset, go to the website of the Global Preferences Survey 
 *Hint: The organisation can be also "private".*
 
 
-#### GDP per capita
+### GDP per capita
 
 From the [website of the World Bank](https://data.worldbank.org/indicator/), one can access the data about the GDP per capita on a certain set of years. We took the GDP per capita (constant 2010 US$), made an average of the data from 2003 until 2012 for all the available countries, and matched the names of the countries with the ones from the GPS data-set.
 
 
-#### Gender Equality Index
+### Gender Equality Index
 
 *Check the many updates since then! https://eige.europa.eu/gender-equality-index/2020/SE*
 
@@ -104,7 +104,7 @@ Note: USA data doesn't take into account that also up to 1964 black women couldn
 - **Ratio of female and male labour force participation:** Average International Labour Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the average for the period between 2004 and 2013.
 
 
-#### Main issue About Missing Data 
+### Main issue About Missing Data 
 
 During the reproduction of the article, we found that the authors didn't write in details how they handled missing data in the indicators.
 
@@ -121,7 +121,7 @@ These two unclear points, even though in our understanding not crucial for the r
 The problem of missing data for a given countries often does not influence much the overall trends of found correlations, however, very relevant if one would to see the implecations of the study with respect to one cirtain coutry of interest.
 
 
-### Data Analysis
+## Data Analysis
 
 The article uses several methods commonly accepted in the field: 
 
@@ -131,7 +131,7 @@ The article uses several methods commonly accepted in the field:
 
 - Variable Conditioning to separate further between economic development and gender equality in the country.
 
-#### Linear Model on Each Country for Each Preference
+### Linear Model on Each Country for Each Preference
 
 Starting from the complete dataset (meaning with removed NA rows), we wanted to reproduce the data plotted in Fig. S2. regarding the gender differences and economic development by preference and by country.
 
@@ -154,14 +154,14 @@ $p_i = \beta_1^c female_i + \beta_2^c age_i + \beta_3^c age^2_i + \beta_4^c subj
 This resulted in 6 models -- one for each preference measure, $p_i$ -- having intercept and 4 weights, each of the weight being related to the variable in the formula above. The weight for the dummy variable "female", $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, we have 6 weights that represent the preference difference related to the gender for 76 countries.
 
 
-#### Principal Component Analysis
+### Principal Component Analysis
 
 To summarise the average gender difference among the six economic preferences, we performed a principal component analysis (PCA) on the gender coefficients from the linear models. The PCA is a dimensionality reduction technique which allows to “reshape” the 6 coefficients into other mixed components that maximise the variance. The first component of the PCA has then been used as a summary index of average gender differences in preferences. 
 
 We performed a PCA also on the four datasets used for Gender Equality, to extract a summarised Gender Equality Index (more on the structure of the constacted Equality Index in section). 
 
 
-#### Variable Conditioning
+### Variable Conditioning
 
 *[add the theorem]  Frisch–Waugh–Lovell theorem? https://bookdown.org/ts_robinson1994/10_fundamental_theorems_for_econometrics/frisch.html*
 
@@ -176,11 +176,11 @@ In the end, one needs to take the so calculated residuals of x on z and of y on 
 In practice, if we are interested in checking the influence of the economic development on the summarised gender differences, conditioning on the gender equality, we would need to regress the economic development on the gender equality index, then the average gender differences regressed on the gender equality index, and finally regress the residuals of the average gender differences on the residuals of the economic development.
 
 
-## Comparison to the Original Article
+# 3. Comparison to the Original Article
 
 In this section, we describe how to reproduce the plots and compare the results in terms of z-scores. Note that there are additional plots produced together with the Supplementary Material: We reproduce them but we will not enter here into the details of the work. *[Do we need to have a Supplementary Material section?]*
 
-### Reproducing the Plots of the Main Article
+## Reproducing the Plots of the Main Article
 
 To reproduce the plot of Fig. 1A, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the Gender Equality Index in correlation to the gender differences for each economic preference, to reproduce the plot in Fig. 1C.
 
@@ -189,7 +189,7 @@ Then, we related the magnitude of the summarised gender difference coefficients 
 We finally reproduced the plots in Fig. 2A-F using the variable conditioning analysis. This has been done for the economic development, for the Gender Equality Index, and for each of the four indicators building the Gender Equality Index. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. Using the residuals, built as described in the Data Analysis section of the Method paragraph, we performed a linear regression on the data points, and we extracted correlation coefficients and p-values.
 
 
-### Tables and z-scores
+## Tables and z-scores
 
 The comparison to the original article has been done using the z-scores on the correlation coefficients, and checking if the statistical significance was at the same level. *[Do we need to explain why and what the z-scores? I don't think so]*
 
@@ -239,7 +239,7 @@ Signifincance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 |Years since Women Suffrage | Log GDP p/c | 0.30**  | 0.19 | 0.67  |
 
 
-## Discussion of the Results
+# 4. Discussion of the Results
 
 Comparing the results of our analysis to the one from the original paper, starting with the single preferences correlations to the economic development, we see that our analysis brings us to very similar results in terms of correlation coefficients (see Table 1). The p-values, although different, are all indicating a statistically significant correlation, as in the original paper, and when calculating the z-scores thanks to Fisher’s r to z transformation, we see that each one is below 2 (which is usually taken as threshold to be statistically significant). This means that our correlations were not statistically significantly different from the ones in the original article.
 
@@ -253,7 +253,7 @@ The first thing to say is that we had to make choices on how to impute data and 
 
 A first thought was that this might be the result of using a different data-set for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open. 
 
-### Critics
+## Critics
 
 - Gender Equality Index robustness and validity
 
@@ -264,9 +264,9 @@ A first thought was that this might be the result of using a different data-set 
 - Not raw data available (and in general not all data available)
 
 
-## Conclusions
+# 5. Conclusions
 
 The study indicates that higher economic development and higher gender equality are associated with an increase in the gender differences in preferences, and therefore rules out the social-role theory over the post-materialistic one: When more resources are available to both men and women, the expression of the gender specific preferences can be seen. Our replication leads to the same conclusions, but we have some open questions regarding unexplained differences that might lead to further checks on the results’ robustness. 
 
 
-## References
+# References
