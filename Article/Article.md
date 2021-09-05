@@ -89,9 +89,43 @@ From the [website of the World Bank](https://data.worldbank.org/indicator/), one
 
 ### Gender Equality Index
 
+The article lacks the analysis of the gender equality indexes involved in the analysis. 
+
+In particular, no discussion on their relation to the economic preferences were provided.
+
+No links were provided on the literature that evaluates their performance.
+
+Even though some of these indexes are commonly accepted in economics and politics as a measure of gender equality, the status and performance from a scientific perspective is a subject of in-depth investigation that goes beyond this reproduction analysis.
+
+In this section, we provide a brief description and investigation of the indexes that were used in the original article, together with related sources of data and methodology.
+
+Four different measures were used to build gender equality index, which was defined as the first Principle Component of them. We show the structure of the index as a diagram (figure).
+
+As one can see several indexes contain the repetitive components, so most likely after PCA application they are going to be filtrated.
+
+- How PCA correlates with other components?
+
+- What are the first and the second component?
+
+Is the resulting Gender Equality Index is just the same as work-force ratio because of PCA filtration of the result?
+
+H: overall index is strongly correlated with the indicators that are repeated in the calculation of the overall index.
+
+A brief look at the composition of the data and sources provoc several questions regarding the validity of the indicators to be used as a proxy for gender equality in the study.
+
+One of the integral components of the WEF index is the ratio of avarage income for man and women. Surprisingly, an arbitrary maximum value of the income in 40 000 $ was set in index calculation. For example, ***, rated as the last country in the list had the 111 and 222 dollars outcome with an index ratio 111/222, while the first county in the rating was ***, with 333 and 444 avarage salaries rates for man and women, respectively. However, the calculated rate is 333/500. As the arbitrary maximum income was set. 
+
+Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives.
+
+Information summary on time since women suffrage: the table does not contain links on the related sources.
+
+
+
 *Check the many updates since then! https://eige.europa.eu/gender-equality-index/2020/SE*
 
 The Gender Equality Index is composed of four main data-sets. Here below we describe where to get them (as originally sourced by the authors) and how we treated the data within them, if needed.
+
+Closest look
 
 - **Time since women’s suffrage:** Taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). We prepared the data in the following way. For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election right were granted, with no other restrictions commented. Some countries were colonies or within union of the countries (for instance, Kazakhstan in Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within union and as independent state. In this case we kept the first date. 
 It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights [citation]. We kept the latest date when also Black women could vote. For Nigeria, considered the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. 
