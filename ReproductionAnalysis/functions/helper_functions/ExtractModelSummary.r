@@ -16,10 +16,10 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
     #                      If var3 is not NULL, the number of rows of this data
     #                      table is the same number as the unique values in the
     #                      column given by var3
-
+    
     if (!is.null(var3)) {
         mod <- dlply(dat, var3, function(dt)
-            lm(eval(as.name(var1)) ~ eval(as.name(var2)), data = dt))
+            lm(eval(as.name(var2)) ~ eval(as.name(var1)), data = dt))
         dt <- data.table(formula     = character(),
                          correlation = character(),
                          r2          = double(),
@@ -34,7 +34,7 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
                                round(coef(mod[[i]])[1], 5),
                                round(coef(mod[[i]])[2], 5))
             r <- cor(x = dat[eval(as.name(var3)) == names(mod)[i],
-                                  eval(as.name(var1))],
+                             eval(as.name(var1))],
                      y = dat[eval(as.name(var3)) == names(mod)[i],
                              eval(as.name(var2))])
             correlation <- sprintf("correlation = %.5f", r)
@@ -43,18 +43,21 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
             pvalue <- ifelse(p_value < 0.0001,
                              "p < 0.0001",
                              sprintf("p = %.4f", p_value))
+            beta_coef <- sprintf("Slope coeff. = %.4f", 
+                                 summary(mod[[i]])$coefficients[, 1][2])
             # Save the data
             dt_tmp <- data.table(formula     = formula,
                                  correlation = correlation,
                                  r2          = r2,
                                  pvalue      = pvalue,
+                                 beta_coef   = beta_coef,
                                  stringsAsFactors = FALSE)
             dt_tmp[, ((var3)) :=  names(mod)[i],]
             dt <- rbind(dt, dt_tmp)
         }
-
+        
     } else {
-        mod <- lm(eval(as.name(var1)) ~ eval(as.name(var2)), data = dat)
+        mod <- lm(eval(as.name(var2)) ~ eval(as.name(var1)), data = dat)
         # Reassign the correct name of the variable
         names(mod$coefficients)[2] <- var2
         formula <- sprintf("y == %.2f % +.2f * x",
@@ -68,13 +71,16 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
         pvalue <- ifelse(p_value < 0.0001,
                          "p < 0.0001",
                          sprintf("p = %.4f", p_value))
+        beta_coef <- sprintf("Slope coeff. = %.4f", 
+                             summary(mod)$coefficients[, 1][2])
         # Save the data
         dt <- data.table(formula     = formula,
                          correlation = correlation,
                          r2          = r2,
                          pvalue      = pvalue,
+                         beta_coef   = beta_coef,
                          stringsAsFactors = FALSE)
     }
-
+    
     return(dt)
 }

@@ -66,7 +66,7 @@ summaryIndex$GenderIndex <- GenderIndexPCA(summaryIndex[, c(5:8)])
 
 # Standardize the predictors (mean 0 and std dev 1)
 summaryIndex <- Standardize(data    = summaryIndex, 
-                            columns = c(4:8, 13),
+                            columns = c(2, 4:8, 13),
                             newName = TRUE)
 # Set the Gender Index on a scale between 0 and 1
 summaryIndex[, GenderIndexRescaled := Rescale(GenderIndex)]
@@ -78,6 +78,10 @@ dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
 # ================================ #
 #### 4. VARIABLES CONDITIONING  ####
 # ================================ #
+
+# TODO: The authors took the log GDP and the Gender Equality (Index, meaning 
+# the one already in a scale from 0 to 1) and standardise them. After this, they
+# perform the conditional analysis. Still I miss a factor 10 in the y-axis...
 
 # Add residuals to the summary index
 summaryIndex <- AddResiduals(summaryIndex)
