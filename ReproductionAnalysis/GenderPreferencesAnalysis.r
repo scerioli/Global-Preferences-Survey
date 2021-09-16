@@ -109,9 +109,10 @@ dataCoeff_summary <- InvertPreference(dataCoeff_summary)
 dataCoeff_summary <- AddResidualsSinglePreference(dataCoeff_summary)
 
 # Use the original gender coefficient (not inverted) to calculate the mean for
-# each preference
+# each preference, and the 95% confidence interval of the standard error
 dataCoeff_summary[, meanGender := mean(genderOrig), by = "preference"]
-dataCoeff_summary[, stdGender := sd(genderOrig), by = "preference"]
+dataCoeff_summary[, stdGender := 1.96 * sqrt(sd(genderOrig)^2 / uniqueN(country)), 
+                  by = "preference"]
 
 
 # -------------- #

@@ -191,15 +191,16 @@ toPlot$preference_f <- factor(toPlot$preference,
 
 plotS1 <-
   ggplot(toPlot, aes(x = preference_f, y = meanGender)) +
-  geom_bar(stat = "identity", aes(fill = preference)) +
-  geom_errorbar(aes(ymin = meanGender - stdGender / 2, ymax = meanGender + stdGender / 2)) +
+  geom_bar(stat = "identity", aes(fill = preference), width = 0.4) +
+  geom_errorbar(aes(ymin = meanGender - stdGender / 2, ymax = meanGender + stdGender / 2),
+                width = .1, size = 0.3) +
   scale_fill_brewer(palette = "Dark2") +
   theme_bw() +
   theme(legend.title     = element_blank(),
         strip.background = element_rect(colour = "white", fill = "white"),
         axis.title.y     = element_text(size = 12, angle = 90),
         legend.position  = "none",
-        axis.text.x      = element_text(size = 12, face = "bold"),
+        axis.text.x      = element_text(size = 12, colour = "black"),
         axis.ticks.x     = element_blank(),
         panel.spacing.y  = unit(1.5, "lines"),
         strip.text.x     = element_text(size = 14)) +
