@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "Reproduce the results of the article"
+title:  "Reproduce the results of the article `Relationship of gender differences in preferences to economic development and gender`"
 date:   2021-06-03 21:30:54 +0200
 category: replication study
 ---
