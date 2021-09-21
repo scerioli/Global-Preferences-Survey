@@ -8,23 +8,27 @@ output:
 bibliography: bibliography.bibtex
 ---
 
-## Highlights
-
-- To be added.
-
-- Code and related infrastructure
-
-
-### Abstract
-
+<!--
 *Check this article for some ideas https://docs.google.com/viewerng/viewer?url=http://www.iree.eu/wp-content/uploads/2020/01/Wagner-J-2017-04-Productivity-premia-2017_06_12.pdf*
+--> 
 
+# Highlights
+
+Code and data used for this replication study (according to licenses) are available under the git repository https://github.com/scerioli/Global-Preferences-Survey.
+
+
+# Abstract
+
+This study attempts to reproduce the results of the article of @FH measuring the gender differences economic preferences relating them to economic development and to gender equality of the countries. In the original paper, the authors use data from the Gallup World Poll 2012, which included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world. The dataset covers almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust.
+
+The dataset is available in its integrity only with a license to be paid. The free version has only partial data that can also be used for this purpose because, according to the FH study, the gender differences can be studied also only taking in consideration a smaller number of predictors (according to the supplementary material, see @FH_SM). In this replication study, therefore, we use only a subset of predictors that are made publicly available to check whether the results can still be reproduced and are consistent.
+
+The outcome of the replication is that we see similar results as the ones obtained by the original authors for the relationship of gender differences and the economic development, but with differences (some times minor, some times significantly large) regarding the gender equality, especially when comparing the results of the single indexes building the general Gender Equality Index. Those differences seem to arise from different handling of the country-level variables, *but a further check couldn't be done because the data used in the original article are not provided to us. --> This must be written only after the authors are contacted newly!*
+ 
 
 # 1. Introduction
 
-This study attempts to reproduce the results of the article @FH and partially its supplementary material.
-
-Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors (such risk taking, patience, or altruism, for instance) are being studied both in economics and in psychology. *we need a citation here*
+Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG] and [@GLL], or work preferences [@BG], are being studied in many sectors of the economy and economy-related fields.  
 
 One of the problems common for many experiments in social sciences is the lack of large and heterogeneous datasets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed for the study.
 
@@ -32,7 +36,7 @@ The Gallup World Poll 2012 included a Global Preference Survey conducted on almo
 
 The dataset provides a unique insight in the economic preferences of a heterogeneous amount of people. The original study published in the Quarterly Journal of Economics [@QJE_Falk, 133 (4) pp. 1645-1692] focused on more general questions about the economic preferences distributions in different countries, trying to explore different covariates from the Gallup World Poll. While, the subsequent article, replicated in this work, focused specifically on the gender differences arising from the previous study.
 
-The main question that the article wants to answer is the old one nature versus nurture *(underline the resource based factor)*: Are gender differences arising from some kind of biological differences, or from social stereotypes? The first hypothesis means that the differences could potentially be masked by the necessity of fulfilling basic needs for survival reasons, and therefore in less developed Country we would see less gender differences (because people aim for survival first), while in most developed Countries we would see more gender differences (because of the liberation of the women - and men - from basic, granted needs). On the other hand, if it is society that creates those differences, we should see less differences in the more developed Countries, where people are freed from stereotypes and can freely express themselves. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c of the Countries, and thus "confirming" the first hypothesis (nature is the reason).
+The main question that the article wants to explore is the old "nature versus nurture": Are gender differences arising from some kind of biological differences, or from social stereotypes? The first hypothesis means that the differences could potentially be masked by the necessity of fulfilling basic needs for survival reasons, and therefore in less developed countries we would see less gender differences (because people aim for survival first), while in most developed countries we would see more gender differences (because of the liberation of the women - and men - from basic, granted needs). On the other hand, if it is society that creates those differences, we should see less differences in the more developed countries, where people are freed from stereotypes and can freely express themselves. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c of the Countries, and thus "confirming" the first hypothesis.
 
 The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*, and methods from the Machine Learning toolbox. In order to achieve that, one needs first to replicate the original analysis since the original code is written by Falk and Hermle (FH) in Stata.
 
@@ -218,7 +222,7 @@ Signifincance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 #### Table 4: Conditional analysis to separate the impacts of economic development and gender equality on gender differences
 
 |Variable | Residualized on | Slope coeff. original article | Slope coeff. this analysis|
---- | --- | --- | --- | ---
+--- | --- | --- | --- |
 |Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5695*** |
 |Gender Equality Index | Log GDP p/c | 0.3192***  | 0.2777* |
 |WEF Global Gender Gap | Log GDP p/c | 0.2327***  | 0.2014* |
@@ -235,71 +239,11 @@ We do the same for the Gender Equality Index (Table 2), and again we don’t fin
 
 In Table 3, we compare the two core concepts of the article, where the summarised gender differences are regressed on the log GDP p/c and on the Gender Equality Index. The correlations found are similarly positive, strong, and statistically significant. Again, the correlations found in our analysis are not statistically significantly different from the correlations found in the original article.
 
-Lastly, we have the conditional analysis (Table 4). For the two main country-level variable, we see that the values tend to agree and be on the same direction (similar r coefficients, significant p-value, and low z-score). But when we start to check for the single indexes, we see that there are some differences which are worthy to discuss. 
+Lastly, we have the conditional analysis (Table 4). For the two main country-level variable, we see that the values tend to agree and be on the same direction (similar slope coefficients and significant p-value). But when we start to check for the single indexes, we see that there are some differences which are worthy to discuss. 
 
 The first thing to say is that we had to make choices on how to impute data and also how to handle the missing data (see discussion above in paragraph "Methods"). The main imputation on missing data has been done on the "time since women’s suffrage" dataset, that is where we see a substantial difference in the results. Other datasets, on the other hand, has not been treated for missing data but still they present some difference. For instance, the dataset "F/M in Labor Force Participation" in our analysis has a non-statistically significant correlation, while in the original paper they found a correlation with p-value less than 0.05.
 
 A first thought was that this might be the result of using a different dataset for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open. 
-
-## Critics
-
-*I am not sure anymore that this section makes sense, to be honest*
-
-### Gender Equality Index robustness and validity
-
-As a point of strong criticism, the article @FH lacks any discussion on the gender equality indexes involved in the analysis. No citations were provided on any related work that may shield the light on the validation and performance of the indexes under consideration. Besides, no discussion on their relation to the economic preferences were provided.
-
-A closer look at them rises a series of questions about general validity of this indexes for the study and validity of the indexes per se.
-
-As xxx indicated in her study the GGG index became more as matter of prestige rather then a robust proxy for the progress in gender development.
-
-
-
-
-
-Even though some of these indexes are commonly accepted in economics and politics as a measure of gender equality, the status and performance from a scientific perspective is a subject of in-depth investigation that goes beyond this reproduction analysis.
-
-In this section, we provide a brief description and investigation of the indexes that were used in the original article, together with related sources of data and methodology.
-
-Four different measures were used to build gender equality index, which was defined as the first Principle Component of them. We show the structure of the index as a diagram (figure).
-
-As one can see several indexes contain the repetitive components, so most likely after PCA application they are going to be filtrated.
-
-- How PCA correlates with other components?
-
-- What are the first and the second component?
-
-Is the resulting Gender Equality Index just the same as work-force ratio because of PCA filtration of the result?
-
-H: overall index is strongly correlated with the indicators that are repeated in the calculation of the overall index.
-
-A brief look at the composition of the data and sources provokes several questions regarding the validity of the indicators to be used as a proxy for gender equality in the study.
-
-One of the integral components of the WEF index is the ratio of the average income for man and women. Surprisingly, an arbitrary maximum value of the income in 40 000 $ was set in index calculation. For example, ***, rated as the last country in the list had the 111 and 222 dollars outcome with an index ratio 111/222, while the first county in the rating was ***, with 333 and 444 average salaries rates for man and women, respectively. However, the calculated rate is 333/500. As the arbitrary maximum income was set. 
-
-Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives.
-
-Information summary on time since women suffrage: the table does not contain links on the related sources.
-
----
-
-- What about cross-calibration for personal interview vs telephone interview? Was it verified that the results for economic preferences are the same in both cases? Where? I would expect it different. There should be some info in literature about that (XiaoChi Zhang, 2017).
-
-### Differences in effect size
-
-The original article presents the results in a normalized way: Taking the minimum difference as 0 and the maximum as 1, any reference to the size of the effect is lost. The question arising from it is the following: Is the detected gender difference only statistically significant, or has it also a "visible" effect in the real world? 
-
-To answer this question, one must keep in mind that:
-
-1. The data provided by the authors are already merged together into a single bit of information for each preference. Any preference (except from trust) had 2 or 3 questions that were later merged by the authors into a single answer, and then standardized. This means that any reference to the reality is lost, and one can't answer the question "how different are men and women regarding patience?", because the scale is an abstract one and can't provide any insight but a relative one.
-
-2. Even worse happens when looking at the PCA of the preferences, when they are then all mixed together.
-
-The point here is that when we look at the data, it seems that it is heteroskedastic, because with increasing GDP the standard deviation increases (see our studies). Then having a standardization on the whole dataset might be not the best idea to measure the gender differences --> Not sure that this is true, must check
-
-*I need to write better this part*
-
-- Not raw data available (and in general not all data available)
 
 
 # 5. Conclusions
