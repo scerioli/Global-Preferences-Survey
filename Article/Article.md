@@ -28,7 +28,7 @@ Andrey (not for abstract: The free version has only partial data that can also b
 
 The outcome of the replication is that we see similar results as the ones obtained by the original authors for the relationship of gender differences and the economic development, but with differences (some times minor, some times significantly large) regarding the gender equality, especially when comparing the results of the single indexes building the general Gender Equality Index. Those differences seem to arise from different handling of the country-level variables, *but a further check couldn't be done because the data used in the original article are not provided to us. --> This must be written only after the authors are contacted newly!*
 
-Andrey: was the H is testing hypotheses suggested by the data? The correlation was likely found in previous study on econemical preferences and the H was build post hoc. But we need to check if methodologic suggestion existed before in the field.
+Andrey: was the H is testing hypotheses suggested by the data? The correlation was likely found in previous study on econemical preferences and the H was build post hoc. But we need to check if methodologic suggestion existed before in the field. "Publication bias"
  
 
 # 1. Introduction
