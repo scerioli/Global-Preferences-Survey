@@ -28,7 +28,7 @@ Andrey (not for abstract: The free version has only partial data that can also b
 
 The outcome of the replication is that we see similar results as the ones obtained by the original authors for the relationship of gender differences and the economic development, but with differences (some times minor, some times significantly large) regarding the gender equality, especially when comparing the results of the single indexes building the general Gender Equality Index. Those differences seem to arise from different handling of the country-level variables, *but a further check couldn't be done because the data used in the original article are not provided to us. --> This must be written only after the authors are contacted newly!*
 
-Improtantly,
+Andrey: was the H is testing hypotheses suggested by the data?
  
 
 # 1. Introduction
