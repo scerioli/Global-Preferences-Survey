@@ -250,6 +250,8 @@ The first thing to say is that we had to make choices on how to impute data and 
 
 A first thought was that this might be the result of using a different dataset for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open. 
 
+> Social environment is associated with gene regulatory variation in the rhesus macaque immune system
+
 
 # 5. Conclusions
 
