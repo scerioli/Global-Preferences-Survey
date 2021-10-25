@@ -1,5 +1,5 @@
 ---
-title: Reproduce the results of the article "Relationship of gender differences in preferences to economic development and gender equality"
+title: Reproduction of the article "Relationship of gender differences in preferences to economic development and gender equality"
 author: 
 - Sara Cerioli
 - Andrey Formozov
