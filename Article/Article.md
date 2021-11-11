@@ -17,12 +17,11 @@ abstract: |
 
 **Keywords:** replication study, gender differences, economic preferences
 
-**Highlights:** Code and data used for this replication study (according to licenses) are available under the git repository https://github.com/scerioli/Global-Preferences-Survey.
 
-<!--
-*Check this article for some ideas https://docs.google.com/viewerng/viewer?url=http://www.iree.eu/wp-content/uploads/2020/01/Wagner-J-2017-04-Productivity-premia-2017_06_12.pdf*
---> 
- 
+
+*Andrey: was the H is testing hypotheses suggested by the data? The correlation was likely found in previous study on economical preferences and the H was build post hoc. But we need to check if methodologic suggestion existed before in the field. "Publication bias"*
+
+
 
 # 1. Introduction
 
@@ -35,6 +34,7 @@ The Gallup World Poll 2012 included a Global Preference Survey conducted on almo
 The dataset provides a unique insight in the economic preferences of a heterogeneous amount of people. The original study published in the Quarterly Journal of Economics [@QJE_Falk, 133 (4) pp. 1645-1692] focused on more general questions about the economic preferences distributions in different countries, trying to explore different covariates from the Gallup World Poll. While, the subsequent article, replicated in this work, focused specifically on the gender differences arising from the previous study.
 
 The main question that the article wants to study is whether the gender differences in economic preferences increase or decrease as the economic development and gender equality of the countries increase. In the first scenario, the gender differences increase as the economic development increases because the gender-neutral goal of substistence is removed, and therefore the real preferences can be pursued. Moreover, since those countries are usually also the ones with more gender equal societies, we would have more women and men allowed to express their desires and preferences in an independent way. This would be the so-called resources hypothesis. On the other hand, there is the social role hypothesis stating that the more economically developed and gender-equal the country, the smaller the gender differences because of the attenuation of the social roles related to the genders. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c and with the gender equality of the countries, and thus "confirming" the resources hypothesis.
+
 
 The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*. In order to achieve that, one needs first to replicate the original analysis. The replication allowed us to question the data sources and the methods used for data cleaning, and even if the data is not complete, we think it is still interesting to replicate such studies to validate the procedures for the sake of good science.
 
@@ -239,6 +239,10 @@ Lastly, we have the conditional analysis (Table 4). For the two main country-lev
 The first thing to say is that we had to make choices on how to impute data and also how to handle the missing data (see discussion above in paragraph "Methods"). The main imputation on missing data has been done on the "time since women’s suffrage" dataset, that is where we see a substantial difference in the results. Other datasets, on the other hand, has not been treated for missing data but still they present some difference. For instance, the dataset "F/M in Labor Force Participation" in our analysis has a non-statistically significant correlation, while in the original paper they found a correlation with p-value less than 0.05.
 
 A first thought was that this might be the result of using a different dataset for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open. 
+
+> Social environment is associated with gene regulatory variation in the rhesus macaque immune system
+
+https://link.springer.com/article/10.1007/s11199-019-01097-x
 
 
 # 5. Conclusions
