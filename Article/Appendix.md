@@ -1,11 +1,15 @@
 ---
-title: Reproduce the results of the article "Relationship of gender differences in preferences to economic development and gender equality"
+title: |
+  **Appendix**
 author: 
 - Sara Cerioli
 - Andrey Formozov
 output:
   pdf_document: default
+keywords: replication study, gender differences, economic preferences
 bibliography: bibliography.bibtex
+biblio-style: authoryear
+csl: ./asia-and-the-pacific-policy-studies.csl
 ---
 
 

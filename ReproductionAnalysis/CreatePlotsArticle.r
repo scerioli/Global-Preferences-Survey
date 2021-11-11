@@ -50,13 +50,15 @@ plotHistA <-
         axis.text.x      = element_blank(),
         axis.ticks.x     = element_blank(),
         panel.spacing.y  = unit(1.5, "lines"),
-        strip.text.x     = element_text(size = 14)) +
-  annotate(geom = "text", x = 1.3, y = -0.08, color = 'black', size = 4,
+        strip.text.x     = element_text(size = 14),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank()) +
+  annotate(geom = "text", x = 1.3, y = -0.04, color = 'black', size = 4,
            label = "Poorer Countries") +
-  annotate(geom = "text", x = 3.7, y = -0.08, color = 'black', size = 4,
+  annotate(geom = "text", x = 3.7, y = -0.04, color = 'black', size = 4,
            label = "Richer Countries") +
-  coord_cartesian(ylim = c(-0.05, 0.25), clip = "off")
-ggsave(filename = "plots/main_Fig1A.png", plot = plotHistA)
+  coord_cartesian(ylim = c(-0.01, 0.25), clip = "off")
+ggsave(filename = "plots/main_Fig1A.pdf", plot = plotHistA)
 
 ## ----------------------------- Fig. 1 B ------------------------------------ #
 PlotSummary(data = summaryIndex,
@@ -86,12 +88,14 @@ plotHistC <-
         axis.ticks.x     = element_blank(),
         panel.spacing.y  = unit(2, "lines"),
         plot.margin      = unit(c(1, 1, 1, 1), "lines"),
-        strip.text.x     = element_text(size = 15)) +
-  annotate(geom = "text", x = 1.3, y = -0.095, color = 'black', size = 3,
+        strip.text.x     = element_text(size = 15),
+        panel.grid.major = element_blank(), 
+        panel.grid.minor = element_blank()) +
+  annotate(geom = "text", x = 1.3, y = -0.06, color = 'black', size = 3,
            label = "Less Gender\nEqual Countries") +
-  annotate(geom = "text", x = 3.7, y = -0.095, color = 'black', size = 3,
+  annotate(geom = "text", x = 3.7, y = -0.06, color = 'black', size = 3,
            label = "More Gender\nEqual Countries") +
-  coord_cartesian(ylim = c(-0.05, 0.25), clip = "off")
+  coord_cartesian(ylim = c(-0.01, 0.25), clip = "off")
 ggsave(filename = "plots/main_Fig1C.png", plot = plotHistC)
 
 ## ----------------------------- Fig. 1 D ------------------------------------ #

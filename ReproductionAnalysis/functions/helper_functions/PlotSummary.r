@@ -40,6 +40,8 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
               check_overlap = F, hjust = -0.5) +
     xlab(var1) + ylab(var2) +
     theme_bw() +
+    theme(panel.grid.major = element_blank(), 
+          panel.grid.minor = element_blank()) +
     scale_fill_brewer(palette = "Set1")
 
   if (fill == "white") {

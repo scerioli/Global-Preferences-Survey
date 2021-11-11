@@ -1,34 +1,32 @@
 ---
-title: Reproduce the results of the article "Relationship of gender differences in preferences to economic development and gender equality"
+title: |
+  **Reproduce the results of the article "Relationship of gender differences in preferences to economic development and gender equality"**
 author: 
 - Sara Cerioli
 - Andrey Formozov
 output:
   pdf_document: default
 bibliography: bibliography.bibtex
+csl: bib_style/./mee.csl
+abstract: |
+  This study attempts to reproduce the results of the article of @FH measuring the gender differences economic preferences relating them to economic development and to gender equality of the countries. In the original paper, the authors use data from the Gallup World Poll 2012, which included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world. The dataset covers almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust. The dataset is available in its integrity only with a license to be paid. The free version has only partial data that can also be used for this purpose because, according to the FH study, the gender differences can be studied also only taking in consideration a smaller number of predictors (according to the supplementary material, see [@FH_SM]). In this replication study, therefore, we use only a subset of predictors that are made publicly available to check whether the results can still be reproduced and are consistent. The outcome of the replication is that we see similar results as the ones obtained by the original authors for the relationship of gender differences and the economic development, but with differences (some times minor, some times significantly large) regarding the gender equality, especially when comparing the results of the single indexes building the general Gender Equality Index. Those differences seem to arise from different handling of the country-level variables, but a further check couldn't be done because the data used in the original article are not provided to us.
 ---
+
+
+**JEL:**  D01 - Microeconomic Behavior: Underlying Principles, D03 - Behavioral Microeconomics: Underlying Principles, F00 - General
+
+**Keywords:** replication study, gender differences, economic preferences
+
+**Highlights:** Code and data used for this replication study (according to licenses) are available under the git repository https://github.com/scerioli/Global-Preferences-Survey.
 
 <!--
 *Check this article for some ideas https://docs.google.com/viewerng/viewer?url=http://www.iree.eu/wp-content/uploads/2020/01/Wagner-J-2017-04-Productivity-premia-2017_06_12.pdf*
 --> 
-
-# Highlights
-
-Code and data used for this replication study (according to licenses) are available under the git repository https://github.com/scerioli/Global-Preferences-Survey.
-
-
-# Abstract
-
-This study attempts to reproduce the results of the article of @FH measuring the gender differences economic preferences relating them to economic development and to gender equality of the countries. In the original paper, the authors use data from the Gallup World Poll 2012, which included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world. The dataset covers almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust.
-
-The dataset is available in its integrity only with a license to be paid. The free version has only partial data that can also be used for this purpose because, according to the FH study, the gender differences can be studied also only taking in consideration a smaller number of predictors (according to the supplementary material, see @FH_SM). In this replication study, therefore, we use only a subset of predictors that are made publicly available to check whether the results can still be reproduced and are consistent.
-
-The outcome of the replication is that we see similar results as the ones obtained by the original authors for the relationship of gender differences and the economic development, but with differences (some times minor, some times significantly large) regarding the gender equality, especially when comparing the results of the single indexes building the general Gender Equality Index. Those differences seem to arise from different handling of the country-level variables, *but a further check couldn't be done because the data used in the original article are not provided to us. --> This must be written only after the authors are contacted newly!*
  
 
 # 1. Introduction
 
-Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG] and [@GLL], or work preferences [@BG], are being studied in many sectors of the economy and economy-related fields.  
+Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL], or work preferences [@BG], are being studied in many sectors of the economy and economy-related fields.  
 
 One of the problems common for many experiments in social sciences is the lack of large and heterogeneous datasets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed for the study.
 
@@ -36,13 +34,10 @@ The Gallup World Poll 2012 included a Global Preference Survey conducted on almo
 
 The dataset provides a unique insight in the economic preferences of a heterogeneous amount of people. The original study published in the Quarterly Journal of Economics [@QJE_Falk, 133 (4) pp. 1645-1692] focused on more general questions about the economic preferences distributions in different countries, trying to explore different covariates from the Gallup World Poll. While, the subsequent article, replicated in this work, focused specifically on the gender differences arising from the previous study.
 
-The main question that the article wants to explore is the old "nature versus nurture": Are gender differences arising from some kind of biological differences, or from social stereotypes? The first hypothesis means that the differences could potentially be masked by the necessity of fulfilling basic needs for survival reasons, and therefore in less developed countries we would see less gender differences (because people aim for survival first), while in most developed countries we would see more gender differences (because of the liberation of the women - and men - from basic, granted needs). On the other hand, if it is society that creates those differences, we should see less differences in the more developed countries, where people are freed from stereotypes and can freely express themselves. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c of the Countries, and thus "confirming" the first hypothesis.
+The main question that the article wants to study is whether the gender differences in economic preferences increase or decrease as the economic development and gender equality of the countries increase. In the first scenario, the gender differences increase as the economic development increases because the gender-neutral goal of substistence is removed, and therefore the real preferences can be pursued. Moreover, since those countries are usually also the ones with more gender equal societies, we would have more women and men allowed to express their desires and preferences in an independent way. This would be the so-called resources hypothesis. On the other hand, there is the social role hypothesis stating that the more economically developed and gender-equal the country, the smaller the gender differences because of the attenuation of the social roles related to the genders. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c and with the gender equality of the countries, and thus "confirming" the resources hypothesis.
 
-The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*, and methods from the Machine Learning toolbox. In order to achieve that, one needs first to replicate the original analysis since the original code is written by Falk and Hermle (FH) in Stata.
+The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*. In order to achieve that, one needs first to replicate the original analysis. The replication allowed us to question the data sources and the methods used for data cleaning, and even if the data is not complete, we think it is still interesting to replicate such studies to validate the procedures for the sake of good science.
 
-*Motivation for reproduction. Other opinions, Open science perspective, cross and meta studies, alternative methodology (beyond OLS, ML).*
-
-*Add the reason why, even if the data are not completely available, we think it can be interesting to replicate the study*
 
 # 2. Methods 
 
