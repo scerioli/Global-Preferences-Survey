@@ -12,11 +12,36 @@ biblio-style: authoryear
 csl: ./asia-and-the-pacific-policy-studies.csl
 ---
 
+# Methods
+
+The following packages with respective version are used:
+
+|Package | $\quad$ | Version |
+--- | --- | ---
+| data.table | | 1.13.2 |
+| bit64 | | 4.0.5 |
+| bit | | 4.0.4 |
+| plyr | | 1.8.6 |
+| dplyr | | 1.0.5 |
+| haven | | 2.4.2 |
+| ggplot2 | | 3.3.2 |
+| missMDA | | 1.18 |
+
 
 ## Critics
 
+<!--
+> Social environment is associated with gene regulatory variation in the rhesus macaque immune system
+
+https://link.springer.com/article/10.1007/s11199-019-01097-x
+!-->
+
+
+*Andrey: was the H is testing hypotheses suggested by the data? The correlation was likely found in previous study on economical preferences and the H was build post hoc. But we need to check if methodologic suggestion existed before in the field. "Publication bias"*
 
 ### Gender Equality Index robustness and validity
+
+*(more on the structure of the constructed Equality Index in section --> do we want to have it in the supplementary material together with the critics? Not sure)*. 
 
 As a point of strong criticism, the article @FH lacks any discussion on the gender equality indexes involved in the analysis. No citations were provided on any related work that may shield the light on the validation and performance of the indexes under consideration. Besides, no discussion on their relation to the economic preferences were provided.
 

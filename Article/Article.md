@@ -13,19 +13,14 @@ abstract: |
 ---
 
 
-**JEL:**  D01 - Microeconomic Behavior: Underlying Principles, D03 - Behavioral Microeconomics: Underlying Principles, F00 - General
+**JEL:**  D010 - Microeconomic Behavior: Underlying Principles, D630 - Equity, Justice, Inequality, and Other Normative Criteria and Measurement, D810 - Criteria for Decision-Making under Risk and Uncertainty, D910 - Micro-Based Behavioral Economics: Role and Effects of Psychological, Emotional, Social, and Cognitive Factors on Decision Making, F000 International Economics: General
 
 **Keywords:** replication study, gender differences, economic preferences
 
 
-
-*Andrey: was the H is testing hypotheses suggested by the data? The correlation was likely found in previous study on economical preferences and the H was build post hoc. But we need to check if methodologic suggestion existed before in the field. "Publication bias"*
-
-
-
 # 1. Introduction
 
-Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL], or work preferences [@BG], are being studied in many sectors of the economy and economy-related fields.  
+Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL], or work preferences [@BG], are being studied in many sectors of the economy and economy-related fields.
 
 One of the problems common for many experiments in social sciences is the lack of large and heterogeneous datasets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed for the study.
 
@@ -36,25 +31,11 @@ The dataset provides a unique insight in the economic preferences of a heterogen
 The main question that the article wants to study is whether the gender differences in economic preferences increase or decrease as the economic development and gender equality of the countries increase. In the first scenario, the gender differences increase as the economic development increases because the gender-neutral goal of substistence is removed, and therefore the real preferences can be pursued. Moreover, since those countries are usually also the ones with more gender equal societies, we would have more women and men allowed to express their desires and preferences in an independent way. This would be the so-called resources hypothesis. On the other hand, there is the social role hypothesis stating that the more economically developed and gender-equal the country, the smaller the gender differences because of the attenuation of the social roles related to the genders. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c and with the gender equality of the countries, and thus "confirming" the resources hypothesis.
 
 
-The motivation for the replication study came from the wish to apply different analysis beyond the OLS, as for instance multilevel cumulative link models *[cit. link]*. In order to achieve that, one needs first to replicate the original analysis. The replication allowed us to question the data sources and the methods used for data cleaning, and even if the data is not complete, we think it is still interesting to replicate such studies to validate the procedures for the sake of good science.
-
-
 # 2. Methods 
 
 ## Overview
 
-We replicate the results using the R programming language version 4.0.3 (2020-10-10), and its open-source IDE RStudio for an easy access of the code. The following packages with respective version are used:
-
-|Package | $\quad$ | Version |
---- | --- | ---
-| data.table | | 1.13.2 |
-| bit64 | | 4.0.5 |
-| bit | | 4.0.4 |
-| plyr | | 1.8.6 |
-| dplyr | | 1.0.5 |
-| haven | | 2.4.2 |
-| ggplot2 | | 3.3.2 |
-| missMDA | | 1.18 |
+We replicate the results using the R programming language version 4.0.3 (2020-10-10), and its open-source IDE RStudio for an easy access of the code. In the Appendix, we include a list of the packages used and their corresponding versions.
 
 
 ## Data Collection, Cleaning, and Standardization
@@ -111,12 +92,12 @@ However, there are two problems here:
 
 These two unclear points, even though in our understanding not crucial for the replication of the analysis, are not desirable, but couldn't be further clarified with the authors.
 
-The problem of missing data for a given countries often does not influence much the overall trends of found correlations, however, very relevant if one would to see the implications of the study with respect to one certain country of interest.
+The problem of missing data for a given countries often does not influence much the overall trends of found correlations. However, it is very relevant if one would to see the implications of the study with respect to a specific country of interest.
 
 
 ## Data Analysis
 
-The article uses several methods commonly accepted in the field: 
+The article uses the following methods commonly accepted in the field: 
 
 - Linear regression for each Country for each preference to extract the gender coefficient as a measure of the gender differences. 
 
@@ -147,7 +128,7 @@ This resulted in 6 models -- one for each preference measure, $p_i$ -- having in
 
 To summarise the average gender difference among the six economic preferences, we performed a principal component analysis (PCA) on the gender coefficients from the linear models. The PCA is a dimensionality reduction technique which allows to “reshape” the 6 coefficients into other mixed components that maximise the variance. The first component of the PCA has then been used as a summary index of average gender differences in preferences. 
 
-We performed a PCA also on the four datasets used for Gender Equality, to extract a summarised Gender Equality Index *(more on the structure of the constructed Equality Index in section --> do we want to have it in the supplementary material together with the critics? Not sure)*. 
+We performed a PCA also on the four datasets used for Gender Equality, to extract a summarised Gender Equality Index.
 
 
 ### Variable Conditioning
@@ -178,9 +159,10 @@ We finally reproduced the plots in Fig. 2A-F using the variable conditioning ana
 
 ## Tables and z-scores
 
-The comparison to the original article has been done using the z-scores on the correlation coefficients, and checking if the statistical significance was at the same level. *What about the slope coefficients?*
+The comparison to the original article has been done checking the z-scores of the correlation coefficients, and comparing the statistical significance. Unfortunately, in the case of the slope coefficients (Table 4) it is not possible to compare them without having the standard deviation of the regression coefficient from the original author study.
 
-Here below we report the tables with the corresponding values of the correlation for the original article, our replication study, and the z-scores calculated from them. The sample size of the data, needed for the calculation of the z-scores, is always 76 (the number of the countries involved in this studies), except when using the Gender Equality Index, where due to the missing data, the number of countries in the sample was reduced to 68. *[Check here the sample size of the FH and the number of countries used in the other gender equality indeces!]*
+Here below we report the tables with the corresponding values of the correlation for the original article, our replication study, and the z-scores calculated from them. In this article, the sample size of the data, needed for the calculation of the z-scores, is 76 (the number of the countries involved in this studies) for the GDP correlations, and 68 for the Gender Equality Index, due to the missing data. For the original article, the sample size is 76 for the GDP, and 71 for the Gender Equality Index (see @FH_SM, pp. 32, Table S4). 
+
 We also indicate the significance level for each correlation using the following scheme: 
 
 Signifincance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
@@ -200,19 +182,19 @@ Signifincance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
 |Variable |Corr. original article | Corr. this analysis| z-score|
 --- | --- | --- | ---
-|Altruism |0.51***  | 0.49*** | 0.16 |
-|Trust    |0.41***  |0.47*** | -0.44  |
+|Altruism |0.51***  | 0.49*** | 0.15 |
+|Trust    |0.41***  |0.47*** | -0.43  |
 |Positive Reciprocity |0.13  | 0.20 | -0.42 |
-|Positive Reciprocity |0.40***  |0.30** | 0.67  |
-|Risk Taking |0.34***  | 0.26* | 0.56 |
-|Patience |0.43***  |0.48*** | -0.37  |
+|Positive Reciprocity |0.40***  |0.30** | 0.66  |
+|Risk Taking |0.34***  | 0.26* | 0.51 |
+|Patience |0.43***  |0.48*** | -0.36  |
 
 #### Table 3: Correlation between Log GDP p/c and Gender Equality Index, and summarised gender differences
 
 |Variable |Corr. original article | Corr. this analysis| z-score|
 --- | --- | --- | ---
-|Log GDP p/c |0.6685***  | 0.7119*** | -0.46 |
-|Gender Equality Index | 0.5580***  |0.5852*** | -0.26  |
+|Log GDP p/c |0.6685***  | 0.7119*** | -0.5 |
+|Gender Equality Index | 0.5580***  |0.5852*** | -0.23  |
 
 #### Table 4: Conditional analysis to separate the impacts of economic development and gender equality on gender differences
 
@@ -239,10 +221,6 @@ Lastly, we have the conditional analysis (Table 4). For the two main country-lev
 The first thing to say is that we had to make choices on how to impute data and also how to handle the missing data (see discussion above in paragraph "Methods"). The main imputation on missing data has been done on the "time since women’s suffrage" dataset, that is where we see a substantial difference in the results. Other datasets, on the other hand, has not been treated for missing data but still they present some difference. For instance, the dataset "F/M in Labor Force Participation" in our analysis has a non-statistically significant correlation, while in the original paper they found a correlation with p-value less than 0.05.
 
 A first thought was that this might be the result of using a different dataset for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open. 
-
-> Social environment is associated with gene regulatory variation in the rhesus macaque immune system
-
-https://link.springer.com/article/10.1007/s11199-019-01097-x
 
 
 # 5. Conclusions
