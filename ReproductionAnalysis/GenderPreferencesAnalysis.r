@@ -5,13 +5,13 @@
 # =============================== #
 
 # Set the path
-setwd("~/Desktop/Projects/Global-Preferences-Survey/ReproductionAnalysis/")
+setwd("~/Desktop/Projects/Global-Preferences-Survey/")
 
 
 # Source helper functions
-source("functions/helper_functions/SourceFunctions.r")
-SourceFunctions(path = "functions/")
-SourceFunctions(path = "functions/helper_functions/")
+source("ReproductionAnalysis/functions/helper_functions/SourceFunctions.r")
+SourceFunctions(path = "ReproductionAnalysis/functions/")
+SourceFunctions(path = "ReproductionAnalysis/functions/helper_functions/")
 
 # Load libraries
 LoadRequiredLibraries()
@@ -26,10 +26,10 @@ data_all <- LoadData()
 
 data_all <- PrepareData(data_all)
 # 
-# # Standardize preferences at country level
-# data_all$data <- Standardize(data    = data_all$data, 
-#                              columns = c(5:10), 
-#                              level   = "country")
+# Standardize preferences at country level
+data_all$data <- Standardize(data    = data_all$data,
+                             columns = c(5:10),
+                             level   = "country")
 
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
