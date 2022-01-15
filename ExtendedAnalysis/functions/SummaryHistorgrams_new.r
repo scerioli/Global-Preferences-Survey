@@ -3,7 +3,7 @@ SummaryHistograms_new <- function(dt, summ) {
   
   data <- dt[, .(logAvgGDPpc, gender, preference, country)]
   data[summ, genderIndex := i.GenderIndex, on = "country"]
-  data[summ, GDI := complete.cases(i.GDI), on = "country"]
+  data[summ, GDI := i.GDI, on = "country"]
   
   # Summary for the GDP
   data[logAvgGDPpc <= quantile(logAvgGDPpc, 0.25, na.rm = TRUE),
@@ -40,7 +40,7 @@ SummaryHistograms_new <- function(dt, summ) {
     data[GDIquant == i, meanGenderGDI := mean(gender, na.rm = T), by = "preference"]
   }
   
-  data <- unique(data[, c(-1, -2, -4, -5)])
+  data <- unique(data[, c(-1, -2, -4, -5, -6)])
   
   data[preference == "negrecip", meanGenderGDP := -1 * meanGenderGDP]
   data[preference == "risktaking", meanGenderGDP := -1 * meanGenderGDP]
