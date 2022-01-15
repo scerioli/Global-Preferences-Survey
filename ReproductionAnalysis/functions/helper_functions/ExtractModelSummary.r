@@ -23,7 +23,9 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
         dt <- data.table(formula     = character(),
                          correlation = character(),
                          r2          = double(),
-                         pvalue      = character())
+                         pvalue      = character(),
+                         beta_coef   = numeric(),
+                         stringsAsFactors = FALSE)
         dt[, ((var3)) := character()]
         # For each model, save a data table containing the statistical values
         # of interest
@@ -52,7 +54,7 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
                                  pvalue      = pvalue,
                                  beta_coef   = beta_coef,
                                  stringsAsFactors = FALSE)
-            dt_tmp[, ((var3)) :=  names(mod)[i],]
+            dt_tmp[, ((var3)) :=  names(mod)[i], ]
             dt <- rbind(dt, dt_tmp)
         }
         

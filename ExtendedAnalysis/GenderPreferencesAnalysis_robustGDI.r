@@ -100,8 +100,33 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
                      DateStd    = -1 * DateStd)]
 
 
+# =============================== #
+#### 5. SUPPLEMENTARY MATERIAL ####
+# =============================== #
+
+colsToKeep_coeff <- c("gender", "preference", "country", "isocode", "logAvgGDPpc")
+
+colsToKeep_summary <- c("GenderIndex",
+                        "GDI",
+                        "country")
+dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
+                           summaryIndex[, ..colsToKeep_summary],
+                           by = "country")
+
+# Invert the trend of those preferences with opposite direction of the difference
+dataCoeff_summary <- InvertPreference(dataCoeff_summary)
+
+dataCoeff_summary <- AddResidualsSinglePreference_robust(dataCoeff_summary)
+
+# Use the original gender coefficient (not inverted) to calculate the mean for
+# each preference, and the 95% confidence interval of the standard error
+dataCoeff_summary[, meanGender := mean(genderOrig), by = "preference"]
+dataCoeff_summary[, stdGender := 1.96 * sqrt(sd(genderOrig)^2 / uniqueN(country)), 
+                  by = "preference"]
+
+
 # ============================= #
-#### 5. WRITE DATA SUMMARIES ####
+#### 6. WRITE DATA SUMMARIES ####
 # ============================= #
 
 # Write csv data summaries
@@ -109,4 +134,5 @@ fwrite(dataSummary,
        file = "ExtendedAnalysis/files/output/main_data_for_histograms.csv")
 fwrite(summaryIndex,
        file = "ExtendedAnalysis/files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
-
+fwrite(dataCoeff_summary,
+       file = "ExtendedAnalysis/files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")

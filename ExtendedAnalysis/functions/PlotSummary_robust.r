@@ -1,12 +1,6 @@
-<<<<<<< HEAD:ReproductionAnalysis/functions/helper_functions/PlotSummary.r
-PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
-                        regression = TRUE, corr = TRUE, labs = NULL, 
-                        display = FALSE, save = NULL) {
-=======
 PlotSummary_robust <- function(data, var1, var2, var3 = NULL, fill = "white",
                                regression = TRUE, labs = NULL, display = FALSE,
                                save = NULL) {
->>>>>>> BranchToBeMerged:ExtendedAnalysis/functions/PlotSummary_robust.r
   # This function is plotting in a standardized way the meaningful variables.
   # The function takes as input a data table, 2 columns of it that should be the
   # x-axis and the y-axis, a 3rd column that can be NULL, and a column that
@@ -27,9 +21,6 @@ PlotSummary_robust <- function(data, var1, var2, var3 = NULL, fill = "white",
   #                      Default is "white"
   # - regression [logical] to plot the regression line and the coefficients
   #                        related to that or not
-  # - corr [logical]     to plot the regression line ans the correlation (TRUE)
-  #                      or the slope of the regression line (FALSE). Only valid
-  #                      if regression is TRUE.
   # - labs  [character]  it is a vector of two strings writing the labels of the
   #                      x- and the y-axis
   # - display [logical]  if it is set to FALSE, it doesn't return the plot.
@@ -87,27 +78,11 @@ PlotSummary_robust <- function(data, var1, var2, var3 = NULL, fill = "white",
     
     xpos <- data[, min(eval(as.name(var1)))]
     ypos <- 0.95 * data[, max(eval(as.name(var2)))]
-<<<<<<< HEAD:ReproductionAnalysis/functions/helper_functions/PlotSummary.r
-
-    if (corr) {
-      plot <- plot +
-        geom_smooth(method = "lm", color = "red") +
-        geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = correlation), hjust = 0) +
-        geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
-    } else {
-      plot <- plot +
-        geom_smooth(method = "lm", color = "red") +
-        geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = beta_coef), hjust = 0) +
-        geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
-    }
-    
-=======
     
     plot <- plot +
       geom_smooth(method = MASS::rlm, color = "red") +
       geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = correlation), hjust = 0) +
       geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
->>>>>>> BranchToBeMerged:ExtendedAnalysis/functions/PlotSummary_robust.r
   }
   
   if (!is.null(labs)) {

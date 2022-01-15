@@ -39,16 +39,6 @@ SummaryHistograms_new <- function(dt, summ) {
     data[GEIquant == i, meanGenderGEI := mean(gender, na.rm = T), by = "preference"]
     data[GDIquant == i, meanGenderGDI := mean(gender, na.rm = T), by = "preference"]
   }
-<<<<<<< HEAD:ReproductionAnalysis/functions/SummaryHistograms.r
-
-  data <- unique(data[, c(-1, -2, -4, -5)])
-
-  data[preference %in% c("negrecip", "risktaking", "patience"), 
-       `:=` (meanGenderGDP = -1 * meanGenderGDP,
-             meanGenderGEI = -1 * meanGenderGEI)]
-
-
-=======
   
   data <- unique(data[, c(-1, -2, -4, -5, -6)])
   
@@ -63,7 +53,6 @@ SummaryHistograms_new <- function(dt, summ) {
   data[preference == "negrecip", meanGenderGDI := -1 * meanGenderGDI]
   data[preference == "risktaking", meanGenderGDI := -1 * meanGenderGDI]
   data[preference == "patience", meanGenderGDI := -1 * meanGenderGDI]
-  
->>>>>>> BranchToBeMerged:ExtendedAnalysis/functions/SummaryHistorgrams_new.r
+
   return(data)
 }

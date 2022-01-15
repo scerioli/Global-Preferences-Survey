@@ -5,31 +5,6 @@ AddResiduals_new <- function(dt) {
   
   # Log GDP Residualised using Gender Equality Index
   dt_GEIx <- Residualise(dt, var1 = "GenderIndexStd",
-<<<<<<< HEAD:ReproductionAnalysis/functions/AddResiduals.R
-                             var2 = "logAvgGDPpcStd")
-  dt_GEIy <- Residualise(dt, var1 = "GenderIndexStd",
-                             var2 = "avgGenderDiffStd")
-  # Rename the variable
-  dt_GEIy[, residualsavgGenderDiff_GEI := residualsavgGenderDiffStd]
-  dt_GEIy$residualsavgGenderDiffStd <- NULL
-
-  # Gender Equality Index Residualised using Log GDP
-  dt_GDPx <- Residualise(dt, var1 = "logAvgGDPpcStd",
-                             var2 = "GenderIndexStd")
-  dt_GDPy <- Residualise(dt, var1 = "logAvgGDPpcStd",
-                             var2 = "avgGenderDiffStd")
-  # Rename the variable
-  dt_GDPy[, residualsavgGenderDiff_GDP := residualsavgGenderDiffStd]
-  dt_GDPy$residualsavgGenderDiffStd <- NULL
-
-  # WEF Global Gender Gap Index Residualised using Log GDP
-  dt_WEF <- Residualise(dt, var1 = "logAvgGDPpcStd",
-                            var2 = "ScoreWEFStd")
-
-  # UN Gender Equality Index Residualised using Log GDP
-  dt_UN <- Residualise(dt, var1 = "logAvgGDPpcStd",
-                           var2 = "ValueUNStd")
-=======
                          var2 = "logAvgGDPpc")
   dt_GEIy <- Residualise(dt, var1 = "GenderIndexStd",
                          var2 = "avgGenderDiff")
@@ -53,24 +28,15 @@ AddResiduals_new <- function(dt) {
   # UN Gender Equality Index Residualised using Log GDP
   dt_UN <- Residualise(dt, var1 = "logAvgGDPpc",
                        var2 = "ValueUNStd")
->>>>>>> BranchToBeMerged:ExtendedAnalysis/functions/AddResiduals_new.r
   dt_UN[, residualsValueUNStd := -1 * residualsValueUNStd]
   
   # Ratio Female to Male Residualised using Log GDP
-<<<<<<< HEAD:ReproductionAnalysis/functions/AddResiduals.R
-  dt_ratioLabor <- Residualise(dt, var1 = "logAvgGDPpcStd",
-                                   var2 = "avgRatioLaborStd")
-  # Time since Women's Suffrage Residualised using Log GDP
-  dt_Date <- Residualise(dt, var1 = "logAvgGDPpcStd",
-                             var2 = "DateStd")
-=======
   dt_ratioLabor <- Residualise(dt, var1 = "logAvgGDPpc",
                                var2 = "avgRatioLaborStd")
   
   # Time since Women's Suffrage Residualised using Log GDP
   dt_Date <- Residualise(dt, var1 = "logAvgGDPpc",
                          var2 = "DateStd")
->>>>>>> BranchToBeMerged:ExtendedAnalysis/functions/AddResiduals_new.r
   dt_Date[, residualsDateStd := -1 * residualsDateStd]
   
   # GDI Residualised using Log GDP

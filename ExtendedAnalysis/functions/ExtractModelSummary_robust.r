@@ -23,7 +23,8 @@ ExtractModelSummary_robust <- function(dat, var1, var2, var3 = NULL) {
     dt <- data.table(formula     = character(),
                      correlation = character(),
                      r2          = double(),
-                     pvalue      = character())
+                     pvalue      = character(),
+                     stringsAsFactors = FALSE)
     dt[, ((var3)) := character()]
     # For each model, save a data table containing the statistical values
     # of interest
@@ -39,8 +40,8 @@ ExtractModelSummary_robust <- function(dat, var1, var2, var3 = NULL) {
                        eval(as.name(var2))])
       correlation <- sprintf("correlation = %.5f", r)
       r2 <- sprintf("R^2 = %.5f", r^2)
-      t_value <- summary(mod)$coefficients[, "t value"][2]
-      p_value <- 2 * pt(q = t_value, df = length(mod$residuals) - 2, lower.tail = F)
+      t_value <- summary(mod[[i]])$coefficients[, "t value"][2]
+      p_value <- 2 * pt(q = t_value, df = length(mod[[i]]$residuals) - 2, lower.tail = F)
       pvalue <- ifelse(p_value < 0.0001,
                        "p < 0.0001",
                        sprintf("p = %.4f", p_value))
@@ -50,7 +51,7 @@ ExtractModelSummary_robust <- function(dat, var1, var2, var3 = NULL) {
                            r2          = r2,
                            pvalue      = pvalue,
                            stringsAsFactors = FALSE)
-      dt_tmp[, ((var3)) :=  names(mod)[i],]
+      dt_tmp[, ((var3)) :=  names(mod)[i], ]
       dt <- rbind(dt, dt_tmp)
     }
     

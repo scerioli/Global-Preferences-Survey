@@ -5,12 +5,12 @@
 # =============================== #
 
 # Set the path
-setwd("~/Desktop/Projects/Global-Preferences-Survey/ReproductionAnalysis/")
+setwd("~/Desktop/Projects/Global-Preferences-Survey/")
 
 # Source helper functions
-source("functions/helper_functions/SourceFunctions.r")
-SourceFunctions(path = "functions/")
-SourceFunctions(path = "functions/helper_functions/")
+source("ReproductionAnalysis/functions/helper_functions/SourceFunctions.r")
+SourceFunctions(path = "ReproductionAnalysis/functions/")
+SourceFunctions(path = "ReproductionAnalysis/functions/helper_functions/")
 
 # Load libraries
 LoadRequiredLibraries()
@@ -78,10 +78,6 @@ dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
 # ================================ #
 #### 4. VARIABLES CONDITIONING  ####
 # ================================ #
-
-# TODO: The authors took the log GDP and the Gender Equality (Index, meaning 
-# the one already in a scale from 0 to 1) and standardise them. After this, they
-# perform the conditional analysis. Still I miss a factor 10 in the y-axis...
 
 # Add residuals to the summary index
 summaryIndex <- AddResiduals(summaryIndex)
@@ -184,13 +180,13 @@ PlotSummary(data = dt_compare, var1 = "avgDiffArticle", var2 = "avgDiffOurs",
 
 ## ---------------------- Write csv data summaries -------------------------- ##
 fwrite(dataSummary,
-       file = "files/output/main_data_for_histograms.csv")
+       file = "ReproductionAnalysis/files/output/main_data_for_histograms.csv")
 fwrite(summaryIndex,
-       file = "files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
+       file = "ReproductionAnalysis/files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
 fwrite(dataCoeff_summary,
-       file = "files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
+       file = "ReproductionAnalysis/files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
 fwrite(dataCoeffGlobal[, c(1, 3, 7, 8, 9)],
-       file = "files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
+       file = "ReproductionAnalysis/files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
 fwrite(dataCoeffAlternative[, -2],
-       file = "files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
+       file = "ReproductionAnalysis/files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
 #------------------------------------------------------------------------------#
