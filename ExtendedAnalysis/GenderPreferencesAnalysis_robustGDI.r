@@ -1,7 +1,12 @@
+## ============================================================================ #
 ####  ANALYSIS OF GLOBAL PREFERENCES with ROBUST LINEAR REGRESSION and GDI  ####
-# Using the Gender Equality Measurements proposed by S. Klasen in
-# https://www.ophi.org.uk/wp-content/uploads/Klasen-2006.pdf
-# (Table 3, version of GEM for 2003)
+# ============================================================================ #
+# Analysing the data using a robust linear regression instead of simple OLS, and
+# adding a different index for the Gender Inequality, that is the Gender 
+# Development Index as indicated in the technical notes of the United Nations
+# Human Development Indicators (version of 2020):
+# http://hdr.undp.org/sites/default/files/hdr2020_technical_notes.pdf
+
 
 # =============================== #
 #### 0. LOAD DATA AND SET PATH ####
@@ -26,6 +31,7 @@ GDI_index <- CreateGDIindex()
 data_all <- LoadData()
 data_all$GDI_index <- GDI_index
 
+
 # ========================= #
 #### 1. PREPARE THE DATA ####
 # ========================= #
@@ -39,6 +45,7 @@ data_all$data <- Standardize(data    = data_all$data,
 
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
+
 
 # ========================== #
 #### 2. CREATE THE MODELS ####
@@ -97,9 +104,9 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
 #### 5. WRITE DATA SUMMARIES ####
 # ============================= #
 
-## ---------------------- Write csv data summaries -------------------------- ##
+# Write csv data summaries
 fwrite(dataSummary,
        file = "ExtendedAnalysis/files/output/main_data_for_histograms.csv")
 fwrite(summaryIndex,
        file = "ExtendedAnalysis/files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
-#------------------------------------------------------------------------------#
+
