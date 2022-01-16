@@ -39,13 +39,23 @@ AddResiduals_new <- function(dt) {
                          var2 = "DateStd")
   dt_Date[, residualsDateStd := -1 * residualsDateStd]
   
+  
+  # Log GDP Residualised using Gender Equality Index
+  dt_GDIx <- Residualise(dt, var1 = "GDIStd",
+                         var2 = "logAvgGDPpc")
+  dt_GDIy <- Residualise(dt, var1 = "GDIStd",
+                         var2 = "avgGenderDiff")
+  # Rename the variable
+  dt_GDIy[, residualsavgGenderDiff_GDI := residualsavgGenderDiff]
+  dt_GDIy$residualsavgGenderDiff <- NULL
+  
   # GDI Residualised using Log GDP
   dt_GDI <- Residualise(dt, var1 = "logAvgGDPpc",
                             var2 = "GDIStd")
   
   
   # Group the data tables into a single list
-  dts <- list(dt_GEIx, dt_GEIy, dt_GDPx, dt_GDPy,
+  dts <- list(dt_GEIx, dt_GEIy, dt_GDPx, dt_GDPy, dt_GDIx, dt_GDIy,
               dt_WEF, dt_UN, dt_ratioLabor, dt_Date, dt_GDI)
   # Loop over the data table list to merge into a single data table
   for (data_table in dts) {

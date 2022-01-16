@@ -56,7 +56,7 @@ ExtractModelSummary_robust <- function(dat, var1, var2, var3 = NULL) {
     }
     
   } else {
-    mod <- lm(eval(as.name(var1)) ~ eval(as.name(var2)), data = dat)
+    mod <- rlm(eval(as.name(var1)) ~ eval(as.name(var2)), data = dat)
     # Reassign the correct name of the variable
     names(mod$coefficients)[2] <- var2
     formula <- sprintf("y == %.2f % +.2f * x",

@@ -142,7 +142,7 @@ PlotSummary_robust(data = summaryIndex,
 
 ## ------------------------------ Fig. 2 A ----------------------------------- #
 PlotSummary_robust(data = summaryIndex,
-                   var1 = "residualslogAvgGDPpc",
+                   var1 = "residualslogAvgGDPpc.x",
                    var2 = "residualsavgGenderDiff_GEI",
                    labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                             "Average Gender Differences \n(residualized using Gender Equality Index)",
@@ -208,13 +208,23 @@ PlotSummary_robust(data = summaryIndex,
 
 ## --------------------------------- EXTRA ----------------------------------- #
 PlotSummary_robust(data = summaryIndex,
+                   var1 = "residualslogAvgGDPpc.y",
+                   var2 = "residualsavgGenderDiff_GDI",
+                   labs = c("Log GDP p/c (residualized using Gender Development Index)",
+                            "Average Gender Differences \n(residualized using Gender Development Index)",
+                            "Economic Development"),
+                   # display = TRUE,
+                   save = "ExtendedAnalysis/plots/main_ExtraResidualised.png"
+)
+
+PlotSummary_robust(data = summaryIndex,
                    var1 = "residualsGDIStd",
                    var2 = "residualsavgGenderDiff_GDP",
                    labs = c("Gender Development Index (residualized using Log GDP p/c)",
                             "Average Gender Differences \n(residualized using Log GDP p/c)",
                             "Gender Development Index"),
                    # display = TRUE,
-                   save = "ExtendedAnalysis/plots/main_ExtraResidualised.png"
+                   save = "ExtendedAnalysis/plots/main_ExtraResidualised2.png"
 )
 
 # ===================================== #
@@ -259,8 +269,8 @@ PlotSummary_robust(data = dataCoeff_summary,
                    var3 = "preference",
                    labs = c("Log GDP p/c",
                             "Gender Differences (in standard deviations)"),
-                  # display = TRUE
-                  save = "ExtendedAnalysis/plots/supplementary_FigS2.png"
+                   # display = TRUE
+                   save = "ExtendedAnalysis/plots/supplementary_FigS2.png"
 )
 
 # -------------------------------- Fig. S3 ----------------------------------- #
@@ -272,6 +282,17 @@ PlotSummary_robust(data = dataCoeff_summary,
                             "Gender Differences (in standard deviations)"),
                    #  display = TRUE,
                    save = "ExtendedAnalysis/plots/supplementary_FigS3.png"
+)
+
+# ------------------------------ Fig. SExtra --------------------------------- #
+PlotSummary_robust(data = dataCoeff_summary,
+                   var1 = "GDI", 
+                   var2 = "gender", 
+                   var3 = "preference",
+                   labs = c("Gender Development Index",
+                            "Gender Differences (in standard deviations)"),
+                   #  display = TRUE,
+                   save = "ExtendedAnalysis/plots/supplementary_FigS3Extra.png"
 )
 
 ## ------------------------------- Fig. S4 ----------------------------------- #
