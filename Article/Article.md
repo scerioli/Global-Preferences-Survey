@@ -20,17 +20,19 @@ abstract: |
 
 # 1. Introduction
 
-Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL], or work preferences [@BG], are being studied in many sectors of the economy and economy-related fields.
+Gender differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL], or work preferences [@BG], are being studied in sociology and economics. 
 
-One of the problems common for many experiments in social sciences is the lack of large and heterogeneous datasets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed for the study.
+[Classification of theories goes here.
+In the first scenario, the gender differences increase as the economic development increases because the gender-neutral goal of subsistence is removed, and therefore the real preferences can be pursued. Moreover, since those countries are usually also the ones with more gender-equal societies, we would have more women and men allowed to express their desires and preferences in an independent way. This would be the so-called resources hypothesis. On the other hand, there is the social role hypothesis stating that the more economically developed and gender-equal the country, the smaller the gender differences because of the attenuation of the social roles related to the genders.
+Mixed hypothesis reinforcement and feedback?
+]. 
 
-The Gallup World Poll 2012 included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world, that aimed to fill this gap: Covering almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust.
+On the other hand, gender-related issues such as gender inequality are becoming an integral part of the agenda for many public and private institutions and organizations. Therefore, it is essential for public and private institutions to reveal, estimate, monitor, and prevent gender inequalities. With this regard, any scientific knowledge about gender differences and their relation to gender inequality is used nowadays as arguments and counter-arguments for decision and policymaking. Yet, despite the research effort and large body of literature on the topic [REFs], the theoretical understanding of these relations is far from complete. 
 
-The dataset provides a unique insight in the economic preferences of a heterogeneous amount of people. The original study published in the Quarterly Journal of Economics [@QJE_Falk, 133 (4) pp. 1645-1692] focused on more general questions about the economic preferences distributions in different countries, trying to explore different covariates from the Gallup World Poll. While, the subsequent article, replicated in this work, focused specifically on the gender differences arising from the previous study.
+One of the challenges that hamper the progress in studying gender differences on a world scale is the lack of large and heterogeneous datasets across different social groups and countries. The Gallup World Poll 2012 included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world that aimed to fill this gap: Covering nearly 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk-taking, negative and positive reciprocity, and trust. The dataset provides a unique insight into the economic preferences of a heterogeneous number of people. The original study published in the Quarterly Journal of Economics [@QJE_Falk, 133 (4) pp. 1645-1692] focused on more general questions about the economic preferences distributions in different countries, trying to explore several covariates from the Gallup World Poll. While, the subsequent article [REF], replicated in this work, focused explicitly on the gender differences arising from the previous study and reported the evidence for the relationship between gender differences in economic preferences, economic development, and gender equality across many countries. The data reveals a positive correlation of gender differences in preferences with GDP p/c and with the gender equality of the countries, thus favoring the class of hypotheses that predict the increase of the differences as women and men obtain sufficient access to the resources to develop and express their intrinsic preferences independently.
 
-The main question that the article wants to study is whether the gender differences in economic preferences increase or decrease as the economic development and gender equality of the countries increase. In the first scenario, the gender differences increase as the economic development increases because the gender-neutral goal of substistence is removed, and therefore the real preferences can be pursued. Moreover, since those countries are usually also the ones with more gender equal societies, we would have more women and men allowed to express their desires and preferences in an independent way. This would be the so-called resources hypothesis. On the other hand, there is the social role hypothesis stating that the more economically developed and gender-equal the country, the smaller the gender differences because of the attenuation of the social roles related to the genders. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c and with the gender equality of the countries, and thus "confirming" the resources hypothesis.
-
-NOTE: Here I need to add something about our extended analysis
+Throughout the study [REF], the authors construct and use a joint measure of gender equality in different countries, 
+combining the indexes provided by WEF and UN, the female to male labor participation ratio, and the years since woman suffrage. However, no investigation and discussion on the validity of such an approach were provided. Moreover, a large body of literature on the subject was ignored. The last fact is critical as WEF and UN indicators are far from a complete representation of gender inequality and were heavily criticized by many authors. In this article, we argue that it is nearly impossible to conduct inferences about gender (in)equality and its relation with other socio-economic parameters, such as preferences, without a detailed understanding of the specifics of indicators that are used as proxies for gender equality in a domain of interest. Finally, we replicate the original article and show that [results here].
 
 <!-- 
 Talk about the problems of the gender equality index, quote the article https://www.econstor.eu/bitstream/10419/157265/1/882698184.pdf
@@ -116,7 +118,7 @@ In the extended analysis, we applied the robust linear regression to the residua
 
 ## Tables and z-scores
 
-The comparison of the replication analysis and of the extended analysis to the original article has been done checking the z-scores (calculated using this website: https://www.psychometrica.de/correlation.html) of the correlation coefficients, and comparing the statistical significance. Unfortunately, in the case of the slope coefficients (Table 4) it is not possible to compare them without having the standard deviation of the regression coefficient from the original author study.
+The comparison of the replication analysis and of the extended analysis to the original article has been done checking the z-scores (calculated using this website: https://www.psychometrica.de/correlatNoion.html) of the correlation coefficients, and comparing the statistical significance. Unfortunately, in the case of the slope coefficients (Table 4) it is not possible to compare them without having the standard deviation of the regression coefficient from the original author study.
 
 Here below we report the tables with the corresponding values of the correlation for the original article, our replication study, the z-scores calculated from them, the correlation extracted using the robust linear regression (extended analysis), and lastly the z-score between the original article and the extended analysis.
 
@@ -126,29 +128,30 @@ We also indicate the significance level for each correlation using the following
 
 Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
-#### Table 1: Correlations between Log GDP p/c and country-level gender differences
+#### Table 1: Correlation coefficients for country-level gender differences in economic preferences vs log GDP p/c obtained in the original article, present replection and extendent analyses. The agreement between results is quantified as *z-score*.
+[Chekck the merging procedure, there are missing countries]
 
-|Variable |Original | Replication | z-score| Extended | z-score |
+|Economic preference |Original analysis | Replication | z-score| Extended | z-score |
 --- | --- | --- | --- | -- | -- |
 |Altruism |0.58***  | 0.64*** | -0.58 | 0.62*** | -0.38 |
 |Trust    |0.59***  |0.55*** | 0.36 |  0.56*** | 0.27 |
-|Positive Reciprocity |0.31***  | 0.31* | 0 | 0.30* | 0.07 |
+|Positive Reciprocity |0.31***  | 0.31* | 0.0 | 0.30* | 0.07 |
 |Negative Reciprocity |0.35***  |0.46*** |-0.80  | 0.49***| -1.03 |
 |Risk Taking |0.37***  | 0.42*** | -0.36 | 0.42*** | -0.36 |
 |Patience |0.38***  |0.43*** | -0.36  | 0.44*** | -0.44 |
 
-#### Table 2: Correlations between Gender Equality Index and country-level gender differences
+#### Table 2: Correlation coefficients for country-level gender differences in economic preferences vs agregated Gender Equality Index obtained in the original article, present replection and extendent analyses. The agreement between results is quantified as *z-score*.
 
-|Variable |Original | Replication| z-score| Extended | z-score |
+|Economic preference |Original | Replication| z-score| Extended | z-score |
 --- | --- | --- | --- | -- | -- |
-|Altruism |0.51***  | 0.51*** | 0 | 0.45*** | 0.45 |
+|Altruism |0.51***  | 0.51*** | 0.0 | 0.45*** | 0.45 |
 |Trust    |0.41***  |0.48*** | -0.51 | 0.49*** | -0.58 |
 |Positive Reciprocity |0.13  | 0.22 | -0.54 | 0.24 | -0.66 |
 |Negative Reciprocity |0.40***  |0.35** | 0.34 | 0.38*** | 0.14 |
 |Risk Taking |0.34***  | 0.31** | 0.19 | 0.31*** | 0.19 |
 |Patience |0.43***  |0.44*** |-0.07  | 0.45*** | -0.14|
 
-#### Table 3: Correlation between Log GDP p/c, Gender Equality Index, Gender Development Index, and summarised gender differences
+#### Table 3: Correlation between PCA-summarised gender differences in economic preferences vs log GDP p/c, agregated Gender Equality Index, and Gender Development Index. The agreement between results is quantified as *z-score*.
 
 |Variable |Original | Replication| z-score| Extended | z-score |
 --- | --- | --- | --- | -- | -- |
@@ -156,20 +159,20 @@ Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 |Gender Equality Index | 0.5580***  |0.5852*** | -0.234 | 0.5754*** | -0.148 |
 |Gender Development Index | --  | -- | --  | 0.3718** | -- |
 
-#### Table 4: Conditional analysis to separate the impacts of economic development and gender equality on gender differences
+#### Table 4: Conditional analysis to separate the impacts of economic development and gender equality on gender differences in economic preferences
 
-|Variable | Residualized on | Slope original | Slope replication| Slope extended|
---- | --- | --- | --- | -- |
+|Variable | Residualized on | Slope original | Slope replication| Slope extended| Comment |
+--- | --- | --- | --- | -- | -- |
 |Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5628*** | 0.5544*** |
 |Gender Equality Index | Log GDP p/c | 0.3192***  | 0.2991* | 0.2870* |
 |WEF Global Gender Gap | Log GDP p/c | 0.2327***  | 0.2634* | 0.2438* |
-|UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.1684 | 0.1714 |
-|F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.2123 | 0.1949 |
-|Years since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1901 | 0.1990 |
+|UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.1684 | 0.1714 | Likely due to update on the webpage
+|F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.2123 | 0.1949 | ?
+|Years since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1901 | 0.1990 |  Arbitrary retreavement of the data (check also about PCA)  |
 |Log GDP p/c | Gender Development Index | -- | -- | 0.6439*** |
 |Gender Development Index | Log GDP p/c | --  | -- | 0.0027 |
 
-#### Table 5 (Extra): Comparison of the correlations between Gender Equality Index vs Gender Development Index, and country-level gender differences
+#### Table 5 (importance of this table should be increased): Comparison of the correlations between Gender Equality Index vs Gender Development Index, and country-level gender differences in economic preferences
 
 |Variable |Gender Equality Index (replication) | Gender Development Index (extended) |
 --- | --- | -- |
