@@ -41,31 +41,15 @@ Talk about the problems of the gender equality index, quote the article https://
 
 # 2. Gender equality indexes and economical preferences
 
-The second part of the extended analysis focuses on the index chosen by the authors of the original article to measure the gender (in)equality of the countries. For this, they created a "ad-hoc" gender index (the Gender Equality Index) as a composite measure from four indexes (the WEF Global Gender Gap, the UNDP Gender Inequality Index, the ratio female to male in labor force participation, and the years since women suffrage).
+As we stated in the introduction, the question about how reliable cirtain gender equality indexes are in representation of actual geneder (in)equality in certain domains and their relation to the economic development was ommited. The authors in [] constracted a joint gender index (the Gender Equality Index) as a composite measure from four estimates (the WEF Global Gender Gap, the UNDP Gender Inequality Index, the ratio female to male in labor force participation, and the years since women suffrage). Even though some of these indexes are commonly accepted in economics and politics as a measure of gender equality, the status and performance from a scientific perspective is a subject of in-depth investigation that goes well beyond this reproduction analysis.
 
-Our analysis started from questioning the choice of these particular indexes (and mostly, the choice of joining them in a single index), based on the doubts raised in [@SK] about several issues. Here below the most important:
+[description of indexes and diagram, description of composition index in origical article]
 
-- The Gender Inequality Index from the UNDP is very highly related to the economic development, as its primary weight in the rank is due to the adolescent fertility rate and the maternal mortality;
+Our analysis started from questioning the choice of these particular indexes (and mostly, the choice of joining them in a single index), based on the critique raised in [@SK]. The Gender Inequality Index from the UNDP is very highly related to the economic development, as its primary weight in the rank is due to the adolescent fertility rate and the maternal mortality. Data imputation, as described in the Supplementary Material of this article, but also on the other indexes that impute some values (for instance, the maternal mortality rates) for those countries where such a database is not available or not accurate. UNDP Gender Inequality Index has a "inexistent" measure of welfare loss of inequality, because it is based on a calculated gender equality measure that is reported nowhere. The WEF Global Gender Gap has a total of fourteen sub-indeces (some of them being the same as for the UNDP GII) where a cap to 1 is applied for those countries where the ratio is higher than 1. This means that countries treating equally men and women are ranked the same as countries disfavoring men. Following the suggestion in the paper [@SK], we decided to address some of the problem the author underlined (described above) using the new Gender Development Index from the UNDP report, which is simply the ratio of the Human Development Index calculated for female divided by the one calculated for male. We added the analysis of this index in the same way as we analysed the other singular indexes, but not adding it to the PCA.
 
-- Data imputation, as described in the Supplementary Material of this article, but also on the other indexes that impute some values (for instance, the maternal mortality rates) for those countries where such a database is not available or not accurate;
-
-- UNDP Gender Inequality Index has a "inexistent" measure of welfare loss of inequality, because it is based on a calculated gender equality measure that is reported nowhere;
-
-- The WEF Global Gender Gap has a total of fourteen sub-indeces (some of them being the same as for the UNDP GII) where a cap to 1 is applied for those countries where the ratio is higher than 1. This means that countries treating equally men and women are ranked the same as countries disfavoring men.
-
-Following the suggestion in the paper [@SK], we decided to address some of the problem the author underlined (described above) using the new Gender Development Index from the UNDP report, which is simply the ratio of the Human Development Index calculated for female divided by the one calculated for male. We added the analysis of this index in the same way as we analysed the other singular indexes, but not adding it to the PCA.
-
-The article lacks the analysis of the gender equality indexes involved in the analysis. In particular, no discussion on their relation to the economic preferences were provided. No links were provided on the literature that evaluates their performance. Even though some of these indexes are commonly accepted in economics and politics as a measure of gender equality, the status and performance from a scientific perspective is a subject of in-depth investigation that goes beyond this reproduction analysis. In this section, we provide a brief description and investigation of the indexes that were used in the original article, together with related sources of data and methodology. Four different measures were used to build gender equality index, which was defined as the first Principle Component of them. We show the structure of the index as a diagram (figure).
-
-As one can see several indexes contain the repetitive components, so most likely after PCA application they are going to be filtrated.
-
-- How PCA correlates with other components?
-
-- What are the first and the second component?
-
-Is the resulting Gender Equality Index is just the same as work-force ratio because of PCA filtration of the result? H: overall index is strongly correlated with the indicators that are repeated in the calculation of the overall index. A brief look at the composition of the data and sources provoc several questions regarding the validity of the indicators to be used as a proxy for gender equality in the study. One of the integral components of the WEF index is the ratio of avarage income for man and women. [check 40000 $]. Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives.
-
-Information summary on time since women suffrage: the table does not contain links on the related sources.
+[How PCA correlates with other components? Table for components? Plot PCA?  PC1 explained variance 0.4, "Tools for Composite Indicators Building ", "Handbook on Constructing Composite Indicators". Check linearity. "The Use of Discrete Data in PCA: Theory, Simulations, and Applications to Socioeconomic Indices". PCA on descrete data, PCA ordinal data]
+[What are the first and the second component?]
+[One of the integral components of the WEF index is the ratio of avarage income for man and women. [check 40000 $]. Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives. Information summary on time since women suffrage: the table does not contain links on the related sources.]
 
 # 3. Replication study
 
