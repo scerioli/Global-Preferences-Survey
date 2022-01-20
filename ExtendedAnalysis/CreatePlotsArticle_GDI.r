@@ -528,3 +528,4 @@ PlotSummary_robust(data = dataCoeff_summary[preference == "patience"],
                    # display = TRUE,
                    save = "ExtendedAnalysis/plots/supplementary_FigSExtra6.png"
 )
+

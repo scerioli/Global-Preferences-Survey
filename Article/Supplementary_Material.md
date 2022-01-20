@@ -1,6 +1,6 @@
 ---
 title: |
-  **Reproduce the results of the article "Relationship of gender differences in preferences to economic development and gender equality"**
+  **Supplementary Material -- Replicate and extend the results of the article "Relationship of gender differences in preferences to economic development and gender equality"**
 author: 
 - Sara Cerioli
 - Andrey Formozov
@@ -8,34 +8,27 @@ output:
   pdf_document: default
 bibliography: bibliography.bibtex
 csl: bib_style/./mee.csl
-abstract: |
-  This study attempts to reproduce the results of the article of @FH measuring the gender differences economic preferences relating them to economic development and to gender equality of the countries. In the original paper, the authors use data from the Gallup World Poll 2012, which included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world. The dataset covers almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust. The dataset is available in its integrity only with a license to be paid. The free version has only partial data that can also be used for this purpose because, according to the FH study, the gender differences can be studied also only taking in consideration a smaller number of predictors (according to the supplementary material, see [@FH_SM]). In this replication study, therefore, we use only a subset of predictors that are made publicly available to check whether the results can still be reproduced and are consistent. The outcome of the replication is that we see similar results as the ones obtained by the original authors for the relationship of gender differences and the economic development, but with differences (some times minor, some times significantly large) regarding the gender equality, especially when comparing the results of the single indexes building the general Gender Equality Index. Those differences seem to arise from different handling of the country-level variables, but a further check couldn't be done because the data used in the original article are not provided to us.
 ---
 
 
-**JEL:**  D010 - Microeconomic Behavior: Underlying Principles, D630 - Equity, Justice, Inequality, and Other Normative Criteria and Measurement, D810 - Criteria for Decision-Making under Risk and Uncertainty, D910 - Micro-Based Behavioral Economics: Role and Effects of Psychological, Emotional, Social, and Cognitive Factors on Decision Making, F000 International Economics: General
-
-**Keywords:** replication study, gender differences, economic preferences
-
-
-# 1. Introduction
-
-Gender differences are nowadays extensively used as arguments and counter-arguments for decision and policy making, and the differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL], or work preferences [@BG], are being studied in many sectors of the economy and economy-related fields.
-
-One of the problems common for many experiments in social sciences is the lack of large and heterogeneous datasets that can be used to check for such differences reducing some of the bias induced, for example, by having students or specific sets of people interviewed for the study.
-
-The Gallup World Poll 2012 included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world, that aimed to fill this gap: Covering almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust.
-
-The dataset provides a unique insight in the economic preferences of a heterogeneous amount of people. The original study published in the Quarterly Journal of Economics [@QJE_Falk, 133 (4) pp. 1645-1692] focused on more general questions about the economic preferences distributions in different countries, trying to explore different covariates from the Gallup World Poll. While, the subsequent article, replicated in this work, focused specifically on the gender differences arising from the previous study.
-
-The main question that the article wants to study is whether the gender differences in economic preferences increase or decrease as the economic development and gender equality of the countries increase. In the first scenario, the gender differences increase as the economic development increases because the gender-neutral goal of substistence is removed, and therefore the real preferences can be pursued. Moreover, since those countries are usually also the ones with more gender equal societies, we would have more women and men allowed to express their desires and preferences in an independent way. This would be the so-called resources hypothesis. On the other hand, there is the social role hypothesis stating that the more economically developed and gender-equal the country, the smaller the gender differences because of the attenuation of the social roles related to the genders. The conclusion of the article is that the trends in the data shows a positive correlation of gender differences with GDP p/c and with the gender equality of the countries, and thus "confirming" the resources hypothesis.
-
-
-# 2. Methods 
+# Methods 
 
 ## Overview
 
 We replicate the results using the R programming language version 4.0.3 (2020-10-10), and its open-source IDE RStudio for an easy access of the code. In the Appendix, we include a list of the packages used and their corresponding versions.
+
+The following packages with respective version are used:
+
+|Package | $\quad$ | Version |
+--- | --- | ---
+| data.table | | 1.13.2 |
+| bit64 | | 4.0.5 |
+| bit | | 4.0.4 |
+| plyr | | 1.8.6 |
+| dplyr | | 1.0.5 |
+| haven | | 2.4.2 |
+| ggplot2 | | 3.3.2 |
+| missMDA | | 1.18 |
 
 
 ## Data Collection, Cleaning, and Standardization
@@ -99,30 +92,29 @@ The problem of missing data for a given countries often does not influence much 
 
 The article uses the following methods commonly accepted in the field: 
 
-- Linear regression for each Country for each preference to extract the gender coefficient as a measure of the gender differences. 
+- Linear regression for each Country for each preference to extract the gender coefficient as a measure of the gender differences. We used in addition a Robust Linear Regression after checking the normality of the data.
 
 - Principal Component Analysis on 6 gender coefficients to summarize an overall measure of the gender differences, and 4 gender equality indexes of the countries to summarize an overall Gender Equality Index.
 
 - Variable Conditioning to separate further between economic development and gender equality in the country.
 
-### Linear Model on Each Country for Each Preference
+### Linear Models Diagnostic and the Robust Linear Regression
 
-Starting from the complete dataset (meaning with removed NA rows), we wanted to reproduce the data plotted in Fig. S2. regarding the gender differences and economic development by preference and by country.
-
-As already mentioned in the previous paragraph, part of the data to reproduce the article is under restricted access: education level and household income quintile on the individual level are not available in open access version. 
-
-As the FH article addresses the gender differences, the main focus is on that individual variable and all the others provided in the dataset (education level, income quitile, age, and subjective math skills) are taken as control variables, meaning that the presence of these variables may not affect the result of the correlation.
-
-In @FH_SM they check that the role of these variables to any extent negligible in the overall correlation and we therefore decided to continue the analysis without using the two variables education level and household income quintile for building the linear models.
-
-Note that the code can be easily modified to include these variables once the full dataset is available.
+As already mentioned in the previous paragraph, part of the data to reproduce the article is under restricted access: education level and household income quintile on the individual level are not available in open access version. As the [@FH] article addresses the gender differences, the main focus is on that individual variable and all the others provided in the dataset (education level, income quitile, age, and subjective math skills) are taken as control variables, meaning that the presence of these variables may not affect the result of the correlation.
 
 The linear model for each country is created using the equation:
 
 $p_i = \beta_1^c female_i + \beta_2^c age_i + \beta_3^c age^2_i + \beta_4^c subjective \ math \ skills_i + \epsilon_i$
 
-This resulted in 6 models -- one for each preference measure, $p_i$ -- having intercept and 4 weights, each of the weight being related to the variable in the formula above. The weight for the dummy variable "female", $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, we have 6 weights that represent the preference difference related to the gender for 76 countries.
+This results in 6 models -- one for each preference measure, $p_i$ -- having intercept and 4 weights, each of the weight being related to the variable in the formula above. The weight for the dummy variable "female", $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, we have 6 weights that represent the preference difference related to the gender for 76 countries.
 
+We now question the normality of the input data and therefore of the robustness of the linear regression performed as described. In order to verify our doubts, we used the diagnostic plots for the linear regression, in particular focusing on the so called "Normal Q-Q" plot. This kind of plots helps determining the normality of the residuals by looking at their distribution along a straight diagonal line.
+
+One way to address the problem of the long tails resulting in non-normally distributed residuals can be to choose a model with less restrictive assumptions, for instance the robust linear regression. In the robust linear regression, each datapoint is weighted based on its "extremeness", meaning, the more an observation deviates from the linearity, the more it is penalized by giving less weight. The OLS is also just a robust linear regression where all the weights are equal to 1. 
+
+There are many common methods to assign the weights to data. Here, we use the package ```MASS``` from R and its function ```rlm```, in which by default the method used for the weights is called "Huber".
+
+The models for each countries are therefore created by using the robust linear regression, and same substitution happens for every model created using linear regression by the original authors (that is, the conditional analysis later on, and plotting the final results and calculation of the resulting coefficients).
 
 ### Principal Component Analysis
 
@@ -144,7 +136,7 @@ In the end, one needs to take the so calculated residuals of x on z and of y on 
 In practice, if we are interested in checking the influence of the economic development on the summarised gender differences, conditioning on the gender equality, we would need to regress the economic development on the gender equality index, then the average gender differences regressed on the gender equality index, and finally regress the residuals of the average gender differences on the residuals of the economic development.
 
 
-# 3. Comparison to the Original Article
+# Comparison to the Original Article
 
 In this section, we describe how to reproduce the plots and compare the results in terms of z-scores.
 
@@ -159,73 +151,40 @@ We finally reproduced the plots in Fig. 2A-F using the variable conditioning ana
 
 ## Tables and z-scores
 
-The comparison to the original article has been done checking the z-scores of the correlation coefficients, and comparing the statistical significance. Unfortunately, in the case of the slope coefficients (Table 4) it is not possible to compare them without having the standard deviation of the regression coefficient from the original author study.
+The comparison of the replication analysis and of the extended analysis to the original article has been done checking the z-scores (calculated using this website: https://www.psychometrica.de/correlatNoion.html) of the correlation coefficients, and comparing the statistical significance. Unfortunately, in the case of the slope coefficients (Table 4) it is not possible to compare them without having the standard deviation of the regression coefficient from the original author study.
 
-Here below we report the tables with the corresponding values of the correlation for the original article, our replication study, and the z-scores calculated from them. In this article, the sample size of the data, needed for the calculation of the z-scores, is 76 (the number of the countries involved in this studies) for the GDP correlations, and 68 for the Gender Equality Index, due to the missing data. For the original article, the sample size is 76 for the GDP, and 71 for the Gender Equality Index (see @FH_SM, pp. 32, Table S4). 
+Here below we report the tables with the corresponding values of the correlation for the original article, our replication study, the z-scores calculated from them, the correlation extracted using the robust linear regression (extended analysis), and lastly the z-score between the original article and the extended analysis.
+
+In this article, the sample size of the data, needed for the calculation of the z-scores, is 76 (the number of the countries involved in this studies) for the GDP correlations, and 69 for the Gender Equality Index, due to the missing data. For the original article, the sample size is 76 for the GDP, and 71 for the Gender Equality Index (see @FH_SM, pp. 32, Table S4). 
 
 We also indicate the significance level for each correlation using the following scheme: 
 
-Signifincance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
-
-#### Table 1: Correlations between Log GDP p/c and country-level gender differences
-
-|Variable |Corr. original article | Corr. this analysis| z-score|
---- | --- | --- | ---
-|Altruism |0.58***  | 0.6*** | -0.19 |
-|Trust    |0.59***  |0.53*** | 0.53  |
-|Positive Reciprocity |0.31***  | 0.29* | 0.13 |
-|Positive Reciprocity |0.35***  |0.42*** | -0.50  |
-|Risk Taking |0.37***  | 0.33*** | 0.28 |
-|Patience |0.38***  |0.49*** | -0.82  |
-
-#### Table 2: Correlations between Gender Equality Index and country-level gender differences
-
-|Variable |Corr. original article | Corr. this analysis| z-score|
---- | --- | --- | ---
-|Altruism |0.51***  | 0.49*** | 0.15 |
-|Trust    |0.41***  |0.47*** | -0.43  |
-|Positive Reciprocity |0.13  | 0.20 | -0.42 |
-|Positive Reciprocity |0.40***  |0.30** | 0.66  |
-|Risk Taking |0.34***  | 0.26* | 0.51 |
-|Patience |0.43***  |0.48*** | -0.36  |
-
-#### Table 3: Correlation between Log GDP p/c and Gender Equality Index, and summarised gender differences
-
-|Variable |Corr. original article | Corr. this analysis| z-score|
---- | --- | --- | ---
-|Log GDP p/c |0.6685***  | 0.7119*** | -0.5 |
-|Gender Equality Index | 0.5580***  |0.5852*** | -0.23  |
-
-#### Table 4: Conditional analysis to separate the impacts of economic development and gender equality on gender differences
-
-|Variable | Residualized on | Slope coeff. original article | Slope coeff. this analysis|
---- | --- | --- | --- |
-|Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5695*** |
-|Gender Equality Index | Log GDP p/c | 0.3192***  | 0.2777* |
-|WEF Global Gender Gap | Log GDP p/c | 0.2327***  | 0.2014* |
-|UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.2355 |
-|F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.1648 |
-|Years since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1484 |
+Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
 
-# 4. Discussion of the Results
+#### Table S1: Correlation coefficients for country-level gender differences in economic preferences vs log GDP p/c obtained in the original article, present replection and extendent analyses. The agreement between results is quantified as *z-score*.
+[Check the merging procedure, there are missing countries]
 
-Comparing the results of our analysis to the one from the original paper, starting with the single preferences correlations to the economic development, we see that our analysis brings us to very similar results in terms of correlation coefficients (see Table 1). The p-values, although different, are all indicating a statistically significant correlation, as in the original paper, and when calculating the z-scores thanks to Fisher’s r to z transformation, we see that each one is below 2 (which is usually taken as threshold to be statistically significant). This means that our correlations were not statistically significantly different from the ones in the original article.
+|Economic preference |Original analysis | Replication | z-score| Extended | z-score |
+--- | --- | --- | --- | -- | -- |
+|Altruism |0.58***  | 0.64*** | -0.58 | 0.62*** | -0.38 |
+|Trust    |0.59***  |0.55*** | 0.36 |  0.56*** | 0.27 |
+|Positive Reciprocity |0.31***  | 0.31* | 0.0 | 0.30* | 0.07 |
+|Negative Reciprocity |0.35***  |0.46*** |-0.80  | 0.49***| -1.03 |
+|Risk Taking |0.37***  | 0.42*** | -0.36 | 0.42*** | -0.36 |
+|Patience |0.38***  |0.43*** | -0.36  | 0.44*** | -0.44 |
 
-We do the same for the Gender Equality Index (Table 2), and again we don’t find any large difference in the correlation. The p-values tend to be different with respect to the original article, but all of them are pointing towards the same direction. Also the z-scores are in absolute values below 2.
+#### Table S2: Correlation coefficients for country-level gender differences in economic preferences vs agregated Gender Equality Index obtained in the original article, present replection and extendent analyses. The agreement between results is quantified as *z-score*.
 
-In Table 3, we compare the two core concepts of the article, where the summarised gender differences are regressed on the log GDP p/c and on the Gender Equality Index. The correlations found are similarly positive, strong, and statistically significant. Again, the correlations found in our analysis are not statistically significantly different from the correlations found in the original article.
+|Economic preference |Original | Replication| z-score| Extended | z-score |
+--- | --- | --- | --- | -- | -- |
+|Altruism |0.51***  | 0.51*** | 0.0 | 0.45*** | 0.45 |
+|Trust    |0.41***  |0.48*** | -0.51 | 0.49*** | -0.58 |
+|Positive Reciprocity |0.13  | 0.22 | -0.54 | 0.24 | -0.66 |
+|Negative Reciprocity |0.40***  |0.35** | 0.34 | 0.38*** | 0.14 |
+|Risk Taking |0.34***  | 0.31** | 0.19 | 0.31*** | 0.19 |
+|Patience |0.43***  |0.44*** |-0.07  | 0.45*** | -0.14|
 
-Lastly, we have the conditional analysis (Table 4). For the two main country-level variable, we see that the values tend to agree and be on the same direction (similar slope coefficients and significant p-value). But when we start to check for the single indexes, we see that there are some differences which are worthy to discuss. 
-
-The first thing to say is that we had to make choices on how to impute data and also how to handle the missing data (see discussion above in paragraph "Methods"). The main imputation on missing data has been done on the "time since women’s suffrage" dataset, that is where we see a substantial difference in the results. Other datasets, on the other hand, has not been treated for missing data but still they present some difference. For instance, the dataset "F/M in Labor Force Participation" in our analysis has a non-statistically significant correlation, while in the original paper they found a correlation with p-value less than 0.05.
-
-A first thought was that this might be the result of using a different dataset for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open. 
-
-
-# 5. Conclusions
-
-The study indicates that higher economic development and higher gender equality are associated with an increase in the gender differences in preferences, and therefore rules out the social-role theory over the post-materialistic one: When more resources are available to both men and women, the expression of the gender specific preferences can be seen. Our replication leads to the same conclusions, but we have some open questions regarding unexplained differences that might lead to further checks on the results’ robustness. 
 
 
 # References
