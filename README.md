@@ -7,14 +7,23 @@ In this repository we store the code for the replication and extension of the an
 It is suggested to read this first to get an idea of how the replication and the extension of the analysis has been structured through the code.
 
 
-### How to Use this Folder / How to replicate the analysis
+### How to replicate the full analyses
 
-There are two ways one can use this folder:
+There are two ways one can replicate the work done here:
 
-1. Go through the scripts "GenderPreferencesAnalysis.r" inside the ReplicationAnalysis and ExtendedAnalysis, and their according "functions" folders, if you want to check the code to proof-read it. You can also plot the data using the same code it has been used to produce the plots here in the folders: Just check the files "CreatePlotsArticle.r" (again, both in the "ReplicationAnalysis" and in the "ExtendedAnalysis");
+- Go through the scripts "GenderPreferencesAnalysis.r" inside the ReplicationAnalysis and ExtendedAnalysis, and their according "functions" folders, if you want to check the code to proof-read it. You can also plot the data using the same code it has been used to produce the plots here in the folders: Just check the files "CreatePlotsArticle.r" (again, both in the "ReplicationAnalysis" and in the "ExtendedAnalysis");
 
-2. Take the output files in the "ReplicationAnalysis" and in the "ExtendedAnalysis" and use them as input for plotting or checking other models by yourself.
+- Take the output files in the "ReplicationAnalysis" and in the "ExtendedAnalysis" and use them as input for plotting or checking other models by yourself.
 
+For both cases, you would need to:
+
+1. Clone this repository on your local computer. This will provide you will all the content of this folder, meaning, all the codes and the data used for the replication and extended analysis. 
+
+2. The only thing missing in this repository is the data Global Preferences Survey from the Gallup World Poll. This data is protected by copyright and can't be given to third parties. To download the GPS dataset, go to the [website of the Global Preferences Survey](https://www.briq-institute.org/global-preferences/downloads) in the section "downloads". There, choose the "Dataset" form and after filling it, one can download the dataset. *Hint: The organization can be also "private".* 
+
+3. After downloading the GPS dataset, save it into the ReplicationAnalysis/files/input in a folder called GPS_Dataset. The folder should contain two sub-folder, one called "GPS_dataset_country_level" (and this should contain 3 files in total, two of type .dta and one text file), and the other called "GPS_dataset_individual_level" (same type of content as the other one).
+
+4. Congrats, you are well equipped to start the replication. Enjoy!
 
 ## Description of the Content
 
