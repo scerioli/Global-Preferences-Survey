@@ -20,10 +20,10 @@ There are two ways one can use this folder:
 
 The repository consists of several sub-directories:
 
-- [Article](https://github.com/scerioli/Global-Preferences-Survey/tree/master/Article) is the folder containing the markdown files used to write the article and the appendix.
+- [**Article**](https://github.com/scerioli/Global-Preferences-Survey/tree/master/Article) is the folder containing the markdown files used to write the article and the appendix.
 
-- [ReproductionAnalysis](https://github.com/scerioli/Global_Preferences_Survey/tree/master/ReproductionAnalysis) is the folder where the replication analysis of the main article and its supplementary material is performed.
-  - [**ReproduceArticle.md**](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ReproductionAnalysis/ReproduceArticle.md), as already mentioned, helps to get through the main code and get the concept of the analysis. For a more in-depth look at the analysis and the methods, the authors refer to the main paper (mentioned above).
+- [**ReproductionAnalysis**](https://github.com/scerioli/Global_Preferences_Survey/tree/master/ReproductionAnalysis) is the folder where the replication analysis of the main article and its supplementary material is performed.
+  - [ReproduceArticle.md](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ReproductionAnalysis/ReproduceArticle.md), as already mentioned, helps to get through the main code and get the concept of the analysis. For a more in-depth look at the analysis and the methods, the authors refer to the main paper (mentioned above).
   - [files](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files)
    - [input](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/input): files used for the analysis, modified to be easy to read. These code allows the reader to reproduce the analysis. The core GPS dataset on economic preferences is not included due to copyright restrictions but can be easily downloaded using the links on the official webpage we provided.
    - [output](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/output): the .csv files that contain the results of our replication of the analysis that we subsequently use for plots. The same files can be obtained by running the analysis pipeline
@@ -36,7 +36,7 @@ The repository consists of several sub-directories:
   - [plots](https://github.com/scerioli/Global_Preferences_Survey/tree/master/plots): The relevant plots are saved here. The files which start with "main" are figures from the main part of the article, while the "supplementary" are from the supplementary online material. Two extra plots for the comparison between our analysis and the article's results are in this folder as well.
   - [interactive_plots](https://github.com/scerioli/Global_Preferences_Survey/blob/master/interactive_plots) contains a very basic dashboard created with Shiny package in R, to have a quicker visualization of the plots. *It is still a "beta version" because the description is not exhaustive about which plots can be created.* The user is of course invited to visualize their wished plots from the dataset already provided. You can try to run the app using this command in R: ```shiny::runGitHub('Global-Preferences-Survey', 'scerioli', ref = "master", subdir = "ReproductionAnalysis/interactive_plots")```
   
-- [ExtendedAnalysis](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis) is the folder where the extended analysis of the article has been performed. With "extended analysis" it is meant the change from the use of OLS to robust linear regression in any occasion where the OLS was used, thus changing many functions (see below), and the addition of the new Gender Development Index as additional indicator for the gender equality of the countries. The structure of this directory is very similar to the ReplicationAnalysis, since the analysis performed is based on the replication.
+- [**ExtendedAnalysis**](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis) is the folder where the extended analysis of the article has been performed. With "extended analysis" it is meant the change from the use of OLS to robust linear regression in any occasion where the OLS was used, thus changing many functions (see below), and the addition of the new Gender Development Index as additional indicator for the gender equality of the countries. The structure of this directory is very similar to the ReplicationAnalysis, since the analysis performed is based on the replication.
   - [files](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/files)
    - [input](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/files/input): Here there are added the files from the UNDP used to create the Gender Development Index, according to the [technical notes](http://hdr.undp.org/sites/default/files/hdr2020_technical_notes.pdf) found on the website of the UNDP
    - [output](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/files/output): the .csv files that contain the results of our extended analysis that we subsequently use for plots. The same files can be obtained by running the analysis pipeline
@@ -46,7 +46,7 @@ The repository consists of several sub-directories:
     - The specific functions for the pipeline of the extended analysis. Any other function has been sourced directly from the replication folder, when it was needed.
   - [plots](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/plots): Still need to organize it better
   
-- [PublicPosts](https://github.com/scerioli/Global-Preferences-Survey/tree/master/PublicPosts) contains some short analysis to be published as posts, and their relative plots.
+- [**PublicPosts**](https://github.com/scerioli/Global-Preferences-Survey/tree/master/PublicPosts) contains some short analysis to be published as posts, and their relative plots.
 
 
 ## Additional Information
