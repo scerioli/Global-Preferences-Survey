@@ -19,9 +19,9 @@ dataSummary <- fread("ExtendedAnalysis/files/output/main_data_for_histograms.csv
 summaryIndex <- fread("ExtendedAnalysis/files/output/main_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
 dataCoeff_summary <- fread("ExtendedAnalysis/files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
 
-# =========================== #
-#### 1. MAIN ARTICLE PLOTS ####
-# =========================== #
+# ====================================== #
+#### 1. EXTENDED - MAIN ARTICLE PLOTS ####
+# ====================================== #
 
 ## ----------------------------- Fig. 1 A ------------------------------------ #
 dataSummary$preference_f <- factor(dataSummary$preference, 
@@ -63,7 +63,7 @@ PlotSummary_robust(data = summaryIndex,
                    labs = c("Log GDP p/c",
                             "Average Gender Differences (Index)"),  
                    # display = TRUE,
-                   save = "ExtendedAnalysis/plots/main_Fig1B.png"
+                   save = "ExtendedAnalysis/plots/main_Fig1B.pdf"
 )
 
 ## ----------------------------- Fig. 1 C ------------------------------------ #
@@ -99,7 +99,7 @@ PlotSummary_robust(data = summaryIndex,
                    labs = c("Gender Equality Index",
                             "Average Gender Differences (Index)"),  
                    # display = TRUE,
-                   save = "ExtendedAnalysis/plots/main_Fig1D.png"
+                   save = "ExtendedAnalysis/plots/main_Fig1D.pdf"
 )
 
 ## ------------------------------ EXTRA -------------------------------------- #
@@ -135,7 +135,7 @@ PlotSummary_robust(data = summaryIndex,
                    labs = c("Gender Development Index",
                             "Average Gender Differences (Index)"),  
                    # display = TRUE,
-                   save = "ExtendedAnalysis/plots/main_ExtraGDI.png"
+                   save = "ExtendedAnalysis/plots/extended_genderDiff_GDI.pdf"
 )
 
 
@@ -227,9 +227,9 @@ PlotSummary_robust(data = summaryIndex,
                    save = "ExtendedAnalysis/plots/main_ExtraResidualised2.png"
 )
 
-# ===================================== #
-#### 2. SUPPLEMENTARY MATERIAL PLOTS ####
-# ===================================== #
+# ================================================ #
+#### 2. EXTENDED - SUPPLEMENTARY MATERIAL PLOTS ####
+# ================================================ #
 
 # -------------------------------- Fig. S1 ----------------------------------- #
 toPlot <- unique(dataCoeff_summary[, .(preference, meanGender, stdGender)])
@@ -291,8 +291,8 @@ PlotSummary_robust(data = dataCoeff_summary,
                    var3 = "preference",
                    labs = c("Gender Development Index",
                             "Gender Differences (in standard deviations)"),
-                   #  display = TRUE,
-                   save = "ExtendedAnalysis/plots/supplementary_FigS3Extra.png"
+                    display = TRUE,
+                   # save = "ExtendedAnalysis/plots/supplementary_FigS3Extra.png"
 )
 
 ## ------------------------------- Fig. S4 ----------------------------------- #

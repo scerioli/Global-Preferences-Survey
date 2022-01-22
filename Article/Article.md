@@ -32,9 +32,9 @@ The original study published in the Quarterly Journal of Economics [@QJE_Falk, 1
 
 The data reveals a positive correlation of gender differences in preferences with GDP p/c and with the gender equality of the countries, thus favoring the hypothesis that predicts the increase of the differences as women and men obtain sufficient access to the resources to develop and express their intrinsic preferences independently.
 
-Our analysis starts with questioning the fact that, throughout the study, the authors construct and use a joint measure of gender equality of different countries, coming from different sources (see also the Supplementary Material), providing little to no discussion about the reason in doing so. This is seen as a critical point, since some of the indicators used, such as WEF Global Gender Gap and UNDP Gender Inequality Index are far from being a complete representation of gender inequality, and were heavily criticized by many authors [@SK; @AS; @Permanyer]. To summarise some of the main critics to them: The Gender Inequality Index from the UNDP is very highly related to the economic development, as it includes reproductive health indicators that can penalize less-developed countries, and it has a "inexistent" measure of welfare loss of inequality, because it is based on a calculated gender equality measure that is reported nowhere. The WEF Global Gender Gap has a total of fourteen sub-indexes (some of them being the same as for the UNDP GII) where a cap to 1 is applied for those countries where the ratio is higher than 1. This means that countries treating equally men and women are ranked the same as countries disfavoring men. 
+Our analysis starts with questioning the fact that, throughout the study, the authors construct and use a joint measure of gender equality of different countries, coming from different sources (see also the Appendix), providing little to no discussion about the reason in doing so. This is seen as a critical point, since some of the indicators used, such as WEF Global Gender Gap and UNDP Gender Inequality Index are far from being a complete representation of gender inequality, and were heavily criticized by many authors [@SK; @AS; @Permanyer]. To summarise some of the main critics to them: The Gender Inequality Index from the UNDP is very highly related to the economic development, as it includes reproductive health indicators that can penalize less-developed countries, and it has a "inexistent" measure of welfare loss of inequality, because it is based on a calculated gender equality measure that is reported nowhere. The WEF Global Gender Gap has a total of fourteen sub-indexes (some of them being the same as for the UNDP GII) where a cap to 1 is applied for those countries where the ratio is higher than 1. This means that countries treating equally men and women are ranked the same as countries disfavoring men. 
 
-In this work, we first replicated the article analysis step by step, challenged by the fact that most of the data were either not available anymore, or could not be provided for free (see Supplementary Material, Section 2, "Data Collection, Cleaning, and Standardization"). We found similar results to the original article, even though some differences have been found of which the source is not clearly understood. 
+In this work, we first replicated the article analysis step by step, challenged by the fact that most of the data were either not available anymore, or could not be provided for free (see Appendix, Section 2, "Data Collection, Cleaning, and Standardization"). We found similar results to the original article, even though some differences have been found of which the source is not clearly understood. 
 
 We then extended the replication with two different approaches:
 
@@ -101,7 +101,7 @@ The most interesting part of the analysis arises from the use of the Gender Deve
 \fontfamily{ppl}\fontsize{8}{8}\selectfont
 $^a$Likely due to update on the webpage \
 $^b$Not understood \
-$^c$Arbitrary retreavement of the data (check also Supplementary Material)
+$^c$Arbitrary retreavement of the data (check also Appendix)
 \endgroup
 
 \vskip 20pt
