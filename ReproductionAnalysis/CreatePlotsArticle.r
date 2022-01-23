@@ -103,7 +103,7 @@ PlotSummary(data = summaryIndex,
             var1 = "GenderIndexRescaled", 
             var2 = "avgGenderDiffRescaled",
             labs = c("Gender Equality Index",
-                     "Average Gender Differences (Index)"),  
+                     "Average Gender Differences (Index)"), 
             # display = TRUE
             save = "plots/main_Fig1D.png"
 )
@@ -112,65 +112,71 @@ PlotSummary(data = summaryIndex,
 ## ------------------------------ Fig. 2 A ----------------------------------- #
 PlotSummary(data = summaryIndex,
             var1 = "residualslogAvgGDPpcStd",
-            var2 = "residualsavgGenderDiff_GEI",
+            var2 = "residualsavgGenderDiffStd_GEI",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Average Gender Differences (Index) \n(residualized using Gender Equality Index)",
                      "Economic Development"),
-            # display = TRUE
+            corr = FALSE,
+            # display = TRUE,
             save = "plots/main_Fig2A.png"
 )
 
 ## ------------------------------ Fig. 2 B ----------------------------------- #
 PlotSummary(data = summaryIndex,
             var1 = "residualsGenderIndexStd",
-            var2 = "residualsavgGenderDiff_GDP",
+            var2 = "residualsavgGenderDiffStd_GDP",
             labs = c("Gender Equality (Index) \n(residualized using Log GDP p/c)",
                      "Average Gender Differences (Index)\n(residualized using Log GDP p/c)",
                      "Gender Equality"),
-            # display = TRUE  
+            corr = FALSE,
+            # display = TRUE,  
             save = "plots/main_Fig2B.png"
 )
 
 PlotSummary(data = summaryIndex,
             var1 = "residualsScoreWEFStd",
-            var2 = "residualsavgGenderDiff_GDP",
+            var2 = "residualsavgGenderDiffStd_GDP",
             labs = c("WEF Global Gender Gap Index \n(residualized using Log GDP p/c)",
                      "Average Gender Differences (Index)\n(residualized using Log GDP p/c)",
                      "WEF Global Gender Gap Index"),
-            # display = TRUE
+            corr = FALSE,
+            # display = TRUE,
             save = "plots/main_Fig2C.png"
 )
 
 ## ------------------------------ Fig. 2 D ----------------------------------- #
 PlotSummary(data = summaryIndex,
             var1 = "residualsValueUNStd",
-            var2 = "residualsavgGenderDiff_GDP",
+            var2 = "residualsavgGenderDiffStd_GDP",
             labs = c("UN Gender Equality Index \n(residualized using Log GDP p/c)",
                      "Average Gender Differences (Index)\n(residualized using Log GDP p/c)",
                      "UN Gender Equality Index"),
-            # display = TRUE
+            corr = FALSE,
+            # display = TRUE,
             save = "plots/main_Fig2D.png"
 )
 
 ## ------------------------------ Fig. 2 E ----------------------------------- #
 PlotSummary(data = summaryIndex,
             var1 = "residualsavgRatioLaborStd",
-            var2 = "residualsavgGenderDiff_GDP",
+            var2 = "residualsavgGenderDiffStd_GDP",
             labs = c("Ratio Female to Male \n(residualized using Log GDP p/c)",
                      "Average Gender Differences (Index)\n(residualized using Log GDP p/c)",
                      "Ratio Female to Male LFP"),
-            # display = TRUE
+            corr = FALSE,
+            # display = TRUE,
             save = "plots/main_Fig2E.png"
 )
 
 ## ------------------------------ Fig. 2 F ----------------------------------- #
 PlotSummary(data = summaryIndex,
             var1 = "residualsDateStd",
-            var2 = "residualsavgGenderDiff_GDP",
+            var2 = "residualsavgGenderDiffStd_GDP",
             labs = c("Time since Women's Suffrage \n(residualized using Log GDP p/c)",
                      "Average Gender Differences (Index)\n(residualized using Log GDP p/c)",
                      "Time since Women's Suffrage"),
-            # display = TRUE
+            corr = FALSE,
+            # display = TRUE,
             save = "plots/main_Fig2F.png"
 )
 

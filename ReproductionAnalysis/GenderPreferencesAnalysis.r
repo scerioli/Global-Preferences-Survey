@@ -1,8 +1,10 @@
+# ============================================================================ #
 #####################  ANALYSIS OF GLOBAL PREFERENCES  #########################
+# ============================================================================ #
 
-# =============================== #
-#### 0. LOAD DATA AND SET PATH ####
-# =============================== #
+
+#### 0. LOAD LIBRARIES AND SET PATH ####
+# ------------------------------------ #
 
 # Set the path
 setwd("~/Desktop/Projects/Global-Preferences-Survey/")
@@ -15,13 +17,11 @@ SourceFunctions(path = "ReproductionAnalysis/functions/helper_functions/")
 # Load libraries
 LoadRequiredLibraries()
 
+
+#### 1. PREPARE THE DATA ####
+#-------------------------- #
 # Load the data
 data_all <- LoadData()
-
-
-# ========================= #
-#### 1. PREPARE THE DATA ####
-# ========================= #
 
 data_all <- PrepareData(data_all)
 
@@ -34,10 +34,8 @@ data_all$data <- Standardize(data    = data_all$data,
 dataComplete <- data_all$data[complete.cases(data_all$data)]
 
 
-# ========================== #
 #### 2. CREATE THE MODELS ####
-# ========================== #
-
+# -------------------------- #
 # Model on country level of the preferences
 models <- CreateModelsForPreferencesCountryLevel(dataComplete)
 
@@ -51,10 +49,8 @@ dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
 setnames(dataCoeff, old = "gender1", new = "gender")
 
 
-# ===================================== #
 #### 3. PRINCIPAL COMPONENT ANALYSIS ####
-# ===================================== #
-
+# ------------------------------------- #
 # PCA on the preferences
 summaryIndex <- AvgGenderDiffPreferencesPCA(dataCoeff)
 
@@ -75,10 +71,8 @@ summaryIndex[, GenderIndexRescaled := Rescale(GenderIndex)]
 dataSummary <- SummaryHistograms(dataCoeff, summaryIndex)
 
 
-# ================================ #
 #### 4. VARIABLES CONDITIONING  ####
-# ================================ #
-
+# -------------------------------- #
 # Add residuals to the summary index
 summaryIndex <- AddResiduals(summaryIndex)
 
@@ -87,14 +81,12 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
                      DateStd    = -1 * DateStd)]
 
 
-# =============================== #
 #### 5. SUPPLEMENTARY MATERIAL ####
-# =============================== #
-
+# ------------------------------- #
+#### 5.1 Variable conditioning on single preferences ####
 colsToKeep_coeff <- c("gender", "preference", "country", "isocode", "logAvgGDPpc")
+colsToKeep_summary <- c("GenderIndex", "country")
 
-colsToKeep_summary <- c("GenderIndex",
-                        "country")
 dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
                            summaryIndex[, ..colsToKeep_summary],
                            by = "country")
@@ -111,9 +103,9 @@ dataCoeff_summary[, stdGender := 1.96 * sqrt(sd(genderOrig)^2 / uniqueN(country)
                   by = "preference"]
 
 
-# -------------- #
+# ================= #
 
-## Alternative model
+#### 5.2 Alternative model ####
 
 modelsAlternative <- CreateAlternativeModels(dataComplete)
 dataCoeffAlternative <- SummaryCoeffPerPreferencePerCountry(modelsAlternative)
@@ -127,9 +119,9 @@ setnames(dataCoeffAlternative, old = "gender1", new = "gender")
 # Invert the trend of those preferences with opposite direction of the difference
 dataCoeffAlternative <- InvertPreference(dataCoeffAlternative)
 
-# -------------- #
+# ================= #
 
-## Gender differences standardize at global level
+#### 5.3 Gender differences standardize at global level ####
 
 dataStdGlobal <- Standardize(data = data_all$data, 
                              columns = c(5:10))
@@ -153,10 +145,8 @@ setnames(dataCoeffGlobal, old = "gender1", new = "gender")
 dataCoeffGlobal <- InvertPreference(dataCoeffGlobal)
 
 
-# ================================ #
 #### 6. MODEL EVALUATION  ####
-# ================================ #
-
+# -------------------------- #
 # Add the data from the article
 dt_article <- fread("files/input/data_extracted_from_article.csv")
 
@@ -174,11 +164,9 @@ PlotSummary(data = dt_compare, var1 = "avgDiffArticle", var2 = "avgDiffOurs",
             )
 
 
-# ============================= #
 #### 7. WRITE DATA SUMMARIES ####
-# ============================= #
-
-## ---------------------- Write csv data summaries -------------------------- ##
+# ----------------------------- #
+# Write csv data summaries
 fwrite(dataSummary,
        file = "ReproductionAnalysis/files/output/main_data_for_histograms.csv")
 fwrite(summaryIndex,
@@ -189,4 +177,3 @@ fwrite(dataCoeffGlobal[, c(1, 3, 7, 8, 9)],
        file = "ReproductionAnalysis/files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficientsGlobal.csv")
 fwrite(dataCoeffAlternative[, -2],
        file = "ReproductionAnalysis/files/output/supplementary_data_aggregatedByCountry_singlePreference_genderCoefficients_alternativeModel.csv")
-#------------------------------------------------------------------------------#

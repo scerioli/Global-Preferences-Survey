@@ -1,4 +1,4 @@
-ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
+ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
     # This function has the purpose to extract the important parameters from the
     # model(s). If var3 is given, it means that there is the need to make the
     # model run on the same variable grouped by different rows.
@@ -11,15 +11,25 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
     # - var3  [character]  is the column name of the variable that we want to
     #                      group by. Default is NULL and means that only one
     #                      model is produced
+    # - robust [logical]   is the regression to be performed simple (OLS) or
+    #                      robust. Default is FALSE.
+    # 
     # RETURN
     # - dt    [data table] a data table with the statistical values of interest.
     #                      If var3 is not NULL, the number of rows of this data
     #                      table is the same number as the unique values in the
     #                      column given by var3
     
+    if (robust) {
+        LinearRegression <- as.function(rlm)
+    } else {
+        LinearRegression <- as.function(lm)
+    }
+    
     if (!is.null(var3)) {
         mod <- dlply(dat, var3, function(dt)
-            lm(eval(as.name(var2)) ~ eval(as.name(var1)), data = dt))
+            LinearRegression(eval(as.name(var2)) ~ eval(as.name(var1)), 
+                             data = dt))
         dt <- data.table(formula     = character(),
                          correlation = character(),
                          r2          = double(),
@@ -41,7 +51,14 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
                              eval(as.name(var2))])
             correlation <- sprintf("correlation = %.5f", r)
             r2 <- sprintf("R^2 = %.5f", r^2)
-            p_value <- summary(mod[[i]])$coefficients[,"Pr(>|t|)"][2]
+            if (robust) {
+                t_value <- summary(mod[[i]])$coefficients[, "t value"][2]
+                p_value <- 2 * pt(q = t_value, 
+                                  df = length(mod[[i]]$residuals) - 2, 
+                                  lower.tail = F)
+            } else {
+                p_value <- summary(mod[[i]])$coefficients[,"Pr(>|t|)"][2]   
+            }
             pvalue <- ifelse(p_value < 0.0001,
                              "p < 0.0001",
                              sprintf("p = %.4f", p_value))
@@ -59,7 +76,8 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
         }
         
     } else {
-        mod <- lm(eval(as.name(var2)) ~ eval(as.name(var1)), data = dat)
+        mod <- LinearRegression(eval(as.name(var2)) ~ eval(as.name(var1)), 
+                                data = dat)
         # Reassign the correct name of the variable
         names(mod$coefficients)[2] <- var2
         formula <- sprintf("y == %.2f % +.2f * x",
@@ -69,7 +87,14 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL) {
                  y = dat[, eval(as.name(var2))])
         correlation <- sprintf("correlation = %.5f", r)
         r2 <- sprintf("R^2 = %.5f", r^2)
-        p_value <- summary(mod)$coefficients[,"Pr(>|t|)"][2]
+        if (robust) {
+            t_value <- summary(mod)$coefficients[, "t value"][2]
+            p_value <- 2 * pt(q = t_value, 
+                              df = length(mod$residuals) - 2, 
+                              lower.tail = F)
+        } else {
+            p_value <- summary(mod)$coefficients[,"Pr(>|t|)"][2]
+        }
         pvalue <- ifelse(p_value < 0.0001,
                          "p < 0.0001",
                          sprintf("p = %.4f", p_value))

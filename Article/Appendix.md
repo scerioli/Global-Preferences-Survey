@@ -151,15 +151,65 @@ We finally reproduced the plots in Fig. 2A-F using the variable conditioning ana
 
 ## Tables and z-scores
 
-The comparison of the replication analysis and of the extended analysis to the original article has been done checking the z-scores (calculated using this website: https://www.psychometrica.de/correlatNoion.html) of the correlation coefficients, and comparing the statistical significance. Unfortunately, in the case of the slope coefficients (Table 4) it is not possible to compare them without having the standard deviation of the regression coefficient from the original author study.
-
-Here below we report the tables with the corresponding values of the correlation for the original article, our replication study, the z-scores calculated from them, the correlation extracted using the robust linear regression (extended analysis), and lastly the z-score between the original article and the extended analysis.
-
-In this article, the sample size of the data, needed for the calculation of the z-scores, is 76 (the number of the countries involved in this studies) for the GDP correlations, and 69 for the Gender Equality Index, due to the missing data. For the original article, the sample size is 76 for the GDP, and 71 for the Gender Equality Index (see @FH_SM, pp. 32, Table S4). 
+Comparing the results of our analysis to the one from the original paper, starting with the summarised gender preferences to the economic development and the gender equality, we see that our analysis brings us to very similar results in terms of correlation coefficients (see Table 1). The p-values are all indicating a statistically significant correlation, as in the original paper, and when calculating the z-scores thanks to Fisher’s r to z transformation, we see that each one is below 2 (which is usually taken as threshold to be statistically significant). This means that our correlations were not statistically significantly different from the ones in the original article. Very similar results appear also from the robust linear regression used in the extended analysis. We do the same for the Gender Development Index, and also here we find a positive, statistically significant correlation, even if slightly less large than the one found for the Gender Equality Index.
 
 We also indicate the significance level for each correlation using the following scheme: 
 
 Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+
+#### Table 1: Correlation between PCA-summarised gender differences in economic preferences vs log GDP p/c, aggregated Gender Equality Index, and Gender Development Index. The agreement between this study and the original is quantified as *z-score*.
+
+|  | | Log GDP p/c | Gender Equality Index | Gender Development Index |
+--- | --- | --- | --- | --- | 
+| Original | | 0.6685*** | 0.5580*** | -- |
+| Replication | | 0.7119*** | 0.5852*** | 0.3929*** |
+| | *z-score* | -0.484 |  -0.234 | -- |
+| Extended | | 0.7032*** | 0.5754*** | 0.3718** |
+| | *z-score* | -0.382 |  -0.148 | -- |
+
+In Table 2, we summarise the results of the correlation of single preferences to the gender equality of the countries. We can see very different results in terms of linear dependency for some of the preferences when comparing the correlation coming from the Gender Equality Index and the one coming from the Gender Development Index. Note that for the Gender Equality Index, we used the results obtain by this replication study, in order to have a more consistent comparison (additionally, we have already seen that there are no substantial differences from this study and the original article, see again Table 1).
+
+#### Table 2: Comparison of the correlations between Gender Equality Index vs Gender Development Index, and country-level gender differences in economic preferences. The correlations are calcukated using the OLS method.
+
+|Variable | Gender Equality Index | Gender Development Index |
+--- | --- | -- |
+|Altruism |0.51***  | 0.47*** |
+|Trust    |0.48***  | 0.25* |
+|Positive Reciprocity |0.22  | 0.37** |
+|Negative Reciprocity |0.35**  | 0.14 |
+|Risk Taking | 0.31** | 0.15 |
+|Patience |0.44***  | 0.21 |
+
+Lastly, in Table 3, we summarise the results of the conditional analysis. For the two main country-level variables, we see that the values tend to agree and be on the same direction (similar slope coefficients and significant p-value). But when we start to check for the single indexes, we see that there are some differences which are worthy to discuss. 
+
+The first thing to say is that we had to make choices on how to impute data and also how to handle the missing data (see discussion above in paragraph "Methods"). The main imputation on missing data has been done on the "time since women’s suffrage" dataset, that is where we see a substantial difference in the results. Other datasets, on the other hand, has not been treated for missing data but still they present some difference. For instance, the dataset "F/M in Labor Force Participation" in our analysis has a non-statistically significant correlation, while in the original paper they found a correlation with p-value less than 0.05.
+
+A first thought was that this might be the result of using a different dataset for the GDP (the 2010 USD instead of 2005), but in our opinion this can’t be an explanation but rather a check about how robust the results are. So this question about the differences that were found is kept open.
+
+The most interesting part of the analysis arises from the use of the Gender Development Index in place of the Gender Equality index built by the authors. When the variable conditioning analysis regressing on the Log GDP p/c is done, the correlation between gender differences and GDI vanishes (correlation = 0.0027, p-value = 0.982).
+
+### Add the plots of extended analysis with Log GDP residualize by GDI and viceversa
+
+#### Table 3: Conditional analysis to separate the impacts of economic development and gender equality on gender differences in economic preferences. Reported are the slopes of the linear regressions.
+
+|Variable | Residualized on | Original | Replication | Extended |
+--- | --- | --- | --- | -- | 
+|Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5673*** | 0.5657*** |
+|Gender Equality Index | Log GDP p/c | 0.3192***  | 0.2856* | 0.2972* |
+|WEF Global Gender Gap | Log GDP p/c | 0.2327***  | 0.2006* | 0.1917* |
+|UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.2355$^a$ | 0.2385 | 
+|F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.1708$^b$ | 0.1684 |
+|Years since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1499$^c$ | 0.1561 |
+|Log GDP p/c | Gender Development Index | -- | 0.7055*** | 0.7214*** |
+|Gender Development Index | Log GDP p/c | --  | 0.0307 | 0.0020 |
+
+\begingroup
+\fontfamily{ppl}\fontsize{8}{8}\selectfont
+$^a$Likely due to update on the webpage \
+$^b$Not understood \
+$^c$Arbitrary retreavement of the data (check also Appendix)
+\endgroup
+
 
 
 #### Table S1: Correlation coefficients for country-level gender differences in economic preferences vs log GDP p/c obtained in the original article, present replection and extendent analyses. The agreement between results is quantified as *z-score*.
