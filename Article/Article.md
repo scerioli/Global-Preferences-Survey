@@ -42,11 +42,11 @@ We then extended the replication with two different approaches:
 
 2. We questioned the gender equality indicator(s) used in the original article and proposed a different one, the Gender Development Index, proposed by @SK in his research and recently introduced by the UNDP. This index is simply the ratio of the Human Development Index calculated for female divided by the one calculated for male. We added the analysis of this index in the same way as we analysed the other singular indexes.
 
-
 [How PCA correlates with other components? Table for components? Plot PCA?  PC1 explained variance 0.4, "Tools for Composite Indicators Building ", "Handbook on Constructing Composite Indicators". Check linearity. "The Use of Discrete Data in PCA: Theory, Simulations, and Applications to Socioeconomic Indices". PCA on descrete data, PCA ordinal data]
 [What are the first and the second component?]
 [One of the integral components of the WEF index is the ratio of avarage income for man and women. [check 40000 $]. Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives. Information summary on time since women suffrage: the table does not contain links on the related sources.]
 
+![Composed index denoted as Gendrer Equality Index.](figures/GenderEqualityIndex.drawio.png "Title")
 
 # 2. Replication study and extended analysis
 
