@@ -42,7 +42,7 @@ world organizations, WEF Global Gender Gap and UNDP Gender Inequolity Index, one
 
 
 
-First of all, even after the right to vote, many law discriminative laws were still in presence and the alligment of law together with executive branch of the goverment and illimination of descrimination (as for example, despite to the right to work, the right to work can be suppressed for several decades), and for a cluster of the countries with slavary, the questions about the suffrage and racial are actually strongly connected (https://www.nature.com/articles/s41599-020-00554-3)[https://www.nature.com/articles/s41599-020-00554-3]. Is there any review on it? [https://www.nber.org/papers/w20864]. Thus, at what extend the suffrage played a long lasting effect looks reasonable but requires inverstigation.
+First of all, even after the right to vote, many law discriminative laws were still in presence and the alligment of law together with executive branch of the goverment and illimination of descrimination (as for example, despite to the right to work, the right to work can be suppressed for several decades), and for a cluster of the countries with slavary, the questions about the suffrage and racial are actually strongly connected (https://www.nature.com/articles/s41599-020-00554-3)[https://www.nature.com/articles/s41599-020-00554-3]. Is there any review on it? [https://www.nber.org/papers/w20864]. Thus, that the *assumption* that suffrage played a long lasting effect on the balance in gender equality looks reasonable but requires inverstigation.
 
 
 
