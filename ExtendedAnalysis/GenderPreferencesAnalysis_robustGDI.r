@@ -10,7 +10,7 @@
 #    replication analysis and the new data added here.
 
 
-#### 0. LOAD LIBRARIES AND SET PATH ####
+#### 0. Load Libraries and Set Path ####
 # ------------------------------------ #
 # Set the path
 setwd("~/Desktop/Projects/Global-Preferences-Survey/")
@@ -25,7 +25,7 @@ SourceFunctions(path = "ExtendedAnalysis/functions/")
 LoadRequiredLibraries()
 
 
-#### 1. PREPARE THE DATA ####
+#### 1. Prepare the Data ####
 # ------------------------- #
 # Create the GDI index
 GDI_index <- CreateGDIindex()
@@ -46,10 +46,10 @@ dataComplete <- data_all$data[complete.cases(data_all$data)]
 
 
 # ===================== #
-#### Additional Data ####
+#### ADDITIONAL DATA ####
 # ===================== #
 
-#### 2. CREATE THE MODELS ####
+#### 2. Create the Models ####
 # -------------------------- #
 # Model on country level of the preferences
 models <- CreateModelsForPreferencesCountryLevel(dataComplete, robust = FALSE)
@@ -64,7 +64,7 @@ dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
 setnames(dataCoeff, old = "gender1", new = "gender")
 
 
-#### 3. PRINCIPAL COMPONENT ANALYSIS ####
+#### 3. Principal Component Analysis ####
 # ------------------------------------- #
 # PCA on the preferences
 summaryIndex <- AvgGenderDiffPreferencesPCA(dataCoeff)
@@ -86,7 +86,7 @@ summaryIndex[, GenderIndexRescaled := Rescale(GenderIndex)]
 dataSummary <- SummaryHistograms_new(dataCoeff, summaryIndex)
 
 
-#### 4. VARIABLES CONDITIONING  ####
+#### 4. Variables Conditioning  ####
 # -------------------------------- #
 
 #### 4.1 Variable conditioning on summarised gender differences ####
@@ -118,7 +118,7 @@ dataCoeff_summary[, stdGender := 1.96 * sqrt(sd(genderOrig)^2 / uniqueN(country)
                   by = "preference"]
 
 
-#### 5. WRITE DATA SUMMARIES ####
+#### 5. Write Data Summaries ####
 # ----------------------------- #
 # Write csv data summaries
 fwrite(dataSummary,
@@ -136,10 +136,10 @@ rm(models)
 
 
 # ============================== #
-#### Robust Linear Regression ####
+#### ROBUST LINEAR REGRESSION ####
 # ============================== #
 
-#### 2. CREATE THE MODELS ####
+#### 2. Create the Models ####
 # -------------------------- #
 # Model on country level of the preferences
 models <- CreateModelsForPreferencesCountryLevel(dataComplete, robust = TRUE)
@@ -154,7 +154,7 @@ dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
 setnames(dataCoeff, old = "gender1", new = "gender")
 
 
-#### 3. PRINCIPAL COMPONENT ANALYSIS ####
+#### 3. Principal Component Analysis ####
 # ------------------------------------- #
 # PCA on the preferences
 summaryIndex <- AvgGenderDiffPreferencesPCA(dataCoeff)
@@ -176,7 +176,7 @@ summaryIndex[, GenderIndexRescaled := Rescale(GenderIndex)]
 dataSummary <- SummaryHistograms_new(dataCoeff, summaryIndex)
 
 
-#### 4. VARIABLES CONDITIONING  ####
+#### 4. Variables Conditioning  ####
 # -------------------------------- #
 
 #### 4.1 Variable conditioning on summarised gender differences ####
@@ -208,7 +208,7 @@ dataCoeff_summary[, stdGender := 1.96 * sqrt(sd(genderOrig)^2 / uniqueN(country)
                   by = "preference"]
 
 
-#### 5. WRITE DATA SUMMARIES ####
+#### 5. Write Data Summaries ####
 # ----------------------------- #
 # Write csv data summaries
 fwrite(dataSummary,
