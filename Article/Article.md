@@ -21,7 +21,13 @@ abstract: |
 
 # 1. Introduction
 
+
+Gender differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL; @KPS], or work preferences [@BG] have been studied in sociology, psychology and economics for many decades. Any scientific knowledge about gender differences and their relation to gender inequality is used nowadays as arguments and counter-arguments for decision and policy-making. Yet, despite the research effort and large body of literature on the topic [REFs], the theoretical understanding of these relations is far from complete. 
+
+Gender-related issues such as gender inequality are becoming an integral part of the agenda for many public and private institutions and organizations. Therefore, it is essential for the stakeholders to reveal, estimate, monitor, and prevent gender inequalities on individual, group and country levels. Within its design, all institutonally recognizedindexes shows that no coutry in the world are approaching equality in econtomic and political domain, while the gap in education and health is closed in a majority of the countries [REF]. The establishing of the full equality within the conceptual model that is quantified by indexes, at the currect speed of improvements one may estimate the achving equality within 100 years [Global Gender Gap Report 2020]. Thus an effective measures to speed up the process may be desired. As we revieal later the indexes itself are not free from flaws and incompletness and were critisized by several authors.
+
 Gender differences concerning the economic behaviors, such as happiness [@SPSU], competition [@CG; @GLL; @KPS], or work preferences [@BG] have been studied in sociology, psychology and economics for many decades. Any scientific knowledge about gender differences and their relation to gender inequality is used nowadays as arguments and counter-arguments for decision and policy-making. Gender-related issues such as gender inequality are becoming an integral part of the agenda for many public and private institutions and organizations. Therefore, it is essential for the stakeholders to reveal, estimate, monitor, and prevent gender inequalities on individual, group and country levels. 
+
 
 The study of gender differences on a world scale per se is challenging. One of the challenges that hampers the progress is the lack of large and heterogeneous datasets across different social groups and countries. The Gallup World Poll 2012 included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world that aimed to fill this gap: Covering nearly 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk-taking, negative and positive reciprocity, and trust. The dataset provides a unique insight into the economic preferences of a heterogeneous number of people. 
 
@@ -36,7 +42,30 @@ In this work, we first analise the gender equality index that was used by the or
 
 ## A composed Gender equality Index and related problematics
 
+
+The authors in the original article compose a joint measure of gender equality that they denoted as Gender Equality Index (GEI). Our analysis starts with questioning the fact that, throughout the study, the authors construct and use a joint measure of gender equality of different countries, coming from different sources (see also the Appendix), providing little to no discussion about the reason in doing so. This is seen as a critical point, as it was previously showen that the indicators itselft have flaes and limitations, moreover the further combination of them should be justified. We visualized its composition useing a diagram shown in Figure 1. For measurables were used to compose a joint measure, two of them are indexes officially approved byworld organizations, WEF Global Gender Gap and UNDP Gender Inequolity Index, one widely used measurable, ratio of female and male labor force participation, and newly constracted by authors measurable, the time since woman suffrage, presumably to track low-term changes. The WEF Global Gender Gap has a total of fourteen sub-indexes, grouped in four categories: economic partisipation and opportunity, poiltical empowerment, educational attainment, health and survival. UNDP Gender Inequolity Index follows similar logic to cover the same categories that describe different aspects of human life, but utilising only 5 sub-indexes in total, two for health and reproduction-related issues and three others for three remaining categiries. Both indexes were critisied by several authors.  Importantly, the comparison of WEF and UNDP index reveals, that two indexes share three subindexes that we indicate with colors: ratio of female and male labor force partisipation (yellow), share of seats in parliament (green) and enrolement into secondary education (blue). As a theid variable to constract PCA the authors used the ratio of female and male labor force partisipation, already included into the previous two indexes and balanced with other factors (below we also analyse the problematics related to the indexes inself). This prioretization of the famale-to-male ratio factor was not justified, which is further as . The design of WEF Global Gender Gap and UNDP Gender Inequality Index are far from being a complete representation of gender inequality, and were heavily criticized by many authors [@SK; @AS; @Permanyer]. To summarise some of the main critics to them: The Gender Inequality Index from the UNDP is very highly related to the economic development, as it includes reproductive health indicators that can penalize poorly-developed countries, and it has a "inexistent" measure of welfare loss of inequality, because it is based on a calculated gender equality measure that is reported nowhere. (Besides, one of the coefficients that has a highest priority in calcuclaiton of the economic partisipation and opportunity, "wage equality between men and women for similar work" subindex (that indicates how much women recieve more with respect to man for the same work) is a based on can be considered as a best experts guess).
+
+To our best knowledge the indexing based on the was introduces for the first time. Thus, that the *assumption* that suffrage played a long lasting effect on the balance in gender equality looks reasonable but requires inverstigation. First of all, even after the right to vote, many discriminative laws were still in presence and the alligment of law together with executive branch of the goverment and illimination of descrimination (as for example, despite to the right to work, the right to work can be suppressed for several decades), and for a cluster of the countries with slavary, the questions about the suffrage and racial are actually strongly connected (https://www.nature.com/articles/s41599-020-00554-3)[https://www.nature.com/articles/s41599-020-00554-3]. Is there any review on it? [https://www.nber.org/papers/w20864]. Acute changes in GEI should not imply an immediate change in GDEP. Spurious regressions with near-multicollinearity.
+
+[How PCA correlates with other components? Table for components? Plot PCA?  PC1 explained variance 0.4 (Eigenvalues, Component loadings, Bootstrap) [Tools for Composite Indicators Building]
+
+"Handbook on Constructing Composite Indicators". Check linearity (input data is not gaussian, assumptions for PCA does not work). "The Use of Discrete Data in PCA: Theory, Simulations, and Applications to Socioeconomic Indices". PCA on descrete data, PCA ordinal data, https://www.tqmp.org/RegularArticles/vol10-1/p040/p040.pdf]
+
+"The PCA is intrinsically a linear procedure, so it is non-robust, in the sense of
+Huber (2003), to various distributional assumptions violations. In particular, if the
+distribution of x exhibits high skewness and/or kurtosis, the weights and eigenvalues in
+PCA will have higher variances, and converge to their asymptotic distributions slower
+(Davis 1977)."
+
+
+[One of the integral components of the WEF index is the ratio of avarage income for man and women. [check 40000 $]. Another indicator "fairness of the salary" is not a subjective assessment from the World Economic Forum from the executives. Information summary on time since women suffrage: the table does not contain links on the related sources.]
+
+![Composed index denoted as Gendrer Equality Index.](figures/GenderEqualityIndex.drawio.png "Title")
+=======
+The authors in the original article compose a joint measure of gender equality that they denoted as Gender Equality Index (GEI). We visualized its composition using a diagram shown in Figure 1. Four measurables were used to compose this joint measure: Two of them are indexes officially approved by world organizations, WEF Global Gender Gap and UNDP Gender Inequality Index; one widely used measurable, the ratio of female and male labor force participation; and lastly, a newly constructed by authors measurable, the time since woman suffrage, presumably to track low-term changes. The WEF Global Gender Gap has a total of fourteen sub-indexes, grouped in four categories: economic participation and opportunity, political empowerment, educational attainment, health and survival. UNDP Gender Inequality Index follows similar logic to cover the same categories that describe different aspects of human life, but utilizing only 5 sub-indexes in total, two for health and reproduction-related issues and three others for three remaining categories. 
+=======
 The authors in the original article compose a joint measure of gender equality that they denoted as Gender Equality Index (GEI). We visualized its composition using the diagram shown in Figure 1. Four measurables were used to build this joint measure: Two of them are indexes officially approved by world organizations, the World Economic Forum Global Gender Gap Index and UNDP Gender Inequality Index; the ratio of female and male labor force participation, widely used as measurable; and lastly, the time since women suffrage, presumably used from the original authors as a proxy for low-term changes. The WEF Global Gender Gap has a total of fourteen sub-indexes, grouped into four categories: Economic participation and opportunity, political empowerment, educational attainment, health and survival. The UNDP Gender Inequality Index follows a similar logic to cover the same categories that describe different aspects of human life, but utilizing only five sub-indexes in total, two for health and reproduction-related issues, and three others for three remaining categories.
+
 
 ![Gender Equality Index decomposed in its sub-indexes.](figures/GenderEqualityIndex.pdf){width=70%}
 
@@ -50,6 +79,7 @@ Another important aspect is that the comparison of the four indexes used to buil
 
 [model on national level: we can measure with higher desritization but hard to compare with global rating]
 
+\newpage
 
 ## Pure replication and extended analysis
 
@@ -105,6 +135,17 @@ Looking at these results, we can deduce that:
 2. For countries having the same economic development, the gender differences are independent from the gender development of the country, meaning that there are no gender differences arising from countries having same economics but different gender development;
 
 From this, one could therefore assume that the economic development is the country-level indicator associated with higher changes in gender differences, rather than the gender development of a country. From such a simple analysis is therefore not possible to extract any information regarding the reason for higher gender differences in more economically developed countries. We can only see that, for countries with similar economics, those differences don't exist regardless of how gender developed that countries are. The reason behind the differences might be related to purely economical conditions, that would also make sense since the gender differences here studied are "economical preferences". Can it be that the differences arise where the economic is more developed because of marketing reasons? After all, all the economics here analysed are based on capitalistic systems, meaning that the bigger the economic, the bigger the market. It is an interesting hypothesis that would require further analysis. 
+
+
+## Multicollenearity of the data and DAG
+
+[Theorem used for residuals and multicollenearity]
+
+[Spurious Regressions and Near-Multicollinearity]
+
+[Frisch–Waugh–Lovell theorem uses inversed matrix that is going to be close to zero in case of collinearity]
+
+[OLS Assumptions in Multiple Regression and their violation]
 
 
 # 3. Discussion and conclusions
