@@ -207,7 +207,7 @@ The most interesting part of the analysis arises from the use of the Gender Deve
 \fontfamily{ppl}\fontsize{8}{8}\selectfont
 $^a$Likely due to update on the webpage \
 $^b$Not understood \
-$^c$Arbitrary retreavement of the data (check also Appendix)
+$^c$Arbitrary retrievement of the data (check also Appendix)
 \endgroup
 
 

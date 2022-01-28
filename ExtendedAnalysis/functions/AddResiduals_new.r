@@ -86,7 +86,7 @@ AddResiduals_new <- function(dt, robust = FALSE) {
     # Select the interesting columns to keep
     data_table <- data_table %>% select(c(starts_with("residuals"), "country"))
     # Merge the two data tables
-    dt <- merge(dt, data_table, by = "country")
+    dt <- merge(dt, data_table, by = "country", all = TRUE)
   }
   
   return(dt)
