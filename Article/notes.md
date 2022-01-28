@@ -10,4 +10,18 @@ How PCA correlates with other components? Table for components with error estima
 "The PCA is intrinsically a linear procedure, so it is non-robust, in the sense of Huber (2003), to various distributional assumptions violations. 
 In particular, if the distribution of x exhibits high skewness and/or kurtosis, the weights and eigenvalues in PCA will have higher variances, and converge to their asymptotic distributions slower
 (Davis 1977).".
+
+
+
+## Multicollenearity of the data and DAG
+
+[Theorem used for residuals and multicollenearity]
+
+[Spurious Regressions and Near-Multicollinearity]
+
+[Frisch–Waugh–Lovell theorem uses inversed matrix that is going to be close to zero in case of collinearity]
+
+[OLS Assumptions in Multiple Regression and their violation]
+
+
 -->
