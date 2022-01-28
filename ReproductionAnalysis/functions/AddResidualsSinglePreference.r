@@ -54,7 +54,7 @@ AddResidualsSinglePreference <- function(dt, robust = FALSE) {
   
   dt_tmp$country <- unique(dt$country)
   
-  dt <- merge(dt, dt_tmp, by = "country")
+  dt <- merge(dt, dt_tmp, by = "country", all = TRUE)
   
   return(dt)
 }

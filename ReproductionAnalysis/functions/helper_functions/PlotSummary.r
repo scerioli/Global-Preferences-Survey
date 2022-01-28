@@ -79,6 +79,8 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   if (regression) {
     # Perform a robust linear regression
     if (robust) {
+      # Take only complete cases of the dataset to prevent NAs to appear
+      data <- data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2)))]
       # Create annotation for the correlation and p-value
       labels_idx <- data %>%
         do(ExtractModelSummary(., var1, var2, var3, robust = TRUE)) %>%
@@ -100,6 +102,8 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       }
       # Perform a OLS
     } else {
+      # Take only complete cases of the dataset to prevent NAs to appear
+      data <- data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2)))]
       # Create annotation for the correlation and p-value
       labels_idx <- data %>%
         do(ExtractModelSummary(., var1, var2, var3)) %>%
