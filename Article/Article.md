@@ -54,7 +54,6 @@ The time-since-women-suffrage index was introduced by authors to track long-last
 
 ![Gender Equality Index decomposed in its sub-indexes.](figures/GenderEqualityIndex.pdf){width=70%}
 
-
 \newpage
 
 ## Pure replication and extended analysis
@@ -62,7 +61,7 @@ The time-since-women-suffrage index was introduced by authors to track long-last
 In Table 1, we summarise the results of the conditional analysis. Since the correlation between Log GDP p/c and Gender Index is not negligible (see Figure. 2), we can't ignore the effect of the one on the other (this sentence should be clarified). To understand the effect of the gender differences regressed on economic development, first, we perform a regression conditioning on the constracted gender equality index(es) and then conditioning on economic developmet (Log GDP p/c)[@Lovell]. According to the Frisch–Waugh–Lovell theorem, resY ~ resX1 and resY ~ resX2 are equivalent to the multilinear fit Y ~ X1 + X2 for the determination of individual coefficients.  
 
 ![Gender Equality Index and Economic Development by country.](figures/Fig1A.pdf)
-
+  
 For the two main country-level variables (Log GDP p/c and Gender Equality Index), we see that the replication values tend to agree and be on the same direction (similar slope coefficients and significant p-value) as the onces from the original paper. But when we start to check for the single indexes, we see that there are some differences which are worthy to discuss. (maybe it make sense to include p-value in the table, otherwise it is difficult to analyze)
 
 |Variable | Residualized on | Original | Replication | Extended |
@@ -76,7 +75,7 @@ For the two main country-level variables (Log GDP p/c and Gender Equality Index)
 |Log GDP p/c | Gender Development Index | -- | 0.7055*** | 0.7214*** | 
 |Gender Development Index | Log GDP p/c | --  | 0.0307 | 0.0020 |
 
-<!-- 
+<!--
 Why we have 0.7055 for condit on GDI vs. 0.5673 for condit on GEI?
 -->
 
@@ -106,6 +105,7 @@ To further check that no correlation was found for the Gender Development Index 
 
 <!--
 This part is a key for understanding 
+|WEF (Replication) |  0.2351 | 0.2248 | 0.0570 | 0.1195 | 0.0872 | 0.2621* |
 -->
 
 <!--
