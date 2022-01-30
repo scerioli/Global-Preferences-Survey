@@ -64,13 +64,6 @@ In conclusion, we argue that the Gender Equality Index is not a good indicator f
 
 ## Pure replication and extended analysis
 
-<!--
-1. say that GEI, F/M and time since women suffrage are discarded because of section 1
-2. show the correlation with log gdp to support the conditional analysis results
-3. plot of conditional analysis of GDP-WEF, GDP-UNDP, GDP-FDI
-Other tables in supplementary material
--->
-
 Since the correlation between economic development and gender equality in the countries is not negligible (see Figure. 2), we can't ignore the effect of the one on the other (this sentence should be clarified!). To understand the effect of the gender differences regressed on economic development, first, we perform a regression conditioning on the gender quality indicators (WEF GGG Index, UNDP GII and Gender Development Index), and then conditioning on economic development (Log GDP p/c). The theorem from Frisch–Waugh–Lovell [@10.2307/1907330][@Lovell] guarantees us that the coefficients found from this conditional analysis are the same as the ones found for a regression of the gender differences on both economic development and gender equality index of the countries. 
 <!-- According to the Frisch–Waugh–Lovell theorem, resY ~ resX1 and resY ~ resX2 are equivalent to the multilinear fit Y ~ X1 + X2 for the determination of individual coefficients.  -->
 
@@ -78,7 +71,6 @@ Since the correlation between economic development and gender equality in the co
 
 In Fig. 3, we summarise the results of the conditional analysis for the three main indicators that we want to further analyse. 
 
-\newpage
 
 ![On the top line, gender differences are regressed on the economic development conditioned on gender equality, for the different indicators (WEF GGG Index, UNDP GGI, and Gender Development Index). On the bottom line, the corresponding values of gender differences regressed on the gender equality indicator conditioned on economic development.](figures/conditional_analysis_all.pdf)
 
@@ -88,91 +80,62 @@ On the contrary, when checking for the correlation of the gender differences and
 
 When checking for the results on the single preferences, things are not getting clearer.
 
+As one can see in Table 2, the economic development still has in most cases a strong correlation to the single preferences when regressed on the gender equality of the country. Here we report also the conditional analysis made using the Gender Equality Index of the original article (see also Fig. S5 in the @FH_SM) and of our replication, as a comparison.
 
-As one can see in Table 2, the economic development still has a strong correlation to the single preferences when regressed on the gender equality of the country. Here we report only the conditional analysis made using the Gender Equality Index and the Gender Development Index, as a comparison (see also Fig. S5 in the @FH_SM).
 
-
-| Variable  | GEI (Orig.)   | GEI (Repl.) |  GEI (Ext.) | GDI (Repl.) | GDI (Ext.) |
+| Variable  | GEI (Orig.)   | GEI (Repl.) |  WEF (Repl.) | UNDP (Repl.) | GDI (Repl.) |
  --- | --- | --- | --- | -- | --- |
-| Trust | 0.4574*** | 0.4265*** |0.4450*** | 0.4868*** | 0.5045*** |
-| Altruism | 0.4751*** | 0.4338*** | 0.3959*** | 0.4762***  | 0.4477*** |
-| Pos. Rec. | 0.2771* |0.2509| 0.2524 | 0.1820 | 0.1870 |
-| Neg. Rec. |  0.2444*  |0.2111 | 0.2451* | 0.3532** | 0.3858*** |
-| Risk Tak. | 0.2868* |0.2256* | 0.2191* | 0.3212** | 0.3200** |
-| Patience | 0.2621* |0.2288* | 0.2444* | 0.3049**  |0.3337** |
+| Trust | 0.4574*** | 0.4265*** |0.4953*** | 0.1777 | 0.4868*** | 
+| Altruism | 0.4751*** | 0.4338*** | 0.5539*** | 0.3839*** | 0.4762***  | 
+| Pos. Rec. | 0.2771* |0.2509* | 0.2948* | 0.1800 | 0.1820 | 
+| Neg. Rec. |  0.2444*  |0.2111 | 0.3704** | 0.0427 | 0.3532** | 
+| Risk Tak. | 0.2868* |0.2256 | 0.3485** | 0.0406 | 0.3213** |
+| Patience | 0.2621* |0.2288* | 0.3684** | 0.1012 | 0.3049**  |
 
-: **Log GDP p/c conditional on Gender Equality Index and on Gender Development Index**, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression). Significance levels: $\le$ 0.0001 (\*\*\*\*), $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
-
-
-To further check that no correlation was found for the Gender Development Index when conditioned on economic development, we regressed the single preferences on it and compared the results of the joint Gender Equality Index (for original, replicated, and extended analysis) and of the Gender Development Index (replicated and extended analysis), when regressed on Log GDP p/c (see Table 3).
+: **Log GDP p/c conditional on the gender equality indicators**, regressed on each single economic preference gender difference coefficient. Significance levels: $\le$ 0.0001 (\*\*\*\*), $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 
-| Variable  | GEI (Orig.)   | GEI (Repl.) |  GEI (Ext.) | GDI (Repl.) | GDI (Ext.) |
+To further check that no correlation was found for the gender equality indicators when conditioned on economic development, we regressed the single preferences on them, and compared the results of the joint Gender Equality Index (of the original and the replicated analysis) and of the single indicators (WEF GGG Index, UNDP GI, and GDI), when regressed on Log GDP p/c (see Table 3).
+
+
+| Variable  | GEI (Orig.)   | GEI (Repl.) |  WEF (Repl.) | UNDP (Repl.) | GDI (Repl.) |
  --- | --- | --- | --- | -- | --- |
-| Trust | 0.2050 | 0.2472* | 0.2521* | -0.0127 | 0.0193 |
-| Altruism | 0.3304** | 0.2696* | 0.2401 | -0.0325 | -0.0104 |
-| Pos. Rec. | -0.0115 | 0.0481 | 0.051 | -0.1603 | -0.1454 |
-| Neg. Rec. |  0.2788* | 0.2240* | 0.2037* | 0.1292 | 0.1049 |
-| Risk Tak. | 0.1973 | 0.1863* | 0.1868* | 0.0659 |  0.1147 |
-| Patience | 0.2967* | 0.2841* | 0.2781* | 0.0758 | 0.0938 |
+| Trust | 0.2050 | 0.2472* | 0.1368 | 0.2204 | 0.0779 |
+| Altruism | 0.3304** | 0.2696* | 0.3806*** | -0.0470  | 0.1523 |
+| Pos. Rec. | -0.0115 | 0.0481 | 0.0272 | -0.0071 | 0.2002 |
+| Neg. Rec. |  0.2788* | 0.2240* | 0.1570 | 0.1852 | -0.0769 |
+| Risk Tak. | 0.1973 | 0.1863* | 0.0573 | 0.2057 |  -0.0137 |
+| Patience | 0.2967* | 0.2841* | 0.2143 | 0.1633 | 0.1237 |
 
-: **Gender Equality Index and Gender Development Index, conditional on Log GDP p/c**, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression).
+: **Gender equality indicators, conditional on Log GDP p/c**, regressed on each single economic preference gender difference coefficient.  Significance levels: $\le$ 0.0001 (\*\*\*\*), $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
-<!--
-This part is a key for understanding 
-|WEF (Replication) |  0.2351 | 0.2248 | 0.0570 | 0.1195 | 0.0872 | 0.2621* |
--->
 
-<!--
-The order of the values in the table 2 seems to be not correct and not coincide with Fig.S6. 
-
-Likewise, gender differences were found to be highly associated with the Gender Equality Index conditional on log GDP per capita (fig. S6). This is quite strange frase. They are not associated "likewise"... Only Altruism (**), Negative Recipracy (*), and Patiance (*) with way higher p-values. I wonder what happence if WEF, instead of joint index is used.
--->
-
-Again, we see no statistically significant correlation between the gender differences in single economic preferences and the Gender Development Index, when controlling for the economic development. We find slightly larger correlation factor using the Gender Equality Index in our replication, but only one of them (corresponding to the "patience") is statistically significant below the 5% confidence level. Interestingly, the same small correlations can be seen in the original paper (Fig. S6, @FH_SM), even if a stronger and statistically significant correlation is found for the trust in the original paper.
-<!--
-Describe the table here.
-Do we need to add the economic development table too? Or maybe instead having some plots?
--->
-
-Looking at these results, we can deduce that:
-
-1. For countries having the same gender development, the gender differences are depending from the economic development of the country, meaning that richer countries have more gender differences than poorer countries, gender development being equal;
-
-2. For countries having the same economic development, the gender differences are independent from the gender development of the country, meaning that there are no gender differences arising from countries having same economics but different gender development;
+Again, we see no statistically significant correlation between the gender differences in single economic preferences and the Gender Development Index, when controlling for the economic development. We find slightly larger correlation factor using the Gender Equality Index in our replication, but only one of them (corresponding to the "patience") is statistically significant below the 5% confidence level. Interestingly, the same small correlations can be seen in the original paper (Fig. S6, @FH_SM).
 
 
 # 3. Discussion and conclusions
 
-<!--In this work, we first analyse the gender equality index that was used by the original authors and the sub-indexes involved into the study, highlighting its problematic. Second, we conduct a pure replication of the article in R language, challenged by the fact that most of the data were either not available anymore, or could not be provided for free (see Appendix, Section 2, "Data Collection, Cleaning, and Standardization"). Third, we extended the original article using a robust linear regression to address the non-normality of the data. Fourth, we demonstrate that the fundamental finding is not stable when trying to replace the gender equality index introduced by the authors with the Gender Development index proposed by @SK and recently introduced by the UNDP. 
--->
-
 The original study indicates that higher economic development and higher gender equality are associated with an increase in the gender differences in preferences, and therefore rules out the social-role theory over the post-materialistic one: When more resources are available to both men and women, the expression of the gender specific preferences can be seen. 
 
-Our analysis focuses on two main points: First, we aimed to replicate the results of the original article, in order to set the methodology and prove that the datasets, even if not being the same as the ones used by the original authors, can lead to the same results. Second, we extended the analysis by introducing a new gender equality indicator and by performing the analysis using a slightly different method than the OLS, the robust linear regression. While the use of the new dataset is due to our critics to the construction of the original authors Gender Equality Index, supported by a vaste literature on an ideal gender equality indicator, the robust linear regression was supported by the diagnostic made on the data fitted by an OLS and the fact that this gave signs of non-normality in the data that could potentially influence in a much stronger way than wished the results of the linear fit.
+Our analysis focuses on two main points: First, we aimed to replicate the results of the original article, in order to set the methodology and prove that the datasets, even if not being the same as the ones used by the original authors, can lead to the same results. Second, we extended the analysis by introducing a new gender equality indicator and by performing the analysis using a slightly different method than the OLS, the robust linear regression. While the use of the new dataset is due to our critics to the construction of the original authors Gender Equality Index, supported by a vast literature on an ideal gender equality indicator, the robust linear regression was supported by the diagnostic made on the data fitted by an OLS and the fact that this gave signs of non-normality in the data that could potentially influence in a much stronger way than wished the results of the linear fit.
 
-Starting from the analysis of the Gender Equality Index built by the authors, we noticed some inconsistencies with the methods used in literature to build such indicators: For instance, the preference of simplicity over complexity to help policy-makers understand the indicator, and the avoidance of inclusion of too many - or too strong -- sub-indices that relates directly to the economic development of the country [@SK; @Permanyer; @KPS; @AS]. Moreover, since a strong correlation (0.544, p-value < 0.0001) has been found between Gender Equality Index and 
+Starting from the analysis of the Gender Equality Index built by the authors, we noticed some inconsistencies with the methods used in literature to build such indicators: For instance, the preference of simplicity over complexity to help policy-makers understand the indicator, and the avoidance of inclusion of too many - or too strong -- sub-indices that relates directly to the economic development of the country [@SK; @Permanyer; @KPS; @AS]. Thus, we decided to focus only on the most complete indicators that were already available in the original article (WEF Global Gender Gap Index and UNDP Gender Inequality Index), although criticised in literature, adding a new indicator following the suggestions of @SK (the Gender Development Index).
 
-We prove that, using a different indicator for the gender inequality in different countries, the result found by @FH does not hold anymore. 
+Moreover, since a strong correlation has been found between each of the indicators used (including the Gender Equality Index built by the original authors), we focused on the gender differences regressed on economic development conditioned on each of the gender equality indicators, and vice-versa, to extract the correlation of the differences depurated of the confounding terms of economic development and gender equality of the countries.
 
+We prove that, using a different indicator for the gender inequality in different countries, the results found by @FH are less straightforward. To summarise the main findings on this regard:
 
-The second check has been the introduction of a different gender equality indicator, the Gender Development Index (from the UNDP). We performed the same analysis done so far, and we could see some differences rising from it:
+- The summarised gender differences shows a positive, strong and statistically significant dependence to the economic development of a country, when conditioned on the corresponding gender equality;
 
-TO BE REWRITTEN:
+- The summarised gender differences shows a positive weak correlation to the gender equality of a country, when conditioned on their economic development. The result is not statistically significant for UNDP GII and GDI, and it is significant at the 5% level (p-value = 0.0167) for the WEF GGG Index.
 
-1. When conditional analysis is perfomed on gender equality, the results don't hold
+- The results for the single preferences regressed on economic development, conditioned on gender equality, are far from being clear: All the preferences, except for "altruism", show different behavior and different statistical significance, while "positive reciprocity" seems to be the variable with the least correlation, according to all the indicators. The results produced conditioning on WEF and on GDI seem to be more in agreement among themselves. To be noticed, however, the very strong correlation of UNDP GII and economic development, that might be the cause for such a weak association of the preferences to the economic development, when regressed on it.
 
-2. The single preferences are not correlated with GDI (or with GEI) but only with economic development 
+- The results for the single preferences regressed on the gender equality, conditioned on the economic development, are all in agreement with each others, displaying weak to no correlation, and no statistical significance. The only exception is for the preference "altruism" that shows a positive, moderate and statistically significant (p-value = 0.001) correlation, in disagreement with the UNDP GII and the GDI.
 
-3. In fact, the whole assumption is that economic development is causing gender equality, but it is true the contrary. There is a causal correlation, and not taking this into account (and the fact that the two indicators are intertwined) is wrong and should be corrected only by controlling the two variables.
+Looking at these results, we can deduce that, for countries having the same gender development, the gender differences are depending from the economic development of the country, meaning that richer countries have more gender differences than poorer countries, gender development being equal. On the other hand, for countries having the same economic development, the gender differences are independent from the gender development of the country, meaning that there are no gender differences arising from countries having same economics but different gender development.
 
 From this, one could therefore assume that the economic development is the country-level indicator associated with higher changes in gender differences, rather than the gender development of a country. From such a simple analysis is therefore not possible to extract any information regarding the reason for higher gender differences in more economically developed countries. We can only see that, for countries with similar economics, those differences don't exist regardless of how gender developed that countries are. The reason behind the differences might be related to purely economical conditions, that would also make sense since the gender differences here studied are "economical preferences". Can it be that the differences arise where the economic is more developed because of marketing reasons? After all, all the economics here analysed are based on capitalistic systems, meaning that the bigger the economic, the bigger the market. It is an interesting hypothesis that would require further analysis. 
-
-<!--
-- The correlations of the GDI and the gender differences at the single preference level differ quite a lot from the ones obtained using the Gender Equality Index (see Table 1). Half of the gender difference preferences are not correlated significantly anymore to the gender indicator, in one case the correlation is a half of the original one, in another case it starts to be significant (while in the original it wasn't). Only for the "altruism" we see the same behavior. This leads to questioning the stability of the measures performed using the Gender Equality Index, because it strongly depends on the way this indicator is built, making it hard for the researchers to claim which ones could be the best for the study that one wants to address;
-
-- The most important figure to look at is the variable conditioning for the whole analysis, because the gender index is very often intertwined to it, and because in general one can immediately get an answer to the question "how much variance is explained by the variable chosen, independently by the country economic development". The result of this analysis is that the gender differences residualised on the economic development do not show a dependency on the GDI (also residualised on economic development), while the vice-versa applies (meaning, there is a strong and statistically significant correlation between gender differences and economic development, both residualised on the GDI). This result arises many questions that are beyond the scope of this analysis.
--->
 
 
 # References
