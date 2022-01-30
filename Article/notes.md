@@ -21,4 +21,5 @@ In particular, if the distribution of x exhibits high skewness and/or kurtosis, 
 [Frisch–Waugh–Lovell theorem uses inversed matrix that is going to be close to zero in case of collinearity]
 
 [OLS Assumptions in Multiple Regression and their violation]
+
 -->
