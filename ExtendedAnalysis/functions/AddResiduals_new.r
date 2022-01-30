@@ -5,11 +5,26 @@ AddResiduals_new <- function(dt, robust = FALSE) {
   # If the argument robust is set to TRUE, the residuals are calculated using a
   # robust linear regression, otherwise a simple OLS is performed. 
   
+  # -------- Gender differences residualise using Log GDP -------- #
+  # This is common to all the residuals
+  dt_Diff <- Residualise(dt, 
+                         var1 = "logAvgGDPpcStd",
+                         var2 = "avgGenderDiffStd", 
+                         robust = robust)
+  # Rename the variable
+  dt_Diff[, residualsavgGenderDiffStd_GDP := residualsavgGenderDiffStd]
+  dt_Diff$residualsavgGenderDiffStd <- NULL
+  
+  # -------- Gender Equality Index ---------- #
   # Log GDP Residualised using Gender Equality Index
   dt_GEIx <- Residualise(dt, 
                          var1 = "GenderIndexStd",
                          var2 = "logAvgGDPpcStd", 
                          robust = robust)
+  # Rename the variable
+  dt_GEIx[, residualslogAvgGDPpcStd_GEI := residualslogAvgGDPpcStd]
+  dt_GEIx$residualslogAvgGDPpcStd <- NULL
+  
   dt_GEIy <- Residualise(dt, 
                          var1 = "GenderIndexStd",
                          var2 = "avgGenderDiffStd", 
@@ -19,23 +34,54 @@ AddResiduals_new <- function(dt, robust = FALSE) {
   dt_GEIy$residualsavgGenderDiffStd <- NULL
   
   # Gender Equality Index Residualised using Log GDP
-  dt_GDPx <- Residualise(dt, 
-                         var1 = "logAvgGDPpcStd",
-                         var2 = "GenderIndexStd", 
+  dt_GEI <- Residualise(dt, 
+                        var1 = "logAvgGDPpcStd",
+                        var2 = "GenderIndexStd", 
+                        robust = robust)
+  # residualsGenderIndexStd
+  
+  # -------- WEF Global Gender Gap ---------- #
+  # Log GDP Residualised using WEF Score
+  dt_WEFx <- Residualise(dt, 
+                         var1 = "ScoreWEFStd",
+                         var2 = "logAvgGDPpcStd", 
                          robust = robust)
-  dt_GDPy <- Residualise(dt, 
-                         var1 = "logAvgGDPpcStd",
+  # Rename the variable
+  dt_WEFx[, residualslogAvgGDPpcStd_WEF := residualslogAvgGDPpcStd]
+  dt_WEFx$residualslogAvgGDPpcStd <- NULL
+  
+  dt_WEFy <- Residualise(dt, 
+                         var1 = "ScoreWEFStd",
                          var2 = "avgGenderDiffStd", 
                          robust = robust)
   # Rename the variable
-  dt_GDPy[, residualsavgGenderDiffStd_GDP := residualsavgGenderDiffStd]
-  dt_GDPy$residualsavgGenderDiffStd <- NULL
+  dt_WEFy[, residualsavgGenderDiffStd_WEF := residualsavgGenderDiffStd]
+  dt_WEFy$residualsavgGenderDiffStd <- NULL
   
   # WEF Global Gender Gap Index Residualised using Log GDP
   dt_WEF <- Residualise(dt, 
                         var1 = "logAvgGDPpcStd",
                         var2 = "ScoreWEFStd", 
                         robust = robust)
+  # residualsScoreWEFStd 
+  
+  # -------- UNDP GI Index ---------- #
+  # Log GDP Residualised using UN value
+  dt_UNx <- Residualise(dt, 
+                        var1 = "ValueUNStd",
+                        var2 = "logAvgGDPpcStd", 
+                        robust = robust)
+  # Rename the variable
+  dt_UNx[, residualslogAvgGDPpcStd_UN := residualslogAvgGDPpcStd]
+  dt_UNx$residualslogAvgGDPpcStd <- NULL
+  
+  dt_UNy <- Residualise(dt, 
+                        var1 = "ValueUNStd",
+                        var2 = "avgGenderDiffStd", 
+                        robust = robust)
+  # Rename the variable
+  dt_UNy[, residualsavgGenderDiffStd_UN := residualsavgGenderDiffStd]
+  dt_UNy$residualsavgGenderDiffStd <- NULL
   
   # UN Gender Equality Index Residualised using Log GDP
   dt_UN <- Residualise(dt, 
@@ -57,12 +103,16 @@ AddResiduals_new <- function(dt, robust = FALSE) {
                          robust = robust)
   dt_Date[, residualsDateStd := -1 * residualsDateStd]
   
-  
+  # -------- Gender Development Index ---------- #
   # Log GDP Residualised using Gender Equality Index
   dt_GDIx <- Residualise(dt, 
                          var1 = "GDIStd",
                          var2 = "logAvgGDPpcStd", 
                          robust = robust)
+  # Rename the variable
+  dt_GDIx[, residualslogAvgGDPpcStd_GDI := residualslogAvgGDPpcStd]
+  dt_GDIx$residualslogAvgGDPpcStd <- NULL
+  
   dt_GDIy <- Residualise(dt, 
                          var1 = "GDIStd",
                          var2 = "avgGenderDiffStd", 
@@ -79,8 +129,9 @@ AddResiduals_new <- function(dt, robust = FALSE) {
   
   
   # Group the data tables into a single list
-  dts <- list(dt_GEIx, dt_GEIy, dt_GDPx, dt_GDPy, dt_GDIx, dt_GDIy,
-              dt_WEF, dt_UN, dt_ratioLabor, dt_Date, dt_GDI)
+  dts <- list(dt_Diff, dt_GEIx, dt_GEIy, dt_GEI, dt_WEFx, dt_WEFy, dt_WEF,
+              dt_GDIx, dt_GDIy, dt_GDI, dt_UNx, dt_UNy, dt_UN, 
+              dt_ratioLabor, dt_Date)
   # Loop over the data table list to merge into a single data table
   for (data_table in dts) {
     # Select the interesting columns to keep

@@ -20,7 +20,8 @@ Residualise <- function(dt, var1, var2, robust = FALSE) {
   }
   
   # Use complete dataset for the model
-  dt_complete <- dt[complete.cases(dt[, eval(as.name(var2))])]
+  dt_complete <- dt[complete.cases(dt[, .(eval(as.name(var1)), 
+                                          eval(as.name(var2)))])]
   regressionVar2 <- LinearRegression(eval(as.name(var2)) ~ eval(as.name(var1)), 
                                      data = dt_complete)
   # Add the residuals to the complete dataset

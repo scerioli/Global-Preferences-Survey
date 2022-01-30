@@ -157,6 +157,20 @@ We also indicate the significance level for each correlation using the following
 
 Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
+#### Table 1: Conditional analysis to separate the impacts of economic development and gender equality on gender differences in economic preferences. Reported are the slopes of the linear regressions.
+
+|Variable | Residualized on | Original | Replication | Extended |
+--- | --- | --- | --- | -- | 
+|Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5003*** | 0.4862*** |
+|Gender Equality Index | Log GDP p/c | 0.3192***  | 0.3358*** | 0.3432** |
+|WEF Global Gender Gap | Log GDP p/c | 0.2327**  | 0.2234* | 0.2106* |
+|UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.3180 | 0.3017 | 
+|F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.2206* | 0.2034* |
+|Years since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1879* | 0.1929* |
+|Log GDP p/c | Gender Development Index | -- | 0.6271*** | 0.6612*** |
+|Gender Development Index | Log GDP p/c | --  | 0.1052 | 0.0353 |
+
+
 #### Table 1: Correlation between PCA-summarised gender differences in economic preferences vs log GDP p/c, aggregated Gender Equality Index, and Gender Development Index. The agreement between this study and the original is quantified as *z-score*.
 
 |  | | Log GDP p/c | Gender Equality Index | Gender Development Index |
@@ -235,6 +249,32 @@ $^c$Arbitrary retrievement of the data (check also Appendix)
 |Risk Taking |0.34***  | 0.31** | 0.19 | 0.31*** | 0.19 |
 |Patience |0.43***  |0.44*** |-0.07  | 0.45*** | -0.14|
 
+
+| Variable  | GEI (Orig.)   | GEI (Repl.) |  GEI (Ext.) | GDI (Repl.) | GDI (Ext.) |
+ --- | --- | --- | --- | -- | --- |
+| Trust | 0.4574*** | 0.4265*** |0.4450*** | 0.4868*** | 0.5045*** |
+| Altruism | 0.4751*** | 0.4338*** | 0.3959*** | 0.4762***  | 0.4477*** |
+| Pos. Rec. | 0.2771* |0.2509| 0.2524 | 0.1820 | 0.1870 |
+| Neg. Rec. |  0.2444*  |0.2111 | 0.2451* | 0.3532** | 0.3858*** |
+| Risk Tak. | 0.2868* |0.2256* | 0.2191* | 0.3212** | 0.3200** |
+| Patience | 0.2621* |0.2288* | 0.2444* | 0.3049**  |0.3337** |
+
+: **Log GDP p/c conditional on Gender Equality Index and on Gender Development Index**, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression). Significance levels: $\le$ 0.0001 (\*\*\*\*), $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+
+
+To further check that no correlation was found for the Gender Development Index when conditioned on economic development, we regressed the single preferences on it and compared the results of the joint Gender Equality Index (for original, replicated, and extended analysis) and of the Gender Development Index (replicated and extended analysis), when regressed on Log GDP p/c (see Table 3).
+
+
+| Variable  | GEI (Orig.)   | GEI (Repl.) |  GEI (Ext.) | GDI (Repl.) | GDI (Ext.) |
+ --- | --- | --- | --- | -- | --- |
+| Trust | 0.2050 | 0.2472* | 0.2521* | -0.0127 | 0.0193 |
+| Altruism | 0.3304** | 0.2696* | 0.2401 | -0.0325 | -0.0104 |
+| Pos. Rec. | -0.0115 | 0.0481 | 0.051 | -0.1603 | -0.1454 |
+| Neg. Rec. |  0.2788* | 0.2240* | 0.2037* | 0.1292 | 0.1049 |
+| Risk Tak. | 0.1973 | 0.1863* | 0.1868* | 0.0659 |  0.1147 |
+| Patience | 0.2967* | 0.2841* | 0.2781* | 0.0758 | 0.0938 |
+
+: **Gender Equality Index and Gender Development Index, conditional on Log GDP p/c**, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression).
 
 
 # References
