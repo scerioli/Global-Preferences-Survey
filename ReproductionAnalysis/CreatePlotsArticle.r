@@ -288,7 +288,7 @@ PlotSummary(data = dataCoeff_summary[preference == "trust"],
             labs = c("Log GDP p/c \n(residualized using Gender Equality Index)",
                      "Gender Differences \n(residualized using Gender Equality Index)",
                      "Trust (+)"),
-            display = TRUE,
+            # display = TRUE,
             save = "plots/supplementary_FigS5A.png"
 )
 

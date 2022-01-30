@@ -1,5 +1,5 @@
 PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
-                        regression = TRUE, robust = TRUE, corr = TRUE, 
+                        regression = TRUE, robust = FALSE, corr = TRUE, 
                         labs = NULL, display = FALSE, save = NULL) {
   # This function is plotting in a standardized way the meaningful variables.
   # The function takes as input a data table, 2 columns of it that should be the
@@ -38,7 +38,7 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   # - plot [ggplot object] is the plot we produced
 
 
-  plot <-  ggplot(data = data, aes(x = eval(as.name(var1)), y = eval(as.name(var2)))) +
+  plot <- ggplot(data = data, aes(x = eval(as.name(var1)), y = eval(as.name(var2)))) +
     geom_text(aes(label = isocode), color = "gray20", size = 3,
               check_overlap = F, hjust = -0.5) +
     xlab(var1) + ylab(var2) +
@@ -79,15 +79,16 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   if (regression) {
     # Perform a robust linear regression
     if (robust) {
-      # Take only complete cases of the dataset to prevent NAs to appear
-      data <- data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2)))]
       # Create annotation for the correlation and p-value
       labels_idx <- data %>%
         do(ExtractModelSummary(., var1, var2, var3, robust = TRUE)) %>%
         setDT(.)
       
-      xpos <- data[, min(eval(as.name(var1)))]
-      ypos <- 0.95 * data[, max(eval(as.name(var2)))]
+      # Take only complete cases of the dataset to prevent NAs to appear
+      xpos <- data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
+                   min(eval(as.name(var1)))]
+      ypos <- 0.95 * data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
+                          max(eval(as.name(var2)))]
       
       if (corr) {
         plot <- plot +
@@ -102,15 +103,16 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       }
       # Perform a OLS
     } else {
-      # Take only complete cases of the dataset to prevent NAs to appear
-      data <- data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2)))]
       # Create annotation for the correlation and p-value
       labels_idx <- data %>%
         do(ExtractModelSummary(., var1, var2, var3)) %>%
         setDT(.)
       
-      xpos <- data[, min(eval(as.name(var1)))]
-      ypos <- 0.95 * data[, max(eval(as.name(var2)))]
+      # Take only complete cases of the dataset to prevent NAs to appear
+      xpos <- data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
+                   min(eval(as.name(var1)))]
+      ypos <- 0.95 * data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
+                          max(eval(as.name(var2)))]
       
       if (corr) {
         plot <- plot +

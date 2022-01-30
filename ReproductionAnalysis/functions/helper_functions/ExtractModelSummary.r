@@ -45,10 +45,8 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
             formula <- sprintf("y == %.2f % +.2f * x",
                                round(coef(mod[[i]])[1], 5),
                                round(coef(mod[[i]])[2], 5))
-            r <- cor(x = dat[eval(as.name(var3)) == names(mod)[i],
-                             eval(as.name(var1))],
-                     y = dat[eval(as.name(var3)) == names(mod)[i],
-                             eval(as.name(var2))])
+            r <- cor(na.omit(dat[eval(as.name(var3)) == names(mod)[i], 
+                                 .(eval(as.name(var1)), eval(as.name(var2)))]))[1, 2]
             correlation <- sprintf("correlation = %.5f", r)
             r2 <- sprintf("R^2 = %.5f", r^2)
             if (robust) {
@@ -83,8 +81,8 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
         formula <- sprintf("y == %.2f % +.2f * x",
                            round(coef(mod)[1], 5),
                            round(coef(mod)[2], 5))
-        r <- cor(x = dat[, eval(as.name(var1))],
-                 y = dat[, eval(as.name(var2))])
+        r <- cor(na.omit(dat[, .(eval(as.name(var1)),  
+                                 eval(as.name(var2)))]))[1, 2]
         correlation <- sprintf("correlation = %.5f", r)
         r2 <- sprintf("R^2 = %.5f", r^2)
         if (robust) {
