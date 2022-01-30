@@ -11,6 +11,8 @@ How PCA correlates with other components? Table for components with error estima
 In particular, if the distribution of x exhibits high skewness and/or kurtosis, the weights and eigenvalues in PCA will have higher variances, and converge to their asymptotic distributions slower
 (Davis 1977).".
 
+https://stats.stackexchange.com/questions/415711/individual-significance-of-data-points-in-correlation
+
 
 ## Multicollenearity of the data and DAG
 
