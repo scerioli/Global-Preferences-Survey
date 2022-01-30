@@ -14,6 +14,7 @@ In particular, if the distribution of x exhibits high skewness and/or kurtosis, 
 ### Sensitivity analysis
 
 https://www.sciencedirect.com/topics/medicine-and-dentistry/sensitivity-analysis
+https://www.sciencedirect.com/science/article/pii/S1364815218302822
 https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0085654
 
 ### Influential points
