@@ -1040,137 +1040,408 @@ PlotSummary(data = dataCoeff_summary_robust[preference == "patience"],
             # save = "ExtendedAnalysis/plots/supplementary_FigS6F.png"
 )
 
-## ---------------------------- Fig. S5 Extra --------------------------------- #
+## ----------------------------- Fig. S5 Extra ------------------------------- #
+## ------ WEF ------- #
 PlotSummary(data = dataCoeff_summary_robust[preference == "trust"],
-            var1 = "residualslogAvgGDPpc2_trust",
-            var2 = "residualsgenderGDI_trust",
-            labs = c("Log GDP p/c \n(residualized using Gender Development Index)",
-                     "Gender Differences \n(residualized using Gender Development Index)",
+            var1 = "residualslogAvgGDPpc_WEF_trust",
+            var2 = "residualsgenderWEF_trust",
+            labs = c("Log GDP p/c \n(residualized using WEF GGG Index)",
+                     "Gender Differences \n(residualized using WEF GGG Index)",
                      "Trust (+)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigS5A.png"
+            # save = "ExtendedAnalysis/plots/FigS5A_WEF.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "altruism"],
-            var1 = "residualslogAvgGDPpc2_altruism",
+            var1 = "residualslogAvgGDPpc_WEF_altruism",
+            var2 = "residualsgenderWEF_altruism",
+            labs = c("Log GDP p/c (residualized using WEF GGG Index)",
+                     "Gender Differences \n(residualized using WEF GGG Index)",
+                     "Altruism (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5B_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "posrecip"],
+            var1 = "residualslogAvgGDPpc_WEF_posrecip",
+            var2 = "residualsgenderWEF_posrecip",
+            labs = c("Log GDP p/c (residualized using WEF GGG Index)",
+                     "Gender Differences \n(residualized using WEF GGG Index)",
+                     "Positive Reciprocity (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5C_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "negrecip"],
+            var1 = "residualslogAvgGDPpc_WEF_negrecip",
+            var2 = "residualsgenderWEF_negrecip",
+            labs = c("Log GDP p/c (residualized using WEF GGG Index)",
+                     "Gender Differences \n(residualized using WEF GGG Index)",
+                     "Negative Reciprocity (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5D_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "risktaking"],
+            var1 = "residualslogAvgGDPpc_WEF_risktaking",
+            var2 = "residualsgenderWEF_risktaking",
+            labs = c("Log GDP p/c (residualized using WEF GGG Index)",
+                     "Gender Differences \n(residualized using WEF GGG Index)",
+                     "Risk taking (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5E_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "patience"],
+            var1 = "residualslogAvgGDPpc_WEF_patience",
+            var2 = "residualsgenderWEF_patience",
+            labs = c("Log GDP p/c (residualized using WEF GGG Index)",
+                     "Gender Differences \n(residualized using WEF GGG Index)",
+                     "Patience (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5F_WEF.png"
+)
+
+
+## ------ UN ------- #
+PlotSummary(data = dataCoeff_summary_robust[preference == "trust"],
+            var1 = "residualslogAvgGDPpc_UN_trust",
+            var2 = "residualsgenderUN_trust",
+            labs = c("Log GDP p/c (residualized using UN GI Index)",
+                     "Summarised Gender Differences \n(residualized using UN GI Index)",
+                     "Trust (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5A_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "altruism"],
+            var1 = "residualslogAvgGDPpc_UN_altruism",
+            var2 = "residualsgenderUN_altruism",
+            labs = c("Log GDP p/c (residualized using UN GI Index)",
+                     "Gender Differences \n(residualized using UN GI Index)",
+                     "Altruism (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5B_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "posrecip"],
+            var1 = "residualslogAvgGDPpc_UN_posrecip",
+            var2 = "residualsgenderUN_posrecip",
+            labs = c("Log GDP p/c (residualized using UN GI Index)",
+                     "Gender Differences \n(residualized using UN GI Index)",
+                     "Positive Reciprocity (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5C_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "negrecip"],
+            var1 = "residualslogAvgGDPpc_UN_negrecip",
+            var2 = "residualsgenderUN_negrecip",
+            labs = c("Log GDP p/c (residualized using UN GI Index)",
+                     "Gender Differences \n(residualized using UN GI Index)",
+                     "Negative Reciprocity (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5D_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "risktaking"],
+            var1 = "residualslogAvgGDPpc_UN_risktaking",
+            var2 = "residualsgenderUN_risktaking",
+            labs = c("Log GDP p/c (residualized using UN GI Index)",
+                     "Gender Differences \n(residualized using UN GI Index)",
+                     "Risk taking (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5E_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "patience"],
+            var1 = "residualslogAvgGDPpc_UN_patience",
+            var2 = "residualsgenderUN_patience",
+            labs = c("Log GDP p/c (residualized using UN GI Index)",
+                     "Gender Differences \n(residualized using UN GI Index)",
+                     "Patience (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5F_UN.png"
+)
+
+## ------ GDI ------- #
+PlotSummary(data = dataCoeff_summary_robust[preference == "trust"],
+            var1 = "residualslogAvgGDPpc_GDI_trust",
+            var2 = "residualsgenderGDI_trust",
+            labs = c("Log GDP p/c (residualized using Gender Development Index)",
+                     "Gender Differences \n(Gender Development Index)",
+                     "Trust (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS5A_GDI.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "altruism"],
+            var1 = "residualslogAvgGDPpc_GDI_altruism",
             var2 = "residualsgenderGDI_altruism",
             labs = c("Log GDP p/c (residualized using Gender Development Index)",
                      "Gender Differences \n(residualized using Gender Development Index)",
                      "Altruism (+)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigS5B.png"
+            # save = "ExtendedAnalysis/plots/FigS5B_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "posrecip"],
-            var1 = "residualslogAvgGDPpc2_posrecip",
+            var1 = "residualslogAvgGDPpc_GDI_posrecip",
             var2 = "residualsgenderGDI_posrecip",
             labs = c("Log GDP p/c (residualized using Gender Development Index)",
                      "Gender Differences \n(residualized using Gender Development Index)",
                      "Positive Reciprocity (+)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigS5C.png"
+            # save = "ExtendedAnalysis/plots/FigS5C_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "negrecip"],
-            var1 = "residualslogAvgGDPpc2_negrecip",
+            var1 = "residualslogAvgGDPpc_GDI_negrecip",
             var2 = "residualsgenderGDI_negrecip",
             labs = c("Log GDP p/c (residualized using Gender Development Index)",
                      "Gender Differences \n(residualized using Gender Development Index)",
                      "Negative Reciprocity (-)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigS5D.png"
+            # save = "ExtendedAnalysis/plots/FigS5D_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "risktaking"],
-            var1 = "residualslogAvgGDPpc2_risktaking",
+            var1 = "residualslogAvgGDPpc_GDI_risktaking",
             var2 = "residualsgenderGDI_risktaking",
             labs = c("Log GDP p/c (residualized using Gender Development Index)",
                      "Gender Differences \n(residualized using Gender Development Index)",
-                     "Risk Taking (-)"),
+                     "Risk taking (-)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigS5E.png"
+            # save = "ExtendedAnalysis/plots/FigS5E_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "patience"],
-            var1 = "residualslogAvgGDPpc2_patience",
+            var1 = "residualslogAvgGDPpc_GDI_patience",
             var2 = "residualsgenderGDI_patience",
             labs = c("Log GDP p/c (residualized using Gender Development Index)",
                      "Gender Differences \n(residualized using Gender Development Index)",
                      "Patience (-)"),
             robust = TRUE,
             display = TRUE,
-            #  save = "ExtendedAnalysis/plots/supplementary_FigS5F.png"
+            # save = "ExtendedAnalysis/plots/FigS5F_GDI.png"
 )
 
-## ----------------------------- Fig. S6 Extra -------------------------------- #
+## ----------------------------- Fig. S6 Extra ------------------------------- #
+## ---------- WEF ------- #
 PlotSummary(data = dataCoeff_summary_robust[preference == "trust"],
-            var1 = "residualsGenderIndex_trust",
-            var2 = "residualsgenderGDI_trust",
+            var1 = "residualsWEF_GDP_trust",
+            var2 = "residualsgenderGDP_trust",
+            labs = c("WEF GGG Index (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Trust (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6A_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "altruism"],
+            var1 = "residualsWEF_GDP_altruism",
+            var2 = "residualsgenderGDP_altruism",
+            labs = c("WEF GGG Index (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Altruism (+)"),
+            robust = TRUE,
+            display = TRUE,
+            save = "ExtendedAnalysis/plots/FigS6B_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "posrecip"],
+            var1 = "residualsWEF_GDP_posrecip",
+            var2 = "residualsgenderGDP_posrecip",
+            labs = c("WEF GGG Index (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Positive Reciprocity (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6C_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "negrecip"],
+            var1 = "residualsWEF_GDP_negrecip",
+            var2 = "residualsgenderGDP_negrecip",
+            labs = c("WEF GGG Index (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Negative Reciprocity (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6D_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "risktaking"],
+            var1 = "residualsWEF_GDP_risktaking",
+            var2 = "residualsgenderGDP_risktaking",
+            labs = c("WEF GGG Index (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Risk taking (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6E_WEF.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "patience"],
+            var1 = "residualsWEF_GDP_patience",
+            var2 = "residualsgenderGDP_patience",
+            labs = c("WEF GGG Index (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Patience (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6F_WEF.png"
+)
+
+## ---------- UN ------- #
+PlotSummary(data = dataCoeff_summary_robust[preference == "trust"],
+            var1 = "residualsUN_GDP_trust",
+            var2 = "residualsgenderGDP_trust",
+            labs = c("UNDP GII (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Trust (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6A_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "altruism"],
+            var1 = "residualsUN_GDP_altruism",
+            var2 = "residualsgenderGDP_altruism",
+            labs = c("UNDP GII (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Altruism (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6B_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "posrecip"],
+            var1 = "residualsUN_GDP_posrecip",
+            var2 = "residualsgenderGDP_posrecip",
+            labs = c("UNDP GII (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Positive Reciprocity (+)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6C_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "negrecip"],
+            var1 = "residualsUN_GDP_negrecip",
+            var2 = "residualsgenderGDP_negrecip",
+            labs = c("UNDP GII (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Negative Reciprocity (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6D_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "risktaking"],
+            var1 = "residualsUN_GDP_risktaking",
+            var2 = "residualsgenderGDP_risktaking",
+            labs = c("UNDP GII (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Risk taking (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6E_UN.png"
+)
+
+PlotSummary(data = dataCoeff_summary_robust[preference == "patience"],
+            var1 = "residualsUN_GDP_patience",
+            var2 = "residualsgenderGDP_patience",
+            labs = c("UNDP GII (residualized using Log GDP p/c)",
+                     "Gender Differences \n(residualized using Log GDP p/c)",
+                     "Patience (-)"),
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/FigS6F_UN.png"
+)
+
+## ---------- GDI ------- #
+PlotSummary(data = dataCoeff_summary_robust[preference == "trust"],
+            var1 = "residualsGDI_GDP_trust",
+            var2 = "residualsgenderGDP_trust",
             labs = c("Gender Development Index (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Trust (+)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigSExtra1.png"
+            # save = "ExtendedAnalysis/plots/FigS6A_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "altruism"],
-            var1 = "residualsGenderIndex_altruism",
-            var2 = "residualsgenderGDI_altruism",
+            var1 = "residualsGDI_GDP_altruism",
+            var2 = "residualsgenderGDP_altruism",
             labs = c("Gender Development Index (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Altruism (+)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigSExtra2.png"
+            # save = "ExtendedAnalysis/plots/FigS6B_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "posrecip"],
-            var1 = "residualsGenderIndex_posrecip",
-            var2 = "residualsgenderGDI_posrecip",
+            var1 = "residualsGDI_GDP_posrecip",
+            var2 = "residualsgenderGDP_posrecip",
             labs = c("Gender Development Index (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Positive Reciprocity (+)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigSExtra3.png"
+            # save = "ExtendedAnalysis/plots/FigS6C_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "negrecip"],
-            var1 = "residualsGenderIndex_negrecip",
-            var2 = "residualsgenderGDI_negrecip",
+            var1 = "residualsGDI_GDP_negrecip",
+            var2 = "residualsgenderGDP_negrecip",
             labs = c("Gender Development Index (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Negative Reciprocity (-)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigSExtra4.png"
+            # save = "ExtendedAnalysis/plots/FigS6D_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "risktaking"],
-            var1 = "residualsGenderIndex_risktaking",
-            var2 = "residualsgenderGDI_risktaking",
+            var1 = "residualsGDI_GDP_risktaking",
+            var2 = "residualsgenderGDP_risktaking",
             labs = c("Gender Development Index (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Risk taking (-)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigSExtra5.png"
+            # save = "ExtendedAnalysis/plots/FigS6E_GDI.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "patience"],
-            var1 = "residualsGenderIndex_patience",
-            var2 = "residualsgenderGDI_patience",
+            var1 = "residualsGDI_GDP_patience",
+            var2 = "residualsgenderGDP_patience",
             labs = c("Gender Development Index (residualized using Log GDP p/c)",
                      "Gender Differences \n(residualized using Log GDP p/c)",
                      "Patience (-)"),
             robust = TRUE,
             display = TRUE,
-            # save = "ExtendedAnalysis/plots/supplementary_FigSExtra6.png"
+            # save = "ExtendedAnalysis/plots/FigS6F_GDI.png"
 )
 

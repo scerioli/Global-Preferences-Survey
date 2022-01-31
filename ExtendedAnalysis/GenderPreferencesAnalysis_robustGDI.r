@@ -189,8 +189,9 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
                      DateStd    = -1 * DateStd)]
 
 #### 4.2 Variable conditioning on single preferences ####
-colsToKeep_coeff <- c("gender", "preference", "country", "isocode", "logAvgGDPpc")
-colsToKeep_summary <- c("GenderIndex", "GDI", "country")
+colsToKeep_coeff <- c("gender", "preference", "country", "isocode")
+colsToKeep_summary <- c("logAvgGDPpcStd", "GenderIndexStd", "GDIStd", 
+                        "ScoreWEFStd", "ValueUNStd", "country")
 
 dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
                            summaryIndex[, ..colsToKeep_summary],

@@ -262,6 +262,17 @@ $^c$Arbitrary retrievement of the data (check also Appendix)
 : **Log GDP p/c conditional on Gender Equality Index and on Gender Development Index**, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression). Significance levels: $\le$ 0.0001 (\*\*\*\*), $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 
+| Variable  | GEI (Orig.)   | GEI (Repl.) |  WEF (Repl.) | UNDP (Repl.) | GDI (Repl.) |
+ --- | --- | --- | --- | -- | --- |
+| Trust | 0.4574*** | 0.4265*** |0.4953*** | 0.1777 | 0.4868*** | 
+| Altruism | 0.4751*** | 0.4338*** | 0.5539*** | 0.3839*** | 0.4762***  | 
+| Pos. Rec. | 0.2771* |0.2509* | 0.2948* | 0.1800 | 0.1820 | 
+| Neg. Rec. |  0.2444*  |0.2111 | 0.3704** | 0.0427 | 0.3532** | 
+| Risk Tak. | 0.2868* |0.2256 | 0.3485** | 0.0406 | 0.3213** |
+| Patience | 0.2621* |0.2288* | 0.3684** | 0.1012 | 0.3049**  |
+
+: **Log GDP p/c conditional on the gender equality indicators**, regressed on each single economic preference gender difference coefficient. Significance levels: $\le$ 0.0001 (\*\*\*\*), $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+
 To further check that no correlation was found for the Gender Development Index when conditioned on economic development, we regressed the single preferences on it and compared the results of the joint Gender Equality Index (for original, replicated, and extended analysis) and of the Gender Development Index (replicated and extended analysis), when regressed on Log GDP p/c (see Table 3).
 
 
@@ -276,5 +287,16 @@ To further check that no correlation was found for the Gender Development Index 
 
 : **Gender Equality Index and Gender Development Index, conditional on Log GDP p/c**, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression).
 
+
+| Variable  | GEI (Orig.)   | GEI (Repl.) |  WEF (Repl.) | UNDP (Repl.) | GDI (Repl.) |
+ --- | --- | --- | --- | -- | --- |
+| Trust | 0.2050 | 0.2472* | 0.1368 | 0.2204 | 0.0779 |
+| Altruism | 0.3304** | 0.2696* | 0.3806*** | -0.0470  | 0.1523 |
+| Pos. Rec. | -0.0115 | 0.0481 | 0.0272 | -0.0071 | 0.2002 |
+| Neg. Rec. |  0.2788* | 0.2240* | 0.1570 | 0.1852 | -0.0769 |
+| Risk Tak. | 0.1973 | 0.1863* | 0.0573 | 0.2057 |  -0.0137 |
+| Patience | 0.2967* | 0.2841* | 0.2143 | 0.1633 | 0.1237 |
+
+: **Gender equality indicators, conditional on Log GDP p/c**, regressed on each single economic preference gender difference coefficient.  Significance levels: $\le$ 0.0001 (\*\*\*\*), $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 # References
