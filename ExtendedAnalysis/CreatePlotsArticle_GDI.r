@@ -678,7 +678,7 @@ PlotSummary(data = summaryIndex_robust,
 
 ## ------------------------------ Fig. 2 A ----------------------------------- #
 PlotSummary(data = summaryIndex_robust,
-            var1 = "residualslogAvgGDPpcStd.x",
+            var1 = "residualslogAvgGDPpcStd_GEI",
             var2 = "residualsavgGenderDiffStd_GEI",
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Average Gender Differences \n(residualized using Gender Equality Index)",

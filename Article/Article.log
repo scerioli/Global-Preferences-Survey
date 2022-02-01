@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.28)  11 NOV 2021 23:29
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.28)  1 FEB 2022 21:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -7,8 +7,8 @@ entering extended mode
 LaTeX2e <2018-12-01>
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/article.cls
 Document Class: article 2018/09/03 v1.4i Standard LaTeX document class
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/size10.clo
+File: size10.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 )
 \c@part=\count80
 \c@section=\count81
@@ -21,16 +21,47 @@ File: size11.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
 \abovecaptionskip=\skip41
 \belowcaptionskip=\skip42
 \bibindent=\dimen102
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/mathpazo.sty
-Package: mathpazo 2005/04/12 PSNFSS-v9.2a Palatino w/ Pazo Math (D.Puga, WaS) 
-\symupright=\mathgroup4
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/lm/lmodern.sty
+Package: lmodern 2009/10/30 v1.6 Latin Modern Fonts
+LaTeX Font Info:    Overwriting symbol font `operators' in version `normal'
+(Font)                  OT1/cmr/m/n --> OT1/lmr/m/n on input line 22.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `normal'
+(Font)                  OML/cmm/m/it --> OML/lmm/m/it on input line 23.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `normal'
+(Font)                  OMS/cmsy/m/n --> OMS/lmsy/m/n on input line 24.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `normal'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 25.
+LaTeX Font Info:    Overwriting symbol font `operators' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 26.
+LaTeX Font Info:    Overwriting symbol font `letters' in version `bold'
+(Font)                  OML/cmm/b/it --> OML/lmm/b/it on input line 27.
+LaTeX Font Info:    Overwriting symbol font `symbols' in version `bold'
+(Font)                  OMS/cmsy/b/n --> OMS/lmsy/b/n on input line 28.
+LaTeX Font Info:    Overwriting symbol font `largesymbols' in version `bold'
+(Font)                  OMX/cmex/m/n --> OMX/lmex/m/n on input line 29.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `normal'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 31.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `normal'
+(Font)                  OT1/cmss/m/n --> OT1/lmss/m/n on input line 32.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `normal'
+(Font)                  OT1/cmr/m/it --> OT1/lmr/m/it on input line 33.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `normal'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 34.
+LaTeX Font Info:    Overwriting math alphabet `\mathbf' in version `bold'
+(Font)                  OT1/cmr/bx/n --> OT1/lmr/bx/n on input line 35.
+LaTeX Font Info:    Overwriting math alphabet `\mathsf' in version `bold'
+(Font)                  OT1/cmss/bx/n --> OT1/lmss/bx/n on input line 36.
+LaTeX Font Info:    Overwriting math alphabet `\mathit' in version `bold'
+(Font)                  OT1/cmr/bx/it --> OT1/lmr/bx/it on input line 37.
+LaTeX Font Info:    Overwriting math alphabet `\mathtt' in version `bold'
+(Font)                  OT1/cmtt/m/n --> OT1/lmtt/m/n on input line 38.
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amssymb.sty
 Package: amssymb 2013/01/14 v3.01 AMS font symbols
 (/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/amsfonts.sty
 Package: amsfonts 2013/01/14 v3.01 Basic AMSFonts support
 \@emptytoks=\toks14
-\symAMSa=\mathgroup5
-\symAMSb=\mathgroup6
+\symAMSa=\mathgroup4
+\symAMSb=\mathgroup5
 LaTeX Font Info:    Overwriting math alphabet `\mathfrak' in version `bold'
 (Font)                  U/euf/m/n --> U/euf/b/n on input line 106.
 )) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsmath.sty
@@ -500,245 +531,36 @@ Package grffile Info: Option `multidot' is set to `true'.
 Package grffile Info: Option `extendedchars' is set to `false'.
 Package grffile Info: Option `space' is set to `true'.
 Package grffile Info: \Gin@ii of package `graphicx' fixed on input line 494.
-) (/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/biblatex.sty
-Package: biblatex 2018/11/02 v3.12 programmable bibliographies (PK/MW)
-(/usr/local/texlive/2019/texmf-dist/tex/latex/logreq/logreq.sty
-Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count126
-(/usr/local/texlive/2019/texmf-dist/tex/latex/logreq/logreq.def
-File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
-)) (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
-Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
-)
-\c@tabx@nest=\count127
-\c@listtotal=\count128
-\c@listcount=\count129
-\c@liststart=\count130
-\c@liststop=\count131
-\c@citecount=\count132
-\c@citetotal=\count133
-\c@multicitecount=\count134
-\c@multicitetotal=\count135
-\c@instcount=\count136
-\c@maxnames=\count137
-\c@minnames=\count138
-\c@maxitems=\count139
-\c@minitems=\count140
-\c@citecounter=\count141
-\c@maxcitecounter=\count142
-\c@savedcitecounter=\count143
-\c@uniquelist=\count144
-\c@uniquename=\count145
-\c@refsection=\count146
-\c@refsegment=\count147
-\c@maxextratitle=\count148
-\c@maxextratitleyear=\count149
-\c@maxextraname=\count150
-\c@maxextradate=\count151
-\c@maxextraalpha=\count152
-\c@abbrvpenalty=\count153
-\c@highnamepenalty=\count154
-\c@lownamepenalty=\count155
-\c@maxparens=\count156
-\c@parenlevel=\count157
-\blx@tempcnta=\count158
-\blx@tempcntb=\count159
-\blx@tempcntc=\count160
-\blx@maxsection=\count161
-\blx@maxsegment@0=\count162
-\blx@notetype=\count163
-\blx@parenlevel@text=\count164
-\blx@parenlevel@foot=\count165
-\blx@sectionciteorder@0=\count166
-\blx@entrysetcounter=\count167
-\labelnumberwidth=\skip52
-\labelalphawidth=\skip53
-\biblabelsep=\skip54
-\bibitemsep=\skip55
-\bibnamesep=\skip56
-\bibinitsep=\skip57
-\bibparsep=\skip58
-\bibhang=\skip59
-\blx@bcfin=\read1
-\blx@bcfout=\write3
-\c@mincomprange=\count168
-\c@maxcomprange=\count169
-\c@mincompwidth=\count170
-Package biblatex Info: Trying to load biblatex default data model...
-Package biblatex Info: ... file 'blx-dm.def' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/blx-dm.def
-File: blx-dm.def 2018/11/02 v3.12 biblatex localization (PK/MW)
-)
-Package biblatex Info: Trying to load biblatex custom data model...
-Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count171
-\c@savedafterword=\count172
-\c@annotator=\count173
-\c@savedannotator=\count174
-\c@author=\count175
-\c@savedauthor=\count176
-\c@bookauthor=\count177
-\c@savedbookauthor=\count178
-\c@commentator=\count179
-\c@savedcommentator=\count180
-\c@editor=\count181
-\c@savededitor=\count182
-\c@editora=\count183
-\c@savededitora=\count184
-\c@editorb=\count185
-\c@savededitorb=\count186
-\c@editorc=\count187
-\c@savededitorc=\count188
-\c@foreword=\count189
-\c@savedforeword=\count190
-\c@holder=\count191
-\c@savedholder=\count192
-\c@introduction=\count193
-\c@savedintroduction=\count194
-\c@namea=\count195
-\c@savednamea=\count196
-\c@nameb=\count197
-\c@savednameb=\count198
-\c@namec=\count199
-\c@savednamec=\count266
-\c@translator=\count267
-\c@savedtranslator=\count268
-\c@shortauthor=\count269
-\c@savedshortauthor=\count270
-\c@shorteditor=\count271
-\c@savedshorteditor=\count272
-\c@labelname=\count273
-\c@savedlabelname=\count274
-\c@institution=\count275
-\c@savedinstitution=\count276
-\c@lista=\count277
-\c@savedlista=\count278
-\c@listb=\count279
-\c@savedlistb=\count280
-\c@listc=\count281
-\c@savedlistc=\count282
-\c@listd=\count283
-\c@savedlistd=\count284
-\c@liste=\count285
-\c@savedliste=\count286
-\c@listf=\count287
-\c@savedlistf=\count288
-\c@location=\count289
-\c@savedlocation=\count290
-\c@organization=\count291
-\c@savedorganization=\count292
-\c@origlocation=\count293
-\c@savedoriglocation=\count294
-\c@origpublisher=\count295
-\c@savedorigpublisher=\count296
-\c@publisher=\count297
-\c@savedpublisher=\count298
-\c@language=\count299
-\c@savedlanguage=\count300
-\c@origlanguage=\count301
-\c@savedoriglanguage=\count302
-\c@pageref=\count303
-\c@savedpageref=\count304
-\shorthandwidth=\skip60
-\shortjournalwidth=\skip61
-\shortserieswidth=\skip62
-\shorttitlewidth=\skip63
-\shortauthorwidth=\skip64
-\shorteditorwidth=\skip65
-\locallabelnumberwidth=\skip66
-\locallabelalphawidth=\skip67
-\localshorthandwidth=\skip68
-\localshortjournalwidth=\skip69
-\localshortserieswidth=\skip70
-\localshorttitlewidth=\skip71
-\localshortauthorwidth=\skip72
-\localshorteditorwidth=\skip73
-Package biblatex Info: Trying to load compatibility code...
-Package biblatex Info: ... file 'blx-compat.def' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/blx-compat.def
-File: blx-compat.def 2018/11/02 v3.12 biblatex compatibility (PK/MW)
-)
-Package biblatex Info: Trying to load generic definitions...
-Package biblatex Info: ... file 'biblatex.def' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/biblatex.def
-File: biblatex.def 2018/11/02 v3.12 biblatex compatibility (PK/MW)
-\c@textcitecount=\count305
-\c@textcitetotal=\count306
-\c@textcitemaxnames=\count307
-\c@biburlnumpenalty=\count308
-\c@biburlucpenalty=\count309
-\c@biburllcpenalty=\count310
-\c@smartand=\count311
-)
-Package biblatex Info: Trying to load bibliography style 'numeric'...
-Package biblatex Info: ... file 'numeric.bbx' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/bbx/numeric.bbx
-File: numeric.bbx 2018/11/02 v3.12 biblatex bibliography style (PK/MW)
-Package biblatex Info: Trying to load bibliography style 'standard'...
-Package biblatex Info: ... file 'standard.bbx' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/bbx/standard.bbx
-File: standard.bbx 2018/11/02 v3.12 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count312
-\c@bbx:relatedtotal=\count313
-))
-Package biblatex Info: Trying to load citation style 'numeric'...
-Package biblatex Info: ... file 'numeric.cbx' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/cbx/numeric.cbx
-File: numeric.cbx 2018/11/02 v3.12 biblatex citation style (PK/MW)
-Package biblatex Info: Redefining '\cite'.
-Package biblatex Info: Redefining '\parencite'.
-Package biblatex Info: Redefining '\footcite'.
-Package biblatex Info: Redefining '\footcitetext'.
-Package biblatex Info: Redefining '\smartcite'.
-Package biblatex Info: Redefining '\supercite'.
-Package biblatex Info: Redefining '\textcite'.
-Package biblatex Info: Redefining '\textcites'.
-Package biblatex Info: Redefining '\cites'.
-Package biblatex Info: Redefining '\parencites'.
-Package biblatex Info: Redefining '\smartcites'.
-)
-Package biblatex Info: Trying to load configuration file...
-Package biblatex Info: ... file 'biblatex.cfg' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/biblatex.cfg
-File: biblatex.cfg 
-))
-Package biblatex Info: Trying to load language 'english'...
-Package biblatex Info: ... file 'english.lbx' found.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/biblatex/lbx/english.lbx
-File: english.lbx 2018/11/02 v3.12 biblatex localization (PK/MW)
-)
-\@quotelevel=\count314
-\@quotereset=\count315
-(./Article.aux)
+) (./Article.aux)
 \openout1 = `Article.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 82.
-LaTeX Font Info:    Try loading font information for TS1+cmr on input line 82.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 78.
+LaTeX Font Info:    Try loading font information for TS1+cmr on input line 78.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmr.fd
 File: ts1cmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 82.
-LaTeX Font Info:    ... okay on input line 82.
-LaTeX Font Info:    Try loading font information for T1+ppl on input line 82.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/t1ppl.fd
-File: t1ppl.fd 2001/06/04 font definitions for T1/ppl.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 78.
+LaTeX Font Info:    ... okay on input line 78.
+LaTeX Font Info:    Try loading font information for T1+lmr on input line 78.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/t1lmr.fd
+File: t1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Info: Redefining \microtypecontext on input line 82.
+LaTeX Info: Redefining \microtypecontext on input line 78.
 Package microtype Info: Generating PDF output.
 Package microtype Info: Character protrusion enabled (level 2).
 Package microtype Info: Using protrusion set `basicmath'.
@@ -748,20 +570,21 @@ Package microtype Info: Using default expansion set `basictext'.
 Package microtype Info: No adjustment of tracking.
 Package microtype Info: No adjustment of interword spacing.
 Package microtype Info: No adjustment of character kerning.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-ppl.cfg
-File: mt-ppl.cfg 2005/11/16 v1.6 microtype config. file: Palatino (RS)
+(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-cmr.cfg
+File: mt-cmr.cfg 2013/05/19 v2.2 microtype config. file: Computer Modern Roman 
+(RS)
 ) (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count316
+\scratchcounter=\count126
 \scratchdimen=\dimen142
 \scratchbox=\box34
-\nofMPsegments=\count317
-\nofMParguments=\count318
+\nofMPsegments=\count127
+\nofMParguments=\count128
 \everyMPshowfont=\toks26
-\MPscratchCnt=\count319
+\MPscratchCnt=\count129
 \MPscratchDim=\dimen143
-\MPnumerator=\count320
-\makeMPintoPDFobject=\count321
+\MPnumerator=\count130
+\makeMPintoPDFobject=\count131
 \everyMPtoPDFconversion=\toks27
 ) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
 Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
@@ -779,17 +602,17 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box35
-Package hyperref Info: Link coloring OFF on input line 82.
+Package hyperref Info: Link coloring OFF on input line 78.
 (/usr/local/texlive/2019/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2016/05/21 v2.44 Cross-referencing by name of section
 (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2016/05/16 v1.5 Cleanup title references (HO)
 )
-\c@section@level=\count322
+\c@section@level=\count132
 )
-LaTeX Info: Redefining \ref on input line 82.
-LaTeX Info: Redefining \pageref on input line 82.
-LaTeX Info: Redefining \nameref on input line 82.
+LaTeX Info: Redefining \ref on input line 78.
+LaTeX Info: Redefining \pageref on input line 78.
+LaTeX Info: Redefining \nameref on input line 78.
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -809,12 +632,12 @@ LaTeX Info: Redefining \nameref on input line 82.
 * \topmargin=-37.0pt
 * \headheight=12.0pt
 * \headsep=25.0pt
-* \topskip=11.0pt
+* \topskip=10.0pt
 * \footskip=30.0pt
-* \marginparwidth=59.0pt
-* \marginparsep=10.0pt
+* \marginparwidth=65.0pt
+* \marginparsep=11.0pt
 * \columnsep=10.0pt
-* \skip\footins=10.0pt plus 4.0pt minus 2.0pt
+* \skip\footins=9.0pt plus 4.0pt minus 2.0pt
 * \hoffset=0.0pt
 * \voffset=0.0pt
 * \mag=1000
@@ -824,136 +647,117 @@ LaTeX Info: Redefining \nameref on input line 82.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-Package biblatex Info: Input encoding 'utf8' detected.
-Package biblatex Info: Automatic encoding selection.
-(biblatex)             Assuming data encoding 'utf8'.
-\openout3 = `Article.bcf'.
-
-Package biblatex Info: Trying to load bibliographic data...
-Package biblatex Info: ... file 'Article.bbl' found.
-(./Article.bbl)
-Package biblatex Info: Reference section=0 on input line 82.
-Package biblatex Info: Reference segment=0 on input line 82.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 84.
-LaTeX Font Info:    Try loading font information for OT1+ppl on input line 84.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1ppl.fd
-File: ot1ppl.fd 2001/06/04 font definitions for OT1/ppl.
+LaTeX Font Info:    Try loading font information for OT1+lmr on input line 80.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ot1lmr.fd
+File: ot1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OML+zplm on input line 84.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omlzplm.fd
-File: omlzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OML/zplm.
+LaTeX Font Info:    Try loading font information for OML+lmm on input line 80.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMS+zplm on input line 84.
+LaTeX Font Info:    Try loading font information for OMS+lmsy on input line 80.
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omszplm.fd
-File: omszplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMS/zplm.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omslmsy.fd
+File: omslmsy.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OMX+zplm on input line 84.
+LaTeX Font Info:    Try loading font information for OMX+lmex on input line 80.
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/omxzplm.fd
-File: omxzplm.fd 2002/09/08 Fontinst v1.914 font definitions for OMX/zplm.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/omxlmex.fd
+File: omxlmex.fd 2009/10/30 v1.6 Font defs for Latin Modern
 )
-LaTeX Font Info:    Try loading font information for OT1+zplm on input line 84.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ot1zplm.fd
-File: ot1zplm.fd 2002/09/08 Fontinst v1.914 font definitions for OT1/zplm.
-)
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 84.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <12> on input line 80.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <8> on input line 80.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <6> on input line 80.
+LaTeX Font Info:    Try loading font information for U+msa on input line 80.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msa.cfg
 File: mt-msa.cfg 2006/02/04 v1.1 microtype config. file: AMS symbols (a) (RS)
 )
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 84.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 84.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 12.50409pt on input line 84.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
+LaTeX Font Info:    Try loading font information for U+msb on input line 80.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/microtype/mt-msb.cfg
 File: mt-msb.cfg 2005/06/01 v1.0 microtype config. file: AMS symbols (b) (RS)
 )
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 9.37807pt on input line 84.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 7.29405pt on input line 84.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 84.
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/t1cmtt.fd
-File: t1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Try loading font information for TS1+cmtt on input line 84.
-
-(/usr/local/texlive/2019/texmf-dist/tex/latex/base/ts1cmtt.fd
-File: ts1cmtt.fd 2014/09/29 v2.5h Standard LaTeX font definitions
-)
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 84.
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 114.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 118.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 118.
-LaTeX Font Info:    Font shape `U/msa/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 118.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 11.40997pt on input line 118.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 8.33606pt on input line 118.
-LaTeX Font Info:    Font shape `U/msb/m/n' will be
-(Font)              scaled to size 6.25204pt on input line 118.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <10> on input line 127.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <7> on input line 127.
+LaTeX Font Info:    External font `lmex10' loaded for size
+(Font)              <5> on input line 127.
 [1
 
 {/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <12> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 182.
-[2]
-LaTeX Font Info:    Font shape `T1/ppl/bx/n' in size <10.95> not available
-(Font)              Font shape `T1/ppl/b/n' tried instead on input line 214.
-LaTeX Font Info:    Try loading font information for TS1+ppl on input line 266.
 
-(/usr/local/texlive/2019/texmf-dist/tex/latex/psnfss/ts1ppl.fd
-File: ts1ppl.fd 2001/06/04 font definitions for TS1/ppl.
-) [3] [4] [5] [6] [7] [8]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 707.
-[9]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 707.
+pdfTeX warning: pdflatex (file ./figures/GenderEqualityIndex.pdf): PDF inclusio
+n: found PDF version <1.7>, but at most version <1.5> allowed
+<figures/GenderEqualityIndex.pdf, id=23, 587.64998pt x 843.15pt>
+File: figures/GenderEqualityIndex.pdf Graphic file (type pdf)
+<use figures/GenderEqualityIndex.pdf>
+Package pdftex.def Info: figures/GenderEqualityIndex.pdf  used on input line 23
+6.
+(pdftex.def)             Requested size: 453.33475pt x 650.43686pt.
+
+LaTeX Warning: Float too large for page by 23.95128pt on input line 238.
+
+[2] [3 <./figures/GenderEqualityIndex.pdf>] [4]
+<figures/corr_equality_economicdev.pdf, id=49, 1014.79124pt x 747.79375pt>
+File: figures/corr_equality_economicdev.pdf Graphic file (type pdf)
+<use figures/corr_equality_economicdev.pdf>
+Package pdftex.def Info: figures/corr_equality_economicdev.pdf  used on input l
+ine 374.
+(pdftex.def)             Requested size: 469.75168pt x 346.15727pt.
+[5] [6 <./figures/corr_equality_economicdev.pdf>]
+<figures/conditional_analysis_all_extended.pdf, id=73, 1516.66624pt x 691.58376
+pt>
+File: figures/conditional_analysis_all_extended.pdf Graphic file (type pdf)
+<use figures/conditional_analysis_all_extended.pdf>
+Package pdftex.def Info: figures/conditional_analysis_all_extended.pdf  used on
+ input line 452.
+(pdftex.def)             Requested size: 469.74512pt x 214.19879pt.
+[7 <./figures/conditional_analysis_all_extended.pdf>] [8]
+LaTeX Font Info:    Try loading font information for TS1+lmr on input line 582.
+
+(/usr/local/texlive/2019/texmf-dist/tex/latex/lm/ts1lmr.fd
+File: ts1lmr.fd 2009/10/30 v1.6 Font defs for Latin Modern
+) [9]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 739.
+[10]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 739.
 (./Article.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 707.
-Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 707.
-
-LaTeX Warning: There were undefined references.
-
-
-Package biblatex Warning: Please rerun LaTeX.
-
-Package logreq Info: Writing requests to 'Article.run.xml'.
-\openout1 = `Article.run.xml'.
-
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 739.
+Package atveryend Info: Empty hook `AtEndAfterFileList' on input line 739.
  ) 
 Here is how much of TeX's memory you used:
- 19863 strings out of 492616
- 317953 string characters out of 6129480
- 783848 words of memory out of 5000000
- 23256 multiletter control sequences out of 15000+600000
- 53210 words of font info for 231 fonts, out of 8000000 for 9000
+ 13353 strings out of 492616
+ 194726 string characters out of 6129480
+ 310790 words of memory out of 5000000
+ 16891 multiletter control sequences out of 15000+600000
+ 75438 words of font info for 127 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 38i,6n,52p,806b,1723s stack positions out of 5000i,500n,10000p,200000b,80000s
-{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/base/8r.enc}{/usr/local/t
-exlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-ts1.enc}{/usr/local/te
-xlive/2019/texmf-dist/fonts/enc/dvips/cm-super/cm-super-t1.enc}</usr/local/texl
-ive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr10.pfb></usr/local/texliv
-e/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive
-/2019/texmf-dist/fonts/type1/public/mathpazo/fplmri.pfb></usr/local/texlive/201
-9/texmf-dist/fonts/type1/public/cm-super/sftt1200.pfb></usr/local/texlive/2019/
-texmf-dist/fonts/type1/urw/palatino/uplb8a.pfb></usr/local/texlive/2019/texmf-d
-ist/fonts/type1/urw/palatino/uplr8a.pfb></usr/local/texlive/2019/texmf-dist/fon
-ts/type1/urw/palatino/uplri8a.pfb>
-Output written on Article.pdf (9 pages, 138612 bytes).
+ 35i,7n,38p,806b,451s stack positions out of 5000i,500n,10000p,200000b,80000s
+{/usr/local/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-ts1.enc}{/usr/local
+/texlive/2019/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2
+019/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2019/texmf-dist
+/fonts/enc/dvips/lm/lm-mathit.enc}{/usr/local/texlive/2019/texmf-dist/fonts/enc
+/dvips/lm/lm-ec.enc}</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/l
+mbx10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx12.pfb>
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmbx9.pfb></usr/local
+/texlive/2019/texmf-dist/fonts/type1/public/lm/lmmi10.pfb></usr/local/texlive/2
+019/texmf-dist/fonts/type1/public/lm/lmmi7.pfb></usr/local/texlive/2019/texmf-d
+ist/fonts/type1/public/lm/lmr10.pfb></usr/local/texlive/2019/texmf-dist/fonts/t
+ype1/public/lm/lmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public
+/lm/lmr7.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmr9.pfb
+></usr/local/texlive/2019/texmf-dist/fonts/type1/public/lm/lmri10.pfb></usr/loc
+al/texlive/2019/texmf-dist/fonts/type1/public/lm/lmsy10.pfb>
+Output written on Article.pdf (10 pages, 467156 bytes).
 PDF statistics:
- 243 PDF objects out of 1000 (max. 8388607)
- 222 compressed objects within 3 object streams
- 71 named destinations out of 1000 (max. 500000)
- 26769 words of extra memory for PDF output out of 29859 (max. 10000000)
+ 208 PDF objects out of 1000 (max. 8388607)
+ 176 compressed objects within 2 object streams
+ 49 named destinations out of 1000 (max. 500000)
+ 14400 words of extra memory for PDF output out of 14400 (max. 10000000)
 
