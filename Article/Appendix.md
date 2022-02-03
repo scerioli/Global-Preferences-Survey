@@ -153,17 +153,7 @@ The comparison of the Fig. 2A-F of @FH is done in Table 1 of the main article, w
 In Table 2, we summarise the results of the correlation of single preferences to the economic development of the countries, to be compared to Fig. S2 in @FH_SM, while in Table 3, we show the results for the single preferences gender differences regressed on the Gender Equality Index, as done in Fig. S3 in @FH_SM.
 
 
-Table: Correlation coefficients for country-level gender differences in economic preferences vs log GDP p/c obtained in the original article, present replication and extended analysis. The agreement between results is quantified as *z-score*. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
-
-|Economic preference |Original | Replication | *z-score* | Extended | *z-score* |
---- | --- | --- | --- | --- | --- |
-|Trust                |0.5918***  |0.5761*** | 0.144 |  0.5926*** | -0.007 |
-|Altruism             |0.5847***  | 0.5882*** | -0.032 | 0.5488*** | 0.32 |
-|Positive Reciprocity |0.3086**  | 0.3216** | -0.087 | 0.3240** | -0.103 |
-|Negative Reciprocity |0.3542**  |0.3683** |-0.098  | 0.3929***| -0.272 |
-|Risk Taking          |0.3685**  | 0.3649** | 0.025 | 0.3579** | 0.074 |
-|Patience             |0.3837***  |0.4415*** | -0.421  | 0.4253*** | -0.301 |
-
+Table: Correlation coefficients for country-level gender differences in economic preferences vs log GDP p/c obtained in the original article, present replication and extended analysis. The agreement between original and this work is quantified as *z-score*. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
 | |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -171,81 +161,73 @@ Table: Correlation coefficients for country-level gender differences in economic
 | Replication | | 0.5761*** | 0.5882*** | 0.3216** | 0.3683** | 0.3649** | 0.4415*** |
 | | *z-score* | 0.144 | -0.032  | -0.087  | -0.098 |  0.025 |  -0.421 |
 | Extended | | 0.5926*** | 0.5488*** | 0.3240** | 0.3929*** | 0.3579** | 0.4253*** |
-| | *z-score* | |   |
+| | *z-score* | -0.007 |0.32 | -0.103 | -0.272| 0.074  |-0.301 |
 
 
-Table: Comparison of the correlations between Gender Equality Index vs Gender Development Index, and country-level gender differences in economic preferences. The correlations are calculated using the OLS method. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+Table: Comparison of the correlations between Gender Equality Index vs Gender Development Index, and country-level gender differences in economic preferences. The correlations are calculated using the OLS method. The agreement between original and this work is quantified as *z-score*. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
-
-|Economic preference | Original | Replication | Extended |
---- | --- | --- | --- |
-|Trust                |0.4050***  | 0.4829*** | 0.4921*** |
-|Altruism             |0.5073***  | 0.5030*** | 0.4686*** |
-|Positive Reciprocity |0.1280     | 0.2132 | 0.2156* |
-|Negative Reciprocity |0.4035***  | 0.3751*** | 0.3714** |
-|Risk Taking          |0.3412**   | 0.3441** | 0.3414*** |
-|Patience             |0.4257***  | 0.4415*** | 0.4434*** |
+| |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
+--- | --- | --- | --- | --- | --- | --- | --- |
+| Original    | | 0.4050*** | 0.5073*** | 0.1280  |  0.4035*** | 0.3412** | 0.4257*** |
+| Replication | | 0.4829*** | 0.5030*** | 0.2132  | 0.3751*** | 0.3441** |0.4415*** |
+| | *z-score* |  |   |   |  |   |   |
+| Extended | | 0.4921*** | 0.4686*** | 0.2156* | 0.3714** |0.3414*** | 0.4434*** |
+| | *z-score* |  | |  | |  | |
 
 
 For the comparison of the results from Fig. S4 in @FH_SM, we refer to Table 4, showing the correlation between the average gender differences to the single gender equality indicators.
 
 Table: Single indicator for the gender equality correlated with gender differences. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
-| Indicator | Original | Replication | Extended | 
---- | --- | --- | --- | 
-WEF GGG Index | 0.4097*** | 0.4075*** | 0.3937** |
-UNDP GII      | 0.6482*** | 0.6680*** | 0.6586*** |
-F/M LFP       | 0.2661* | 0.2860* | 0.2645* |
-Time since women suffrage | 0.5139*** | 0.4517*** | 0.4535*** |
+|  | | WEF GGGI | UNDP GII | F/M LFP | Time Since Women Suffrage | 
+--- | --- | --- | --- |  --- | --- |
+| Original | | 0.4097*** | 0.6482*** | 0.2661* | 0.5139*** |
+| Replication | | 0.4075*** | 0.6680*** | 0.2860* | 0.4517*** |
+| | *z-score* |  | | | |
+| Extended | | 0.3937** | 0.6586*** | 0.2645* | 0.4535*** |
+| | *z-score* |  | | | |
 
 
 Comparing the Fig. S5 and S6 of @FH_SM to our results: See Table 5 and Table 6.
 
 Table: Log GDP p/c conditional on Gender Equality Index and on Gender Development Index, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression). Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
-| Variable  | Original  | Replication | Extended | 
- --- | --- | --- | --- | 
-| Trust                | 0.4574*** | 0.4265*** |0.4450*** | 
-| Altruism             | 0.4751*** | 0.4338*** | 0.3959*** | 
-| Positive Reciprocity | 0.2771* |0.2509| 0.2524 | 
-| Negative Reciprocity |  0.2444*  |0.2111 | 0.2451* |
-| Risk Taking          | 0.2868* |0.2256* | 0.2191* | 
-| Patience             | 0.2621* |0.2288* | 0.2444* |
+| |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
+--- | --- | --- | --- | --- | --- | --- | --- |
+| Original    | | 0.4574*** |  0.4751*** | 0.2771*  |  0.2444* | 0.2868* | 0.2621* |
+| Replication | | 0.4265*** | 0.4338*** | 0.2509  | 0.2111 | 0.2256* |0.2288* |
+| | *z-score* |  |   |   |  |   |   |
+| Extended | | 0.4450*** |  0.3959*** | 0.2524 | 0.2451* |0.2191* |  0.2444* |
+| | *z-score* |  | |  | |  | |
+
 
 Table: Gender Equality Index and Gender Development Index, conditional on Log GDP p/c, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication (using OLS) and the extended analysis (robust linear regression). Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
-| Variable  | Original  | Replication | Extended | 
- --- | --- | --- | --- | 
-| Trust                | 0.2050 | 0.2472* | 0.2521* | 
-| Altruism             | 0.3304** | 0.2696* | 0.2401 |
-| Positive Reciprocity | -0.0115 | 0.0481 | 0.051 |
-| Negative Reciprocity |  0.2788* | 0.2240* | 0.2037* |
-| Risk Taking          | 0.1973 | 0.1863* | 0.1868* |
-| Patience             | 0.2967* | 0.2841* | 0.2781* |
+| |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
+--- | --- | --- | --- | --- | --- | --- | --- |
+| Original    | | 0.2050 |  0.3304** | -0.0115  |   0.2788* | 0.1973 | 0.2967* |
+| Replication | | 0.2472* | 0.2696*  | 0.0481  | 0.2240* | 0.1863* | 0.2841* |
+| | *z-score* |  |   |   |  |   |   |
+| Extended | | 0.2521* |   0.2401 | 0.051 | 0.2037* |0.1868* |  0.2781* |
+| | *z-score* |  | |  | |  | |
 
 
 Table: Preferences standardized at global level for Log GDP p/c.
 
-| Variable  | Original  | Replication | 
- --- | --- | --- | 
-| Trust                | 0.5787*** | 0.5761*** | 
-| Altruism             | 0.5505*** | 0.5882*** |
-| Positive Reciprocity | 0.2819* | 0.3216** | 
-| Negative Reciprocity | 0.2980** | 0.3683** | 
-| Risk Taking          | 0.2974** | 0.3649** | 
-| Patience             | 0.4391*** | 0.4124*** | 
+| |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
+--- | --- | --- | --- | --- | --- | --- | --- |
+| Original    | | 0.5787*** |  0.3304** | 0.2819*  | 0.2980** | 0.2974** |0.4391*** |
+| Replication | | 0.5761*** | 0.5882*** | 0.3216** | 0.3683** | 0.3649** | 0.4124*** |
+| | *z-score* |  |   |   |  |   |   |
 
 
 Table: Gender differences and economic development by preference and country without controls.
 
-| Variable  | Original  | Replication | 
- --- | --- | --- | 
-| Trust                | 0.5434*** | 0.5462*** | 
-| Altruism             | 0.5808*** | 0.5881*** |
-| Positive Reciprocity | 0.2748*   | 0.2826* | 
-| Negative Reciprocity | 0.4038*** | 0.3864*** | 
-| Risk Taking          | 0.3860*** | 0.3886*** | 
-| Patience             | 0.4830*** | 0.4804*** | 
+| |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
+--- | --- | --- | --- | --- | --- | --- | --- |
+| Original    | |  0.5434*** |  0.5808*** |  0.2748*  | 0.4038*** | 0.3860*** |0.4830*** |
+| Replication | | 0.5462***  | 0.5881***  | 0.2826*   | 0.3864*** | 0.3886*** |0.4804*** |
+| | *z-score* |  |   |   |  |   |   |
 
 
 For the comparison with Fig. 1A, 1B, S1, we have reproduced the plots but a comparison of the values wasn't possible, as no value is provided. So one can compare "by eyes".
