@@ -165,6 +165,14 @@ Table: Correlation coefficients for country-level gender differences in economic
 |Patience             |0.3837***  |0.4415*** | -0.421  | 0.4253*** | -0.301 |
 
 
+| |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
+--- | --- | --- | --- | --- | --- | --- | --- |
+| Original    | | 0.5918*** | 0.5847*** | 0.3086** |  0.3542** | 0.3685** | 0.3837*** |
+| Replication | | 0.5761*** | 0.5882*** | 0.3216** | 0.3683** | 0.3649** | 0.4415*** |
+| | *z-score* | 0.144 | -0.032  | -0.087  | -0.098 |  0.025 |  -0.421 |
+| Extended | | 0.5926*** | 0.5488*** | 0.3240** | 0.3929*** | 0.3579** | 0.4253*** |
+| | *z-score* | |   |
+
 
 Table: Comparison of the correlations between Gender Equality Index vs Gender Development Index, and country-level gender differences in economic preferences. The correlations are calculated using the OLS method. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
