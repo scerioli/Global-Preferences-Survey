@@ -1,16 +1,16 @@
 ---
 title: |
   **Replicate and extend the results of the article "Relationship of gender differences in preferences to economic development and gender equality"**
-author: 
+author:
 - Sara Cerioli
 - Andrey Formozov
+bibliography: bibliography.bibtex
 output:
   pdf_document: default
-bibliography: bibliography.bibtex
+  word_document: default
 csl: bib_style/./mee.csl
 abstract: |
   This study replicates and extends the article of Falk and Hermle published in *Science* (2018), where the gender differences in economic preferences and their relation to economic development and to gender equality of the countries were measured. In the original paper, the authors use the data from the Gallup World Poll 2012, which included a Global Preference Survey conducted on almost 80000 people in 76 countries all around the world. The dataset covers almost 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, will of risk taking, negative and positive reciprocity, and trust. The full dataset is available in its integrity only with a license to be paid. The free version of the data is available not in the rawest form possible and has a smaller number of predictors. Nevertheless, we managed to closely reproduce the original findings and conduct a further investigation of the methodology and the results obtained by the authors in the original study. Moreover, using a different indicator for the gender equality of the countries, the correlation between gender differences and gender equality of the country disappears, when a conditional analysis on the economic development is performed.
-
 ---
 
 **JEL:**  D010 - Microeconomic Behavior: Underlying Principles, D630 - Equity, Justice, Inequality, and Other Normative Criteria and Measurement, D810 - Criteria for Decision-Making under Risk and Uncertainty, D910 - Micro-Based Behavioral Economics: Role and Effects of Psychological, Emotional, Social, and Cognitive Factors on Decision Making, F000 International Economics: General
