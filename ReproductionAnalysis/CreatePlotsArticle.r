@@ -225,7 +225,7 @@ PlotSummary(data = dataCoeff_summary,
             var3 = "preference",
             labs = c("Log GDP p/c",
                      "Gender Differences (in standard deviations)"),
-            # display = TRUE
+            # display = TRUE,
             save = "plots/supplementary_FigS2.png"
 )
 
@@ -298,7 +298,7 @@ PlotSummary(data = dataCoeff_summary[preference == "altruism"],
             labs = c("Log GDP p/c (residualized using Gender Equality Index)",
                      "Gender Differences (residualized using Gender Equality Index)",
                      "Altruism (+)"),
-            #  display = TRUE,
+            # display = TRUE,
             save = "plots/supplementary_FigS5B.png"
 )
 
