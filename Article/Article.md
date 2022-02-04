@@ -55,6 +55,10 @@ Worthy to mention also the question about the connection between the suffrage an
 
 Furthermore, the "time since women suffrage" index was introduced by authors to track long-lasting effects of the right to vote. This is based on the assumption that during the course of the time development has always a positive effect and its magnitude is proportional to the time since women suffrage was established, and the magnitude of this effect is proportional to the time since women suffrage. It can be argued that, even after the right to vote, many discriminating laws were still in presence, and the alignment of law together with executive branch of the government and elimination of discrimination takes more time -- for example, despite to the right to vote, the right to work can be suppressed for several decades. This assumption that suffrage played a long lasting effect on the balance in gender equality sounds reasonable but requires further investigation to be used as a robust estimator. Worthy to mention also the question about suffrage and race, that for many countries is strongly connected [@Yang; @NBERw20864].
 
+<!--
+Times since women suffrage is custered!
+-->
+
 The question why such joint Gender Equality Index is better or at least not worse than the widely used indexes such as WEF and UNDP GII was unanswered in the original article. As one can see in Figure. 1, the components of the joint Gender Equality Index used in the original study contains repetitions. The two indexes from WEF and UNDP share three sub-indexes, here indicated with different colors: ratio of female and male labor force participation (yellow), share of seats in parliament (green) and enrollment into secondary education (blue). As a third variable to construct a joint Gender Equality Index, the authors used the ratio of female and male labor force participation, already included into the previous two indexes. It is true that PCA technique permits to aggregate the indexes even in presence of high correlations between them [REF]. However, in the present case, such a procedure leads to the imbalance and prioritization of these specific repetitive indexes (especially female and male labor force participation) over other factors, that were already balanced in the design of WEF and UNDP GII indexes. Furthermore, the "time since women suffrage" index was introduced by the authors to track long-lasting effects of the right to vote on gender equality, yet without any supporting information. The assumption that suffrage played a long-lasting effect on the balance in gender equality sounds reasonable but requires further investigation to be used as a robust estimator. 
 
 Based on the identified methodological flaws and absence of validation and justification, we doubt the possibility to use Gender Equality Index as a reliable proxy for gender equality. Therefore, we will use GEI only to match the replication with the original analysis. The new analysis will use only established WEF GGG Index and the UNDP GII, in their relationship to the gender differences in economic preferences and the economic development.
@@ -143,29 +147,34 @@ Table: **Gender equality indicators, conditional on Log GDP p/c**, regressed on 
 
 # 3. Discussion and conclusions
 
-The original study indicates that higher economic development and higher gender equality are associated with an increase in the gender differences in preferences, and therefore rules out the social-role theory over the post-materialistic one: When more resources are available to both men and women, the expression of the gender specific preferences can be seen.
+The original study indicates that higher economic development and higher gender equality are associated with an increase in the gender differences in preferences, and therefore rules out the social-role theory over the post-materialistic one: when more resources are available to both men and women, the stronger expression of the gender specific preferences can be seen.
 
 <!--
 Here we should be very careful and give a better interpretation, once we settly with the results: 
 "Our results highlight, however, that theories not attributing a significant role to the social environment are incomplete"
  BUT THEY ALSO STATE:
 As suggested by the resource hypothesis, greater availability of material resources removes the human need of subsistence, and hence provides the scope for attending to gender-specific preferences. A more egalitarian distribution of material and social resources enables women and men to independently express gender-specific preferences.
+
+Second, we extended the analysis by introducing a new gender equality indicator and by performing the analysis using a slightly different method than the OLS, the robust linear regression.
 -->
 
-Our analysis focuses on two main points: First, we aimed to replicate the results of the original article, in order to set the methodology and prove that the datasets, even if not being the same as the ones used by the original authors, can lead to the same results. Second, we extended the analysis by introducing a new gender equality indicator and by performing the analysis using a slightly different method than the OLS, the robust linear regression. While the use of the new dataset is due to our critics to the construction of the original authors Gender Equality Index, supported by a vast literature on an ideal gender equality indicator [@SK; @Permanyer; @KPS; @AS; @Nicaragua; @10.1080/13545701.2010.530607], the robust linear regression was supported by the diagnostic made on the data fitted by an OLS and the fact that this gave signs of non-normality in the data that could potentially influence in a much stronger way than wished the results of the linear fit.
+In the present work, we replicated the results of the original article with the publicallaly availible but alas partially resticted data. As the diagnostics of OLS regression revealed strong signs of non-normality in the data that could potentially influence the resutls we addtitionally conducted the analysis using robust linear regression, less sensetive to outliers. The results of the regressions to determine the gender differences in economic preferences are in accordance with the ones repoted by the authors in the original paper.  
+Thoughout the replication, we revealed the composition of the joint gender equality index composed by authors and investigated its single components. We identified several methodological flaws that are questiouning the validity of this procedure. As the detailed investigation reveals the arcetecture of the composite indicator prioretizing curtein measured of the gender enequality over others already balenced in the officially accepted indicators without justification. In addition, authors use a new type of the indicator "times since women suggrage" which they without any detailed investigation of the performance of this indexes or indication on the previous literature that may already use this indicator. No evedence exists that the joint indicators performes  
 
-Starting from the analysis of the Gender Equality Index built by the authors, we reveal some inconsistencies with the methods to build such indicators: The preference of simplicity over complexity to help policy-makers understand the indicator, and the avoidance of inclusion of too many - or too strong -- sub-indixes that relates directly to the economic development of the country [@SK; @Permanyer; @KPS; @AS]. Thus, we decided to focus only on the most complete indicators that were already available in the original article, meaning the WEF Global Gender Gap Index and UNDP Gender Inequality Index, adding a new indicator following the suggestions of @SK, the Gender Development Index.
+We used the joint indicator to match our replication with the origianal one only, focusing on the existing  
 
 
-<!-- The ratio of female and male labor force participation counts as the overall labor participation rate, and thus, once approaching 100% as a characteristic of developed countries [@tasseven2017relationship], the gender gap is automatically reduced [this is not true, check the U-shape curve]. This measure does not take into account on the part-time jobs occupation as in case of the reduction , including involuntary part time job occupation in developed countries [@pech2021part; @rosenfeld1990cross]. [this sentenses wants to go to discussion]
 
--->
 
 <!--
-"part time jobs and gender gap"; The gap in involuntary part-time.
--->
+ The preference of simplicity over complexity to help policy-makers understand the indicator, and the avoidance of inclusion of too many - or too strong -- sub-indixes that relates directly to the economic development of the country [@SK; @Permanyer; @KPS; @AS]. Thus, we decided to focus only on the most complete indicators that were already available in the original article, meaning the WEF Global Gender Gap Index and UNDP Gender Inequality Index, adding a new indicator following the suggestions of @SK, the Gender Development Index.
+
+ The ratio of female and male labor force participation counts as the overall labor participation rate, and thus, once approaching 100% as a characteristic of developed countries [@tasseven2017relationship], the gender gap is automatically reduced [this is not true, check the U-shape curve]. This measure does not take into account on the part-time jobs occupation as in case of the reduction , including involuntary part time job occupation in developed countries [@pech2021part; @rosenfeld1990cross]. [this sentenses wants to go to discussion] "part time jobs and gender gap"; The gap in involuntary part-time.
+
 
 Moreover, since a strong correlation has been found between each of the indicators used (including the Gender Equality Index built by the original authors), we focused on the gender differences regressed on economic development conditioned on each of the gender equality indicators, and vice-versa, to extract the correlation of the differences depurated of the confounding terms of economic development and gender equality of the countries.
+
+ While the use of the new dataset is due to our critics to the construction of the original authors Gender Equality Index, supported by a vast literature on an ideal gender equality indicator [@SK; @Permanyer; @KPS; @AS; @Nicaragua; @10.1080/13545701.2010.530607], 
 
 We prove that, using a different indicator for the gender inequality in different countries, the results found by @FH are less straightforward. To summarise the main findings on this regard:
 
@@ -180,7 +189,7 @@ We prove that, using a different indicator for the gender inequality in differen
 Looking at these results, we can deduce that, for countries having the same gender development, the gender differences are depending from the economic development of the country, meaning that richer countries have more gender differences than poorer countries, gender development being equal. On the other hand, for countries having the same economic development, the gender differences are independent from the gender development of the country, meaning that there are no gender differences arising from countries having same economics but different gender development.
 
 From this, one could therefore assume that the economic development is the country-level indicator associated with higher changes in gender differences, rather than the gender development of a country. From such a simple analysis is therefore not possible to extract any information regarding the reason for higher gender differences in more economically developed countries. We can only see that, for countries with similar economics, those differences don't exist regardless of how gender developed that countries are. The reason behind the differences might be related to purely economical conditions, that would also make sense since the gender differences here studied are "economical preferences". Can it be that the differences arise where the economic is more developed because of marketing reasons? After all, all the economics here analysed are based on capitalistic systems, meaning that the bigger the economic, the bigger the market. It is an interesting hypothesis that would require further analysis. 
-
+-->
 
 # References
 
