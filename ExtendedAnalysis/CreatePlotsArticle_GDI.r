@@ -1264,7 +1264,7 @@ PlotSummary(data = dataCoeff_summary_robust[preference == "altruism"],
                      "Altruism (+)"),
             robust = TRUE,
             display = TRUE,
-            save = "ExtendedAnalysis/plots/FigS6B_WEF.png"
+            # save = "ExtendedAnalysis/plots/FigS6B_WEF.png"
 )
 
 PlotSummary(data = dataCoeff_summary_robust[preference == "posrecip"],
