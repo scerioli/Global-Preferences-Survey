@@ -37,6 +37,15 @@ Finally, we conclude with the discussion on the gender equality indexes and the 
 
 # 2. Results
 
+## Gender differences on economic preferences
+Obtain from dataset and compare with the original study
+## Relation between economic development and gender equality
+Here about correlation and the interpretation of the result
+## On joint gender equality,other indexes and related problematics
+Diagram, information on other indexes
+## Coniditonal analysis of gender difference and thier relation to economic development and gender equality
+Here we provide analysis on PCA-gender differences and singe gender preferences
+
 ## A composed Gender Equality Index and related problematics
 
 The authors in the original article composed a joint measure of gender equality that they denoted as Gender Equality Index (GEI). To reveal its actual structure, we visualized its composition using a diagram shown in Figure 1. Four indicators were used to compose this joint measure by employing Principle Component Analysis and taking the first component as a proxy of gender equality. Two of them are indexes officially approved by international organizations, the Global Gender Gap from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/), and the Gender Inequality Index from the UNDP [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf); one widely used measurable, the [ratio of female and male labor force participation](http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS), taken from the World Bank database; and lastly, a measurable newly constructed by the authors, the time since women suffrage, taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1), presumably to track long-term influences of the guaranteed right to vote as a proxy of gender equality. The WEF Global Gender Gap has a total of fourteen sub-indexes, grouped and weighted into four categories: economic participation and opportunity, political empowerment, educational attainment, and health and survival. The UNDP Gender Inequality Index follows a similar logic to cover the same categories describing different aspects of the human life, but using only five sub-indexes in total, that are two for health and reproduction-related issues, and three others for the remaining categories. 
@@ -126,7 +135,7 @@ In Fig. 3, we summarise the results of the conditional analysis for the three ma
 To investigate the role of economic development and gender equality on single preferences, we performed the same analysis but without PCA-aggregating preferences into a single measure. As one can see in Table 2, alongside with the results of aggregated gender differences, the economic development still has in most cases a strong correlation to the single preferences when conditioned on the gender equality of the country. The only exception is the UNDP GII indicator, that showed a very strong correlation to the economic development. *How to conclude this? It is an exception and we can't ignore it*
 
 
-Table: **Log GDP p/c conditional on the gender equality indicators**, regressed on each single economic preference gender difference coefficient. Reported are the correlation terms and their significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: **Gender differences in economic preferences ralated to Log GDP p/c conditional on the gender equality indicators**, regressed on each single economic preference gender difference coefficient. Reported are the correlation terms and their significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | Variable |  WEF (Extended) | UNDP (Extended) | GDI (Extended) |
  --- | --- | --- | --- |
@@ -142,7 +151,7 @@ Lastly, Table 3 summarizes the results of the regression of the gender differenc
 
 <!-- [does the PC1 contains mostly Altruism, so we see correlation when conditional on WEF  or there is a particular combination of other indexes that drives correlation? what is the structure of correlation and influential points for altruism? We should check this and other cases out.] -->
 
-Table: **Gender equality indicators, conditional on Log GDP p/c**, regressed on each single economic preference gender difference coefficient. Reported are the correlation terms and their significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: **Gender differences in economic preferences ralated to gender equality indicators, conditional on Log GDP p/c**, regressed on each single economic preference gender difference coefficient. Reported are the correlation terms and their significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | Variable  |  WEF (Extended) | UNDP (Extended) | GDI (Extended) |
  --- | --- | --- | --- |
@@ -152,8 +161,6 @@ Table: **Gender equality indicators, conditional on Log GDP p/c**, regressed on 
 | Negative Reciprocity | 0.1680 | 0.1742 | -0.1033 |
 | Risk Taking          | 0.0349 | 0.2192* |  -0.0261 |
 | Patience             | 0.2312 | 0.1705| 0.0812 |
-
-
 
 # 3. Discussion and conclusions
 
