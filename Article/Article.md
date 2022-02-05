@@ -4,7 +4,6 @@ title: |
 author:
 - Sara Cerioli
 - Andrey Formozov
-bibliography: bibliography.bibtex
 output:
   pdf_document: default
   bibliography: bibliography.bibtex
