@@ -1,6 +1,6 @@
 ---
 title: |
-  **Gender differences in economic preferences and gender equality are yet unrelated: evidence from the replication of Falk and Hermle, 2018**
+  **Gender differences in economic preferences and gender equality are yet unrelated: the replication of Falk and Hermle, 2018**
 author:
 - Sara Cerioli
 - Andrey Formozov
