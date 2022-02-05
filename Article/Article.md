@@ -13,7 +13,16 @@ This study replicates and extends the article of Falk and Hermle published in *S
 
 ---
 
-**JEL:**  D010 - Microeconomic Behavior: Underlying Principles, D630 - Equity, Justice, Inequality, and Other Normative Criteria and Measurement, D810 - Criteria for Decision-Making under Risk and Uncertainty, D910 - Micro-Based Behavioral Economics: Role and Effects of Psychological, Emotional, Social, and Cognitive Factors on Decision Making, F000 International Economics: General
+**JEL:**  	C18	- Methodological Issues: General, D010 - Microeconomic Behavior: Underlying Principles, D630 - Equity, Justice, Inequality, and Other Normative Criteria and Measurement, D810 - Criteria for Decision-Making under Risk and Uncertainty, D910 - Micro-Based Behavioral Economics: Role and Effects of Psychological, Emotional, Social, and Cognitive Factors on Decision Making, F000 International Economics: General
+<!--
+	C30	General
+	C38	Classification Methods • Cluster Analysis • Principal Components • Factor Models
+	C26	Instrumental Variables (IV) Estimation; 
+	C83	Survey Methods
+	D71	Social Choice 
+	E7	Macro-Based Behavioral Economics: E70	General
+	E71	Role and Effects of Psychological, Emotional, Social, and Cognitive Factors on the Macro Economy
+-->
 
 **Keywords:** replication study, gender differences, economic preferences
 
