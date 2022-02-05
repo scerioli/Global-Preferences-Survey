@@ -1,6 +1,6 @@
 ---
 title: |
-  **Gender differences in economic preferences and gender equality are not yet related: evidence from the replication of Falk and Hermle, 2018**
+  **Gender differences in economic preferences and gender equality are yet unrelated: evidence from the replication of Falk and Hermle, 2018**
 author:
 - Sara Cerioli
 - Andrey Formozov
@@ -37,10 +37,12 @@ Finally, we conclude with the discussion on the gender equality indexes and the 
 
 # 2. Results
 
-## Gender differences on economic preferences
+## Gender differences on economic preferences: replication
 Obtain from dataset and compare with the original study
-## Relation between economic development and gender equality
+First equation to illustrate the procedure of extraction of the economic preferences
+## Relation between gender differences, economic development and gender equality
 Here about correlation and the interpretation of the result
+Also we provide equation 2
 ## On joint gender equality,other indexes and related problematics
 Diagram, information on other indexes
 ## Coniditonal analysis of gender difference and thier relation to economic development and gender equality
