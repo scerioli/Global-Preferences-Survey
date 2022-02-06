@@ -22,6 +22,8 @@ This study replicates and extends the article of Falk and Hermle published in Sc
 	D71	Social Choice 
 	E7	Macro-Based Behavioral Economics: E70	General
 	E71	Role and Effects of Psychological, Emotional, Social, and Cognitive Factors on the Macro Economy
+	JEL Classification:	 C91, D91, D63, D64
+  Keywords:	 gender, preferences, cross-country variation
 -->
 
 **Keywords:** replication study, gender differences, economic preferences

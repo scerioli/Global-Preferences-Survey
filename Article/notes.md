@@ -38,6 +38,8 @@ https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0085654
 
 https://stats.stackexchange.com/questions/415711/individual-significance-of-data-points-in-correlation
 
+http://qed.econ.queensu.ca/pub/faculty/mackinnon/econ850/slides/econ850-slides-h03.pdf
+
 ## Multicollenearity of the data and DAG
 
 [Theorem used for residuals and multicollenearity]
