@@ -92,11 +92,11 @@ Table: Number of observations for each country-level indicator. Note that the di
 
 ## Reproducing the Plots of the Main Article
 
-To reproduce the plot of Fig. 1A, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the GEI in correlation to the gender differences for each economic preference, to reproduce the plot in Fig. 1C.
+To reproduce the plot of Figure 1A, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the GEI in correlation to the gender differences for each economic preference, to reproduce the plot in Figure 1C.
 
-Then, we related the magnitude of the summarised gender difference coefficients (the first component of the PCA) with the logarithm of the average GDP per capita to see the effect of the economic development. This reproduced Fig. 1B of the original article. We used a linear model to fit the correlation and extract the p-value, and for the plot the variables on the y-axis were additionally transformed as $(y-y_{min})/(y_{max}-y_{min})$. We applied the same method to extract the correlation between the GEI and the summarised gender preference, to see the effect of the gender equality in the countries (Fig. 1D). Note that here also the GEI is transformed to be on a scale between 0 and 1.
+Then, we related the magnitude of the summarised gender difference coefficients (the first component of the PCA) with the logarithm of the average GDP per capita to see the effect of the economic development. This reproduced Figure 1B of the original article. We used a linear model to fit the correlation and extract the p-value, and for the plot the variables on the y-axis were additionally transformed as $(y-y_{min})/(y_{max}-y_{min})$. We applied the same method to extract the correlation between the GEI and the summarised gender preference, to see the effect of the gender equality in the countries (Figure 1D). Note that here also the GEI is transformed to be on a scale between 0 and 1.
 
-In Table 3, we compare the results of our replication (using linear regression) and extended (with robust linear regression) analysis to the one from the original paper @FH (Fig. 1B and 1D). Starting with the summarised gender preferences to the economic development and the gender equality, we see that our analysis brings us to very similar results in terms of correlation coefficients. The p-values are all indicating a statistically significant correlation, as in the original paper, and when calculating the z-scores thanks to Fisher’s r to z transformation, we see that each one is below 2 (which is usually taken as threshold to be statistically significant). This means that our correlations were not statistically significantly different from the ones in the original article. Very similar results appear also from the robust linear regression used in the extended analysis.
+In Table 3, we compare the results of our replication (using linear regression) and extended (with robust linear regression) analysis to the one from the original paper @FH (Figure 1B and 1D). Starting with the summarised gender preferences to the economic development and the gender equality, we see that our analysis brings us to very similar results in terms of correlation coefficients. The p-values are all indicating a statistically significant correlation, as in the original paper, and when calculating the z-scores thanks to Fisher’s r to z transformation, we see that each one is below 2 (which is usually taken as threshold to be statistically significant). This means that our correlations were not statistically significantly different from the ones in the original article. Very similar results appear also from the robust linear regression used in the extended analysis.
 
 Table: Correlation between PCA-summarised gender differences in economic preferences vs Log GDP p/c, aggregated Gender Equality Index, and Gender Development Index. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
@@ -109,7 +109,7 @@ Table: Correlation between PCA-summarised gender differences in economic prefere
 | | *z-score* | $-$0.053 |  $-$0.288 |
 
 
-We reproduced the plots in Fig. 2A-F using the variable conditioning analysis. This has been done for the economic development, for the GEI, and for each of the four indicators building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. All the variables used have been standardize to have mean at 0 and standard deviation of 1 before applying the conditional analysis. Using the residuals, we performed a linear regression on the data points, and we extracted correlation coefficients and p-values. In Table 4, we compare the results obtained from our replication analysis and the extended analysis to the results found in @FH, Fig. 2A-F. 
+We reproduced the plots in Figure 2A-F using the variable conditioning analysis. This has been done for the economic development, for the GEI, and for each of the four indicators building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. All the variables used have been standardize to have mean at 0 and standard deviation of 1 before applying the conditional analysis. Using the residuals, we performed a linear regression on the data points, and we extracted correlation coefficients and p-values. In Table 4, we compare the results obtained from our replication analysis and the extended analysis to the results found in @FH, Figure 2A-F. 
 
 Table: Comparison of the conditional analysis results for original, replicated and extended study. Reported are the **slopes** of the linear regressions and the corresponding p-value. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
@@ -124,7 +124,7 @@ Table: Comparison of the conditional analysis results for original, replicated a
 
 Most of the time, we find very similar slope coefficient and statistical significance between the variables of our study (both replicated and extended) and the results from the original study, with only two exceptions: One is related to the indicator WEF Global Gender Gap, and the other to the time since women suffrage. Regarding the last one, the differences can be explained by the imputation of the data used. The dataset from which this indicator is coming from, as a matter of fact, can be interpreted non unanimously (see the paragraph "Gender Equality Index" in the Appendix and discussion sections) and we can't draw any conclusion from it. Regarding the WEF Global Gender Gap Index, the difference of the p-value significance is of a factor 2, and it is not clear why such difference is exhibited. The coefficients are anyway in good agreement with each other.
 
-In Table 5, we summarise the results of the correlation of single preferences to the economic development of the countries, to be compared to Fig. S2 in @FH_SM, while in Table 6, we show the results for the single preferences gender differences regressed on the Gender Equality Index, as done in Fig. S3 in @FH_SM.
+In Table 5, we summarise the results of the correlation of single preferences to the economic development of the countries, to be compared to Figure S2 in @FH_SM, while in Table 6, we show the results for the single preferences gender differences regressed on the Gender Equality Index, as done in Figure S3 in @FH_SM.
 
 Table: Correlation coefficients for country-level gender differences in economic preferences vs Log GDP p/c obtained in the original article, present replication and extended analysis. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
@@ -148,7 +148,7 @@ Table: Comparison of the correlations between Gender Equality Index and country-
 | | *z-score* | $-$0.648 | 0.301 | $-$0.536 | 0.224 | $-$0.001 | $-$0.129 |
 
 
-For the comparison of the results from Fig. S4 in @FH_SM, we refer to Table 7, showing the correlation between the average gender differences to the single gender equality indicators.
+For the comparison of the results from Figure S4 in @FH_SM, we refer to Table 7, showing the correlation between the average gender differences to the single gender equality indicators.
 
 Table: Single indicators for the gender equality at the country level correlated with gender differences. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
@@ -161,7 +161,7 @@ Table: Single indicators for the gender equality at the country level correlated
 | | *z-score*    |  0.112    | $-$0.109    | 0.01    | 0.473 |
 
 
-For the comparison of the results of the Fig. S5 and S6 of @FH_SM to ours, refer to Table 8 and Table 9.
+For the comparison of the results of the Figure S5 and S6 of @FH_SM to ours, refer to Table 8 and Table 9.
 
 Table: Log GDP p/c conditional on Gender Equality Index, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication and the extended analysis. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
@@ -184,7 +184,7 @@ Table: Gender Equality Index, conditional on Log GDP p/c, regressed on each sing
 | Extended |    | 0.2521*   | 0.2401   | 0.051     | 0.2037* | 0.1868* | 0.2781* |
 | | *z-score*   | $-$0.295    | 0.584    | $-$0.371    | 0.473   | 0.065   | 0.120 |
 
-Lastly, we have reproduced the results from the Fig. S8 and S9 of @FH_SM in Table 10 and 11. Here we report only the results of the replication analysis, because to our extended analysis this was seen as useless.
+Lastly, we have reproduced the results from the Figure S8 and S9 of @FH_SM in Table 10 and 11. Here we report only the results of the replication analysis, because to our extended analysis this was seen as useless.
 
 Table: Preferences standardized at global level for Log GDP p/c. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
@@ -205,7 +205,7 @@ Table: Gender differences and economic development by preference and country wit
 
 ### Further notes on the replication
 
-For the replication of the Fig. S7 of @FH_SM, we couldn't replicate because we had no access to such granularity of the data.
+For the replication of the Figure S7 of @FH_SM, we couldn't replicate because we had no access to such granularity of the data.
 
 For the replication of the tables in the supplementary material, we were not able to get the datasets as indicated from the sources.
 
