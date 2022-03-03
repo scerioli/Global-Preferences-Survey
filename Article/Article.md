@@ -66,7 +66,7 @@ We managed to replicate the analysis and to obtain the gender differences in the
 
 To study the effect of both GDP p/c and gender equality at the same time, one should incorporate all three variables into the multiple linear regression with both factors as explanatory variables, like:
 
-$avgGenderDiff_{country} = \alpha + \beta_1 \ logGDPpc_{country} + \beta_2 \ genderEquality_{country}$
+$\textrm{avgGenderDiff}_{\textrm{country}} = \alpha + \beta_1 \ \textrm{logGDPpc}_{\textrm{country}} + \beta_2 \ \textrm{genderEquality}_{\textrm{country}}$
 
 Alternatively, to separate the contribution of the gender differences regressed on economic development, one can perform a regression conditioning on the gender quality indicator and then conditioning on economic development (Log GDP p/c). The theorem from Frisch–Waugh–Lovell [@10.2307/1907330; @Lovell] guarantees that the coefficients found from this conditional analysis are the same as the ones found for a regression of the gender differences on both economic development and gender equality index of the countries.
 
