@@ -10,7 +10,7 @@ header-includes:
   \author{Sara Cerioli}
   \author{Andrey Formozov}
   \affil{\small{Independent researchers, Hamburg, Germany \\ 
-         Correspondence: sara.cerioli@outlook.com}}
+         Correspondence: sara.cerioli@outlook.com, formozoff@gmail.com}}
   ```
 bibliography: bibliography.bibtex
 csl: bib_style/./mee.csl
@@ -59,7 +59,7 @@ To conduct the replication, we requested the Gallup World Poll data. The full da
 
 To assess the gender differences in each economic preference, the following model was used:
 
-$p_i = \beta_1^c female_i + \beta_2^c age_i + \beta_3^c age^2_i + \beta_4^c (subjective \ math \ skills_i) + \epsilon_i$,
+$\textrm{p}_i = \beta_1^c \textrm{female}_i + \beta_2^c \textrm{age}_i + \beta_3^c \textrm{age}^2_i + \beta_4^c \textrm{subjectiveMathSkills}_i + \epsilon_i$
 
 where the subscript $i$ is the index of a survey participant. This results in 6 models -- one for each preference measure, $p_i$ -- having an intercept and 4 coefficients, each coefficient being related to the variable in the formula above. The coefficient for the dummy variable *female*, $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, there are 6 coefficients representing the preference differences related to the gender for 76 countries. To summarise the gender differences among the six economic preferences, a principal component analysis (PCA) is performed on the gender coefficients. The PCA is a dimensionality-reduction technique which allows a reshaping of the 6 coefficients into orthogonal components that maximize the sample variance. The first component of the PCA has then been used as a summary index of average gender differences in preferences.
 
@@ -69,7 +69,7 @@ We managed to replicate the analysis and obtain the gender differences in the ec
 
 To study the effect of both GDP p/c and gender equality, at the same time, one should incorporate all three variables into a multiple linear regression model with both factors as explanatory variables, for example:
 
-$avgGenderDiff_{country} = \alpha + \beta_1 \ logGDPpc_{country} + \beta_2 \ genderEquality_{country}$
+$\textrm{avgGenderDiff}_{\textrm{country}} = \alpha + \beta_1 \ \textrm{logGDPpc}_{\textrm{country}} + \beta_2 \ \textrm{genderEquality}_{\textrm{country}}$
 
 Alternatively, to separate the contributions of economic development and gender equality, one can perform a regression conditioning on the gender quality indicator first and then conditioning on economic development. The theorem from Frisch–Waugh–Lovell [@10.2307/1907330; @Lovell] guarantees that the coefficients found from this conditional analysis are the same as those found for a regression of the gender differences on both economic development and gender equality index of the countries.
 
