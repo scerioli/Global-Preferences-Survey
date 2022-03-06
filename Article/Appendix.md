@@ -163,7 +163,7 @@ Table: Single indicators for the gender equality at the country level correlated
 
 For the comparison of the results of the Figure S5 and S6 of @FH_SM to ours, refer to Table 8 and Table 9.
 
-Table: Log GDP p/c conditional on Gender Equality Index, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication and the extended analysis. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Log GDP p/c conditional on Gender Equality Index, regressed on each single economic preference gender difference coefficient. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -174,7 +174,7 @@ Table: Log GDP p/c conditional on Gender Equality Index, regressed on each singl
 | | *z-score*   | 0.092     | 0.581     | 0.158    | -0.0044 | 0.429   | 0.112 |
 
 
-Table: Gender Equality Index, conditional on Log GDP p/c, regressed on each single economic preference gender difference coefficient. Here reported are the correlation terms for the original analysis, the replication and the extended analysis. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Gender Equality Index, conditional on Log GDP p/c, regressed on each single economic preference gender difference coefficient. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -184,7 +184,7 @@ Table: Gender Equality Index, conditional on Log GDP p/c, regressed on each sing
 | Replication (RLR) |    | 0.2521*   | 0.2401   | 0.051     | 0.2037* | 0.1868* | 0.2781* |
 | | *z-score*   | -0.295    | 0.584    | -0.371    | 0.473   | 0.065   | 0.120 |
 
-Lastly, we have reproduced the results from Figures S8 and S9 of @FH_SM in Tables 10 and 11. Here we report only the results of the replication analysis because to our extended analysis this was seen as useless.
+Lastly, we have reproduced the results from Figures S8 and S9 of @FH_SM in Tables 10 and 11.
 
 Table: Preferences standardized at global level for Log GDP p/c. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
