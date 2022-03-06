@@ -126,10 +126,10 @@ Table: **Gender differences in each economic preference related to gender equali
 | Conditional on |  log GDP p/c | log GDP p/c | log GDP p/c |
  --- | --- | --- | --- |
 | Trust                | 0.1325 | 0.2160 | 0.0794 |
-| Altruism             | 0.3561** | $-$0.0421  | 0.1021 |
-| Positive Reciprocity | 0.0396 | $-$0.0402 | 0.1978 |
+| Altruism             | 0.3561** | -0.0421  | 0.1021 |
+| Positive Reciprocity | 0.0396 | -0.0402 | 0.1978 |
 | Negative Reciprocity | 0.1680 | 0.1742 | -0.1033 |
-| Risk Taking          | 0.0349 | 0.2192* |  $-$0.0261 |
+| Risk Taking          | 0.0349 | 0.2192* |  -0.0261 |
 | Patience             | 0.2312 | 0.1705| 0.0812 |
 
 
