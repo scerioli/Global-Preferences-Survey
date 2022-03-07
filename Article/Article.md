@@ -43,7 +43,7 @@ Gender differences in economic behaviors, such as happiness [@SPSU], competition
 
 The study of gender differences on a world scale is challenging. One challenge that hampers the progress is the lack of large and homogeneous datasets across different social groups and countries. The Gallup World Poll 2012 included a Global Preference Survey conducted on almost 80000 people in 76 countries around the world that aimed to fill this gap, covering nearly 90% of the world population representation, with each country having around 1000 participants answering questions related to their time preference (patience), altruism, willingness to take risk, negative and positive reciprocity, and trust. The dataset provides a unique insight into the economic preferences of a heterogeneous groups of people. 
 
-An article that presented an analysis of this dataset was published in the Quarterly Journal of Economics [@QJE_Falk]. It focused on general questions about the economic preferences distributions in different countries, exploring several covariates from the Gallup World Poll. The subsequent article [@doi:10.1126/science.aas9899], replicated in this work, focused explicitly on the gender differences highlighted in the previous study and reported evidence for the relationships among gender differences in economic preferences, economic development, and gender equality across many countries. The authors propose two competing hypotheses to be tested. The first one is that the gender differences in economic preferences will decrease for more economically developed and gender-equal countries, because social roles related to gender are attenuated. The second hypothesis is to the contrary, that for more economically developed and gender-equal countries, the gender differences in economic preferences will increase because the gender-neutral goal of subsistence is removed and thus people can pursue their more unconstrained set of preferences. Their analysis shows a positive correlation between gender differences in preferences and economic development (expressed as log GDP p/c), as well as a positive correlation between gender differences in preferences and gender equality of the countries. Therefore, the authors conclusion favors the second hypothesis, predicting an increase in the differences as women and men obtain sufficient access to the resources to develop and express their intrinsic preferences independently. 
+An article that presented an analysis of this dataset was published in the Quarterly Journal of Economics [@10.1093/qje/qjy013]. It focused on general questions about the economic preferences distributions in different countries, exploring several covariates from the Gallup World Poll. The subsequent article [@doi:10.1126/science.aas9899], replicated in this work, focused explicitly on the gender differences highlighted in the previous study and reported evidence for the relationships among gender differences in economic preferences, economic development, and gender equality across many countries. The authors propose two competing hypotheses to be tested. The first one is that the gender differences in economic preferences will decrease for more economically developed and gender-equal countries, because social roles related to gender are attenuated. The second hypothesis is to the contrary, that for more economically developed and gender-equal countries, the gender differences in economic preferences will increase because the gender-neutral goal of subsistence is removed and thus people can pursue their more unconstrained set of preferences. Their analysis shows a positive correlation between gender differences in preferences and economic development (expressed as log GDP p/c), as well as a positive correlation between gender differences in preferences and gender equality of the countries. Therefore, the authors conclusion favors the second hypothesis, predicting an increase in the differences as women and men obtain sufficient access to the resources to develop and express their intrinsic preferences independently. 
 
 However, an essential relation between the economic development and gender equality indexes was only mentioned in the original text without detailed investigation. At the same time, this relation plays a pivotal role in interpreting the resulting correlations. The authors composed a joint measure of gender equality in different countries using two officially recognized indexes to measure gender equality (WEF Global Gender Gap and UNDP Gender Inequality Index), together with two other less complete indicators, providing a little discussion about the validity and robustness of these supplementary indicators, and without establishing a link to the existing literature with this regard. The present work aims to provide a companion set of conclusions based only on the validated indicators. We wish to raise awareness about the potential ramifications of drawing the wrong conclusion about the relationship between gender differences in economic preferences and gender equality when crafting public, corporate, or NGO policy.
 
@@ -61,7 +61,7 @@ To assess the gender differences in each economic preference, the following mode
 
 $\textrm{p}_i = \beta_1^c \textrm{female}_i + \beta_2^c \textrm{age}_i + \beta_3^c \textrm{age}^2_i + \beta_4^c \textrm{subjectiveMathSkills}_i + \epsilon_i$
 
-where the subscript $i$ is the index of a survey participant. This results in 6 models -- one for each preference measure, $p_i$ -- having an intercept and 4 coefficients, each coefficient being related to the variable in the formula above. The coefficient for the dummy variable *female*, $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, there are 6 coefficients representing the preference differences related to the gender for 76 countries. To summarise the gender differences among the six economic preferences, a principal component analysis (PCA) is performed on the gender coefficients. The PCA is a dimensionality-reduction technique which allows a reshaping of the 6 coefficients into orthogonal components that maximize the sample variance. The first component of the PCA has then been used as a summary index of average gender differences in preferences.
+where the subscript $i$ is the index of a survey participant. This results in 6 models -- one for each preference measure, $p_i$ -- having an intercept and 4 coefficients, each coefficient being related to the variable in the formula above. The coefficient for the dummy variable *female*, $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, there are 6 coefficients representing the preference differences related to the gender for 76 countries. To summarise the gender differences among the six economic preferences, a principal component analysis (PCA) is performed on the gender coefficients. The PCA is a dimensionality-reduction technique which allows a reshaping of the 6 coefficients into orthogonal components that maximize the sample variance. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences.
 
 We managed to replicate the analysis and obtain the gender differences in the economic preferences at the country level (for details, see Table 1 in the Appendix). A diagnostic test of the linear regressions indicated the presence of non-normality. We also ran an analysis based on robust linear regression instead of ordinary linear regression to mitigate potential downstream biases and use this method for our extended analysis below. 
 
@@ -71,7 +71,7 @@ To study the effect of both log GDP p/c and gender equality, at the same time, o
 
 $\textrm{avgGenderDiff}_{\textrm{country}} = \alpha + \beta_1 \ \textrm{logGDPpc}_{\textrm{country}} + \beta_2 \ \textrm{genderEquality}_{\textrm{country}}$
 
-Alternatively, to separate the contributions of economic development and gender equality, one can perform a regression conditioning on the gender quality indicator first and then conditioning on economic development. The theorem from Frisch–Waugh–Lovell [@10.2307/1907330; @doi:10.1080/01621459.1963.10480682] guarantees that the coefficients found from this conditional analysis are the same as those found for a regression of the gender differences on both economic development and gender equality index of the countries.
+Alternatively, to separate the contributions of economic development and gender equality, the authors in the original article performed a simple linear regression among residual plots. The theorem from Frisch–Waugh–Lovell [@10.2307/1907330; @doi:10.1080/01621459.1963.10480682]  guarantees that the coefficients found from this residual analysis are the same as those found for a multiple regression of the gender differences on both economic development and gender equality index of the countries.
 
 The correlation between economic development and gender equality indexes plays a central role in investigating how the gender differences in economic preferences are related to them. The fact that the two variables are dependent is known [@10.2307/23644911] and was reported in [@GGGreport2015] for WEF GGGI with GDP p/c in linear and not logarithmic scale. To check the correlation between economic development and gender equality of the countries analysed in the study, we regressed the log GDP p/c and joint Gender Equality Index used by the authors in the original article. In addition, we explored the correlation of other three indexes for the measure of gender equality: two were indexes already introduced by the original authors, that are the Global Gender Gap Index from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/) (abbreviated to WEF GGGI), and the Gender Inequality Index from the United Nations [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf) (UNDP GII). The third index to be used for the correlation check was the UNDP [Gender Development Index](http://hdr.undp.org/en/indicators/137906) (GDI), which we will later use for our extended analysis. The correlation between economic development expressed in log GDP p/c and gender equality indexes in the countries is very strong (see also Figure 1): for the Gender Equality Index, we found a correlation with r = 0.5440 and a p-value < 0.0001; for WEF GGGI, r = 0.2926 and p-value = 0.013; for UNDP GII, r = 0.8542 and p-value < 0.0001; and for the UNDP GDI, a correlation of r = 0.5316 with p-value < 0.0001.
 
@@ -100,37 +100,49 @@ In this section, we explore the correlation between the summarized gender differ
 
 ![On the left, gender differences are regressed on economic development conditioned on gender equality for the different indicators (WEF GGGI, UNDP GGI, and GDI). On the right, the corresponding values of gender differences are regressed on gender equality indicator conditioned on economic development.](figures/conditional_analysis_all_extended.pdf)  
 
-To investigate the role of economic development and gender equality on single preferences, we performed the same analysis without aggregating preferences into a single measure. As one can see in Table 1, alongside the results of aggregated gender differences, economic development still has in most cases a strong and statistically significant correlation with the single preferences when conditioned on the gender equality of the country.
+To investigate the role of economic development and gender equality on single preferences, we performed the same analysis without aggregating preferences into a single measure. For the comfort in reporting the results, we use here the multilinear regression models with the following notations:
 
-Table: **Gender differences in each economic preference related to log GDP p/c conditional on the gender equality indicators**. The robust linear regression method is used. The correlation terms and their significance levels $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*) are reported.
+\begin{equation}
+\begin{aligned}
+\textrm{female$_p$} = \alpha + \beta_{logGDPpc} \textrm{logGDPpc} + \beta_{WEF-GGG} \textrm{WEF-GGG} \\
+\textrm{female$_p$} = \alpha + \beta_{logGDPpc} \textrm{logGDPpc} + \beta_{UNDP-GII} \textrm{UNDP-GII} \\
+\textrm{female$_p$} = \alpha + \beta_{logGDPpc} \textrm{logGDPpc} + \beta_{UNDP-GDI} \textrm{UNDP-GDI}
+\end{aligned}
+\end{equation}
 
-| Variable |  Log GDP p/c | Log GDP p/c | Log GDP p/c |
- --- | --- | --- | --- |
-| Conditional on |  WEF GGGI | UNDP GII | UNDP GDI |
- --- | --- | --- | --- |
-| Trust                | 0.5174*** | 0.1930 | 0.5045*** | 
-| Altruism             | 0.5255*** | 0.3527*** | 0.4477***  | 
-| Positive Reciprocity | 0.2898*   | 0.2054 | 0.1870 | 
-| Negative Reciprocity | 0.3974** | 0.0706 | 0.3858*** | 
-| Risk Taking          | 0.3469** | 0.0262 | 0.3199** |
-| Patience             | 0.3742** | 0.1046 | 0.3337**  |
+where $female_p$ represents the gender coefficient of the single economic preferences, $\beta_{logGDPpc}$ is the coefficient associated to the change of log GDPp/c when the gender equality in the countries is kept fixed, and the coefficients $\beta_{WEF-GGG}$, $\beta_{UNDP-GII}$, and $\beta_{UNDP-GDI}$ represent the change in the corresponding gender equality indicator when the log GDP p/c is kept fixed.
 
-Table 2 summarises the results of the regression of the gender differences in single economic preferences with relation to gender equality indexes conditioned on economic development. In 16 out of 18 regressor-regresee pairs, no statistically significant correlations were observed between the gender equality indexes and any of the single preferences. In two cases, weak but statistically significant correlations were found, between the pairs: WEF GGGI-Altruism pair and the UNDP GII-Risk Taking pair. We conclude there is a lack a reliable association between the gender differences in economic preferences and gender equality indexes.
+As one can see in the following Tables, alongside the results of aggregated gender differences, economic development (expressed by the coefficient $\beta_{logGDPpc}$) still has in most cases a strong and statistically significant correlation with the single preferences when conditioned on the gender equality of the country. On the other hand, when we look at the coefficients for each gender equality indicator, we see that in 16 out of 18 regressor-regresee pairs, no statistically significant correlations were observed between the gender equality indexes and any of the single preferences. In two cases, weak but statistically significant correlations were found, between the pairs: WEF GGG-Altruism pair and the UNDP GII-Risk Taking pair. We conclude there is a lack a reliable association between the gender differences in economic preferences and gender equality indexes.
 
-\newpage
 
-Table: **Gender differences in each economic preference related to gender equality indicators, conditional on log GDP p/c**. The robust linear regression method is used. The correlation terms and their significance levels $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*) are reported.
+Table: **Gender differences in each economic preference regressed on log GDP p/c and gender equality indicators**. The robust linear regression method is used. The correlation terms and their significance levels $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*) are reported.
 
-| Variable |  WEF GGGI | UNDP GII | UNDP GDI |
- --- | --- | --- | --- |
-| Conditional on |  Log GDP p/c | Log GDP p/c | Log GDP p/c |
- --- | --- | --- | --- |
-| Trust                | 0.1325 | 0.2160 | 0.0794 |
-| Altruism             | 0.3561** | -0.0421  | 0.1021 |
-| Positive Reciprocity | 0.0396 | -0.0402 | 0.1978 |
-| Negative Reciprocity | 0.1680 | 0.1742 | -0.1033 |
-| Risk Taking          | 0.0349 | 0.2192* |  -0.0261 |
-| Patience             | 0.2312 | 0.1705| 0.0812 |
+| Variable |  $\beta_{logGDPpc}$ | $\beta_{WEF-GGG}$ |
+--- | --- | --- |
+| Trust                | 0.5174*** | 0.1325 |
+| Altruism             | 0.5255*** |  0.3561** |
+| Positive Reciprocity | 0.2898*   | 0.0396 |
+| Negative Reciprocity | 0.3974** | 0.1680 |
+| Risk Taking          | 0.3469** | 0.0349 |
+| Patience             | 0.3742** | 0.2312 |
+
+| Variable |  $\beta_{logGDPpc}$ | $\beta_{UNDP-GII}$ |
+--- | --- | --- |
+| Trust                | 0.1930 | 0.2160 |
+| Altruism             | 0.3527*** | -0.0421 |
+| Positive Reciprocity | 0.2054 | -0.0402 |
+| Negative Reciprocity | 0.0706 | 0.1742 |
+| Risk Taking          | 0.0262 | 0.2192* |
+| Patience             | 0.1046 | 0.1705 |
+
+| Variable |  $\beta_{logGDPpc}$ | $\beta_{UNDP-GDI}$ |
+--- | --- | --- |
+| Trust                | 0.5045*** | 0.0794 |
+| Altruism             | 0.4477***  | 0.1021 |
+| Positive Reciprocity | 0.1870 | 0.1978 |
+| Negative Reciprocity | 0.3858*** | -0.1033 |
+| Risk Taking          | 0.3199** | -0.0261 |
+| Patience             | 0.3337**  | 0.0812 |
 
 
 # 3. Discussion and conclusions
