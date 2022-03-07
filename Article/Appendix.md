@@ -109,20 +109,20 @@ Table: Correlation between PCA-summarised gender differences in economic prefere
 | | *z-score* | -0.053 |  -0.288 |
 
 
-We reproduced the plots in Figure 2A-F [@FH] using the variable conditioning analysis. This has been done for the economic development, for the GEI, and for each of the four indicators building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. All the variables used have been standardized to have a mean at 0 and a standard deviation of 1 before applying the conditional analysis. Using the residuals, we performed a linear regression on the data points, and we extracted correlation coefficients and p-values. In Table 4, we compare the results obtained from our replication analysis and the extended analysis to the results found in @FH, Figure 2A-F. 
+We reproduced the plots in Figure 2A-F [@FH] using the variable conditioning analysis. This has been done for the economic development, for the GEI, and for each of the four indicators building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. All the variables used have been standardized to have a mean at 0 and a standard deviation of 1 before applying the conditional analysis. Using the residuals, we performed a linear regression on the data points, and extracted correlation coefficients and p-values. In Table 4, we compare the results obtained from our replication analysis and the extended analysis to the results found in @FH, Figure 2A-F. 
 
-Table: Comparison of the conditional analysis results for original and replicated study. Reported are the **slopes** of the linear regressions and the corresponding p-value. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Comparison of the conditional analysis results for original and replicated study. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences. Reported are the **slopes** of the linear regressions and the corresponding p-value. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
-|Variable | Residualized on | Original | Replication (OLS) | Replication (RLR) |
+| Variable 1 | Variable 2 | Conditional on | Original | Replication (OLS) | Replication (RLR) |
 --- | --- | --- | --- | -- | 
-|Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5003*** | 0.4862*** |
-|Gender Equality Index | Log GDP p/c | 0.3192**  | 0.3358*** | 0.3432** |
-|WEF Global Gender Gap | Log GDP p/c | 0.2327**  | 0.2234* | 0.2106* |
-|UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.3180 | 0.3017 | 
-|F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.2206* | 0.2034* |
-|Time since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1879* | 0.1929* |
+| Gender differences, PC1 |Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5003*** | 0.4862*** |
+| Gender differences, PC1 |Gender Equality Index | Log GDP p/c | 0.3192**  | 0.3358*** | 0.3432** |
+| Gender differences, PC1 |WEF Global Gender Gap | Log GDP p/c | 0.2327**  | 0.2234* | 0.2106* |
+| Gender differences, PC1 |UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.3180 | 0.3017 | 
+| Gender differences, PC1 |F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.2206* | 0.2034* |
+| Gender differences, PC1 |Time since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1879* | 0.1929* |
 
-Most of the time, we find very similar slope coefficient and statistical significance between the variables of our study and the results from the original study, with only two exceptions: One is related to the indicator WEF Global Gender Gap, and the other to the time since women suffrage. Regarding the last one, the differences can be explained by the imputation of the data used. The dataset from which this indicator is coming from, as a matter of fact, can be interpreted non unanimously (see the paragraph "Gender Equality Index" in the Appendix and discussion sections) and we can't draw any conclusion from it. Regarding the WEF Global Gender Gap Index, the difference of the p-value significance is of factor 2, and it is not clear why such difference is exhibited. The coefficients are anyway in good agreement with each other.
+Most of the time, we find very similar slope coefficient and statistical significance between the variables of our study and the results from the original study. The deviation for  time since women suffrage variable can likely be explained by the differences in imputation of the data.
 
 In Table 5, we summarise the results of the correlation of single preferences to the economic development of the countries, to be compared to Figure S2 in @FH_SM, while in Table 6, we show the results for the single preferences gender differences regressed on the Gender Equality Index, as done in Figure S3 in @FH_SM.
 
