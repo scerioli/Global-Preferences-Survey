@@ -98,7 +98,7 @@ Then, we related the magnitude of the summarised gender difference coefficients 
 
 In Table 3, we compare the results of our replication using linear regression (OLS) and robust linear regression (RLR) analyses to the one from the original paper @doi:10.1126/science.aas9899 (Figure 1B and 1D). Starting with the summarised gender preferences to economic development and gender equality, we see that our analysis brings us to very similar results in terms of correlation coefficients. The p-values are all indicating a statistically significant correlation, as in the original paper, and when calculating the z-scores thanks to Fisher’s r to z transformation, we see that each one is below 2 (which is usually taken as a threshold to be statistically significant). This means that our correlations were not statistically significantly different from the ones in the original article. Very similar results appear also from the robust linear regression used further in our extended analysis.
 
-Table: Correlation between PCA-summarised gender differences in economic preferences vs Log GDP p/c, aggregated Gender Equality Index, and Gender Development Index. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+Table: Correlation between PCA-summarised gender differences in economic preferences vs Log GDP p/c and aggregated Gender Equality Index. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
 |  | | Log GDP p/c | Gender Equality Index 
 --- | --- | --- | --- | 
@@ -118,7 +118,7 @@ Table: Comparison of the conditional analysis results for original and replicate
 | Avg. Gender Diff. | Log GDP p/c | GEI| 0.5258***  | 0.5003*** | 0.4862*** |
 | Avg. Gender Diff. | GEI | Log GDP p/c | 0.3192**  | 0.3358*** | 0.3432** |
 | Avg. Gender Diff. | WEF GGGI | Log GDP p/c | 0.2327**  | 0.2234* | 0.2106* |
-| Avg. Gender Diff. | UN GII | Log GDP p/c | 0.2911  | 0.3180 | 0.3017 | 
+| Avg. Gender Diff. | UNDP GII | Log GDP p/c | 0.2911  | 0.3180 | 0.3017 | 
 | Avg. Gender Diff. | F/M LFP | Log GDP p/c | 0.2453*  | 0.2206* | 0.2034* |
 | Avg. Gender Diff. | TSWS | Log GDP p/c | 0.2988**  | 0.1879* | 0.1929* |
 
@@ -140,7 +140,7 @@ Table: Correlation coefficients for country-level gender differences in economic
 | | *z-score* | -0.007 |0.32 | -0.103 | -0.272| 0.074  |-0.301 |
 
 
-Table: Comparison of the correlations between Gender Equality Index and country-level gender differences in economic preferences. The correlations are calculated using the OLS method. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+Table: Comparison of the correlations between Gender Equality Index and country-level gender differences in economic preferences. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
 | |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -166,7 +166,7 @@ Table: Single indicators for the gender equality at the country level correlated
 
 For the comparison of the results of the Figure S5 and S6 of @FH_SM to ours, refer to Table 8 and Table 9.
 
-Table: Log GDP p/c conditional on Gender Equality Index, regressed on each single economic preference gender difference coefficient. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Gender differences in single economic preferences regressed on Log GDP p/c conditional on Gender Equality Index. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -177,7 +177,7 @@ Table: Log GDP p/c conditional on Gender Equality Index, regressed on each singl
 | | *z-score*   | 0.092     | 0.581     | 0.158    | -0.0044 | 0.429   | 0.112 |
 
 
-Table: Gender Equality Index, conditional on Log GDP p/c, regressed on each single economic preference gender difference coefficient. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Gender differences in single economic preferences regressed on Gender Equality Index, conditional on Log GDP p/c. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -193,7 +193,7 @@ Table: Preferences standardized at global level for Log GDP p/c. Significance le
 
 | |             | Trust     | Altruism  | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
-| Original    | | 0.5787*** | 0.5505**  | 0.2819*  | 0.2980** | 0.2974** | 0.4391*** |
+| Original    | | 0.5787*** | 0.5505***  | 0.2819*  | 0.2980** | 0.2974** | 0.4391*** |
 | Replication (OLS) | | 0.5761*** | 0.5882*** | 0.3216** | 0.3683** | 0.3649** | 0.4124*** |
 | | *z-score*   | 0.024     |  -0.337   | -0.264   |  -0.478  | -0.458   | 0.197 |
 
