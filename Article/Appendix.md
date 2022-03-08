@@ -113,18 +113,21 @@ We reproduced the plots in Figure 2A-F [@doi:10.1126/science.aas9899] using the 
 
 Table: Comparison of the conditional analysis results for original and replicated study. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences. Reported are the **slopes** of the linear regressions and the corresponding p-value. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
-| Variable 1 | Variable 2 | Conditional on | Original | Replication (OLS) | Replication (RLR) |
+| Variable | Regressed on | Conditional on | Original | Repl. (OLS) | Repl. (RLR) |
 --- | --- | --- | --- | --- | --- |
-| Gender differences |Log GDP p/c | Gender Equality Index | 0.5258***  | 0.5003*** | 0.4862*** |
-| Gender differences |Gender Equality Index | Log GDP p/c | 0.3192**  | 0.3358*** | 0.3432** |
-| Gender differences |WEF Global Gender Gap | Log GDP p/c | 0.2327**  | 0.2234* | 0.2106* |
-| Gender differences |UN Gender Equality Index | Log GDP p/c | 0.2911  | 0.3180 | 0.3017 | 
-| Gender differences |F/M in Labor Force Participation | Log GDP p/c | 0.2453*  | 0.2206* | 0.2034* |
-| Gender differences |Time since Women Suffrage | Log GDP p/c | 0.2988**  | 0.1879* | 0.1929* |
+| Avg. Gender Diff. | Log GDP p/c | GEI| 0.5258***  | 0.5003*** | 0.4862*** |
+| Avg. Gender Diff. | GEI | Log GDP p/c | 0.3192**  | 0.3358*** | 0.3432** |
+| Avg. Gender Diff. | WEF GGGI | Log GDP p/c | 0.2327**  | 0.2234* | 0.2106* |
+| Avg. Gender Diff. | UN GII | Log GDP p/c | 0.2911  | 0.3180 | 0.3017 | 
+| Avg. Gender Diff. | F/M LFP | Log GDP p/c | 0.2453*  | 0.2206* | 0.2034* |
+| Avg. Gender Diff. | TSWS | Log GDP p/c | 0.2988**  | 0.1879* | 0.1929* |
+
 
 Most of the time, we find very similar slope coefficient and statistical significance between the variables of our study and the results from the original study. The deviation for  time since women suffrage variable can likely be explained by the differences in imputation of the data.
 
 In Table 5, we summarise the results of the correlation of single preferences to the economic development of the countries, to be compared to Figure S2 in @FH_SM, while in Table 6, we show the results for the single preferences gender differences regressed on the Gender Equality Index, as done in Figure S3 in @FH_SM.
+
+\newpage
 
 Table: Correlation coefficients for country-level gender differences in economic preferences vs Log GDP p/c obtained in the original article, present replication. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
@@ -152,7 +155,7 @@ For the comparison of the results from Figure S4 in @FH_SM, we refer to Table 7,
 
 Table: Single indicators for the gender equality at the country level correlated with gender differences. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
-|  |             | WEF GGGI  | UNDP GII  | F/M LFP | Time Since Women Suffrage | 
+|  |             | WEF GGGI  | UNDP GII  | F/M LFP | TSWS | 
 --- | --- | --- | --- |  --- | --- |
 | Original |     | 0.4097*** | 0.6482*** | 0.2661* | 0.5139*** |
 | Replication (OLS) |  | 0.4075*** | 0.6680*** | 0.2860* | 0.4517*** |
