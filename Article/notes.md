@@ -98,3 +98,31 @@ Link to effect sizes in econometrics and social sciences
 <!--
 GNI is used in Falk, plus we need to discuss this index somewhere
 -->
+
+
+<!--
+
+
+
+@article{pech2021part,
+  title={Part-Time by Gender, Not Choice: The Gender Gap in Involuntary Part-time Work},
+  author={Pech, Corey and Klainot-Hess, Elizabeth and Norris, Davon},
+  journal={Sociological Perspectives},
+  volume={64},
+  number={2},
+  pages={280--300},
+  year={2021},
+  publisher={SAGE Publications Sage CA: Los Angeles, CA}
+}
+
+@article{rosenfeld1990cross,
+  title={A cross-national comparison of the gender gap in income},
+  author={Rosenfeld, Rachel A and Kalleberg, Arne L},
+  journal={American Journal of Sociology},
+  volume={96},
+  number={1},
+  pages={69--106},
+  year={1990},
+  publisher={University of Chicago Press}
+}
+-->
