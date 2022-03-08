@@ -756,12 +756,35 @@ PlotSummary(data = summaryIndex_robust,
 
 ## --------------------------------- EXTRA ----------------------------------- #
 PlotSummary(data = summaryIndex_robust,
-            var1 = "residualslogAvgGDPpcStd.y",
+            var1 = "residualslogAvgGDPpcStd_WEF",
+            var2 = "residualsavgGenderDiffStd_WEF",
+            labs = c("Log GDP p/c (residualized using WEF Global Gender Gap Index)",
+                     "Average Gender Differences \n(residualized using WEF Global Gender Gap Index)",
+                     "Economic Development"),
+            corr = FALSE,
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/main_ExtraResidualised.png"
+)
+
+PlotSummary(data = summaryIndex_robust,
+            var1 = "residualslogAvgGDPpcStd_UN",
+            var2 = "residualsavgGenderDiffStd_UN",
+            labs = c("Log GDP p/c (residualized using UNDP Gender Inequality Index)",
+                     "Average Gender Differences \n(residualized using UNDP Gender Inequality Index)",
+                     "Economic Development"),
+            corr = FALSE,
+            robust = TRUE,
+            display = TRUE,
+            # save = "ExtendedAnalysis/plots/main_ExtraResidualised.png"
+)
+PlotSummary(data = summaryIndex_robust,
+            var1 = "residualslogAvgGDPpcStd_GDI",
             var2 = "residualsavgGenderDiffStd_GDI",
             labs = c("Log GDP p/c (residualized using Gender Development Index)",
                      "Average Gender Differences \n(residualized using Gender Development Index)",
                      "Economic Development"),
-            corr = FALSE,
+            corr = TRUE,
             robust = TRUE,
             display = TRUE,
             # save = "ExtendedAnalysis/plots/main_ExtraResidualised.png"
