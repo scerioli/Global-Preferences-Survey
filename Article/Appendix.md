@@ -60,23 +60,23 @@ The Gender Equality Index used in the original article was composed of four main
 
 - **Time since women’s suffrage:** Taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election rights were granted, with no other restrictions commented. Some countries were colonies or within a union of the countries (for instance, Kazakhstan in the Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within a union and as an independent state. In this case, we kept the first date. It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights [@SAHO]. We kept the latest date when also Black women could vote. For Nigeria, considering the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USA data doesn't take into account that also up to 1964 black women weren't granted the right to vote (in general, Blacks were not granted that right up to that year). We didn't keep this date, because it was not explicitly mentioned in the original dataset.
 
-In this work we additionally involve GDI index:
+In this work we additionally involve the GDI index:
 
-- **Gender Development Index** taken from [Human Development Reports 2020](https://hdr.undp.org/en/content/gender-development-index-gdi). Note that we have downloaded the two tables of the Human Development Index for males and females, and used the ratio of the two as an GDI index, as described in the report.
+- **Gender Development Index** taken from [Human Development Reports 2020](https://hdr.undp.org/en/content/gender-development-index-gdi). Note that we have downloaded the two tables of the Human Development Index for males and females, and used the ratio of the two as a GDI index, as described in the report.
 
 
 ### Missing Data and Imputation 
 
 The procedure for imputation and cleaning for each dataset is described in the corresponding section below. We standardized the names of the countries and merged the datasets into one. An additional issue that we faced while trying to reproduce the results of the article has been the missing data.
 
-During the reproduction of the article, we found that the authors didn't describe in detail how they handled missing data in the indicators. They mention on page 14 of the Supplementary Material, that (quoting): "For countries where data where missing, data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)."
+During the reproduction of the article, we found that the authors didn't describe in detail how they handled missing data in the indicators. They mention on page 14 of the Supplementary Material, that (quoting): "For countries where data were missing, data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)."
 
 However, regarding the year when women received the right to vote in a specific country, the missing values are the ones coming from the United Arab Emirates and Saudi Arabia, that neither in 2006 (when the WEF Global Gender Gap Report that the authors quote as a reference for the missing values) nor now (in 2022) have guaranteed the right to vote for women yet. There is missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either. Missing data and imputation, in general, may not be crucial for the replication of the analysis, although are not desirable. The problem of missing data for a given country often does not influence much the overall trends of found correlations. However, it becomes very relevant for checking the implications of the study concerning a specific country of interest.
 
 
 # Pure replication and comparison to the Original Article
 
-In this section, we describe how to reproduce the plots and compare the results, indicating the difference between original and replication with z-score. The number of observations for each country-level indicator is shown in the table below, and it is used in the z-score calculation.
+In this section, we describe how to reproduce the plots and compare the results, indicating the difference between original and replication with a z-score. The number of observations for each country-level indicator is shown in the table below, and it is used in the z-score calculation.
 
 Table: Number of observations for each country-level indicator. Note that the difference in the GEI number of observations is due to the imputation that we performed in our analysis.
 
@@ -109,9 +109,9 @@ Table: Correlation between PCA-summarised gender differences in economic prefere
 | | *z-score* | -0.053 |  -0.288 |
 
 
-We reproduced the plots in Figure 2A-F [@doi:10.1126/science.aas9899] using the variable conditioning analysis. This has been done for the economic development, for the GEI, and for each of the four indicators building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. All the variables used have been standardized to have a mean at 0 and a standard deviation of 1 before applying the conditional analysis. Using the residuals, we performed a linear regression on the data points, and extracted correlation coefficients and p-values. In Table 4, we compare the results obtained from our replication analysis and the extended analysis to the results found in @doi:10.1126/science.aas9899, Figure 2A-F. 
+We reproduced the plots in Figure 2A-F [@doi:10.1126/science.aas9899] using the variable conditioning analysis. This has been done for the economic development, for the GEI, and each of the four indicators building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. All the variables used have been standardized to have a mean at 0 and a standard deviation of 1 before applying the conditional analysis. Using the residuals, we performed a linear regression on the data points and extracted correlation coefficients and p-values. In Table 4, we compare the results obtained from our replication analysis and the extended analysis to the results found in @doi:10.1126/science.aas9899, Figure 2A-F. 
 
-Table: Comparison of the conditional analysis results for original and replicated study. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences. Reported are the **slopes** of the linear regressions and the corresponding p-value. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Comparison of the conditional analysis results for the original and replicated study. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences. Reported are the **slopes** of the linear regressions and the corresponding p-value. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | Variable | Regressed on | Conditional on | Original | Repl. (OLS) | Repl. (RLR) |
 --- | --- | --- | --- | --- | --- |
@@ -123,7 +123,7 @@ Table: Comparison of the conditional analysis results for original and replicate
 | Avg. Gender Diff. | TSWS | Log GDP p/c | 0.2988**  | 0.1879* | 0.1929* |
 
 
-Most of the time, we find very similar slope coefficient and statistical significance between the variables of our study and the results from the original study. The deviation for  time since women suffrage variable can likely be explained by the differences in imputation of the data.
+Most of the time, we find very similar slope coefficients and statistical significance between the variables of our study and the results from the original study. The deviation for *time since women's suffrage* variable can likely be explained by the differences in the imputation of the data.
 
 In Table 5, we summarise the results of the correlation of single preferences to the economic development of the countries, to be compared to Figure S2 in @FH_SM, while in Table 6, we show the results for the single preferences gender differences regressed on the Gender Equality Index, as done in Figure S3 in @FH_SM.
 
@@ -208,6 +208,6 @@ Table: Gender differences and economic development by preference and country wit
 
 ### Further notes on the replication
 
-The Figure S7 of @FH_SM could not be replicated because there is no access to raw data. For the replication of sveral tables in the supplementary material, the description of the datasets and the analysis approach was not sufficient for replication.
+The Figure S7 of @FH_SM could not be replicated because there is no access to raw data. For the replication of several tables in the supplementary material, the description of the datasets and the analysis approach was not sufficient for replication.
 
 # References
