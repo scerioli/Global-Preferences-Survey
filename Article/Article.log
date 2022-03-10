@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.30)  10 MAR 2022 08:30
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.30)  10 MAR 2022 08:36
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -996,14 +996,14 @@ Package pdftex.def Info: figures/corr_equality_economicdev.pdf  used on input l
 ine 306.
 (pdftex.def)             Requested size: 469.74411pt x 273.19527pt.
 [3]
-<figures/GenderEqualityIndex.png, id=74, 808.01875pt x 1159.33125pt>
+<figures/GenderEqualityIndex.png, id=74, 597.9138pt x 846.0408pt>
 File: figures/GenderEqualityIndex.png Graphic file (type png)
 <use figures/GenderEqualityIndex.png>
 Package pdftex.def Info: figures/GenderEqualityIndex.png  used on input line 34
 1.
-(pdftex.def)             Requested size: 453.32582pt x 650.424pt.
+(pdftex.def)             Requested size: 459.69255pt x 650.45941pt.
 
-LaTeX Warning: Float too large for page by 23.93842pt on input line 343.
+LaTeX Warning: Float too large for page by 23.97383pt on input line 343.
 
 [4 <./figures/corr_equality_economicdev.pdf>] [5 <./figures/GenderEqualityIndex
 .png>]
@@ -1046,7 +1046,7 @@ e/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on Article.pdf (11 pages, 578284 bytes).
+Output written on Article.pdf (11 pages, 873031 bytes).
 PDF statistics:
  462 PDF objects out of 1000 (max. 8388607)
  353 compressed objects within 4 object streams
