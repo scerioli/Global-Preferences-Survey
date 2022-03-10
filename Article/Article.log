@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.30)  9 MAR 2022 23:36
+This is pdfTeX, Version 3.14159265-2.6-1.40.18 (TeX Live 2017/Debian) (preloaded format=pdflatex 2019.5.30)  10 MAR 2022 08:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -996,21 +996,18 @@ Package pdftex.def Info: figures/corr_equality_economicdev.pdf  used on input l
 ine 306.
 (pdftex.def)             Requested size: 469.74411pt x 273.19527pt.
 [3]
-
-pdfTeX warning: pdflatex (file ./figures/GenderEqualityIndex.pdf): PDF inclusio
-n: found PDF version <1.7>, but at most version <1.5> allowed
-<figures/GenderEqualityIndex.pdf, id=74, 598.15468pt x 846.0408pt>
-File: figures/GenderEqualityIndex.pdf Graphic file (type pdf)
-<use figures/GenderEqualityIndex.pdf>
-Package pdftex.def Info: figures/GenderEqualityIndex.pdf  used on input line 34
+<figures/GenderEqualityIndex.png, id=74, 808.01875pt x 1159.33125pt>
+File: figures/GenderEqualityIndex.png Graphic file (type png)
+<use figures/GenderEqualityIndex.png>
+Package pdftex.def Info: figures/GenderEqualityIndex.png  used on input line 34
 1.
-(pdftex.def)             Requested size: 459.87773pt x 650.45941pt.
+(pdftex.def)             Requested size: 453.32582pt x 650.424pt.
 
-LaTeX Warning: Float too large for page by 23.97383pt on input line 343.
+LaTeX Warning: Float too large for page by 23.93842pt on input line 343.
 
 [4 <./figures/corr_equality_economicdev.pdf>] [5 <./figures/GenderEqualityIndex
-.pdf>]
-<figures/conditional_analysis_all_extended.pdf, id=141, 597.50786pt x 597.50786
+.png>]
+<figures/conditional_analysis_all_extended.pdf, id=123, 597.50786pt x 597.50786
 pt>
 File: figures/conditional_analysis_all_extended.pdf Graphic file (type pdf)
 <use figures/conditional_analysis_all_extended.pdf>
@@ -1030,7 +1027,7 @@ Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 799.
  ) 
 Here is how much of TeX's memory you used:
  12677 strings out of 494798
- 182531 string characters out of 6177669
+ 182507 string characters out of 6177669
  283174 words of memory out of 5000000
  15638 multiletter control sequences out of 15000+600000
  83997 words of font info for 138 fonts, out of 8000000 for 9000
@@ -1049,10 +1046,10 @@ e/texmf/fonts/type1/public/lm/lmr8.pfb></usr/share/texmf/fonts/type1/public/lm/
 lmr9.pfb></usr/share/texmf/fonts/type1/public/lm/lmri10.pfb></usr/share/texmf/f
 onts/type1/public/lm/lmsy10.pfb></usr/share/texmf/fonts/type1/public/lm/lmsy7.p
 fb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on Article.pdf (11 pages, 520228 bytes).
+Output written on Article.pdf (11 pages, 578284 bytes).
 PDF statistics:
- 480 PDF objects out of 1000 (max. 8388607)
- 368 compressed objects within 4 object streams
+ 462 PDF objects out of 1000 (max. 8388607)
+ 353 compressed objects within 4 object streams
  48 named destinations out of 1000 (max. 500000)
  16464 words of extra memory for PDF output out of 17280 (max. 10000000)
 
