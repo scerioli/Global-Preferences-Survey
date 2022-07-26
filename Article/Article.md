@@ -37,6 +37,7 @@ abstract: |
 **Data availability:** The code for this analysis can be found on GitHub at https://github.com/scerioli/Global-Preferences-Survey
 
 
+
 # 1. Introduction
 
 Gender differences in economic behaviors, such as happiness [@SPSU], competition [@10.1257/jel.47.2.448; @https://doi.org/10.3982/ECTA6690; @KPS], or work preferences [@BEBLO201819], have been studied in sociology, psychology, and economics for many decades. Published findings on this topic and their relation to gender inequality are frequently used to influence decisions and policy-making, both in the public and private sectors. In turn, gender inequality topics are becoming a more integral part of the agenda for many public and private institutions and organizations, and it is essential for the stakeholders to reveal, estimate, monitor, and prevent gender inequalities on the individual, group, and country levels. 
@@ -49,24 +50,29 @@ However, an essential relation between the economic development and gender equal
 
 In this study, first, we conduct a pure replication of the reviewed analysis using the R programming language to extract gender differences in economic preferences from the available datasets. Second, we analyse the relationship between economic development and gender equality, as well as the joint gender equality index that was used by the original authors, highlighting the importance of using established indexes with conditional analysis. Finally, we demonstrate that findings on the relationship between gender differences and economic development lack evidence and do not hold when the conditional analysis is carried out with established gender equality indexes.
 
-# 2. Results
 
-## Gender differences in economic preferences: replication of the original analysis
+# 2. Summary of the original article
 
-In this section, we briefly describe the methodology of the original article and provide information on the replication to obtain gender differences in economic preferences and match our analysis with the results of the original article. We refer to this as a pure replication.  
+The analysis and main findings of the original article can be summarised as follows. The authors used the Gallup World Poll 2012 Global Preference Survey to measure the gender differences in economic preferences across 76 countries. They established a joint index that summarises the differences in all six preferences at the same time. They used Log GDP p/c as a proxy of economic development, while as a measure of gender equality, several indexes were introduced, including a newly composed joint measure for gender equality (Gender Equality Index, reported as GEI). The authors reported a large and statistically significant association between gender differences and Log GDP p/c (r = 0.67, p-value < 0.0001) and the GEI (r = 0.56, p-value < 0.0001), reflected in the *Research article summary* and graphical abstract. The authors also conducted a conditional analysis to isolate the impact of economic development and the GEI. The association was found to be of a slightly smaller magnitude but still rather strong and statistically significant (r = 0.53, p-value < 0.0001) when gender differences were related to Log GDP p/c conditioned on the GEI, and moderate and statistically significant (r = 0.32, p-value = 0.003) when relating with the GEI and conditioning on Log GDP p/c. The authors concluded that the evidence indicates that higher levels of economic development and gender equality favor the manifestation of gender differences in preferences across countries, *highlighting the critical role of availability of material and social resources, as well as gender-equal access to these resources, in facilitating the independent formation and expression of gender-specific preferences* [@doi:10.1126/science.aas9899].
 
+
+# 3. Replication of the original analysis
+
+<!-- In this section, we briefly describe the methodology of the original article and provide information on the replication to obtain gender differences in economic preferences and match our analysis with the results of the original article. We refer to this as a pure replication.  
+-->
+
+## Data
 To conduct the replication, we requested the Gallup World Poll data. The full dataset is under restricted access, and education level and household income quintile on the individual level of the participants are not available in the open-access version (for more information, see Appendix, Section 2, "Data Collection, Cleaning, and Standardization"). In @FH_SM, the authors provide a control analysis, where all the independent variables were dropped but the gender, which delivered results similar to the one when all the independent variables were included. Therefore, we decided to continue the reproduction without having access to education level and the income quintile.
+
+## Methods
 
 To assess the gender differences in each economic preference, the following model was used:
 
 $\textrm{p}_i = \beta_1^c \textrm{female}_i + \beta_2^c \textrm{age}_i + \beta_3^c \textrm{age}^2_i + \beta_4^c \textrm{subjectiveMathSkills}_i + \epsilon_i$
 
-where the subscript $i$ is the index of a survey participant. This results in 6 models -- one for each preference measure, $p_i$ -- having an intercept and 4 coefficients, each coefficient being related to the variable in the formula above. The coefficient for the dummy variable *female*, $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, there are 6 coefficients representing the preference differences related to gender for 76 countries. To summarise the gender differences among the six economic preferences, a principal component analysis (PCA) is performed on the gender coefficients. The PCA is a dimensionality reduction technique that allows a reshaping of the 6 coefficients into orthogonal components that maximize the sample variance. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences.
+where the subscript $i$ is the index of a survey participant. This results in 6 models -- one for each preference measure, $p_i$ -- having an intercept and 4 coefficients, each coefficient being related to the variable in the formula above. The coefficient for the dummy variable *female*, $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, there are 6 coefficients representing the preference differences related to gender for 76 countries. 
 
-We managed to replicate the analysis and obtain the gender differences in the economic preferences at the country level (for details, see Table 1 in the Appendix). A diagnostic test of the linear regressions indicated the presence of non-normality. We also ran an analysis based on robust linear regression instead of ordinary linear regression to mitigate potential downstream biases and use this method for our extended analysis below. 
-
-
-## Relation between gender differences, economic development, and gender equality
+To summarise the gender differences among the six economic preferences, a principal component analysis (PCA) is performed on the gender coefficients. The PCA is a dimensionality reduction technique that allows a reshaping of the 6 coefficients into orthogonal components that maximize the sample variance. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences.
 
 To study the effect of both Log GDP p/c and gender equality, at the same time, one should incorporate all three variables into a multiple linear regression model with both factors as explanatory variables, for example:
 
@@ -74,11 +80,20 @@ $\textrm{avgGenderDiff}_{\textrm{country}} = \alpha + \beta_1 \ \textrm{LogGDPpc
 
 Alternatively, to separate the contributions of economic development and gender equality, the authors in the original article performed a simple linear regression among residual plots. The theorem from Frisch–Waugh–Lovell [@10.2307/1907330; @doi:10.1080/01621459.1963.10480682]  guarantees that the coefficients found from this residual analysis are the same as those found for multiple regression of the gender differences on both economic development and gender equality index of the countries.
 
+## Results
+
+We managed to replicate the analysis and obtain the gender differences in the economic preferences at the country level (for details, see Table 1 in the Appendix). A diagnostic test of the linear regressions indicated the presence of non-normality. We also ran an analysis based on robust linear regression instead of ordinary linear regression to mitigate potential downstream biases and use this method for our extended analysis below. 
+
+--> Add the results from the appendix.
+
+
+# 4. Extended analysis
+
+## Gender equality indexes and potential issues
+
 The correlation between economic development and gender equality indexes plays a central role in investigating how the gender differences in economic preferences are related to them. The fact that the two variables are dependent is known [@10.2307/23644911] and was reported in [@GGGreport2015] for WEF GGGI with GDP p/c in linear and not logarithmic scale. To check the correlation between economic development and gender equality of the countries analysed in the study, we regressed the Log GDP p/c and joint Gender Equality Index used by the authors in the original article. In addition, we explored the correlation of other three indexes for the measure of gender equality: two were indexes already introduced by the original authors, as the Global Gender Gap Index from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/) (abbreviated to WEF GGGI), and the Gender Inequality Index from the United Nations [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf) (UNDP GII). The third index to be used for the correlation check was the UNDP [Gender Development Index](http://hdr.undp.org/en/indicators/137906) (GDI), which we will later use for our extended analysis. The correlation between economic development expressed in Log GDP p/c and gender equality indexes in the countries is very strong (see also Figure 1): for the Gender Equality Index, we found a correlation with r = 0.5440 and a p-value < 0.0001; for WEF GGGI, r = 0.2926 and p-value = 0.013; for UNDP GII, r = 0.8542 and p-value < 0.0001; and for the UNDP GDI, a correlation of r = 0.5316 with p-value < 0.0001.
 
 ![Correlation between gender equality indicators and economic development by country. Note that only the countries participating in the original study are included. ](figures/corr_equality_economicdev.pdf)
-
-## Gender equality indexes and potential issues
 
 As already anticipated, the authors in the original article composed a joint measure of gender equality that they denoted as Gender Equality Index (GEI). To charactarize its structure, we visualized its composition with the diagram shown in Figure 2. The authors built this joint measure by using the PCA technique on four gender-equality indicators and taking the first component as a summary index of gender equality. Two of these indicators are indexes officially approved by international organizations, the WEF GGGI, and the UNDP GII; one is a widely used quantity, the [ratio of female and male labor force participation](http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS), taken from the World Bank database; and lastly, an indicator newly constructed by the authors the time since women suffrage, with the data taken from the [Inter-Parliamentary Union website](http://www.ipu.org/wmn-e/suffrage.htm#Note1), presumably to track long-term influences of the guaranteed right to vote as a proxy of gender equality. The WEF GGGI has a total of fourteen sub-indexes, grouped and weighted into four categories: economic participation and opportunity, political empowerment, educational attainment, and health and survival. The UNDP GII follows a similar logic to cover the same categories describing several aspects of human life, but using only five sub-indexes in total: two for health and reproduction-related issues, and three others for the remaining categories. 
 
@@ -144,9 +159,9 @@ Table: **Gender differences in each economic preference (y) regressed on Log GDP
 | Patience             | 0.3337**  | 0.0812 |
 
 
-# 3. Discussion and conclusions
+# 5. Discussion and conclusions
 
-In the present article, we replicated the results of the work by @doi:10.1126/science.aas9899 that related gender differences in economic preferences to economic development and gender equality. The analysis and main findings of the original article can be summarised as follows. The authors used the Gallup World Poll 2012 Global Preference Survey to measure the gender differences in economic preferences across 76 countries. They established a joint index that summarises the differences in all six preferences at the same time. They used Log GDP p/c as a proxy of economic development, while as a measure of gender equality, several indexes were introduced, including a newly composed joint measure for gender equality (Gender Equality Index, reported as GEI). The authors reported a large and statistically significant association between gender differences and Log GDP p/c (r = 0.67, p-value < 0.0001) and the GEI (r = 0.56, p-value < 0.0001), reflected in the *Research article summary* and graphical abstract. The authors also conducted a conditional analysis to isolate the impact of economic development and the GEI. The association was found to be of a slightly smaller magnitude but still rather strong and statistically significant (r = 0.53, p-value < 0.0001) when gender differences were related to Log GDP p/c conditioned on the GEI, and moderate and statistically significant (r = 0.32, p-value = 0.003) when relating with the GEI and conditioning on Log GDP p/c. The authors concluded that the evidence indicates that higher levels of economic development and gender equality favor the manifestation of gender differences in preferences across countries, *highlighting the critical role of availability of material and social resources, as well as gender-equal access to these resources, in facilitating the independent formation and expression of gender-specific preferences* [@doi:10.1126/science.aas9899].
+In the present article, we replicated the results of the work by @doi:10.1126/science.aas9899 that related gender differences in economic preferences to economic development and gender equality. 
 
 Given the importance of these findings and their impact, and the impressive size and complexity of the analysis, it is of high value to conduct a detailed reconstruction of the methodology, checking the robustness of assumptions and inferences. As a first milestone, we performed a nearly pure replication, obtaining the gender differences in economic preferences from the Gallup World Poll 2012 Global Preference Survey, using the same methodology as in the original article. Unfortunately, the dataset is publicly available only in preprocessed form and partially restricted. To some extent, this hampered the replication's comparison with the original findings. Nevertheless, the extracted gender differences were close to the ones from the original article. In addition, we ran the same analysis using robust regression instead of ordinary linear regression as the data revealed signs of non-normality and outliers, but no significant changes in the distribution of gender differences in economic preferences were observed.  
 
