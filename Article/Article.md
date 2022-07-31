@@ -69,33 +69,66 @@ The authors concluded that the evidence indicates that higher levels of economic
 
 # 3. Replication of the original analysis
 
-<!-- In this section, we briefly describe the methodology of the original article and provide information on the replication to obtain gender differences in economic preferences and match our analysis with the results of the original article. We refer to this as a pure replication.  
--->
+In this section, we describe the methodology used to replicate the original article analysis and compare our results to theirs.
 
 ## Data
-To conduct the replication, we requested the Gallup World Poll data. The full dataset is under restricted access, and education level and household income quintile on the individual level of the participants are not available in the open-access version (for more information, see Appendix, Section 2, "Data Collection, Cleaning, and Standardization"). In @FH_SM, the authors provide a control analysis, where all the independent variables were dropped but the gender, which delivered results similar to the one when all the independent variables were included. Therefore, we decided to continue the reproduction without having access to education level and the income quintile.
 
-## Methods
+To conduct the replication, we downloaded the Gallup World Poll Global Preferences Survey dataset from the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home). The full dataset is under restricted access, and education level and household income quintile on the individual level of the participants are not available in the open-access version (for more information, see Appendix, Section 2, "Data Collection, Cleaning, and Standardization"). Nevertheless, we decided to carry on the replication since the authors, in their supplementary material (@FH_SM), provide a complementary analysis where all the independent variables (except the gender) were dropped, and the results were coherent with what found in the main analysis. Therefore, we decided to continue the reproduction without having access to education level and the income quintile.
+
+## Methods and Results
 
 To assess the gender differences in each economic preference, the following model was used:
 
 $\textrm{p}_i = \beta_1^c \textrm{female}_i + \beta_2^c \textrm{age}_i + \beta_3^c \textrm{age}^2_i + \beta_4^c \textrm{subjectiveMathSkills}_i + \epsilon_i$
 
-where the subscript $i$ is the index of a survey participant. This results in 6 models -- one for each preference measure, $p_i$ -- having an intercept and 4 coefficients, each coefficient being related to the variable in the formula above. The coefficient for the dummy variable *female*, $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, there are 6 coefficients representing the preference differences related to gender for 76 countries. 
+where the subscript $i$ is the index of a survey participant. This results in 6 models -- one for each economic preference, $p_i$ -- having 4 coefficients, each coefficient being related to an independent variable. The coefficient for the dummy variable *female*, $\beta_1^c$, is used as a measure of the country-level gender difference. Therefore, in total, there are 6 coefficients representing the preference differences related to gender for 76 countries. 
 
-To summarise the gender differences among the six economic preferences, a principal component analysis (PCA) is performed on the gender coefficients. The PCA is a dimensionality reduction technique that allows a reshaping of the 6 coefficients into orthogonal components that maximize the sample variance. The first component of the PCA has then been used as a summary index of "average" gender differences in preferences.
+To summarise the gender differences among the six economic preferences, a principal component analysis (PCA) is performed on the gender coefficients. The PCA is a dimensionality reduction technique that allows a reshaping of the 6 coefficients into orthogonal components that maximize the sample variance. The first component of the PCA has then been used as a summary index of gender differences in preferences. 
 
-To study the effect of both Log GDP p/c and gender equality, at the same time, one should incorporate all three variables into a multiple linear regression model with both factors as explanatory variables, for example:
+The PCA technique has also been used on the four gender equality indexes to get a joint index that the authors called "Gender Equality Index" (GEI), as already described in the section 2 of this paper.
 
-$\textrm{avgGenderDiff}_{\textrm{country}} = \alpha + \beta_1 \ \textrm{LogGDPpc}_{\textrm{country}} + \beta_2 \ \textrm{genderEquality}_{\textrm{country}}$
+The summary index has been then regressed on Log GDP p/c to obtain an estimation of the correlation between gender differences in economic preferences and economic development, finding r = 0.6830 with p-value < 0.001 (see Table 1). The summary index has been also regressed on the Gender Equality Index, obtaining a correlation of r = 0.6079 and p-value < 0.001 (again in Table 1). To have an estimation of the similarity of the results, we computer the z-scores between our correlation coefficient and the original authors' one. The z-scores couldn't exclude any presence of statistically significant difference between the results.
 
-Alternatively, to separate the contributions of economic development and gender equality, the authors in the original article performed a simple linear regression among residual plots. The theorem from Frisch–Waugh–Lovell [@10.2307/1907330; @doi:10.1080/01621459.1963.10480682]  guarantees that the coefficients found from this residual analysis are the same as those found for multiple regression of the gender differences on both economic development and gender equality index of the countries.
 
-## Results
+Table: Correlation between PCA-summarised gender differences in economic preferences vs Log GDP p/c and joint Gender Equality Index. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
-We managed to replicate the analysis and obtain the gender differences in the economic preferences at the country level (for details, see Table 1 in the Appendix). A diagnostic test of the linear regressions indicated the presence of non-normality. We also ran an analysis based on robust linear regression instead of ordinary linear regression to mitigate potential downstream biases and use this method for our extended analysis below. 
+|  | | Log GDP p/c | Gender Equality Index 
+--- | --- | --- | --- | 
+| Original | | 0.6685*** | 0.5580*** | 
+| Replication | | 0.6830*** | 0.6079*** | 
+| | *z-score* | -0.161 |  -0.449 |
 
---> Add the results from the appendix.
+
+To study the effect of both Log GDP p/c and gender equality, one could incorporate all three variables into a multiple linear regression model with both factors as explanatory variables, for example:
+
+$\textrm{JointGenderDiff}_c = \alpha + \beta_1 \ \textrm{LogGDPpc}_c + \beta_2 \ \textrm{GenderEquality}_c$
+
+where $c$ indicates the country-level.
+
+Alternatively, to separate the contributions of economic development and gender equality, the authors in the original article performed a simple linear regression on residual plots. The theorem from Frisch–Waugh–Lovell [@10.2307/1907330; @doi:10.1080/01621459.1963.10480682] guarantees that the coefficients found from this residual analysis are the same as those found for multiple regression of the gender differences on both economic development and gender equality index of the countries.
+
+We have regressed the summarised gender differences in economic preferences on the Log GDP p/c conditioning on the Gender Equality Index, in order to estimate the effect of solely the economic development, assuming a constant gender equality in the countries. Then, we did the same but conditioning on the Log GDP p/c, therefore keeping constant the economic development of the countries to estimate the pure effect of gender equality (see first two entries of Table 2). These results are to be compared to Fig. 2 A and 2 B of the original authors article (*footnote?*)
+
+Then, following the original authors, we also regressed the gender differences in economic preferences on the single gender equality indexes, conditioning on Log GDP p/c, to estimate the effect of the single gender equality indexes without confounders coming from the economic development. The results can be seen in Table 2 (Fig. 2 C-F of the original article). (*maybe we should add somewhere what the acronyms are?*)
+
+
+Table: Comparison of the conditional analysis results for the original and replicated study. The first component of the PCA has then been used as a summary index of summarised gender differences in preferences. Reported are the **slopes** of the linear regressions and the corresponding p-value. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+
+| Variable | Regressed on | Conditional on | Original | Replication |
+--- | --- | --- | --- | --- | --- |
+| Joint Gender Diff. | Log GDP p/c | GEI| 0.5258***  | 0.5003*** | 
+| Joint Gender Diff. | GEI | Log GDP p/c | 0.3192**  | 0.3358*** |
+| Joint Gender Diff. | WEF GGGI | Log GDP p/c | 0.2327**  | 0.2234* | 
+| Joint Gender Diff. | UNDP GII | Log GDP p/c | 0.2911  | 0.3180 | 
+| Joint Gender Diff. | F/M LFP | Log GDP p/c | 0.2453*  | 0.2206* | 
+| Joint Gender Diff. | TSWS | Log GDP p/c | 0.2988**  | 0.1879* |
+
+
+## Robust Linear Regression
+
+A diagnostic test of the linear regressions indicated the presence of non-normality (*should we add the plots or anything to justify that here?*. Therefore, we ran an analysis based on robust linear regression instead of ordinary linear regression to mitigate potential downstream biases and also use this method for the extended analysis below. 
+
+The results obtained with the robust linear regression didn't differ significantly from the original and the replication analysis. They can be checked in the Appendix.
 
 
 # 4. Extended analysis
