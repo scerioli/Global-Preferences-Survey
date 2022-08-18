@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7.25) (preloaded format=pdflatex 2022.7.27)  31 JUL 2022 22:17
+This is pdfTeX, Version 3.141592653-2.6-1.40.24 (MiKTeX 22.7.25) (preloaded format=pdflatex 2022.7.27)  18 AUG 2022 22:11
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -658,65 +658,65 @@ LaTeX Font Info:    External font `lmex10' loaded for size
 
 {C:/Users/ceriosar/AppData/Local/MiKTeX/fonts/map/pdftex/pdftex.map}] [2] [3] [
 4]
-<figures/corr_equality_economicdev.pdf, id=53, 1242.6425pt x 722.7pt>
+<figures/corr_equality_economicdev.pdf, id=52, 1242.6425pt x 722.7pt>
 File: figures/corr_equality_economicdev.pdf Graphic file (type pdf)
 <use figures/corr_equality_economicdev.pdf>
 Package pdftex.def Info: figures/corr_equality_economicdev.pdf  used on input l
-ine 490.
+ine 509.
 (pdftex.def)             Requested size: 469.74411pt x 273.19527pt.
 [5]
 <figures/GenderEqualityIndex.png, id=68, 597.9138pt x 846.0408pt>
 File: figures/GenderEqualityIndex.png Graphic file (type png)
 <use figures/GenderEqualityIndex.png>
-Package pdftex.def Info: figures/GenderEqualityIndex.png  used on input line 52
+Package pdftex.def Info: figures/GenderEqualityIndex.png  used on input line 55
 2.
 (pdftex.def)             Requested size: 459.69255pt x 650.45941pt.
 
-LaTeX Warning: Float too large for page by 23.97383pt on input line 524.
+LaTeX Warning: Float too large for page by 23.97383pt on input line 554.
 
 [6 <./figures/corr_equality_economicdev.pdf>] [7 <./figures/GenderEqualityIndex
-.png>]
-<figures/conditional_analysis_all_extended.pdf, id=118, 597.50786pt x 597.50786
+.png>] [8]
+<figures/conditional_analysis_all_extended.pdf, id=125, 597.50786pt x 597.50786
 pt>
 File: figures/conditional_analysis_all_extended.pdf Graphic file (type pdf)
 <use figures/conditional_analysis_all_extended.pdf>
 Package pdftex.def Info: figures/conditional_analysis_all_extended.pdf  used on
- input line 621.
+ input line 666.
 (pdftex.def)             Requested size: 469.75584pt x 469.75584pt.
-[8] [9 <./figures/conditional_analysis_all_extended.pdf>] [10] [11] [12] [13] (
-Article.aux) ) 
+[9] [10 <./figures/conditional_analysis_all_extended.pdf>] [11] [12] [13] (Arti
+cle.aux) ) 
 Here is how much of TeX's memory you used:
  14034 strings out of 478337
- 226661 string characters out of 2835250
- 567855 words of memory out of 3000000
+ 226659 string characters out of 2835250
+ 566855 words of memory out of 3000000
  31951 multiletter control sequences out of 15000+600000
- 551775 words of font info for 182 fonts, out of 8000000 for 9000
+ 551739 words of font info for 182 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 74i,7n,81p,1293b,562s stack positions out of 10000i,1000n,20000p,200000b,80000s
-{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/
-lm/lm-mathsy.enc}{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/dvi
-ps/lm/lm-rm.enc}{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/dvip
-s/lm/lm-mathit.enc}{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/d
-vips/lm/lm-ec.enc}<C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/type1/
-public/lm/lmbx10.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/typ
-e1/public/lm/lmbx12.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/
-type1/public/lm/lmbx9.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/font
-s/type1/public/lm/lmbxi10.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/
-fonts/type1/public/lm/lmmi10.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKT
-eX/fonts/type1/public/lm/lmmi7.pfb><C:/Users/ceriosar/AppData/Local/Programs/Mi
-KTeX/fonts/type1/public/lm/lmr10.pfb><C:/Users/ceriosar/AppData/Local/Programs/
-MiKTeX/fonts/type1/public/lm/lmr12.pfb><C:/Users/ceriosar/AppData/Local/Program
-s/MiKTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/ceriosar/AppData/Local/Progra
-ms/MiKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ceriosar/AppData/Local/Progr
-ams/MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/ceriosar/AppData/Local/Prog
-rams/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ceriosar/AppData/Local/Pro
-grams/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/ceriosar/AppData/Local/
-Programs/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/ceriosar/AppData/Loc
-al/Programs/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/ceriosar/AppData/L
-ocal/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
-Output written on Article.pdf (13 pages, 936512 bytes).
+ 74i,7n,81p,1293b,564s stack positions out of 10000i,1000n,20000p,200000b,80000s
+{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm/l
+m-mathsy.enc}{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/l
+m/lm-rm.enc}{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips/lm
+/lm-mathit.enc}{C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/enc/dvips
+/lm/lm-ec.enc}<C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/type1/publ
+ic/lm/lmbx10.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/type1/p
+ublic/lm/lmbx12.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/type
+1/public/lm/lmbx9.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/fonts/ty
+pe1/public/lm/lmbxi10.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/font
+s/type1/public/lm/lmmi10.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX/f
+onts/type1/public/lm/lmmi7.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKTeX
+/fonts/type1/public/lm/lmr10.pfb><C:/Users/ceriosar/AppData/Local/Programs/MiKT
+eX/fonts/type1/public/lm/lmr12.pfb><C:/Users/ceriosar/AppData/Local/Programs/Mi
+KTeX/fonts/type1/public/lm/lmr6.pfb><C:/Users/ceriosar/AppData/Local/Programs/M
+iKTeX/fonts/type1/public/lm/lmr7.pfb><C:/Users/ceriosar/AppData/Local/Programs/
+MiKTeX/fonts/type1/public/lm/lmr8.pfb><C:/Users/ceriosar/AppData/Local/Programs
+/MiKTeX/fonts/type1/public/lm/lmr9.pfb><C:/Users/ceriosar/AppData/Local/Program
+s/MiKTeX/fonts/type1/public/lm/lmri10.pfb><C:/Users/ceriosar/AppData/Local/Prog
+rams/MiKTeX/fonts/type1/public/lm/lmsy10.pfb><C:/Users/ceriosar/AppData/Local/P
+rograms/MiKTeX/fonts/type1/public/lm/lmsy7.pfb><C:/Users/ceriosar/AppData/Local
+/Programs/MiKTeX/fonts/type1/urw/helvetic/uhvr8a.pfb>
+Output written on Article.pdf (13 pages, 943767 bytes).
 PDF statistics:
- 509 PDF objects out of 1000 (max. 8388607)
+ 510 PDF objects out of 1000 (max. 8388607)
  66 named destinations out of 1000 (max. 500000)
  43112 words of extra memory for PDF output out of 51595 (max. 10000000)
 
