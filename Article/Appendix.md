@@ -45,32 +45,32 @@ We replicate the results using the R programming language version 4.0.3 (2020-10
 
 ### Global Preferences Survey and Gallup World Poll datasets
 
-To download the GPS dataset, one can go to the website of the Global Preferences Survey [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) in the section "downloads". There, choose the "Dataset" form and after filling it, one can download the dataset. The dataset is not provided in the rawest form: some were variables mixed and already standardized. Some sociodemographic variables (for instance, education level or income quintile) are not part of the Global Preference Survey, but of the Gallup World Poll dataset that is not openly available. This data is protected by copyright and can't be given to third parties. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information on it.
+To download the GPS dataset, one can go to the website of the Global Preferences Survey [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) in the section "downloads". The dataset is not provided in the rawest form: some were variables mixed and already standardized. Some sociodemographic variables (for instance, education level or income quintile) are not part of the Global Preference Survey, but of the Gallup World Poll dataset that is not openly available. This data is protected by copyright and can't be given to third parties. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information on it.
 
 ### Log GDP p/c and gender equality indexes
 
-From the [website of the World Bank](https://data.worldbank.org/indicator/), one can access the data about the GDP per capita on a certain set of years. The data for Log GDP p/c calculated in 2005 US dollars was already archived. We used Log GDP p/c in 2010 US dollars, instead. To build an estimator for Log GDP p/c, we averaged the data from 2003 until 2012 for all the available countries, as done in the original article, and matched the names of the countries with the ones from the GPS dataset.
+From the [website of the World Bank](https://data.worldbank.org/indicator/), one can access the data about the GDP per capita on a certain set of years. The data for Log GDP p/c calculated in 2005 US dollars was already archived. We used Log GDP p/c in 2010 US dollars, instead. To build an estimator for Log GDP p/c, we averaged the data from 2003 until 2012 for all the available countries, as done in the original article.
 
-The Gender Equality Index used in the original article was composed of four main datasets as the first principle component of the PCA of them:
+The Gender Equality Index used in the original article was composed of four main datasets as the first principle component of the Principal Component Analysis performed on them:
 
-- **WEF Global Gender Gap:** WEF Global Gender Gap Index Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data was missing, data was added from the World Economic Forum Global Gender Gap Report 2006. Note that we modified some of the country names directly on the csv file, that is why we provide this as an input file in the GitHub repository.
+- **World Economic Forum Global Gender Gap Index:** Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data was missing, data was added from the World Economic Forum Global Gender Gap Report 2006, as reported in the original article. 
 
-- **UN Gender Inequality Index:** Taken from the [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). We kept only the table called "Gender Inequality Index".
+- **United Nation Development Programme Gender Inequality Index:** Taken from the [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). We kept only the table called "Gender Inequality Index".
 
 - **Ratio of female and male labor force participation:** Average International Labor Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the average for the period between 2004 and 2013.
 
 - **Time since women’s suffrage:** This indicator was build based on the data about the year of suffrage in a given coutry taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election rights were granted, with no other restrictions commented. Some countries were colonies or within a union of the countries (for instance, Kazakhstan in the Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within a union and as an independent state. In this case, we kept the first date. It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights [@SAHO]. We kept the latest date when also Black women could vote. For Nigeria, considering the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USA data doesn't take into account that also up to 1964 black women weren't granted the right to vote (in general, Blacks were not granted that right up to that year). We didn't keep this date, because it was not explicitly mentioned in the original dataset.
 
-In this work we additionally involve the GDI index:
+In this work we additionally involve an additional index:
 
-- **Gender Development Index** taken from [Human Development Reports 2020](https://hdr.undp.org/en/content/gender-development-index-gdi). Note that we have downloaded the two tables of the Human Development Index for males and females, and used the ratio of the two as a GDI index, as described in the report.
+- **United Nation Development Programme Gender Development Index** taken from [Human Development Reports 2020](https://hdr.undp.org/en/content/gender-development-index-gdi). Note that we have downloaded the two tables of the Human Development Index for males and females, and used the ratio of the two as a GDI index, as described in the report.
 
 
 ### Missing Data and Imputation 
 
-The procedure for imputation and cleaning for each dataset is described in the corresponding section below. We standardized the names of the countries and merged the datasets into one. An additional issue that we faced while trying to reproduce the results of the article has been the missing data.
+One of the issues that we faced while trying to reproduce the results of the article has been the missing data.
 
-During the reproduction of the article, we found that the authors didn't describe in detail how they handled missing data in the indicators. They mention on page 14 of the Supplementary Material, that (quoting): "For countries where data were missing, data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)."
+During the reproduction of the article, we found that the original authors didn't describe in detail how they handled missing data in the indicators. They mention on page 14 of the Supplementary Material, that (quoting): "For countries where data were missing, data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)."
 
 However, regarding the year when women received the right to vote in a specific country, the missing values are the ones coming from the United Arab Emirates and Saudi Arabia, that neither in 2006 (when the WEF Global Gender Gap Report that the authors quote as a reference for the missing values) nor now (in 2022) have guaranteed the right to vote for women yet. There is missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either. Missing data and imputation, in general, may not be crucial for the replication of the analysis, although are not desirable. The problem of missing data for a given country often does not influence much the overall trends of found correlations. However, it becomes very relevant for checking the implications of the study concerning a specific country of interest.
 
@@ -95,7 +95,19 @@ Table: Number of observations for each country-level indicator. Note that the di
 
 To reproduce the plot of Figure 1A of the original article @doi:10.1126/science.aas9899, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the GEI in correlation to the gender differences for each economic preference, to reproduce the plot in Figure 1C of @doi:10.1126/science.aas9899. Then, we related the magnitude of the summarized gender difference coefficients (the first component of the PCA) with the logarithm of the average GDP per capita to see the effect of the economic development. This reproduced Figure 1B of the original article. We used a linear model to fit the correlation and extract the p-value, and for the plot the variables on the y-axis were additionally transformed as $(y-y_{min})/(y_{max}-y_{min})$. We applied the same method to extract the correlation between the GEI and the summarized gender preference, to see the effect of gender equality in the countries (Figure 1D,  of @doi:10.1126/science.aas9899). Note that here also the GEI is transformed to be on a scale between 0 and 1.
 
+![](figures/replication/main_Fig1A.pdf){width=50%}
+![](figures/replication/main_Fig1B.pdf){width=50%}
+![](figures/replication/main_Fig1C.pdf){width=50%}
+![](figures/replication/main_Fig1D.pdf){width=50%}
+
 We reproduced the plots in Figure 2A-F in @doi:10.1126/science.aas9899 using the variable conditioning analysis. This has been done for the economic development, for the GEI, and each of the four indicators building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on the gender differences on the six preferences. All the variables used have been standardized to have a mean at 0 and a standard deviation of 1 before applying the conditional analysis. Using the residuals, we performed a linear regression on the data points and extracted correlation coefficients and p-values.
+
+![](figures/replication/main_Fig2A.pdf){width=50%}
+![](figures/replication/main_Fig2B.pdf){width=50%}
+![](figures/replication/main_Fig2C.pdf){width=50%}
+![](figures/replication/main_Fig2D.pdf){width=50%}
+![](figures/replication/main_Fig2E.pdf){width=50%}
+![](figures/replication/main_Fig2F.pdf){width=50%}
 
 ## Reproducing the results in the Supplementary Material
 
