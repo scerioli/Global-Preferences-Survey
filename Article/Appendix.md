@@ -45,7 +45,7 @@ We replicate the results using the R programming language version 4.0.3 (2020-10
 
 ### Global Preferences Survey and Gallup World Poll datasets
 
-To download the GPS dataset, one can go to the website of the Global Preferences Survey [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) in the section "downloads". The dataset is not provided in the rawest form: some were variables mixed and already standardized. Some sociodemographic variables (for instance, education level or income quintile) are not part of the Global Preference Survey, but of the Gallup World Poll dataset that is not openly available. This data is protected by copyright and can't be given to third parties. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information on it.
+To download the GPS dataset, one can go to the website of the Global Preferences Survey [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) in the section "downloads". The dataset is not provided in the rawest form: some variables were mixed and already standardized. Some sociodemographic variables (for instance, education level or income quintile) are not part of the Global Preference Survey, but of the Gallup World Poll dataset that is not openly available. This data is protected by copyright and can't be given to third parties. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information on it.
 
 ### Log GDP p/c and gender equality indexes
 
@@ -57,11 +57,11 @@ The Gender Equality Index used in the original article was composed of four main
 
 - **United Nation Development Programme Gender Inequality Index:** Taken from the [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). We kept only the table called "Gender Inequality Index".
 
-- **Ratio of female and male labor force participation:** Average International Labor Organization estimates from 2003 to 2012 taken from the World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. We took the average for the period between 2004 and 2013.
+- **Ratio of female and male labor force participation:** An average of estimates from 2004 to 2013 provided by the International Labor Organization in World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. Note that originally the dataset was created taking the values between the years 2003 to 2012.
 
-- **Time since women’s suffrage:** This indicator was build based on the data about the year of suffrage in a given coutry taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election rights were granted, with no other restrictions commented. Some countries were colonies or within a union of the countries (for instance, Kazakhstan in the Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within a union and as an independent state. In this case, we kept the first date. It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights [@SAHO]. We kept the latest date when also Black women could vote. For Nigeria, considering the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. Note: USA data doesn't take into account that also up to 1964 black women weren't granted the right to vote (in general, Blacks were not granted that right up to that year). We didn't keep this date, because it was not explicitly mentioned in the original dataset.
+- **Time since women’s suffrage:** This indicator was build based on the data about the year of suffrage in a given coutry taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election rights were granted, with no other restrictions commented. Some countries were colonies or within a union of the countries (for instance, Kazakhstan in the Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within a union and as an independent state. In this case, we kept the first date. It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights [@SAHO]. We kept the latest date when also Black women could vote. For Nigeria, considering the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. 
 
-In this work we additionally involve an additional index:
+In this work we additionally involve the following index:
 
 - **United Nation Development Programme Gender Development Index** taken from [Human Development Reports 2020](https://hdr.undp.org/en/content/gender-development-index-gdi). Note that we have downloaded the two tables of the Human Development Index for males and females, and used the ratio of the two as a GDI index, as described in the report.
 
@@ -79,7 +79,8 @@ However, regarding the year when women received the right to vote in a specific 
 
 In this section, we describe how to reproduce the plots and compare the results, indicating the difference between original and replication with a z-score. The number of observations for each country-level indicator is shown in the table below, and it is used in the z-score calculation.
 
-Table: Number of observations for each country-level indicator. Note that the difference in the GEI number of observations is due to the imputation that we performed in our analysis.
+Table: Number of observations for each country-level indicator. Note that the difference in the number of observations for GEI is due to the imputation that we performed in our analysis.
+
 
 | Indicator | Original | Replication | Extended |
 --- | --- | --- | --- |
@@ -93,7 +94,7 @@ Table: Number of observations for each country-level indicator. Note that the di
 
 ## Reproducing the Plots of the Main Article
 
-To reproduce the plot of Figure 1A of the original article @doi:10.1126/science.aas9899, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the GEI in correlation to the gender differences for each economic preference, to reproduce the plot in Figure 1C of @doi:10.1126/science.aas9899. Then, we related the magnitude of the summarized gender difference coefficients (the first component of the PCA) with the logarithm of the average GDP per capita to see the effect of the economic development. This reproduced Figure 1B of the original article. We used a linear model to fit the correlation and extract the p-value, and for the plot the variables on the y-axis were additionally transformed as $(y-y_{min})/(y_{max}-y_{min})$. We applied the same method to extract the correlation between the GEI and the summarized gender preference, to see the effect of gender equality in the countries (Figure 1D,  of @doi:10.1126/science.aas9899). Note that here also the GEI is transformed to be on a scale between 0 and 1.
+To reproduce the plot of Figure 1A of the original article @doi:10.1126/science.aas9899, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the GEI in correlation to the gender differences for each economic preference, to reproduce the plot in Figure 1C of @doi:10.1126/science.aas9899. Then, we related the magnitude of the summarized gender difference coefficients (the first component of the PCA) with the logarithm of the average GDP per capita to see the effect of the economic development. This reproduced Figure 1B of the original article. We used a linear model to fit the correlation and extract the p-value, and for the plot the variables on the y-axis were additionally transformed as $(y-y_{min})/(y_{max}-y_{min})$, as it was implemented in the original article. We applied the same method to extract the correlation between the GEI and the summarized gender preference, to see the effect of gender equality in the countries (Figure 1D,  of @doi:10.1126/science.aas9899). Note that here also the GEI is transformed to be on a scale between 0 and 1. It is important to underline that such transformation may be misleading, as GEI = 1 does not mean full gender equality (no country achieved this state) as well as GEI = 0 does not necessary mean the full absence of it.
 
 ![](figures/replication/main_Fig1A.pdf){width=50%}
 ![](figures/replication/main_Fig1B.pdf){width=50%}
@@ -113,7 +114,7 @@ We reproduced the plots in Figure 2A-F in @doi:10.1126/science.aas9899 using the
 
 For the comparison of the results from Figure S4 in @FH_SM, we refer to Table 3, showing the correlation between the average gender differences to the single-gender equality indicators. To assess the consistency of the original and reproduction analyzes and approximately estimate the difference between correlation coefficients, we used z-scores. As the tables below show, all correlation coefficients were found to be consistent  (*z-score* $< 2$). 
 
-Table: Single indicators for the gender equality at the country level correlated with gender differences. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+Table: Single indicators for the gender equality at the country level correlated with gender differences in economic preferences. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
 |  |             | WEF GGGI  | UNDP GII  | F/M LFP | TSWS | 
 --- | --- | --- | --- |  --- | --- |
@@ -151,7 +152,7 @@ Table: Gender differences in single economic preferences regressed on Gender Equ
 Lastly, we have reproduced the results from Figures S8 and S9 of @FH_SM in Tables 6 and 7.
 
 
-Table: Preferences standardized at global level for Log GDP p/c. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Gender differences and economic development by preference and country using preferences standardized at the global level. Economic preferences were standardized at the global level, instead of using country level. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 | |             | Trust     | Altruism  | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
@@ -160,7 +161,8 @@ Table: Preferences standardized at global level for Log GDP p/c. Significance le
 | | *z-score*   | 0.024     |  -0.337   | -0.264   |  -0.478  | -0.458   | 0.197 |
 
 
-Table: Gender differences and economic development by preference and country without controls. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Gender differences and economic development by preference and country without controls (OLS being performed using only gender as a independent variable). Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+
 
 | |             | Trust     | Altruism | Pos. Rec. | Neg. Rec. | Risk Tak. | Patience | 
 --- | --- | --- | --- | --- | --- | --- | --- |
