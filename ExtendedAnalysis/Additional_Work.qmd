@@ -1,0 +1,412 @@
+---
+title: "Global Preferences Survey"
+subtitle: "Additional work"
+author: "Sara Cerioli"
+date: today
+format:
+  html:
+    embed-resources: true
+    code-fold: true
+    toc: true
+    toc_float: 
+      collapsed: false
+      smooth_scroll: false
+---
+
+```{r setup}
+# Set the path
+knitr::opts_knit$set(root.dir = "C:/Users/ceriosar/OneDrive - Mars Inc/Desktop/Private Sara/Global-Preferences-Survey/")
+```
+
+```{r echo = FALSE, include = FALSE}
+# Source helper functions
+source("ReproductionAnalysis/functions/helper_functions/SourceFunctions.r")
+SourceFunctions(path = "ReproductionAnalysis/functions/")
+SourceFunctions(path = "ReproductionAnalysis/functions/helper_functions/")
+SourceFunctions(path = "ExtendedAnalysis/functions/")
+
+# Load libraries
+LoadRequiredLibraries()
+library(effects)
+```
+
+# 0. Introduction
+
+Interesting ideas to explore:
+
+-    Interaction effects between Log GDP and GEI
+
+-   Use another economic development indicator (such as GINI index)
+
+-   Split the HDI sub-indexes to understand which contributes more
+
+# 1. Interaction effects between LogGDP p/c and Gender Equality Indexes
+
+## 1.1 Using the Gender Equality Index (GEI) from the original authors
+
+```{r}
+# (This will be needed for later)
+GDI_index <- CreateGDIindex()
+# Load and prepare the data
+data_all <- LoadData()
+data_all$GDI_index <- GDI_index
+data_all <- PrepareData_new(data_all)
+data_all$data <- Standardize(data    = data_all$data,
+                             columns = c(5:10),
+                             level   = "country")
+dataComplete <- data_all$data[complete.cases(data_all$data)]
+
+# Create the models
+models <- CreateModelsForPreferencesCountryLevel(dataComplete, robust = FALSE)
+dataCoeff <- SummaryCoeffPerPreferencePerCountry(models)
+dataCoeff[data_all$data, `:=` (isocode     = i.isocode,
+                               logAvgGDPpc = log(i.avgGDPpc)),
+          on = "country"]
+setnames(dataCoeff, old = "gender1", new = "gender")
+
+# PCA on the preferences
+summaryIndex <- AvgGenderDiffPreferencesPCA(dataCoeff)
+summaryIndex <- CreateSummaryIndex_new(summaryIndex, data_all)
+summaryIndex$GenderIndex <- GenderIndexPCA(summaryIndex[, c(5:8)])
+summaryIndex <- Standardize(data    = summaryIndex, 
+                            columns = c(2, 4:9, 14),
+                            newName = TRUE)
+summaryIndex[, GenderIndexRescaled := Rescale(GenderIndex)]
+
+# Gender Inequality Index of UNDP has opposite meaning, so let's invert it
+summaryIndex[, ValueUNStd := -ValueUNStd]
+```
+
+When creating the models, we can also have a look at their summary and then perform an Analysis Of the Variance (ANOVA) to understand if they are relevant terms to be added to the model:
+
+```{r}
+# Create the simple linear model
+lr <- lm(avgGenderDiffStd ~ logAvgGDPpcStd + GenderIndexStd, 
+         data = summaryIndex)
+cat("Multilinear Regression Model with no interaction effects\n--------------------------------------------------------")
+summary(lr)
+
+
+# Create the linear model with interaction effects
+lri <- lm(avgGenderDiffStd ~ logAvgGDPpcStd * GenderIndexStd, 
+          data = summaryIndex)
+cat("Multilinear Regression Model with interaction effects\n-----------------------------------------------------")
+summary(lri)
+
+# This here is just for plotting purposes
+lri_b <- lm(avgGenderDiffStd ~ GenderIndexStd * logAvgGDPpcStd, 
+            data = summaryIndex)
+
+# ANOVA
+cat("ANALYSIS OF VARIANCE\n--------------------")
+anova(lr, lri)
+```
+
+From this, we see that interaction effect needs to be included. In order to understand better the effects, we can plot them:
+
+```{r}
+
+plot(effect(term = "logAvgGDPpcStd:GenderIndexStd", mod = lri))
+
+plot(effect(term = "GenderIndexStd:logAvgGDPpcStd", mod = lri_b))
+```
+
+The effect of the economic development increases with the increase of the GEI and vice-versa, with low economic development the effect of the GEI on the gender differences is lost, while it starts to have an effect for more economically developed countries.
+
+## 1.2 Using the GDI from UNDP
+
+```{r}
+
+lr2 <- lm(avgGenderDiffStd ~ logAvgGDPpcStd + GDIStd, data = summaryIndex)
+cat("Multilinear Regression Model with no interaction effects\n--------------------------------------------------------")
+summary(lr2)
+
+
+# Create the linear model with interaction effects
+lri2 <- lm(avgGenderDiffStd ~ logAvgGDPpcStd * GDIStd, 
+           data = summaryIndex)
+cat("Multilinear Regression Model with interaction effects\n-----------------------------------------------------")
+summary(lri2)
+
+# This here is just for plotting purposes
+lri2_b <- lm(avgGenderDiffStd ~ GDIStd * logAvgGDPpcStd, 
+             data = summaryIndex)
+
+# ANOVA
+cat("ANALYSIS OF VARIANCE\n--------------------")
+anova(lr2, lri2)
+```
+
+Plotting the effects:
+
+```{r}
+plot(effect(term = "logAvgGDPpcStd:GDIStd", mod = lri2))
+
+plot(effect(term = "GDIStd:logAvgGDPpcStd", mod = lri2_b))
+```
+
+## 1.3 Using the GGGI from WEF
+
+```{r}
+lr3 <- lm(avgGenderDiffStd ~ logAvgGDPpcStd + ScoreWEFStd, 
+          data = summaryIndex)
+cat("Multilinear Regression Model with no interaction effects\n--------------------------------------------------------")
+summary(lr3)
+
+
+# Create the linear model with interaction effects
+lri3 <- lm(avgGenderDiffStd ~ logAvgGDPpcStd * ScoreWEFStd, 
+           data = summaryIndex)
+cat("Multilinear Regression Model with interaction effects\n-----------------------------------------------------")
+summary(lri3)
+
+# This here is just for plotting purposes
+lri3_b <- lm(avgGenderDiffStd ~ ScoreWEFStd * logAvgGDPpcStd, 
+             data = summaryIndex)
+
+# ANOVA
+cat("ANALYSIS OF VARIANCE\n--------------------")
+anova(lr3, lri3)
+```
+
+```{r}
+plot(effect(term = "logAvgGDPpcStd:ScoreWEFStd", mod = lri3))
+
+plot(effect(term = "ScoreWEFStd:logAvgGDPpcStd", mod = lri3_b))
+```
+
+## 1.4 Using the GII from UNDP
+
+```{r}
+lr4 <- lm(avgGenderDiffStd ~ logAvgGDPpcStd + ValueUNStd, 
+          data = summaryIndex)
+cat("Multilinear Regression Model with no interaction effects\n--------------------------------------------------------")
+summary(lr4)
+
+
+# Create the linear model with interaction effects
+lri4 <- lm(avgGenderDiffStd ~ logAvgGDPpcStd * ValueUNStd, 
+           data = summaryIndex)
+cat("Multilinear Regression Model with interaction effects\n-----------------------------------------------------")
+summary(lri4)
+
+# This here is just for plotting purposes
+lri4_b <- lm(avgGenderDiffStd ~ ValueUNStd * logAvgGDPpcStd, 
+             data = summaryIndex)
+
+# ANOVA
+cat("ANALYSIS OF VARIANCE\n--------------------")
+anova(lr4, lri4)
+```
+
+```{r}
+
+plot(effect(term = "logAvgGDPpcStd:ValueUNStd", mod = lri4))
+
+plot(effect(term = "ValueUNStd:logAvgGDPpcStd", mod = lri4_b))
+```
+
+## Concluding Remarks
+
+All the models are telling a similar story: The interaction effect between economic development and gender equality increases the gender differences with an estimation between 0.15 and 0.22 std dev. In all the cases, we see that at below-the-average to average economic development, the gender equality of the country doesn't play a role (or it gives even a slight negative contribution) to the gender differences in economic preferences.
+
+When the economic development starts to be above the average, we see that the contribution of the gender equality starts to become bigger and bigger (the slope is steeper with higher gender equality index).
+
+Another interesting observation is that the models with interactions are more coherent to each other: the GDI gives now some statistically significant p-value as for the other ,odels, and all have a similar magnitude:
+
+| Index used for Gender Equality                    | $\beta$ Economic Development | $\beta$ Gender Equality | $\beta$ Interaction Term |
+|-----------------|----------------------|----------------|------------------|
+| Gender Equality Index (GEI from original authors) | 0.47                         | 0.34                    | 0.20                     |
+| Gender Development Index (UNDP GDI)               | 0.57                         | 0.31                    | 0.23                     |
+| Global Gender Gap Index (WEF GGGI)                | 0.58                         | 0.22                    | 0.15                     |
+| Gender Inequality Index (UNDP GII)                | 0.43                         | 0.30                    | 0.16                     |
+
+Note that the GII is inverted because originally it should be a measure of inequality, so multiplying it by a factor -1 should be the equality.
+
+The economic development is still the variable playing the most important role, but now the gender equality is a statistically significant coefficient (at 10% level minimum) for all the models and with a coefficient being slightly less strong than economic development, while the interaction term is statistically significant at 10% level for all models, contributing in a smaller way but with similar magnitude as the other two coefficients (always less than a half wrt log GDP p/c).
+
+# 2. Using Different Economic Development Indexes
+
+## 2.1 Human Development Index
+
+Now I want to explore a bit more the economic development index in a similar fashion as done for the gender equality. Let's then try to use another estimator for the economic development of a country and, analogously as the GDI used for the gender equality measurement, I'll use the Human Development Index (HDI) to capture a broader measure of the development for the countries analysed.
+
+```{r}
+# Read the input file
+HDI <- fread("ExtendedAnalysis/files/input/HDR21-22_Composite_indices_complete_time_series.csv", sep = ",", nrows = 195)[, 1:37]
+
+# Selecting the 2012 data similarly to the GDI
+HDI <- HDI[, .(iso = iso3, country, hdi_2012)]
+
+# Clean the country names according to the other data
+HDI[country %like% "Bosnia and Herzegovina", country := "Bosnia Herzegovina"]
+HDI[country %like% "Iran", country := "Iran"]
+HDI[country %like% "Russian Federation", country := "Russia"]
+HDI[country %like% "Korea", country := "South Korea"]
+HDI[country %like% "Venezuela", country := "Venezuela"]
+HDI[country %like% "Bolivia", country := "Bolivia"]
+HDI[country %like% "Czechia", country := "Czech Republic"]
+HDI[country %like% "Moldova", country := "Moldova"]
+HDI[country %like% "Viet Nam", country := "Vietnam"]
+HDI[country %like% "Tanzania", country := "Tanzania"]
+
+data_all$HDI <- HDI
+
+# Prepare summary index
+summaryIndex[data_all$HDI, HDI := i.hdi_2012, on = "country"]
+
+# Standardize the predictors (mean 0 and std dev 1)
+summaryIndex <- Standardize(data    = summaryIndex, 
+                            columns = 24,
+                            newName = TRUE)
+```
+
+### Relationship of HDI with Log GDP p/c and Gender Equality Indicators
+
+After properly standardizing the data as done for the other variables, let's understand the relationship of this new variable with respect to the gender equality indicators.
+
+Of course, we see that the correlation with the Log GDP p/c is very high (95%) as expected, meaning that this indicator captures a similar insight for the countries. Nothing special, but always good to check.
+
+```{r}
+summary(lm(logAvgGDPpcStd ~ HDIStd, data = summaryIndex))
+PlotSummary(data = summaryIndex,
+            var2 = "logAvgGDPpcStd", var1 = "HDIStd",
+            display = TRUE)
+```
+
+```{r}
+summary(lm(GenderIndexStd ~ HDIStd, data = summaryIndex))
+PlotSummary(data = summaryIndex,
+            var1 = "HDIStd", var2 = "GenderIndexStd",
+            display = TRUE)
+```
+
+```{r}
+summary(lm(GDIStd ~ HDIStd, data = summaryIndex))
+PlotSummary(data = summaryIndex,
+            var1 = "HDIStd", var2 = "GDIStd",
+            display = TRUE)
+```
+
+```{r}
+summary(lm(ScoreWEFStd ~ HDIStd, data = summaryIndex))
+PlotSummary(data = summaryIndex,
+            var1 = "HDIStd", var2 = "ScoreWEFStd",
+            display = TRUE)
+```
+
+```{r}
+summary(lm(ValueUNStd ~ HDIStd, data = summaryIndex))
+PlotSummary(data = summaryIndex,
+            var1 = "HDIStd", var2 = "ValueUNStd",
+            display = TRUE)
+```
+
+All the gender equality variables correlate very strongly to the HDI indicator. Also this is no surprise, as it is already demonstrated that gender equality indicators correlates with economic development. Interestingly, the HDI and the UNDP GII are even more correlated than the same GNI with Log GDP p/c. These correlations give the certainty that a model not taking into account both effects is not a reliable one.
+
+### Modeling the effect of HDI and Gender Equality Indicators on gender differences on economic preferences
+
+Now let's create the models and analyse their outcome. I will not include the Gender Equality Index created by the original authors because in the past analysis it has already been widely criticized and the exclusion of it follows naturally.
+
+```{r}
+hdi_lri <- lm(avgGenderDiffStd ~ GDIStd * HDIStd, 
+           data = summaryIndex)
+summary(hdi_lri)
+
+plot(effect(term = "GDIStd:HDIStd", mod = hdi_lri))
+```
+
+```{r}
+hdi_lri2 <- lm(avgGenderDiffStd ~ ScoreWEFStd * HDIStd, 
+            data = summaryIndex)
+summary(hdi_lri2)
+
+plot(effect(term = "ScoreWEFStd:HDIStd", mod = hdi_lri2))
+```
+
+```{r}
+hdi_lri3 <- lm(avgGenderDiffStd ~ ValueUNStd * HDIStd, 
+            data = summaryIndex)
+summary(hdi_lri3)
+
+plot(effect(term = "ValueUNStd:HDIStd", mod = hdi_lri3))
+```
+
+The models created using HDI instead of Log GDP p/c give a less coherent picture, although the insights go to a similar direction:
+
+-   Economic development and gender differences in economic preferences are very strongly correlated, with 1 std deviation change of economic development indicator leading to 0.6 to 0.7 std dev increase in gender differences between men and women;
+
+-   The interaction effect continues to play a significant role, again spanning from 0.18 to 0.27 std dev increase per std dev unit increase of economic development and gender equality;
+
+-   The gender equality index is a bit unclear this time: It appears to be significant at 5% level only for the WEF GGGI, while for the other two indicators this does not appear as a statistically significant term.
+
+What does this imply? Do we have an effect due purely to the gender equality of the countries?
+
+### Extra comment
+
+What does it mean to model HDI together with GDI? GDI is the ratio between the HDI calculated for males on the one calculated for females.
+
+## 2.2 Gross National Income p/c
+
+```{r}
+GNI <- fread("ExtendedAnalysis/files/input/API_NY.GNP.PCAP.PP.CD_DS2_en_csv_v2_4772085/API_NY.GNP.PCAP.PP.CD_DS2_en_csv_v2_4772085.csv", sep = ",", skip = 4, header = TRUE)
+
+GNI <- GNI[, .(country = `Country Name`, isocode = `Country Code`, `2003`, `2004`, `2005`, `2006`, `2007`, `2008`, `2009`, `2010`, `2011`, `2012`)]
+
+# Clean the country names according to the other data
+GNI[country %like% "Bosnia and Herzegovina", country := "Bosnia Herzegovina"]
+GNI[country %like% "Iran", country := "Iran"]
+GNI[country %like% "Russian Federation", country := "Russia"]
+GNI[country %like% "Korea", country := "South Korea"]
+GNI[country %like% "Venezuela", country := "Venezuela"]
+GNI[country %like% "Czechia", country := "Czech Republic"]
+GNI[country %like% "Turkiye", country := "Turkey"]
+GNI[country %like% "Egypt", country := "Egypt"]
+
+avgGNI <- rowMeans(GNI[, -c("country", "isocode")], na.rm = TRUE)
+GNI[, avgGNI := avgGNI]
+data_all$GNI <- GNI
+
+# Prepare summary index
+summaryIndex[data_all$GNI, logAvgGNI := log(i.avgGNI), on = "country"]
+
+# Standardize the predictors (mean 0 and std dev 1)
+summaryIndex <- Standardize(data    = summaryIndex, 
+                            columns = 26,
+                            newName = TRUE)
+```
+
+### Modeling the effect of Log GNI p/c and the gender equality indicators on the gender differences in economic preferences
+
+```{r}
+gni_lri <- lm(avgGenderDiffStd ~ GDIStd * logAvgGNIStd, 
+           data = summaryIndex)
+summary(gni_lri)
+
+plot(effect(term = "GDIStd:logAvgGNIStd", mod = gni_lri))
+```
+
+```{r}
+gni_lri2 <- lm(avgGenderDiffStd ~ ScoreWEFStd * logAvgGNIStd, 
+           data = summaryIndex)
+summary(gni_lri2)
+
+plot(effect(term = "ScoreWEFStd:logAvgGNIStd", mod = gni_lri2))
+```
+
+```{r}
+gni_lri3 <- lm(avgGenderDiffStd ~ ValueUNStd * logAvgGNIStd, 
+           data = summaryIndex)
+summary(gni_lri3)
+
+plot(effect(term = "ValueUNStd:logAvgGNIStd", mod = gni_lri3))
+```
+
+```{r}
+summary(lm(ValueUNStd ~ logAvgGNIStd, data = summaryIndex))
+PlotSummary(data = summaryIndex,
+            var1 = "logAvgGNIStd", var2 = "ValueUNStd",
+            display = TRUE)
+```
+
+I am very puzzled by this result. Basically, using the UNDP GII together with the HDI as economic development, the coefficient for the gender equality index is not statistically significant (and close to 0). On the other side, if we use the log GNI (which is part of the HDI), the statistical significance appears for the gender equality and, on the contrary, it disappears for the economic development part. Hard to believe it is a random oscillation because the p-value and the coefficient of the economic development has been always very strong for all the other models.
