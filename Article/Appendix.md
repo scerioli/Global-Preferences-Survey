@@ -110,6 +110,32 @@ We reproduced the plots in Figure 2A-F in @doi:10.1126/science.aas9899 using the
 ![](figures/replication/main_Fig2E.pdf){width=50%}
 ![](figures/replication/main_Fig2F.pdf){width=50%}
 
+
+Table: Correlation between PCA-summarized gender differences in economic preferences vs Log GDP p/c and joint Gender Equality Index. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+
+| | Original | Replication | *z-score* |
+--- | --- | --- | --- |
+| corr$_{EconomDevelop}$ | 0.6685*** | 0.6830*** | -0.161 |
+| corr$_{GenderEquality}$ | 0.5580*** | 0.6079*** | -0.449 |
+
+
+
+Table: Correlation between PCA-summarized gender differences in economic preferences vs Log GDP p/c and aggregated Gender Equality Index using the robust linear regression (RLR) for the replication study. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+
+|  | | Log GDP p/c | Gender Equality Index 
+--- | --- | --- | --- | 
+| Original (OLS) | | 0.6685*** | 0.5580*** | 
+| Replication (RLR) | | 0.6733*** | 0.5905*** | 
+| | *z-score* | -0.053 |  -0.288 |
+
+
+## Correlation of Economic Development and Gender Equality in the countries
+
+As already mentioned, the fact that there is a correlation between economic development and gender equality is revealed [@10.2307/23644911] and reported in the @GGGreport2015. We checked in addition the correlation of Log GDP p/c with other three indexes for the measure of gender equality: two are indexes already introduced by the original authors, as the WEF GGGI from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/), and the UNDP GII [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). The third index to be analyzed in its correlation with Log GDP p/c was the UNDP [Gender Development Index](http://hdr.undp.org/en/indicators/137906) (GDI), which is also later used for the extended analysis. The correlation between economic development expressed in Log GDP p/c and gender equality indexes in the countries is very strong (see also Figure 1): for the Gender Equality Index, we found a correlation with r = 0.5440 and a p-value < 0.0001; for WEF GGGI, r = 0.2926 and p-value = 0.013; for UNDP GII, r = 0.8542 and p-value < 0.0001; finally, for the UNDP GDI, a correlation of r = 0.5316 with p-value < 0.0001.
+
+![Correlation between gender equality indicators and economic development by country. Note that only the countries participating in the original study are included. ](figures/corr_equality_economicdev.pdf)
+
+
 ## Reproducing the results in the Supplementary Material
 
 For the comparison of the results from Figure S4 in @FH_SM, we refer to Table 3, showing the correlation between the average gender differences to the single-gender equality indicators. To assess the consistency of the original and reproduction analyzes and approximately estimate the difference between correlation coefficients, we used z-scores. As the tables below show, all correlation coefficients were found to be consistent  (*z-score* $< 2$). 
