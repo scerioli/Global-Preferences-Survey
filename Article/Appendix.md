@@ -22,9 +22,9 @@ csl: bib_style/./mee.csl
 
 ## Overview
 
-We replicate the results using the R programming language version 4.2.1 (2022-06-23), and its open-source IDE RStudio. The following packages with respective versions are used:
+We replicate the results using the R programming language version 4.2.1 (2022-06-23), and its open-source IDE RStudio. Table 1 shows which packages with respective versions are used.
 
-Table:
+Table: Packages used in the replication study.
 
 |Package | $\quad$ | Version |
 --- | --- | ---
@@ -81,7 +81,7 @@ In this section, we describe how to reproduce the plots of FH and compare their 
 
 To reproduce the plot of Figure 1A of the original article @doi:10.1126/science.aas9899, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the GEI in correlation to gender differences for each economic preference to reproduce the plot in Figure 1C of @doi:10.1126/science.aas9899. Then, we related the magnitude of the summarized gender difference coefficients (the first component of the PCA) with the logarithm of the average GDP per capita to see the effect of economic development. This reproduced Figure 1B of the original article. We used a linear model to fit the correlation and extract the p-value. For the plot the variables on the y-axis were additionally transformed as $(y-y_{min})/(y_{max}-y_{min})$, as it was implemented in the original article. We applied the same method to extract the correlation between the GEI and the summarized gender preferences to see the effect of gender equality (Figure 1D,  of @doi:10.1126/science.aas9899). Note that here also the GEI is transformed to be on a scale between 0 and 1. It is important to underline that such transformation may be misleading, as GEI = 1 does not mean full gender equality (no country achieved this state), and GEI = 0 does not necessarily represent the full absence of it.
 
-![Reproduction of the Fig 1 A-D of FH analysis. In the top left figure, the countries were grouped by quartiles from poorer to richer, and the standardized coefficient for the gender differences is plotted for each of the individual economic preferences. Similarly, on the bottom left, with less equal to more equal countries. On the right, the correlation between gender differences in economic preferences summarized into one single coefficient using the PCA, and economic development (on top) and gender equality (bottom).](figures/replication/main_Fig1.pdf)
+![Reproduction of the Fig 1 A-D of FH analysis. In the top left figure, the countries were grouped by quartiles from poorer to richer, and the standardized coefficient for the gender differences is plotted for each of the individual economic preferences. Similarly, on the bottom left, with less equal to more equal countries. On the right, the correlation between gender differences in economic preferences summarized into one single coefficient using the PCA, and economic development (on top) and gender equality (bottom).](figures/appendix/main_Fig1.pdf)
 
 We summarized the results of Figure 1B and 1D in Table 2. Moreover, we add in the same Table the results obtained using the RLR instead of the OLS model.
 
@@ -96,14 +96,14 @@ Table: Correlation between PCA-summarized gender differences in economic prefere
 
 We reproduced the plots in Figures 2A-F in @doi:10.1126/science.aas9899 using the variable conditioning analysis (Figure 2). This has been done for economic development, for the GEI, and for each of the four indexes building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on gender differences in the six preferences. All the variables used have been standardized to have a mean at 0 and a standard deviation of 1 before performing the conditional analysis. Using the residuals, we performed a linear regression on the data points and extracted correlation coefficients and p-values.
 
-![Relationship between summarized gender differences in economic preferences and economic development conditional on gender equality (Figure 2A), and between summarized gender differences in economic preferences and gender equality conditional on economic development, with gender equality being represented by GEI (Fig 2B), by WEF GGGI (Figure 2C), by UNDP GII (Figure 2D), by F/M LFP (Figure 2E), and by TSWS (Figure 2F).](figures/replication/main_Fig2.pdf)
+![Relationship between summarized gender differences in economic preferences and economic development conditional on gender equality (Figure 2A), and between summarized gender differences in economic preferences and gender equality conditional on economic development, with gender equality being represented by GEI (Fig 2B), by WEF GGGI (Figure 2C), by UNDP GII (Figure 2D), by F/M LFP (Figure 2E), and by TSWS (Figure 2F).](figures/appendix/main_Fig2.pdf)
 
 
 ## Correlation between Economic Development and Gender Equality
 
 As mentioned in our article, the fact that there is a correlation between economic development and gender equality is revealed [@10.2307/23644911] and reported in the @GGGreport2015. We checked the correlation between Log GDP p/c and GEI, reported here in Figure 3. In addition, we checked the correlation of Log GDP p/c with the three indexes used in our extended analysis for the measure of gender equality (Figure 3): the WEF GGGI from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/), the UNDP GII [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf), and the UNDP [Gender Development Index](http://hdr.undp.org/en/indicators/137906) (GDI).
 
-![Correlation between gender equality indexes and economic development by country. Note that only the countries that participated in the original study are included. ](figures/corr_equality_economicdev.pdf)
+![Correlation between gender equality indexes and economic development by country. Note that only the countries that participated in the original study are included. ](figures/appendix/corr_equality_economicdev.pdf)
 
 
 ## Reproducing the results in FH Supplementary Material
@@ -150,7 +150,7 @@ Table: Gender differences in single economic preferences regressed on Gender Equ
 Lastly, we have reproduced the results from Figures S8 and S9 of @FH_SM in Tables 6 and 7.
 
 
-Table: Gender differences and economic development by preference using preferences standardized at the global level. Economic preferences were standardized at the global level, instead of using country level. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Gender differences and economic development using preferences standardized at the global level. Economic preferences were also standardized at the global level, instead of using country level. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 |           |  Original | Replication (OLS) |
 ---         | ---       | ---               | 
