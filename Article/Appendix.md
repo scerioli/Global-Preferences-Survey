@@ -22,9 +22,9 @@ csl: bib_style/./mee.csl
 
 ## Overview
 
-We replicate the results using the R programming language version 4.2.1 (2022-06-23), and its open-source IDE RStudio. Table 1 shows which packages with respective versions are used.
+We performed our study using the R programming language version 4.2.1 (2022-06-23), and its open-source IDE RStudio. Table 1 shows which packages with respective versions are used.
 
-Table: Packages used in the replication study.
+Table: Packages and versions used in this replication study.
 
 |Package | $\quad$ | Version |
 --- | --- | ---
@@ -41,52 +41,48 @@ Table: Packages used in the replication study.
 
 ## Data Collection, Cleaning, and Standardization
 
+Here we provide a concise summary of the data sets utilized in  @doi:10.1126/science.aas9899, referred to as FH hereafter. We also outline the primary difficulties we encountered while replicating the original article.
+
 ### Global Preferences Survey and Gallup World Poll data sets
 
-To download the GPS data set, one can go to the website of the Global Preferences Survey [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) in the section "downloads". The data set is not provided in the rawest form: some variables were mixed and already standardized. Some sociodemographic variables (for instance, education level or income quintile) are not part of the Global Preference Survey, but of the Gallup World Poll data set that is not openly available. This data is protected by copyright and can not be given to third parties. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information on it.
+To download the GPS data set, one can go to the website of the Global Preferences Survey "[briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home)", in the section "downloads". The data set is not provided in the rawest form: some variables were mixed and already standardized. Some sociodemographic variables (for instance, education level or income quintile) are not part of the Global Preference Survey, but of the Gallup World Poll data set that is not openly available. This data is protected by copyright and can not be given to third parties. Check the website of the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home) for more information about it.
 
 ### Log GDP p/c and gender equality indexes
 
-From the [website of the World Bank](https://data.worldbank.org/indicator/), one can access the data about the GDP per capita for a certain set of years. The data for Log GDP p/c calculated in 2005 US dollars was already archived. We used Log GDP p/c in 2010 US dollars instead. To build an estimator for Log GDP p/c, we averaged the data from 2003 until 2012 for all the available countries, as done in the original article.
+From the website of the [World Bank](https://data.worldbank.org/indicator/), one can access the data about the GDP per capita for a certain set of years. The data for Log GDP p/c calculated in 2005 US dollars was already archived. We used Log GDP p/c in 2010 US dollars instead. To build an estimator for Log GDP p/c, we averaged the data from 2003 until 2012 for all the available countries, as done in FH.
 
-The Gender Equality Index used in the original article was composed of four main data sets as the first component of the Principal Component Analysis performed on them:
+The Gender Equality Index used in FH (described in Section 2 of our article) was built by performing a Principle Component Analysis on four data sets and using the first component as summarized gender equality index. The four data sets were:
 
-- **World Economic Forum Global Gender Gap Index:** Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/). For countries where data was missing, data was added from the World Economic Forum Global Gender Gap Report 2006, as reported in the original article. 
+- **World Economic Forum Global Gender Gap Index:** Taken from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/).
 
-- **United Nation Development Programme Gender Inequality Index:** Taken from the [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). We kept only the table called "Gender Inequality Index".
+- **United Nation Development Programme Gender Inequality Index:** Taken from the [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf). We kept only the table called "Gender Inequality Index". Values were inverted to create an index of equality.
 
-- **Ratio of female and male labor force participation:** An average of estimates from 2004 to 2013 provided by the International Labor Organization in World Bank database (http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Values were inverted to create an index of equality. Note that originally the data set was created taking the values between the years 2003 to 2012.
+- **Ratio of female and male labor force participation:** An average of estimates from 2004 to 2013 provided by the International Labor Organization in [World Bank database](http://data.worldbank.org/indicator/SL.TLF.CACT.FM.ZS). Note that originally the data set was created taking the values between the years 2003 to 2012.
 
-- **Time since women’s suffrage:** This indicator was build based on the data about the year of suffrage in a given country taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). For several countries more than one date where provided (for example, the right to be elected and the right to vote). We use the last date when both vote and stand for election rights were granted, with no other restrictions commented. Some countries were colonies or within a union of the countries (for instance, Kazakhstan in the Soviet Union). For these countries, the rights to vote and be elected might be technically granted two times within a union and as an independent state. In this case, we kept the first date. It was difficult to decide on South Africa because its history shows the racism part very entangled with women's rights [@SAHO]. We kept the latest date when also Black women could vote. For Nigeria, considering the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. 
+- **Time since women’s suffrage:** This indicator was build based on the data about the year of suffrage in a given country taken from the [Inter-Parliamentary Union Website](http://www.ipu.org/wmn-e/suffrage.htm#Note1). For several countries more than one date was provided (for example, the right to be elected and the right to vote might be granted in two different dates). We use the last date when both vote and stand for election rights were granted, with no other restrictions commented. Some countries were colonies or within a union of the countries, as for instance, Kazakhstan in the Soviet Union. For these countries, the rights to vote and be elected might be technically granted two times - within a union and as an independent state. In this case, we kept the first date. It was difficult to decide on South Africa because its history shows how racism was very entangled with women's rights [@SAHO]. We kept the latest date when also Black women could vote. For Nigeria, considering the distinctions between North and South, we decided to keep only the North data because, again, it was showing the completeness of the country and it was the last date. For countries where data was missing, data was added from the World Economic Forum Global Gender Gap Report 2006, as reported in the original article. 
 
-In the extended analysis, we also involve the following index:
+In our extended analysis, we also involved the following index:
 
 - **United Nation Development Programme Gender Development Index** taken from [Human Development Reports 2020](https://hdr.undp.org/en/content/gender-development-index-gdi). Note that we have downloaded the two tables of the Human Development Index for males and females, and used the ratio of the two as a GDI index, as described in the report.
 
 
 ### Missing Data and Imputation 
 
-One of the issues that we faced while trying to reproduce the results of the article has been the missing data.
-
-During the reproduction of the article, we found that the original authors did not describe in detail how they handled missing data in the indexes. They mention on page 14 of the Supplementary Material, that (quoting): "For countries where data were missing, data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)."
-
-However, regarding the year when women received the right to vote in a specific country, the missing values are the ones coming from the United Arab Emirates and Saudi Arabia, that neither in 2006 (when the WEF Global Gender Gap Report that the authors quote as a reference for the missing values) nor now (in 2022) have guaranteed the right to vote for women yet. There is missing data also in the other sources that the authors quote. So a quick search for the missing countries of the WEF report of 2015, shows us that these countries can’t be found in the report of 2006 either. Missing data and imputation, in general, may not be crucial for the replication of the analysis, although are not desirable. The problem of missing data for a given country often does not influence much the overall trends of found correlations. However, it becomes very relevant for checking the implications of the study concerning a specific country of interest.
+One of the challenges we encountered while attempting to replicate the article's results was the presence of missing data in certain datasets. FH did not provide detailed information on how they handled missing data in the indexes. In the Supplementary Material (page 14), they mention the following: "For countries where data were missing, data were added from the World Economic Forum Global Gender Gap Report 2006 (http://www3.weforum.org/docs/WEF_GenderGap_Report_2006.pdf)." However, when it comes to the specific year when women gained the right to vote in a particular country, the missing values pertain to the United Arab Emirates and Saudi Arabia. These countries have not yet granted the right to vote to women, neither in 2006 (when the WEF Global Gender Gap Report, referenced by the authors, was published) nor in the present year (2023). Additionally, missing data was found in other sources mentioned by the authors. Upon conducting a quick search for the missing countries in the 2015 WEF report, we discovered that these countries were not included in the 2006 report either. While missing data and imputation may not be critical for replicating the analysis, they are not desirable. The problem of missing data for a specific country often does not significantly impact the overall trends of observed correlations. However, it does complicate the reliable comparison of results.
 
 
 # Pure replication and comparison to the Original Article
 
-In this section, we describe how to reproduce the plots of FH and compare their results to ours. Both simple linear regression (OLS) and robust linear regression (RLR) were used.
+In this section, we describe how to reproduce the Figures found in FH and compare our results to theirs. For the results presented in the Tables, both simple linear regression (OLS) and robust linear regression (RLR) were used. When the Figures were replicated, we used the OLS, to ease the comparison with FH Figures.
 
 ## Reproducing the figures of the Main Article
 
-To reproduce the plot of Figure 1A of the original article @doi:10.1126/science.aas9899, we grouped the countries in quartiles based on the logarithm of their average GDP p/c, extracted the mean of each preference from the gender coefficients (the $\beta_1^c$) of the countries for each quartile, after standardizing them. The same method was applied to the GEI in correlation to gender differences for each economic preference to reproduce the plot in Figure 1C of @doi:10.1126/science.aas9899. Then, we related the magnitude of the summarized gender difference coefficients (the first component of the PCA) with the logarithm of the average GDP per capita to see the effect of economic development. This reproduced Figure 1B of the original article. We used a linear model to fit the correlation and extract the p-value. For the plot the variables on the y-axis were additionally transformed as $(y-y_{min})/(y_{max}-y_{min})$, as it was implemented in the original article. We applied the same method to extract the correlation between the GEI and the summarized gender preferences to see the effect of gender equality (Figure 1D,  of @doi:10.1126/science.aas9899). Note that here also the GEI is transformed to be on a scale between 0 and 1. It is important to underline that such transformation may be misleading, as GEI = 1 does not mean full gender equality (no country achieved this state), and GEI = 0 does not necessarily represent the full absence of it.
+To replicate Figure 1A of FH, we categorized countries into quartiles based on their Log GDP p/c. We then extracted the mean preference gender coefficients ($\beta_1^c$ in Equation 1 of our article) for each quartile, after standardizing them. The same approach was employed to reproduce Figure 1C of FH, where we examined the relationship between the Gender Equality Index (GEI) and gender differences in each economic preference. Subsequently, we analyzed the association between the magnitude of the summarized gender difference coefficients (the first component of the PCA) and the Log GDP p/c to assess the impact of economic development. This enabled us to reproduce Figure 1B of FH. To determine the correlation and obtain the corresponding p-value, we utilized a linear model. Additionally, for the plot, we transformed the variables on the y-axis as $(y-y_{min})/(y_{max}-y_{min})$, following the implementation in the original article. We applied the same methodology to derive the correlation between the GEI and the summarized gender preferences, aiming to evaluate the influence of gender equality (Figure 1D of FH). It is worth noting that in this case, the GEI was also transformed to a scale ranging from 0 to 1. However, it is important to emphasize that such a transformation may be misleading, as a GEI value of 1 does not indicate complete gender equality (as no country has achieved this status), and a GEI value of 0 does not necessarily signify the absence of gender equality entirely. Table 2 provides a summary of the results obtained for Figure 1B and 1D. Additionally, we include the results obtained using the RLR model instead of the OLS model in the same table.
 
 ![Reproduction of the Fig 1 A-D of FH analysis. In the top left figure, the countries were grouped by quartiles from poorer to richer, and the standardized coefficient for the gender differences is plotted for each of the individual economic preferences. Similarly, on the bottom left, with less equal to more equal countries. On the right, the correlation between gender differences in economic preferences summarized into one single coefficient using the PCA, and economic development (on top) and gender equality (bottom).](figures/appendix/main_Fig1.pdf)
 
-We summarized the results of Figure 1B and 1D in Table 2. Moreover, we add in the same Table the results obtained using the RLR instead of the OLS model.
 
-
-Table: Correlation between PCA-summarized gender differences in economic preferences vs Log GDP p/c and joint Gender Equality Index. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
+Table: Correlation between gender differences in economic preferences vs Log GDP p/c and Gender Equality Index. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
 
 |                       | Original  | Replication (OLS) | Replication (RLR) |
 ---                     | ---       | ---               | --- |
@@ -94,21 +90,21 @@ Table: Correlation between PCA-summarized gender differences in economic prefere
 | Gender Equality Index | 0.5580*** | 0.61 (0.09)***    | 0.59 (0.09)***|
 
 
-We reproduced the plots in Figures 2A-F in @doi:10.1126/science.aas9899 using the variable conditioning analysis (Figure 2). This has been done for economic development, for the GEI, and for each of the four indexes building the GEI. The variable used on the y-axis is the first Principal Component of the PCA made on gender differences in the six preferences. All the variables used have been standardized to have a mean at 0 and a standard deviation of 1 before performing the conditional analysis. Using the residuals, we performed a linear regression on the data points and extracted correlation coefficients and p-values.
+We reproduced Figures 2A-F of FH using the variable conditioning analysis (Figure 2). This has been done for economic development, for the GEI, and for each of the four indexes building the GEI. The variable used on the y-axis is the first component of the PCA performed on the gender differences of the six preferences. All the variables have been standardized to have mean at 0 and standard deviation of 1 before performing the conditional analysis. We then performed a linear regression on the residuals and extracted correlation coefficients and p-values.
 
 ![Relationship between summarized gender differences in economic preferences and economic development conditional on gender equality (Figure 2A), and between summarized gender differences in economic preferences and gender equality conditional on economic development, with gender equality being represented by GEI (Fig 2B), by WEF GGGI (Figure 2C), by UNDP GII (Figure 2D), by F/M LFP (Figure 2E), and by TSWS (Figure 2F).](figures/appendix/main_Fig2.pdf)
 
 
 ## Correlation between Economic Development and Gender Equality
 
-As mentioned in our article, the fact that there is a correlation between economic development and gender equality is revealed [@10.2307/23644911] and reported in the @GGGreport2015. We checked the correlation between Log GDP p/c and GEI, reported here in Figure 3. In addition, we checked the correlation of Log GDP p/c with the three indexes used in our extended analysis for the measure of gender equality (Figure 3): the WEF GGGI from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/), the UNDP GII [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf), and the UNDP [Gender Development Index](http://hdr.undp.org/en/indicators/137906) (GDI).
+As mentioned in our article, the fact that there is a correlation between economic development and gender equality is revealed [@10.2307/23644911] and reported in the @GGGreport2015. We checked the correlation between Log GDP p/c and GEI and we reported it here in Figure 3. In addition, we checked the correlation of Log GDP p/c with the three indexes used in our extended analysis for the measure of gender equality (also in Figure 3): the WEF GGGI from the [World Economic Forum Global Gender Gap Report 2015](http://reports.weforum.org/), the UNDP GII [Human Development Report 2015](http://hdr.undp.org/sites/default/files/hdr_2016_statistical_annex.pdf), and the UNDP [Gender Development Index](http://hdr.undp.org/en/indicators/137906) (GDI).
 
 ![Correlation between gender equality indexes and economic development by country. Note that only the countries that participated in the original study are included. ](figures/appendix/corr_equality_economicdev.pdf)
 
 
-## Reproducing the results in FH Supplementary Material
+## Reproducing the results of FH Supplementary Material
 
-For the comparison of the results from Figure S4 in @FH_SM, we refer to Table 3, showing the correlation between the average gender differences to the single-gender equality indexes. In parenthesis, we put the standard deviation for the relative correlation coefficient to have an overview of the level of agreement between the original and the replication study. We report the replication results using both the OLS and the RLR.
+For the comparison of the results of Figure S4 in @FH_SM, we refer to Table 3, showing the correlation between the summarized gender differences to the single gender equality indexes. In parenthesis, we put the standard deviation for the relative correlation coefficient to have an overview of the level of agreement between the original and the replication study. We report the replication results using both the OLS and the RLR.
 
 
 Table: Individual indexes for gender equality correlated with gender differences in economic preferences. Significance $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*)
@@ -121,9 +117,9 @@ F/M LFP  | 0.2661*   | 0.29 (0.11)*      | 0.26 (0.11)*   |
 TSWS     | 0.5139*** | 0.45 (0.10)***    | 0.45 (0.10)*** |
 
 
-For the comparison of the results of the Figure S5 and S6 of @FH_SM to ours, refer to Table 4 and Table 5.
+For the comparison of the results of the Figure S5 and S6 of @FH_SM to ours, refer to Table 4 and Table 5. These results show the correlation between gender differences in individual economic preferences to economic development, conditioning for GEI (Table 4), and the correlation between gender differences in individual econoic preferences and GEI, conditioning on Log GDP p/c (Table 5).
 
-Table: Gender differences in single economic preferences regressed on Log GDP p/c conditional on Gender Equality Index. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Correlation between gender differences in individual economic preferences regressed on Log GDP p/c conditioning for Gender Equality Index. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 |           |  Original | Replication (OLS) | Replication (RLR) |
 ---         | ---       | ---               | --- |
@@ -135,7 +131,7 @@ Table: Gender differences in single economic preferences regressed on Log GDP p/
 | Patience  | 0.2621*   | 0.23 (0.11)*    | 0.24 (0.11)*  |
  
 
-Table: Gender differences in single economic preferences regressed on Gender Equality Index, conditional on Log GDP p/c. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Correlation between gender differences in single economic preferences regressed on Gender Equality Index, conditional on Log GDP p/c. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 |           |  Original | Replication (OLS) | Replication (RLR) |
 ---         | ---       | ---               | --- |
@@ -147,10 +143,10 @@ Table: Gender differences in single economic preferences regressed on Gender Equ
 | Patience  | 0.2967*   | 0.28 (0.11)*   | 0.28 (0.11)*  |
 
 
-Lastly, we have reproduced the results from Figures S8 and S9 of @FH_SM in Tables 6 and 7.
+Lastly, we have reproduced the results from Figures S8 and S9 of @FH_SM. Table 6 compares the results of Figure S8, where the correlation between gender differences in economic preferences and economic development is calculated using preferences standardized on the global level. Table 7 summarizes the results obtained by correlating gender differences in economic preferences to economic development, when the gender coefficients were obtained by performing a linear regression without additional independent variables.
 
 
-Table: Gender differences and economic development using preferences standardized at the global level. Economic preferences were also standardized at the global level, instead of using country level. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
+Table: Correlation btween gender differences and economic development using preferences standardized at the global level. Significance levels: $\le$ 0.001 (\*\*\*), $\le$ 0.01 (\*\*), $\le$ 0.05 (\*).
 
 |           |  Original | Replication (OLS) |
 ---         | ---       | ---               | 
@@ -176,6 +172,6 @@ Table: Gender differences and economic development by preference without control
 
 ### Further notes on the replication
 
-The Figure S7 of @FH_SM could not be replicated because there is no access to raw data. For the replication of several tables in the supplementary material, the description of the data sets and the analysis approach was not sufficient for replication.
+The Figure S7 of @FH_SM could not be replicated because there is no access to raw data. For the replication of several tables in their supplementary material, the description of the data sets, and the analysis approach was not sufficient for replication.
 
 # References
