@@ -1,6 +1,8 @@
 ---
 title: |
   **A Refined Perspective on the Influence of Gender Equality on Gender Differences in Economic Preferences**
+subtitle: |
+  Supplementary Material
 output:
   pdf_document: default
 header-includes: 

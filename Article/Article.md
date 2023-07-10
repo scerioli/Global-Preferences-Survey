@@ -75,7 +75,7 @@ In this section, we describe the methodology used to replicate the analysis in F
 
 ## Data
 
-To conduct the replication, we downloaded the Gallup World Poll 2012 Global Preferences Survey data set from the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home). The full data set is under restricted access, and education level and household income quintile on the individual level are not available in the open-access version (for more information, see Appendix "Data Collection, Cleaning, and Standardization"). In their Supplementary Material,  @FH_SM provides a complementary analysis where all the independent variables (except for gender) are dropped, and the results were coherent with what was found in their main analysis. Therefore, we decided to continue the replication study without having access to education level and income quintile.
+To conduct the replication, we downloaded the Gallup World Poll 2012 Global Preferences Survey data set from the [briq - Institute on Behavior & Inequality](https://www.briq-institute.org/global-preferences/home). The full data set is under restricted access, and education level and household income quintile on the individual level are not available in the open-access version (for more information, see Supplementary Material "Data Collection, Cleaning, and Standardization"). In their Supplementary Material,  @FH_SM provides a complementary analysis where all the independent variables (except for gender) are dropped, and the results were coherent with what was found in their main analysis. Therefore, we decided to continue the replication study without having access to education level and income quintile.
 
 
 ## Methods and Results
