@@ -100,7 +100,8 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
 #### 4.2 Variable conditioning on single preferences ####
 colsToKeep_coeff <- c("gender", "preference", "country", "isocode")
 colsToKeep_summary <- c("logAvgGDPpcStd", "GenderIndexStd", "GDIStd", 
-                        "ScoreWEFStd", "ValueUNStd", "country")
+                        "ScoreWEFStd", "ValueUNStd", "country",
+                        "logAvgGDPpc", "GenderIndexRescaled")
 
 dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
                            summaryIndex[, ..colsToKeep_summary],
@@ -108,6 +109,7 @@ dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff],
 
 # Invert the trend of those preferences with opposite direction of the difference
 dataCoeff_summary <- InvertPreference(dataCoeff_summary)
+
 
 dataCoeff_summary <- AddResidualsSinglePreference_new(dataCoeff_summary, 
                                                       robust = FALSE)
@@ -191,7 +193,8 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
 #### 4.2 Variable conditioning on single preferences ####
 colsToKeep_coeff <- c("gender", "preference", "country", "isocode")
 colsToKeep_summary <- c("logAvgGDPpcStd", "GenderIndexStd", "GDIStd", 
-                        "ScoreWEFStd", "ValueUNStd", "country")
+                        "ScoreWEFStd", "ValueUNStd", "country",
+                        "logAvgGDPpc", "GenderIndexRescaled")
 
 dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
                            summaryIndex[, ..colsToKeep_summary],
