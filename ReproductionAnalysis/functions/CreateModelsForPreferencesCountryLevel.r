@@ -1,5 +1,5 @@
 CreateModelsForPreferencesCountryLevel <- function(data, robust = FALSE) {
-  # This function takes the complete dataset at individual level for all the
+  # This function takes the complete data set at individual level for all the
   # countries, select the interesting columns and fit the linear model for the
   # different preferences on it.
   # It returns a list of models containing the preferences in the first level,

@@ -97,9 +97,9 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
         geom_smooth(method = MASS::rlm, color = "red") +
         geom_text(x = xpos, y = ypos, data = labels_idx, 
                   aes(label = correlation), hjust = 0, size = 5) +
-        geom_text(x = xpos, y = ypos - 0.05, data = labels_idx, 
+        geom_text(x = xpos, y = ypos - 0.15, data = labels_idx, 
                   aes(label = beta_coef), hjust = 0, size = 5) +
-        geom_text(x = xpos, y = ypos - 0.1, data = labels_idx, 
+        geom_text(x = xpos, y = ypos - 0.30, data = labels_idx, 
                   aes(label = pvalue), hjust = 0, size = 5)
       
       # Perform a OLS
@@ -117,12 +117,12 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       
       plot <- plot +
         geom_smooth(method = "lm", color = "red") +
+        geom_text(x = xpos, y = ypos - 0.05, data = labels_idx, 
+                  aes(label = correlation), hjust = 0, size = 3) +
         geom_text(x = xpos, y = ypos - 0.1, data = labels_idx, 
-                  aes(label = correlation), hjust = 0, size = 5) +
+                  aes(label = beta_coef), hjust = 0, size = 3) +
         geom_text(x = xpos, y = ypos - 0.15, data = labels_idx, 
-                  aes(label = beta_coef), hjust = 0, size = 5) +
-        geom_text(x = xpos, y = ypos - 0.25, data = labels_idx, 
-                  aes(label = pvalue), hjust = 0, size = 5)
+                  aes(label = pvalue), hjust = 0, size = 3)
     }
     
     

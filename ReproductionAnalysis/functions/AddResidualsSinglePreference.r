@@ -1,13 +1,12 @@
 AddResidualsSinglePreference <- function(dt, robust = FALSE) {
   # This function adds to the summary of the data the residuals from the
   # regression performed on various variables of interest.
-  # It returns the summary of the data including these residuals.
   # If the argument robust is set to TRUE, the residuals are calculated using a
   # robust linear regression, otherwise a simple OLS is performed. 
   
   dt_tmp <- c()
   
-  # Single preference average gender difference residualised 
+  # Single preference gender difference residualised 
   for (pref in unique(dt$preference)) {
     # using the Gender Equality Index
     dt_tmpGEI <- Residualise(dt[preference == pref], 

@@ -1,6 +1,6 @@
 SummaryCoeffPerPreferencePerCountry <- function(model) {
   # This function takes as an argument a model (or more models in a list) and
-  # extract from it the coefficients for each preference
+  # extract from it the coefficients for each preference.
   
   # Create an empty data table to be filled in the for loop
   dt  <- data.table()

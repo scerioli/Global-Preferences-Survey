@@ -1,5 +1,5 @@
 SummaryHistograms <- function(dt, summ) {
-  # This function creates the data that will be plot as histograms
+  # This function creates the data that will be plot as histograms.
 
   data <- dt[, .(logAvgGDPpc, gender, preference, country)]
   data[summ, genderIndex := i.GenderIndex, on = "country"]

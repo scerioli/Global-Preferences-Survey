@@ -1,11 +1,10 @@
 AddResiduals <- function(dt, robust = FALSE) {
-  # This function adds to the summary of the data the residuals from the
-  # regression performed on various variables of interest.
-  # It returns the summary of the data including these residuals.
+  # This function adds the residuals from the regression performed on various 
+  # variables of interest to the summary of the data.
   # If the argument robust is set to TRUE, the residuals are calculated using a
   # robust linear regression, otherwise a simple OLS is performed. 
   
-  # Log GDP Residualised using Gender Equality Index
+  # 1. Log GDP Residualised using Gender Equality Index
   dt_GEIx <- Residualise(dt, 
                          var1 = "GenderIndexStd",
                          var2 = "logAvgGDPpcStd", 
@@ -18,7 +17,7 @@ AddResiduals <- function(dt, robust = FALSE) {
   dt_GEIy[, residualsavgGenderDiffStd_GEI := residualsavgGenderDiffStd]
   dt_GEIy$residualsavgGenderDiffStd <- NULL
   
-  # Gender Equality Index Residualised using Log GDP
+  # 2. Gender Equality Index Residualised using Log GDP
   dt_GDPx <- Residualise(dt, 
                          var1 = "logAvgGDPpcStd",
                          var2 = "GenderIndexStd", 
@@ -31,30 +30,32 @@ AddResiduals <- function(dt, robust = FALSE) {
   dt_GDPy[, residualsavgGenderDiffStd_GDP := residualsavgGenderDiffStd]
   dt_GDPy$residualsavgGenderDiffStd <- NULL
   
-  # WEF Global Gender Gap Index Residualised using Log GDP
+  # 3. WEF Global Gender Gap Index Residualised using Log GDP
   dt_WEF <- Residualise(dt, 
                         var1 = "logAvgGDPpcStd",
                         var2 = "ScoreWEFStd", 
                         robust = robust)
   
-  # UN Gender Equality Index Residualised using Log GDP
+  # 4. UN Gender Equality Index Residualised using Log GDP
   dt_UN <- Residualise(dt, 
                        var1 = "logAvgGDPpcStd",
                        var2 = "ValueUNStd", 
                        robust = robust)
+  # Invert the direction of the index (originally an "inequality" index)
   dt_UN[, residualsValueUNStd := -1 * residualsValueUNStd]
   
-  # Ratio Female to Male Residualised using Log GDP
+  # 5. Ratio Female to Male Residualised using Log GDP
   dt_ratioLabor <- Residualise(dt, 
                                var1 = "logAvgGDPpcStd",
                                var2 = "avgRatioLaborStd",
                                robust = robust)
   
-  # Time since Women's Suffrage Residualised using Log GDP
+  # 6. Time since Women's Suffrage Residualised using Log GDP
   dt_Date <- Residualise(dt, 
                          var1 = "logAvgGDPpcStd",
                          var2 = "DateStd", 
                          robust = robust)
+  # Invert the direction of the index (originally an "inequality" index)
   dt_Date[, residualsDateStd := -1 * residualsDateStd]
   
   
@@ -68,6 +69,7 @@ AddResiduals <- function(dt, robust = FALSE) {
     # Merge the two data tables
     dt <- merge(dt, data_table, by = "country", all = TRUE)
   }
+  
   
   return(dt)
 }
