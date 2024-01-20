@@ -36,8 +36,8 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   
   
   plot <- ggplot(data = data, aes(x = eval(as.name(var1)), y = eval(as.name(var2)))) +
-    geom_text(aes(label = isocode), color = "gray20", size = 3,
-              check_overlap = F, hjust = -0.5) +
+    geom_text(aes(label = isocode), color = "gray20", size = 3.5,
+              check_overlap = F, vjust = 1.5) +
     xlab(var1) + ylab(var2) + 
     theme_bw() +
     theme(panel.grid.major = element_blank(), 
@@ -47,7 +47,7 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
           axis.text.x = element_text(size = size - 2),
           axis.text.y = element_text(size = size - 2),
           plot.title = element_text(size = size + 2)) +
-    scale_fill_brewer(palette = "Set1")
+    scale_fill_brewer(palette = "Set1") 
   
   if (fill == "white") {
     plot <- plot +
@@ -96,11 +96,11 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       plot <- plot +
         geom_smooth(method = MASS::rlm, color = "red") +
         geom_text(x = xpos, y = ypos, data = labels_idx, 
-                  aes(label = correlation), hjust = 0, size = 5) +
+                  aes(label = correlation), hjust = 0, size = 4.5) +
         geom_text(x = xpos, y = ypos - 0.15, data = labels_idx, 
-                  aes(label = beta_coef), hjust = 0, size = 5) +
+                  aes(label = beta_coef), hjust = 0, size = 4.5) +
         geom_text(x = xpos, y = ypos - 0.30, data = labels_idx, 
-                  aes(label = pvalue), hjust = 0, size = 5)
+                  aes(label = pvalue), hjust = 0, size = 4.5)
       
       # Perform a OLS
     } else {

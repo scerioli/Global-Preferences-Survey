@@ -1,7 +1,7 @@
 ## =========================================================================== #
 ####  ANALYSIS OF GLOBAL PREFERENCES with ROBUST LINEAR REGRESSION and GDI  ####
 # ============================================================================ #
-# This analysis is the extended study fone by using additional (using the Gender 
+# This analysis is the extended study done by using additional (using the Gender 
 # Development Index), and making use of the robust linear regression instead of 
 # OLS for the whole replication analysis.
 
