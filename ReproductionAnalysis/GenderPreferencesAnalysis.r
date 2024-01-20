@@ -88,21 +88,18 @@ summaryIndex[, `:=` (ValueUNStd = -1 * ValueUNStd,
 #### 5. SUPPLEMENTARY MATERIAL ####
 # =============================== #
 
-#### 5.1 Conditional analysis on single preferences ####
-# ---------------------------------------------------- #
+#### 5.1 Variable conditioning on separate economic measures ####
+# ------------------------------------------------------------- #
 colsToKeep_coeff <- c("gender", "preference", "country", "isocode", "logAvgGDPpc")
-colsToKeep_summary <- c("GenderIndex", "country")
+colsToKeep_summary <- c("GenderIndexRescaled", "country")
 
 dataCoeff_summary <- merge(dataCoeff[, ..colsToKeep_coeff], 
                            summaryIndex[, ..colsToKeep_summary],
                            by = "country")
-
 # Invert the trend of those preferences with opposite direction of the difference
 dataCoeff_summary <- InvertPreference(dataCoeff_summary)
-
 # Conditional analysis on single preferences using residuals
 dataCoeff_summary <- AddResidualsSinglePreference(dataCoeff_summary)
-
 # Use the original gender coefficient (not inverted) to calculate the mean for
 # each preference, and the 95% confidence interval of the standard error
 dataCoeff_summary[, meanGender := mean(genderOrig), by = "preference"]

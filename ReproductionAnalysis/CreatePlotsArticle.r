@@ -66,8 +66,8 @@ PlotSummary(data = summaryIndex,
             labs = c("Log GDP p/c",
                      "Average Gender Differences (Index)"),  
             size = 18,
-            # display = TRUE,
-            save = "plots/main_Fig1B.png"
+            display = TRUE,
+            # save = "plots/main_Fig1B.png"
 )
 
 ## ----------------------------- Fig. 1 C ------------------------------------ #
@@ -197,7 +197,7 @@ toPlot$preference_f <- factor(toPlot$preference,
 plotS1 <-
   ggplot(toPlot, aes(x = preference_f, y = meanGender)) +
   geom_bar(stat = "identity", aes(fill = preference), width = 0.4) +
-  geom_errorbar(aes(ymin = meanGender - stdGender / 2, ymax = meanGender + stdGender / 2),
+  geom_errorbar(aes(ymin = meanGender - stdGender, ymax = meanGender + stdGender),
                 width = .1, linewidth = 0.3) +
   scale_fill_brewer(palette = "Dark2") +
   theme_bw() +
@@ -231,7 +231,7 @@ PlotSummary(data = dataCoeff_summary,
 
 # -------------------------------- Fig. S3 ----------------------------------- #
 PlotSummary(data = dataCoeff_summary,
-            var1 = "GenderIndex", 
+            var1 = "GenderIndexRescaled", 
             var2 = "gender", 
             var3 = "preference",
             labs = c("Gender Equality Index",

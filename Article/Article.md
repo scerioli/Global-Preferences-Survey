@@ -133,7 +133,7 @@ Table: **Comparison of the conditional analysis results from FH study (where OLS
 | $\beta_{Econ Develop}$ | Log GDP p/c | UNDP GII| -          | 0.40 (0.20)*     | 0.42 (0.20)*   | 
 | $\beta_{Econ Develop}$ | Log GDP p/c | F/M LFP | -          | 0.66 (0.08)***   | 0.65 (0.09)*** |
 | $\beta_{Econ Develop}$ | Log GDP p/c | TSWS    | -          | 0.64 (0.09)***   | 0.63 (0.09)*** | 
-| $\beta_{Gender Equality}$ | GEI      | Log GDP p/c | 0.32** | 0.36 (0.09)*** | 0.34 (0.10)**  |
+| $\beta_{Gender Equality}$ | GEI      | Log GDP p/c | 0.32** | 0.34 (0.09)*** | 0.34 (0.10)**  |
 | $\beta_{Gender Equality}$ | WEF GGGI | Log GDP p/c | 0.23** | 0.22 (0.09)*   | 0.21 (0.09)*   | 
 | $\beta_{Gender Equality}$ | UNDP GII | Log GDP p/c | 0.29   | 0.32 (0.16)    | 0.30 (0.20)    | 
 | $\beta_{Gender Equality}$ | F/M LFP  | Log GDP p/c | 0.25*  | 0.22 (0.08)**  | 0.20 (0.09)*   | 

@@ -10,7 +10,7 @@ AddResidualsSinglePreference <- function(dt, robust = FALSE) {
   for (pref in unique(dt$preference)) {
     # using the Gender Equality Index
     dt_tmpGEI <- Residualise(dt[preference == pref], 
-                             var1 = "GenderIndex",
+                             var1 = "GenderIndexRescaled",
                              var2 = "gender",
                              robust = robust)
     new_nameGEI <- paste0("residualsgenderGEI_", pref)
@@ -29,7 +29,7 @@ AddResidualsSinglePreference <- function(dt, robust = FALSE) {
     
     # LogGDP residualised using the Gender Equality Index
     dt_logGDP_GEI <- Residualise(dt[preference == pref], 
-                                 var1 = "GenderIndex",
+                                 var1 = "GenderIndexRescaled",
                                  var2 = "logAvgGDPpc",
                                  robust = robust)
     new_nameGEI <- paste0("residualslogAvgGDPpc_", pref)
@@ -39,10 +39,10 @@ AddResidualsSinglePreference <- function(dt, robust = FALSE) {
     # Gender Equality Index residualised using logGDP
     dt_GEI_logGDP <- Residualise(dt[preference == pref], 
                                  var1 = "logAvgGDPpc",
-                                 var2 = "GenderIndex",
+                                 var2 = "GenderIndexRescaled",
                                  robust = robust)
     new_nameGDP <- paste0("residualsGenderIndex_", pref)
-    dt_GEI_logGDP[, ((new_nameGDP)) := residualsGenderIndex]
+    dt_GEI_logGDP[, ((new_nameGDP)) := residualsGenderIndexRescaled]
     dt_GEI_logGDP <- rev(dt_GEI_logGDP)[, 1]
     
     dt_tmp <- cbind(dt_tmp, dt_tmpGEI, dt_tmpGDP, dt_logGDP_GEI, dt_GEI_logGDP)
