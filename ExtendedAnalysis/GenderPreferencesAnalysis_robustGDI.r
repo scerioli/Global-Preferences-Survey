@@ -1,14 +1,9 @@
 ## =========================================================================== #
 ####  ANALYSIS OF GLOBAL PREFERENCES with ROBUST LINEAR REGRESSION and GDI  ####
 # ============================================================================ #
-# This analysis is divided into two main parts:
-# A) Additional data analysis, using the Gender Development Index instead of the
-#    Gender Equality Index, as indicated in the technical notes of the United 
-#    Nations Human Development Indicators (version of 2020):
-#    http://hdr.undp.org/sites/default/files/hdr2020_technical_notes.pdf
-# B) Use of the robust linear regression instead of OLS, for the whole 
-#    replication analysis and the new data added here.
-# The first two parts (0 and 1) are common to both of them.
+# This analysis is the extended study fone by using additional (using the Gender 
+# Development Index), and making use of the robust linear regression instead of 
+# OLS for the whole replication analysis.
 
 
 # ===================================== #
@@ -27,32 +22,28 @@ SourceFunctions(path = "ExtendedAnalysis/functions/")
 LoadRequiredLibraries()
 
 
-# ----------------------------------- #
-#### A) ADDITIONAL DATA (UNDP GDI) ####
-# ----------------------------------- #
-
 # ========================= #
 #### 1. PREPARE THE DATA ####
 # ========================= #
-# Create the GDI index
+
+# 1.1 Add the new data set
+# ---------------------- #
 GDI_index <- CreateGDIindex()
 
-# Load the data
+# 1.2 Load the data
+# --------------- #
 data_all <- LoadData()
 data_all$GDI_index <- GDI_index
 data_all <- PrepareData_new(data_all)
 
-# Standardize preferences at country level
+# 1.3 Standardize preferences at country level
+# ------------------------------------------ #
 data_all$data <- Standardize(data    = data_all$data,
                              columns = c(5:10),
                              level   = "country")
 # Use only the complete dataset
 dataComplete <- data_all$data[complete.cases(data_all$data)]
 
-
-# --------------------------------- #
-#### B) ROBUST LINEAR REGRESSION ####
-# --------------------------------- #
 
 # ========================== #
 #### 2. CREATE THE MODELS ####
