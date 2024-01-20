@@ -73,18 +73,12 @@ summaryIndex <- CreateSummaryIndex_new(summaryIndex, data_all)
 #### 3.2 Create the Gender Equality Index ####
 # ------------------------------------------ #
 summaryIndex$GenderIndex <- GenderIndexPCA(summaryIndex[, c(5:8)])
-
 # Standardize the predictors (mean 0 and std dev 1)
 summaryIndex <- Standardize(data    = summaryIndex, 
                             columns = c(2, 4:9, 14),
                             newName = TRUE)
-
-#### 3.3 Standardize and rescale for histograms ####
-# ------------------------------------------------ #
 # Set the Gender Index on a scale between 0 and 1
 summaryIndex[, GenderIndexRescaled := Rescale(GenderIndex)]
-# Prepare summary histograms
-dataSummary <- SummaryHistograms_new(dataCoeff, summaryIndex)
 
 
 # ============================= #
@@ -114,20 +108,13 @@ dataCoeff_summary <- InvertPreference(dataCoeff_summary)
 # Add residuals of separate economic measures to the summary index
 dataCoeff_summary <- AddResidualsSinglePreference_new(dataCoeff_summary, 
                                                       robust = TRUE)
-# Use the original gender coefficient (not inverted) to calculate the mean for
-# each preference, and the 95% confidence interval of the standard error
-dataCoeff_summary[, meanGender := mean(genderOrig), by = "preference"]
-dataCoeff_summary[, stdGender := 1.96 * sqrt(sd(genderOrig)^2 / uniqueN(country)), 
-                  by = "preference"]
 
 
 # ============================= #
 #### 5. WRITE DATA SUMMARIES ####
 # ============================= #
 # Write csv data summaries
-fwrite(dataSummary,
-       file = "ExtendedAnalysis/files/output/robust_data_for_histograms.csv")
 fwrite(summaryIndex,
-       file = "ExtendedAnalysis/files/output/robust_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
+       file = "ExtendedAnalysis/files/output/extended_data_aggregatedByCountry_preferencePCA_genderIndexPCA.csv")
 fwrite(dataCoeff_summary,
-       file = "ExtendedAnalysis/files/output/robust_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
+       file = "ExtendedAnalysis/files/output/extended_data_aggregatedByCountry_singlePreference_genderCoefficients.csv")
