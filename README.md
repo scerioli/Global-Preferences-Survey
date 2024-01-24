@@ -16,7 +16,7 @@ It is suggested to read this first to get an idea of how the replication and the
 
 To start with the replication, you need to:
 
-1. Clone this repository on your local machine. This will provide you will all the codes and the data used for the replication and extended analysis.
+1. Clone [this repository](https://github.com/scerioli/Global-Preferences-Survey) on your local machine. This will provide you will all the codes and the data used for the replication and extended analysis.
 
 2. The only thing missing in this repository is the data from the Global Preferences Survey of the Gallup World Poll. This data is protected by copyright and can't be given to third parties. To download the GPS data set, go to the [website of the Global Preferences Survey](https://www.briq-institute.org/global-preferences/downloads) in the section "downloads". There, choose the "Dataset" form and after filling it, one can download the data set. *Hint: The organization can be also "private".* 
 
