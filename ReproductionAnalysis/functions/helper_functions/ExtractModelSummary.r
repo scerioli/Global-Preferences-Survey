@@ -32,6 +32,7 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
                              data = dt))
         dt <- data.table(formula     = character(),
                          correlation = character(),
+                         stddev_r    = double(),
                          r2          = double(),
                          pvalue      = character(),
                          beta_coef   = numeric(),
@@ -47,8 +48,10 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
                                round(coef(mod[[i]])[2], 5))
             r <- cor(na.omit(dat[eval(as.name(var3)) == names(mod)[i], 
                                  .(eval(as.name(var1)), eval(as.name(var2)))]))[1, 2]
-            correlation <- sprintf("correlation = %.5f", r)
-            r2 <- sprintf("R^2 = %.5f", r^2)
+            stddev_r <- sqrt((1 - r^2)/ (nrow(na.omit(dat[eval(as.name(var3)) == names(mod)[i]])) - 2))
+            stddev_b <- summary(mod[[i]])$coefficients[2, 2]
+            correlation <- sprintf("Correlation = %.2f (%.2f)", r, stddev_r)
+            r2 <- sprintf("R^2 = %.2f", r^2)
             if (robust) {
                 t_value <- summary(mod[[i]])$coefficients[, "t value"][2]
                 p_value <- 2 * pt(q = t_value, 
@@ -60,11 +63,12 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
             pvalue <- ifelse(p_value < 0.0001,
                              "p < 0.0001",
                              sprintf("p = %.4f", p_value))
-            beta_coef <- sprintf("Slope coeff. = %.4f", 
-                                 summary(mod[[i]])$coefficients[, 1][2])
+            beta_coef <- sprintf("Slope coeff. = %.2f (%.2f)", 
+                                 summary(mod[[i]])$coefficients[, 1][2], stddev_b)
             # Save the data
             dt_tmp <- data.table(formula     = formula,
                                  correlation = correlation,
+                                 stddev_r    = stddev_r,
                                  r2          = r2,
                                  pvalue      = pvalue,
                                  beta_coef   = beta_coef,
@@ -83,8 +87,10 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
                            round(coef(mod)[2], 5))
         r <- cor(na.omit(dat[, .(eval(as.name(var1)),  
                                  eval(as.name(var2)))]))[1, 2]
-        correlation <- sprintf("correlation = %.5f", r)
-        r2 <- sprintf("R^2 = %.5f", r^2)
+        stddev_r <- sqrt((1 - r^2)/ (nrow(dat) - 2))
+        correlation <- sprintf("Correlation = %.2f (%.2f)", r, stddev_r)
+        stddev_b <- summary(mod)$coefficients[2, 2]
+        r2 <- sprintf("R^2 = %.2f", r^2)
         if (robust) {
             t_value <- summary(mod)$coefficients[, "t value"][2]
             p_value <- 2 * pt(q = t_value, 
@@ -96,14 +102,16 @@ ExtractModelSummary <- function(dat, var1, var2, var3 = NULL, robust = FALSE) {
         pvalue <- ifelse(p_value < 0.0001,
                          "p < 0.0001",
                          sprintf("p = %.4f", p_value))
-        beta_coef <- sprintf("Slope coeff. = %.4f", 
-                             summary(mod)$coefficients[, 1][2])
+        beta_coef <- sprintf("Slope coeff. = %.2f (%.2f)", 
+                             summary(mod)$coefficients[, 1][2], stddev_b)
         # Save the data
         dt <- data.table(formula     = formula,
                          correlation = correlation,
+                         stddev_r    = stddev_r,
                          r2          = r2,
                          pvalue      = pvalue,
                          beta_coef   = beta_coef,
+                         stddev_b    = stddev_b,
                          stringsAsFactors = FALSE)
     }
     

@@ -1,4 +1,5 @@
 LoadData <- function() {
+  # This function loads the data from different data sets into a list.
   
   # Select the directory
   path_dir     <- "ReproductionAnalysis/files/input/"

@@ -14,7 +14,7 @@ SummaryHistograms_new <- function(dt, summ) {
        GDPquant := 3]
   data[is.na(GDPquant),
        GDPquant := 4]
-  # Summary for the Gender equality index
+  # Summary for the Gender Equality Index
   data[genderIndex <= quantile(genderIndex, 0.25, na.rm = TRUE),
        GEIquant := 1]
   data[is.na(GEIquant) & genderIndex <= quantile(genderIndex, 0.50, na.rm = TRUE),
@@ -33,7 +33,7 @@ SummaryHistograms_new <- function(dt, summ) {
   data[is.na(GDIquant),
        GDIquant := 4]
   
-  # Assign mean of the bin for GDP and GEI
+  # Assign mean of the bin for GDP, Gender Equality Index, and GDI
   for (i in 1:length(data$GEIquant)) {
     data[GDPquant == i, meanGenderGDP := mean(gender, na.rm = T), by = "preference"]
     data[GEIquant == i, meanGenderGEI := mean(gender, na.rm = T), by = "preference"]

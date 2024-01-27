@@ -1,4 +1,8 @@
 PrepareData <- function(data_all) {
+  # This function prepares the data by cleaning the country names to be 
+  # homogeneous across different data sets, it calculates the mean of some
+  # indicators, and in general it prepares the data to be handled with less
+  # ambiguity later on.
   
   data          <- as.data.table(data_all$data)
   indicators    <- as.data.table(data_all$indicators)

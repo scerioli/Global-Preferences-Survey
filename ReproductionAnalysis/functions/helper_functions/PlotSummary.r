@@ -1,5 +1,5 @@
 PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
-                        regression = TRUE, robust = FALSE, corr = TRUE, 
+                        regression = TRUE, robust = FALSE, size = 12,
                         labs = NULL, display = FALSE, save = NULL) {
   # This function is plotting in a standardized way the meaningful variables.
   # The function takes as input a data table, 2 columns of it that should be the
@@ -21,9 +21,6 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   #                      Default is "white"
   # - regression [logical] to plot the regression line and the coefficients
   #                        related to that or not
-  # - corr [logical]     to plot the regression line ans the correlation (TRUE)
-  #                      or the slope of the regression line (FALSE). Only valid
-  #                      if regression is TRUE
   # - robust [logical]   if the regression to be done and plotted is simple
   #                      (OLS) or robust. Default is FALSE (simple regression).
   #                      To be used in combination with regression.
@@ -33,20 +30,25 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   #                      Default is FALSE
   # - save [logical]     if it is not NULL, it saves the current plot with
   #                      the name indicated in parenthesis. Default is NUL
-
+  
   # RETURN
   # - plot [ggplot object] is the plot we produced
-
-
+  
+  
   plot <- ggplot(data = data, aes(x = eval(as.name(var1)), y = eval(as.name(var2)))) +
-    geom_text(aes(label = isocode), color = "gray20", size = 3,
-              check_overlap = F, hjust = -0.5) +
-    xlab(var1) + ylab(var2) +
+    geom_text(aes(label = isocode), color = "gray20", size = 3.5,
+              check_overlap = F, vjust = 1.5) +
+    xlab(var1) + ylab(var2) + 
     theme_bw() +
     theme(panel.grid.major = element_blank(), 
-          panel.grid.minor = element_blank()) +
-    scale_fill_brewer(palette = "Set1")
-
+          panel.grid.minor = element_blank(),
+          axis.title.x = element_text(size = size),
+          axis.title.y = element_text(size = size),
+          axis.text.x = element_text(size = size - 2),
+          axis.text.y = element_text(size = size - 2),
+          plot.title = element_text(size = size + 2)) +
+    scale_fill_brewer(palette = "Set1") 
+  
   if (fill == "white") {
     plot <- plot +
       geom_point(shape = 21, size = 3, fill = fill) +
@@ -56,7 +58,7 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       geom_point(data = data, shape = 21, size = 3, aes(fill = eval(as.name(fill)))) +
       labs(fill =  fill)
   }
-
+  
   if (!is.null(var3)) {
     # Rename the preferences
     preferences_names <- c(
@@ -73,9 +75,9 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       theme(legend.title = element_blank(),
             strip.background = element_rect(colour = "white", fill = "white"),
             legend.position = "none",
-            strip.text.x = element_text(size = 12))
+            strip.text.x = element_text(size = size))
   }
-
+  
   if (regression) {
     # Perform a robust linear regression
     if (robust) {
@@ -90,17 +92,16 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       ypos <- 0.95 * data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
                           max(eval(as.name(var2)))]
       
-      if (corr) {
-        plot <- plot +
-          geom_smooth(method = MASS::rlm, color = "red") +
-          geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = correlation), hjust = 0) +
-          geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
-      } else {
-        plot <- plot +
-          geom_smooth(method = MASS::rlm, color = "red") +
-          geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = beta_coef), hjust = 0) +
-          geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
-      }
+      
+      plot <- plot +
+        geom_smooth(method = MASS::rlm, color = "red") +
+        geom_text(x = xpos, y = ypos, data = labels_idx, 
+                  aes(label = correlation), hjust = 0, size = 4.5) +
+        geom_text(x = xpos, y = ypos - 0.15, data = labels_idx, 
+                  aes(label = beta_coef), hjust = 0, size = 4.5) +
+        geom_text(x = xpos, y = ypos - 0.30, data = labels_idx, 
+                  aes(label = pvalue), hjust = 0, size = 4.5)
+      
       # Perform a OLS
     } else {
       # Create annotation for the correlation and p-value
@@ -111,25 +112,22 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
       # Take only complete cases of the dataset to prevent NAs to appear
       xpos <- data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
                    min(eval(as.name(var1)))]
-      ypos <- 0.95 * data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
+      ypos <- 1.05 * data[complete.cases(c(eval(as.name(var1))), eval(as.name(var2))), 
                           max(eval(as.name(var2)))]
       
-      if (corr) {
-        plot <- plot +
-          geom_smooth(method = "lm", color = "red") +
-          geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = correlation), hjust = 0) +
-          geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
-      } else {
-        plot <- plot +
-          geom_smooth(method = "lm", color = "red") +
-          geom_text(x = xpos, y = ypos, data = labels_idx, aes(label = beta_coef), hjust = 0) +
-          geom_text(x = xpos, y = ypos - 0.12 * ypos, data = labels_idx, aes(label = pvalue), hjust = 0)
-      }
+      plot <- plot +
+        geom_smooth(method = "lm", color = "red") +
+        geom_text(x = xpos, y = ypos - 0.05, data = labels_idx, 
+                  aes(label = correlation), hjust = 0, size = 3) +
+        geom_text(x = xpos, y = ypos - 0.1, data = labels_idx, 
+                  aes(label = beta_coef), hjust = 0, size = 3) +
+        geom_text(x = xpos, y = ypos - 0.15, data = labels_idx, 
+                  aes(label = pvalue), hjust = 0, size = 3)
     }
     
     
   }
-
+  
   if (!is.null(labs)) {
     if (length(labs) == 3) {
       plot <- plot + labs(x = labs[[1]], y = labs[[2]], title = labs[[3]])
@@ -138,7 +136,7 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
     }
     
   }
-
+  
   if (display) {
     return(plot)
   }
@@ -146,5 +144,5 @@ PlotSummary <- function(data, var1, var2, var3 = NULL, fill = "white",
   if (!is.null(save)) {
     ggsave(filename = eval(as.character(save)), plot = plot)
   }
-
+  
 }
