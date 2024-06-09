@@ -7,9 +7,9 @@ output:
 
 ## Introduction
 
-In this repository we store the code for the replication and extension of the analysis done to reproduce the article [Relationship of gender differences in preferences to economic development and gender equality](https://science.sciencemag.org/content/362/6412/eaas9899.full) (doi: 10.1126/science.aas9899). 
+In this repository, we store the code for the replication and extension of the analysis done to reproduce the article "[Relationship of gender differences in preferences to economic development and gender equality](https://science.sciencemag.org/content/362/6412/eaas9899.full)"" (doi: 10.1126/science.aas9899). 
 
-It is suggested to read this first to get an idea of how the replication and the extension of the analysis has been structured through the code.
+It is suggested that you read this first to get an idea of how the replication and the extension of the analysis have been structured through the code.
 
 
 ### How to replicate the full analyses
@@ -26,7 +26,7 @@ To start with the replication, you need to:
 
 With all the files and the data, there are two ways one can replicate the work done:
 
-- Run all the functions to load, prepare and manipulate the original data, to obtain the final data sets for the plots and table creations. To do this, run the scripts "GenderPreferencesAnalysis.r" inside the ReplicationAnalysis, and "GenderPreferencesAnalysis_robustGDI.r" in the ExtendedAnalysis, and their according "functions" folders, if you want to check the code to review it. You can also plot the data using the same code it has been used to produce the plots by running the scripts "CreatePlotsArticle.r" in the "ReplicationAnalysis" folder, and "CreatePlotsArticle_GDI.r" in the "ExtendedAnalysis".
+- Run all the functions to load, prepare and manipulate the original data, to obtain the final data sets for the plots and table creations. To do this, run the scripts "GenderPreferencesAnalysis.r" inside the ReplicationAnalysis, and "GenderPreferencesAnalysis_robustGDI.r" in the ExtendedAnalysis, and their corresponding "functions" folders, if you want to check the code to review it. You can also plot the data using the same code it has been used to produce the plots by running the scripts "CreatePlotsArticle.r" in the "ReplicationAnalysis" folder, and "CreatePlotsArticle_GDI.r" in the "ExtendedAnalysis".
 
 - Take the output files created already (they are stored under "ReplicationAnalysis/files/output", or under "ExtendedAnalysis/files/output"), and use them as input for plotting or checking other models by yourself. 
 
@@ -38,7 +38,7 @@ The repository consists of several sub-directories:
 - [**Article**](https://github.com/scerioli/Global-Preferences-Survey/tree/master/Article) is the folder containing everything related to the article and the supplementary material, such as the markdown files, their relative pdf files, the bibliography in bibtex, and the figures included in the article and in the supplementary material.
 
 - [**ReproductionAnalysis**](https://github.com/scerioli/Global_Preferences_Survey/tree/master/ReproductionAnalysis) is the folder where the files for the replication analysis of the main article and its supplementary material are stored.
-  - [README_ReproductionAnalysis.md](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ReproductionAnalysis/ReproductionAnalysis.md), as already mentioned, helps to get through the main code and get the concept of the analysis. For a more in-depth look at the analysis and the methods, the authors refer to the main paper (mentioned above).
+  - [README_ReproductionAnalysis.md](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ReproductionAnalysis/README_ReproductionAnalysis.md), as already mentioned, helps to get through the main code and get the concept of the analysis. For a more in-depth look at the analysis and the methods, the authors refer to the main paper (mentioned above).
   - [files](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files)
     - [input](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/input): files used for the analysis, modified to be easy to read. The core GPS dataset on economic preferences is not included due to copyright restrictions but can be easily downloaded using the links on the official webpage we provided.
     - [output](https://github.com/scerioli/Global_Preferences_Survey/tree/master/files/output): the csv files containing the results of our replication of the analysis that we subsequently use for plots. The same files can be obtained by running the analysis pipeline
@@ -50,7 +50,8 @@ The repository consists of several sub-directories:
   - [plots](https://github.com/scerioli/Global_Preferences_Survey/tree/master/plots): The relevant plots are saved here. The files which start with "main" are figures from the main part of the article, while the "supplementary" are from the supplementary online material. Two extra plots for the comparison between our analysis and the article's results are in this folder as well.
   - [interactive_plots](https://github.com/scerioli/Global_Preferences_Survey/blob/master/interactive_plots) contains a very basic dashboard created with Shiny package in R, to have a quicker visualization of the plots. *It is still a "beta version" because the description is not exhaustive about which plots can be created.* You can try to run the app using this command in R: ```shiny::runGitHub('Global-Preferences-Survey', 'scerioli', ref = "master", subdir = "ReproductionAnalysis/interactive_plots")```
   
-- [**ExtendedAnalysis**](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis) is the folder where the extended analysis of the article has been performed. With "extended analysis" it is meant the change from the use of OLS to robust linear regression in any occasion where the OLS was used, thus changing many functions (see below), and the addition of the new Gender Development Index as additional indicator for the gender equality of the countries. The structure of this directory is very similar to the "ReplicationAnalysis"..
+- [**ExtendedAnalysis**](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis) is the folder where the extended analysis of the article has been performed. With "extended analysis" it is meant the change from the use of OLS to robust linear regression in any occasion where the OLS was used, thus changing many functions (see below), and the addition of the new Gender Development Index as additional indicator for the gender equality of the countries. The structure of this directory is very similar to the "ReplicationAnalysis".
+  - [README_ExtendedAnalysis.md](https://github.com/scerioli/Global_Preferences_Survey/blob/master/ExtendedAnalysis/README_ExtendedAnalysis.md) is the README file where the description of the output files and their relative variables are described.
   - [files](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/files)
     - [input](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/files/input): Here there are added the files from the UNDP used to create the Gender Development Index, according to the [technical notes](http://hdr.undp.org/sites/default/files/hdr2020_technical_notes.pdf) found on the website of the UNDP
     - [output](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/files/output): the csv files that contain the results of our extended analysis that we subsequently use for plots. The same files can be obtained by running the analysis pipeline
@@ -58,14 +59,14 @@ The repository consists of several sub-directories:
   - [CreatePlotsArticle_GDI.r](https://github.com/scerioli/Global-Preferences-Survey/blob/master/ExtendedAnalysis/CreatePlotsArticle_GDI.r) uses the output files to create figures from the main text and supplementary using the data from the extended analysis.
   - [functions](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/functions)
     - The specific functions for the pipeline of the extended analysis. Any other function has been sourced directly from the replication folder, when it was needed.
-  - [plots](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/plots): Still need to organize it better
+  - [plots](https://github.com/scerioli/Global-Preferences-Survey/tree/master/ExtendedAnalysis/plots): it is an empty folder which is supposed to contain all the plots created in the extended analysis.
   
 - [**PublicPosts**](https://github.com/scerioli/Global-Preferences-Survey/tree/master/PublicPosts) contains some short analysis complementary to the reproduction analysis.
 
 
 ## Additional Information
 
-In addition to the main article, the following two papers contains a lot of relevant information for the full understanding of the analysis steps. They have to be cited in all publications that make use of or refer in any kind to the GPS data set:
+In addition to the main article, the following two papers contain a lot of relevant information for the full understanding of the analysis steps. They have to be cited in all publications that make use of or refer in any kind to the GPS data set:
 
 - Falk, A., Becker, A., Dohmen, T., Enke, B., Huffman, D., & Sunde, U. (2018). [Global evidence on economic preferences.](https://doi.org/10.1093/qje/qjy013) *Quarterly Journal of Economics*, 133 (4), 1645–1692.
 
