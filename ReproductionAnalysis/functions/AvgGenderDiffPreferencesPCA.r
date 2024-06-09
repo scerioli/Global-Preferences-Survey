@@ -2,7 +2,7 @@ AvgGenderDiffPreferencesPCA <- function(dat) {
   # This function takes a data table with the coefficients of the linear model
   # for each country as an input and returns a data table having two columns:
   # one is the principal component analysis of the 6 preferences using the
-  # gender coefficient as main variable, and the other is the associated country
+  # gender coefficient as main variable, and the other is the associated country.
 
   dt_pca <- data.table()
 
